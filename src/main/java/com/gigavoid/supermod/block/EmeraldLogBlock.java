@@ -3,18 +3,19 @@ package com.gigavoid.supermod.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class EmeraldLogBlock extends Block {
+public class EmeraldLogBlock extends BlockLog {
 
     @SideOnly(Side.CLIENT)
     private IIcon eLogIconTop;
 
     public EmeraldLogBlock(){
-        super(Material.wood);
+        super();
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:eLogSide");
         this.setHarvestLevel("axe", 0);
