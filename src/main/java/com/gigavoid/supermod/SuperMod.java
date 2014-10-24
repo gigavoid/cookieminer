@@ -16,7 +16,7 @@ public class SuperMod
     public static final String MODID = "supermod";
     public static final String VERSION = "1.0";
 
-    public SuperBlocks sBlocks;
+    public SuperBlocks sBlocks = new SuperBlocks();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
