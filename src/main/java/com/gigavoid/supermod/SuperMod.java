@@ -1,6 +1,5 @@
 package com.gigavoid.supermod;
 
-import com.gigavoid.supermod.block.GenericBlock;
 import com.gigavoid.supermod.block.SuperBlocks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
