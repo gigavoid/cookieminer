@@ -26,7 +26,7 @@ public class EmeraldLogBlock extends Block {
     @Override
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.eLogIconTop : this.blockIcon;
+        return par1 == 1 ? this.eLogIconTop : (par1 == 0 ? this.eLogIconTop : this.blockIcon);
     }
 
     @Override
