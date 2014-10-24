@@ -1,5 +1,6 @@
 package com.gigavoid.supermod;
 
+import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeybinds;
@@ -18,6 +19,7 @@ public class SuperMod
     public void preInit(FMLPreInitializationEvent event){
         SuperBlocks.initializeBlocks();
         SuperItems.initializeItems();
+        SuperBiomes.registerBiomes();
     }
 
     @EventHandler
