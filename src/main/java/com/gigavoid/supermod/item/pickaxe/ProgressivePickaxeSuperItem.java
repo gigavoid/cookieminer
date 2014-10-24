@@ -11,11 +11,17 @@ public class ProgressivePickaxeSuperItem extends ProgressivePickaxeItem {
         super(ToolMaterial.EMERALD);
         setUnlocalizedName("progessivePickaxeSuper");
         setTextureName("progressivePickaxeSuper");
-        setMaxDamage(160);
+        setMaxDamage(2);
+        efficiencyOnProperMaterial = 14f;
     }
 
+
+
     @Override
-    public ItemStack createNewPickaxe() {
-        return new ItemStack(SuperItems.progressivePickaxeSuper);
+    public ItemStack createNewPickaxe(ItemStack oldPick) {
+        ItemStack newPick = new ItemStack(SuperItems.progressivePickaxeSuper);
+        setLevel(newPick, getLevel(oldPick) + 1);
+        return newPick;
     }
+
 }

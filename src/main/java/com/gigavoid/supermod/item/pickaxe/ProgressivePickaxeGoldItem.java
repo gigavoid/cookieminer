@@ -15,7 +15,7 @@ public class ProgressivePickaxeGoldItem extends ProgressivePickaxeItem {
     }
 
     @Override
-    public ItemStack createNewPickaxe() {
+    public ItemStack createNewPickaxe(ItemStack oldPick) {
         return new ItemStack(SuperItems.progressivePickaxeDiamond);
     }
 }
