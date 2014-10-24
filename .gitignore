@@ -4,6 +4,4 @@
 
 .gradle/
 out/
-eclipse/config/
-eclipse/logs/
-eclipse/options.txt
+eclipse/
