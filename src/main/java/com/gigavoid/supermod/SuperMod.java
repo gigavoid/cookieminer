@@ -1,6 +1,7 @@
 package com.gigavoid.supermod;
 
 import com.gigavoid.supermod.block.SuperBlocks;
+import com.gigavoid.supermod.item.SuperItems;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -15,6 +16,7 @@ public class SuperMod
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
         SuperBlocks.initializeBlocks();
+        SuperItems.initializeItems();
     }
 
     @EventHandler
