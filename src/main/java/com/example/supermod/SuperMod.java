@@ -7,7 +7,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
 public class SuperMod
 {
-    public static final String MODID = "The Super Mod";
+    public static final String MODID = "supermod";
     public static final String VERSION = "1.0";
     
     @EventHandler
