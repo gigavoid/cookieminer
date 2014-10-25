@@ -13,6 +13,7 @@ public class EmeraldFlowerBlock extends BlockFlower {
         this.setLightLevel(1.0f);
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setBlockName("emeraldFlower");
+        this.setBlockTextureName("supermod:flower_emerald");
         this.setTickRandomly(true);
     }
 

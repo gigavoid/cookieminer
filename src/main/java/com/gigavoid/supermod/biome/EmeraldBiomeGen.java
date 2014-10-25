@@ -24,10 +24,9 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         temperature = 1.0f;
         rainfall = 0.6f;
         decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
-        decorator.emeraldFlowersPerChunk = 6;
+        decorator.emeraldFlowersPerChunk = 1;
         decorator.emeraldBigTreesPerChunk = 1;
-        decorator.emeraldTreesPerChunk = 6;
-        decorator.emeraldSmallTreesPerChunk = 2;
+        decorator.emeraldTreesPerChunk = 4;
     }
 
     @Override
