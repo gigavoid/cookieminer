@@ -18,9 +18,9 @@ public class SuperWorldGenOre implements IWorldGenerator {
     }
 
     private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
-        for(int k=0; k<100; k++) {
+        for(int k=0; k<20; k++) {
             int firstBlockXCoord = chunkX + random.nextInt(16);
-            int firstBlockYCoord = random.nextInt(64);
+            int firstBlockYCoord = random.nextInt(30);
             int firstBlockZCoord = chunkZ + random.nextInt(16);
             (new WorldGenMinable(SuperBlocks.opblock, 13)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
         }
