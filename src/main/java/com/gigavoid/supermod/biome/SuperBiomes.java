@@ -8,5 +8,7 @@ public class SuperBiomes {
 
     public static void registerBiomes(){
         BiomeManager.addSpawnBiome(emeraldBiomeGen);
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(emeraldBiomeGen, 5000));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(emeraldBiomeGen, 5000));
     }
 }

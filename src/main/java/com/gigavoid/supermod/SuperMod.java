@@ -3,7 +3,7 @@ package com.gigavoid.supermod;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.item.SuperItems;
-import com.gigavoid.supermod.keybinding.SuperKeybinds;
+import com.gigavoid.supermod.keybinding.SuperKeyBinds;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -25,6 +25,6 @@ public class SuperMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        SuperKeybinds.registerKeybinds();
+        SuperKeyBinds.registerKeybinds();
     }
 }
