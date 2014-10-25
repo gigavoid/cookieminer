@@ -8,9 +8,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-/**
- * Created by ineentho on 2014-10-25.
- */
+
 public class PickBenchTileEntity extends TileEntity implements IInventory {
 
 
