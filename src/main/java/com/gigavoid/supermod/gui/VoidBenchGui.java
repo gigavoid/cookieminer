@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class VoidBenchGui extends GuiContainer{
     public static final int GUI_ID = 21;
-    private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("textures/gui/container/crafting_table.png");
+    private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("supermod", "textures/gui/voidcrafting_table.png");
 
     public VoidBenchGui(InventoryPlayer inventoryPlayer,
                         VoidBenchTileEntity tileEntity) {

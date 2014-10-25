@@ -22,8 +22,8 @@ public class VoidBenchContainer extends Container {
         //the Slot constructor takes the IInventory and the slot number in that it binds to
         //and the x-y coordinates it resides on-screen
 
-        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 80, 17 + 18));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 120, 17 + 18));
+        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 52, 35));
+        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 109, 35));
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
