@@ -18,7 +18,7 @@ public class ProgPickUpgrades {
     public static Map<Item, String> upgrades = new HashMap<Item, String>();
 
     static {
-        upgrades.put(Items.emerald, "Spped");
+        upgrades.put(Items.emerald, "Mining Speed");
         upgrades.put(Items.diamond, "Horizontal Radius");
         upgrades.put(Item.getItemFromBlock(SuperBlocks.opblock), "Vertical Radius");
     }

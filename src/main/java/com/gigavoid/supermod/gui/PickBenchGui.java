@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class PickBenchGui  extends GuiContainer{
     public static final int GUI_ID = 20;
-    private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("textures/gui/container/crafting_table.png");
+    private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("supermod", "textures/gui/pick_bench.png");
 
     public PickBenchGui(InventoryPlayer inventoryPlayer,
                         PickBenchTileEntity tileEntity) {
@@ -23,7 +23,7 @@ public class PickBenchGui  extends GuiContainer{
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
         //draw text and stuff here
         //the parameters for drawString are: string, x, y, color
-        fontRendererObj.drawString("Pickaxe Upgrade", 8, 6, 4210752);
+        fontRendererObj.drawString("Pickaxe Workbench", 8, 6, 4210752);
         //draws "Inventory" or your regional equivalent
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
     }

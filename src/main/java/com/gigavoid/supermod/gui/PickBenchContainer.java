@@ -18,14 +18,14 @@ public class PickBenchContainer extends Container {
     public PickBenchContainer (InventoryPlayer inventoryPlayer, PickBenchTileEntity te){
         tileEntity = te;
 
-        //the Slot constructor takes the IInventory and the slot number in that it binds to
-        //and the x-y coordinates it resides on-screen
+        // Pickaxe slot
+        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Pick, te, 0, 56, 17));
 
-        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Pick, te, 0, 80, 17));
-        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 80, 17 + 18));
+        // Upgrade material slot
+        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 56, 53));
 
-
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 120, 17 + 18));
+        // Output slot
+        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 116,35));
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
