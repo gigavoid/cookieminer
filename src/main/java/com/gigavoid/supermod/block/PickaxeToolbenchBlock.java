@@ -36,7 +36,7 @@ public class PickaxeToolbenchBlock extends BlockContainer {
             return false;
         }
 
-        player.openGui(SuperMod.instance, 0, world, x, y, z);
+        player.openGui(SuperMod.instance, 20, world, x, y, z);
         return true;
     }
 

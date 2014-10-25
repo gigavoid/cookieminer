@@ -7,10 +7,6 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.InventoryBasic;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -20,9 +16,9 @@ public class SuperGuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if(ID == PickBenchGui.ID && tileEntity instanceof PickBenchTileEntity )
+        if(ID == PickBenchGui.GUI_ID && tileEntity instanceof PickBenchTileEntity )
             return new PickBenchContainer(player.inventory, (PickBenchTileEntity) tileEntity);
-        else if(ID == VoidBenchGui.ID && tileEntity instanceof VoidBenchTileEntity)
+        else if(ID == VoidBenchGui.GUI_ID && tileEntity instanceof VoidBenchTileEntity)
             return new VoidBenchGui(player.inventory, (VoidBenchTileEntity) tileEntity);
         return null;
     }
@@ -30,9 +26,9 @@ public class SuperGuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if(ID == PickBenchGui.ID && tileEntity instanceof PickBenchTileEntity)
+        if(ID == PickBenchGui.GUI_ID && tileEntity instanceof PickBenchTileEntity)
             return new PickBenchGui(player.inventory, (PickBenchTileEntity) tileEntity);
-        else if(ID == VoidBenchGui.ID && tileEntity instanceof VoidBenchTileEntity)
+        else if(ID == VoidBenchGui.GUI_ID && tileEntity instanceof VoidBenchTileEntity)
             return new VoidBenchGui(player.inventory, (VoidBenchTileEntity) tileEntity);
         return null;
     }
