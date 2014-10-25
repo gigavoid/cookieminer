@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.biome;
 
 import com.gigavoid.supermod.decorator.SuperDecorator;
+import com.gigavoid.supermod.decorator.SuperEmeraldDecorator;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -9,7 +10,7 @@ import java.util.Random;
 
 public class EmeraldBiomeGen extends BiomeGenBase {
 
-    SuperDecorator decorator = new SuperDecorator();
+    SuperEmeraldDecorator decorator = new SuperEmeraldDecorator();
 
     public EmeraldBiomeGen(){
         super(40);
