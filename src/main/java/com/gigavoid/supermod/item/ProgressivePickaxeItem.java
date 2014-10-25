@@ -25,6 +25,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     public ProgressivePickaxeItem() {
         super(ToolMaterial.WOOD);
         setMaxDamage(4);
+        setTextureName("supermod:prog_pickaxe");
     }
 
     public void setToolLevel(int level) {

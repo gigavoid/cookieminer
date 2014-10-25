@@ -19,15 +19,15 @@ public class PickBenchContainer extends Container {
 
         //the Slot constructor takes the IInventory and the slot number in that it binds to
         //and the x-y coordinates it resides on-screen
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                addSlotToContainer(new Slot(tileEntity, j + i * 3, 62 + j * 18, 17 + i * 18));
-            }
+        for (int i = 0; i < 2; i++) {
+            addSlotToContainer(new Slot(tileEntity, i, 90, 17 + i * 18));
         }
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
     }
+
+
 
 
 
