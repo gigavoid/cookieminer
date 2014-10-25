@@ -1,0 +1,12 @@
+package com.gigavoid.supermod.Recipies;
+
+import com.gigavoid.supermod.block.SuperBlocks;
+import com.gigavoid.supermod.item.SuperItems;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.ItemStack;
+
+public class SuperSmeltingRecipie {
+    public static void InitializeSmektingRecipes(){
+        //GameRegistry.addSmelting(SuperBlocks.emeraldFlower, new ItemStack(SuperItems.energyPowder, 2), 10);
+    }
+}

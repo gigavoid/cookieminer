@@ -8,7 +8,7 @@ public class EmeraldLeavesBlock extends BlockOldLeaf {
     public EmeraldLeavesBlock(){
         super();
         this.setHardness(1.0f);
-        this.setBlockTextureName("leaves_jungle");
+        this.setBlockTextureName("leaves_jungle_opaque");
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockName("emeraldLeaves");
         this.setStepSound(soundTypeGrass);
@@ -25,8 +25,5 @@ public class EmeraldLeavesBlock extends BlockOldLeaf {
     }
 
     @Override
-    public boolean isOpaqueCube()
-    {
-        return true;
-    }
+    public boolean isOpaqueCube(){ return false;}
 }

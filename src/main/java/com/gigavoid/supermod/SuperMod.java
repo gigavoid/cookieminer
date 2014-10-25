@@ -1,6 +1,7 @@
 package com.gigavoid.supermod;
 
 import com.gigavoid.supermod.Recipies.SuperRecipie;
+import com.gigavoid.supermod.Recipies.SuperSmeltingRecipie;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.gui.SuperGuiHandler;
@@ -35,5 +36,6 @@ public class SuperMod
         SuperKeyBinds.registerKeybinds();
         SuperGuiHandler.initializeGuis();
         SuperRecipie.initializeRecipes();
+        SuperSmeltingRecipie.InitializeSmektingRecipes();
     }
 }
