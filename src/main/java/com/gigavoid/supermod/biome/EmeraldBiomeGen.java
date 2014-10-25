@@ -26,7 +26,7 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
         decorator.emeraldFlowersPerChunk = 1;
         decorator.emeraldBigTreesPerChunk = 1;
-        decorator.emeraldTreesPerChunk = 4;
+        decorator.emeraldTreesPerChunk = 5;
     }
 
     @Override

@@ -13,7 +13,6 @@ public class SuperDecorator {
     public int emeraldFlowersPerChunk;
     public int emeraldBigTreesPerChunk;
     public int emeraldTreesPerChunk;
-    public int emeraldSmallTreesPerChunk;
 
     public boolean treeHead[] = new boolean[7 * 7 * 3];
 

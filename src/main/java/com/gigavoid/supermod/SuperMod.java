@@ -34,6 +34,6 @@ public class SuperMod
         SuperWorldGens.initializeWorldGens();
         SuperKeyBinds.registerKeybinds();
         SuperGuiHandler.initializeGuis();
-        SuperRecipie.superFurnace();
+        SuperRecipie.initializeRecipes();
     }
 }
