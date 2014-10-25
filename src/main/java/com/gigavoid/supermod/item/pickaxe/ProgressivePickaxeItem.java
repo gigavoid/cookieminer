@@ -8,13 +8,16 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ProgressivePickaxeItem extends ItemPickaxe {
     private String material;
@@ -87,7 +90,14 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List description, boolean par4) {
-        description.add(EnumChatFormatting.GRAY + "Level " + ProgPickUpgrades.getLevel(stack));
+        description.add(EnumChatFormatting.AQUA + "Level " + ProgPickUpgrades.getLevel(stack));
+
+        for (String upg : ProgPickUpgrades.upgrades.values()) {
+            int val = ProgPickUpgrades.getProperty(stack, upg, 0);
+            if(val == 0)
+                continue;
+            description.add(EnumChatFormatting.GRAY + upg + " Level " + val);
+        }
     }
 
     @Override
@@ -97,7 +107,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return "Progressive Pickaxe (Level " + ProgPickUpgrades.getLevel(stack) + ")";
+        return "Progressive Pickaxe";
     }
 
 

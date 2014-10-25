@@ -32,9 +32,7 @@ public class ProgPickUpgrades {
 
     public static void upgrade(ItemStack stack, Item item) {
         String upgradeWith = upgrades.get(item);
-
-
-
+        incProperty(stack, upgradeWith);
     }
 
     public static void setProperty(ItemStack stack, String prop, int val) {
@@ -47,6 +45,10 @@ public class ProgPickUpgrades {
 
     public static int getProperty(ItemStack stack, String prop, int def) {
         return stack.getTagCompound() != null && stack.getTagCompound().hasKey(prop) ? stack.getTagCompound().getInteger(prop) : def;
+    }
+
+    public static void incProperty(ItemStack stack, String prop) {
+        setProperty(stack, prop, getProperty(stack, prop, 0) + 1);
     }
 
 
