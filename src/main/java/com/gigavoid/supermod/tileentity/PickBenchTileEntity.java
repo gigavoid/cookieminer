@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.tileentity;
 
+import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
+import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -15,7 +17,7 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
     private ItemStack[] inv;
 
     public PickBenchTileEntity() {
-        inv = new ItemStack[2];
+        inv = new ItemStack[3];
     }
 
     @Override
@@ -57,6 +59,23 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
         inv[slot] = stack;
         if (stack != null && stack.stackSize > getInventoryStackLimit()) {
             stack.stackSize = getInventoryStackLimit();
+        }
+
+        if (slot == 0 || slot == 1) {
+            if (inv[0] != null && inv[0].getItem() instanceof ProgressivePickaxeItem &&
+                    inv[1] != null) {
+
+                inv[2] = new ItemStack(SuperItems.progressivePickaxe);
+                ProgressivePickaxeItem.setLevel(inv[2], ProgressivePickaxeItem.getLevel(inv[0]) + 1);
+            } else {
+                inv[2] = null;
+            }
+        } else {
+            if (stack == null) {
+                // Take out item from the output slot
+                decrStackSize(0, 1);
+                decrStackSize(1, 1);
+            }
         }
     }
 
@@ -128,5 +147,7 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
         }
         tagCompound.setTag("Inventory", itemList);
     }
+
+
 
 }

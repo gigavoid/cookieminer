@@ -2,6 +2,7 @@ package com.gigavoid.supermod.item;
 
 
 import com.gigavoid.supermod.item.material.BedrockLumpItem;
+import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 

@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.item;
+package com.gigavoid.supermod.item.pickaxe;
 
 import com.gigavoid.supermod.item.SuperItems;
 import cpw.mods.fml.client.config.GuiConfigEntries;
@@ -64,7 +64,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
         return true;
     }
 
-    public int getLevel(ItemStack stack) {
+    public static int getLevel(ItemStack stack) {
         return stack.getTagCompound() != null && stack.getTagCompound().hasKey("level") ? stack.getTagCompound().getInteger("level") : 1;
     }
 
@@ -81,14 +81,14 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
         description.add(EnumChatFormatting.GRAY + "Level " + getLevel(stack));
     }
 
-    protected void setLevel(ItemStack stack, int level) {
+    public static void setLevel(ItemStack stack, int level) {
         if (!stack.hasTagCompound())
         {
             stack.setTagCompound(new NBTTagCompound());
         }
         stack.getTagCompound().setInteger("level", level);
 
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Your pickaxe just leveled to " + getLevel(stack) + "!"));
+        //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Your pickaxe just leveled to " + getLevel(stack) + "!"));
 
     }
 
