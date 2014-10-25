@@ -7,6 +7,6 @@ public class BedrockLumpItem extends Item {
     public BedrockLumpItem(){
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("bedrockLump");
+        setTextureName("supermod:bedrock_lump");
     }
 }
