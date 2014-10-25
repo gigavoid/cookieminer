@@ -8,16 +8,14 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-/**
- * Created by ineentho on 2014-10-25.
- */
+
 public class PickBenchTileEntity extends TileEntity implements IInventory {
 
 
     private ItemStack[] inv;
 
     public PickBenchTileEntity() {
-        inv = new ItemStack[9];
+        inv = new ItemStack[2];
     }
 
     @Override
@@ -93,9 +91,11 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
 
     }
 
+
+
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return true;
+        return false;
     }
 
     @Override
