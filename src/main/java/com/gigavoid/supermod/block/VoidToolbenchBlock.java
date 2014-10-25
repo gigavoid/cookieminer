@@ -2,6 +2,7 @@ package com.gigavoid.supermod.block;
 
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
+import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -80,6 +81,6 @@ public class VoidToolbenchBlock extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new PickBenchTileEntity();
+        return new VoidBenchTileEntity();
     }
 }
