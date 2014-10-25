@@ -26,12 +26,12 @@ public class VoidToolbenchBlock extends BlockContainer {
     private IIcon top;
 
     public VoidToolbenchBlock(){
-        super(Material.rock);
+        super(Material.glass);
         this.setHardness(3.0f);
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setBlockTextureName("supermod:void_bench");
         this.setBlockName("pickaxeToolbench");
-        this.setStepSound(soundTypeStone);
+        this.setStepSound(soundTypeGlass);
     }
 
     @Override
@@ -45,12 +45,11 @@ public class VoidToolbenchBlock extends BlockContainer {
     @Override
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.top : (par1 == 0 ? this.top : this.blockIcon);
+        return par1 == 1 ? this.top : this.blockIcon;
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z,
-                                    EntityPlayer player, int metadata, float what, float these, float are) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float what, float these, float are) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity == null || player.isSneaking()) {
             return false;
