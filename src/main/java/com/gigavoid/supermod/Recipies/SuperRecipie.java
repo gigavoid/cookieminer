@@ -23,9 +23,6 @@ public class SuperRecipie {
         GameRegistry.addRecipe(new ItemStack(Blocks.cobblestone), "xyx", "y y","xyx",
                 'x', dirtStack, 'y', gravelStack);
     }
-<<<<<<< HEAD
-}
-=======
 
     public static void voidPickaxe(){
         ItemStack voidStoneStack = new ItemStack(SuperItems.voidStone);
@@ -39,4 +36,3 @@ public class SuperRecipie {
         GameRegistry.addRecipe(new ItemStack(SuperItems.ironStick, 4), "x  ", "x  ", " x ", 'x', ironIgnotStack);
     }
 }
->>>>>>> f4a2d9cab962f8bcafc78997984f874401e8346d
