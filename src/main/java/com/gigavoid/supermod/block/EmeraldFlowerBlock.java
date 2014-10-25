@@ -5,10 +5,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 
+import java.util.List;
 import java.util.Random;
 
 public class EmeraldFlowerBlock extends BlockFlower {
@@ -41,5 +44,12 @@ public class EmeraldFlowerBlock extends BlockFlower {
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
         this.icon = p_149651_1_.registerIcon("supermod:flower_emerald");
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+    {
+        p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
     }
 }
