@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
  * Created by ineentho on 2014-10-25.
  */
 public class VoidBenchGui extends GuiContainer{
-    public static final int ID = 21;
+    public static final int GUI_ID = 21;
     private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("textures/gui/container/crafting_table.png");
 
     public VoidBenchGui(InventoryPlayer inventoryPlayer,

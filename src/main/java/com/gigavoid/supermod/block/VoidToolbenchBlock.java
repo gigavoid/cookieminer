@@ -33,7 +33,7 @@ public class VoidToolbenchBlock extends BlockContainer {
             return false;
         }
 
-        player.openGui(SuperMod.instance, 0, world, x, y, z);
+        player.openGui(SuperMod.instance, 21, world, x, y, z);
         return true;
     }
 

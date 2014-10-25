@@ -11,7 +11,7 @@ import org.lwjgl.opengl.GL11;
  * Created by ineentho on 2014-10-25.
  */
 public class PickBenchGui  extends GuiContainer{
-    public static final int ID = 20;
+    public static final int GUI_ID = 20;
     private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("textures/gui/container/crafting_table.png");
 
     public PickBenchGui(InventoryPlayer inventoryPlayer,
