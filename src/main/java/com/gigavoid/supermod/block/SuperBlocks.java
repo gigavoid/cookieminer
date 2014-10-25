@@ -10,6 +10,7 @@ public class SuperBlocks {
     public static final OPBlock opblock = new OPBlock();
     public static final SuperStoneBlock superStone = new SuperStoneBlock();
     public static final PickaxeToolbenchBlock pickaxeToolbench = new PickaxeToolbenchBlock();
+    public static final VoidToolbenchBlock voidToolbench = new VoidToolbenchBlock();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -18,5 +19,6 @@ public class SuperBlocks {
         GameRegistry.registerBlock(opblock, "op");
         GameRegistry.registerBlock(superStone, "stoneBlock");
         GameRegistry.registerBlock(pickaxeToolbench, "pickaxeToolbench");
+        GameRegistry.registerBlock(voidToolbench, "voidToolbench");
     }
 }
