@@ -44,7 +44,7 @@ public class VoidBenchContainer extends Container {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-        return false;
+        return null;
     }
 
     @Override
