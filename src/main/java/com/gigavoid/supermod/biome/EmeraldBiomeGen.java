@@ -23,7 +23,7 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         temperature = 1.0f;
         rainfall = 0.6f;
         decorator.emeraldFlowersPerChunk = 6;
-        decorator.emeraldTreePerChunk = 4;
+        decorator.emeraldTreesPerChunk = 4;
     }
 
     @Override

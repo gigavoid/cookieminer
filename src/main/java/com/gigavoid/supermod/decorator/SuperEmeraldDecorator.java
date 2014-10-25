@@ -29,6 +29,9 @@ public class SuperEmeraldDecorator extends SuperDecorator {
             for (int j = 128; j > 60; j--) {
                 if (world.getBlock(posX, j, posY) == Block.getBlockById(2)) {
                     int height = emeraldTreeHeight + random.nextInt(10) - 5;
+                    int branches[] = new int[4];
+                    for (int k = 0; k < branches.length; k++)
+                        branches[k] = 5 + random.nextInt(height - 10);
                 }
             }
         }

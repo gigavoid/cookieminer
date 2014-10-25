@@ -25,6 +25,7 @@ public class SuperDecorator {
         boolean doGen = gtype == GenType.EMERALD_FOREST;
         if(doGen) {
             sed.genFlowers(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+            sed.genTrees(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         }
     }
 }
