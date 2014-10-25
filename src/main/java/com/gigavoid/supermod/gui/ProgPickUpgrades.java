@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.gui;
 
+import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,14 +18,14 @@ public class ProgPickUpgrades {
     public static Map<Item, String> upgrades = new HashMap<Item, String>();
 
     static {
-        upgrades.put(Items.emerald, "speed");
-        upgrades.put(Items.diamond, "horRadius");
-        upgrades.put(Item.getItemFromBlock(Blocks.diamond_block), "vertRadius");
+        upgrades.put(Items.emerald, "Spped");
+        upgrades.put(Items.diamond, "Horizontal Radius");
+        upgrades.put(Item.getItemFromBlock(SuperBlocks.opblock), "Vertical Radius");
     }
 
-    public static boolean isUpgradeable(Item item) {
+    public static boolean isUpgradeable(ItemStack stack) {
         for(Item key : upgrades.keySet()) {
-            if(key == item)
+            if(key == stack.getItem())
                 return true;
         }
         return false;

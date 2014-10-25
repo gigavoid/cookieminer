@@ -25,8 +25,7 @@ public class PickBenchSlot extends Slot {
     @Override
     public boolean isItemValid(ItemStack stack) {
         if(slotType == SlotType.Mat)
-            return stack.getItem() == Items.diamond ||
-                    stack.getItem() == Items.emerald;
+            return ProgPickUpgrades.isUpgradeable(stack);
 
         return stack.getItem() instanceof ProgressivePickaxeItem && ProgPickUpgrades.isFullExp(stack);
     }
