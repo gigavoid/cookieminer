@@ -2,9 +2,12 @@ package com.gigavoid.supermod.block;
 
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,17 +15,37 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class VoidToolbenchBlock extends BlockContainer {
+
+    @SideOnly(Side.CLIENT)
+    private IIcon top;
+
     public VoidToolbenchBlock(){
         super(Material.rock);
         this.setHardness(3.0f);
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setBlockTextureName("supermod:void_bench");
         this.setBlockName("pickaxeToolbench");
         this.setStepSound(soundTypeStone);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon("supermod:void_bench");
+        this.top = par1IconRegister.registerIcon("supermod:void_bench_top");
+    }
+
+    @Override
+    public IIcon getIcon(int par1, int par2)
+    {
+        return par1 == 1 ? this.top : (par1 == 0 ? this.top : this.blockIcon);
     }
 
     @Override
