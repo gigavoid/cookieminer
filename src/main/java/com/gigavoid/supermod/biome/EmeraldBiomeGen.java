@@ -1,21 +1,19 @@
 package com.gigavoid.supermod.biome;
 
-import com.gigavoid.supermod.block.SuperBlocks;
-import com.gigavoid.supermod.worldgen.SuperWorldGenTrees;
+import com.gigavoid.supermod.decorator.SuperDecorator;
 import net.minecraft.block.Block;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
 public class EmeraldBiomeGen extends BiomeGenBase {
 
-    SuperWorldGenTrees wgt;
+    SuperDecorator decorator = new SuperDecorator();
 
     public EmeraldBiomeGen(){
         super(40);
 
-        wgt = new SuperWorldGenTrees(false, 30, 3, false);
 
         setBiomeName("Emerald Forest");
         setHeight(new BiomeGenBase.Height(0.0f, 0.2f));
@@ -24,12 +22,13 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
-        theBiomeDecorator.treesPerChunk = 12;
+        decorator.emeraldFlowersPerChunk = 6;
+        decorator.emeraldTreePerChunk = 4;
     }
 
     @Override
-    public WorldGenAbstractTree func_150567_a(Random p_150567_1_)
+    public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
     {
-        return (WorldGenAbstractTree)this.wgt;
+        decorator.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
     }
 }
