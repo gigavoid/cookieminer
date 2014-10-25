@@ -91,7 +91,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
             for (int j = -3; j < 4; j++){
                 for (int k = 0; k < 3; k++){
                     if (world.getBlock(x + i, y + k, z + j) == Block.getBlockById(0) && treeHead[(i + 3)  + 7 * (j + 3) + 49 * k]){
-                        world.setBlock(x + i, y + k, z + j, Block.getBlockById(18));
+                        world.setBlock(x + i, y + k, z + j, SuperBlocks.emeraldLeaves);
                     }
                 }
             }
