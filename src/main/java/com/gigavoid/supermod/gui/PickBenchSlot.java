@@ -1,6 +1,5 @@
 package com.gigavoid.supermod.gui;
 
-import com.gigavoid.supermod.block.PickaxeToolbenchBlock;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -29,6 +28,6 @@ public class PickBenchSlot extends Slot {
             return stack.getItem() == Items.diamond ||
                     stack.getItem() == Items.emerald;
 
-        return stack.getItem() instanceof ProgressivePickaxeItem;
+        return stack.getItem() instanceof ProgressivePickaxeItem && ProgPickUpgrades.isFullExp(stack);
     }
 }

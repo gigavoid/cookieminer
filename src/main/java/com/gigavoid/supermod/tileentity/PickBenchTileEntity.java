@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.tileentity;
 
+import com.gigavoid.supermod.gui.ProgPickUpgrades;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -66,7 +67,7 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
                     inv[1] != null) {
 
                 inv[2] = new ItemStack(SuperItems.progressivePickaxe);
-                ProgressivePickaxeItem.setLevel(inv[2], ProgressivePickaxeItem.getLevel(inv[0]) + 1);
+                ProgPickUpgrades.setLevel(inv[2], ProgPickUpgrades.getLevel(inv[0]) + 1);
             } else {
                 inv[2] = null;
             }

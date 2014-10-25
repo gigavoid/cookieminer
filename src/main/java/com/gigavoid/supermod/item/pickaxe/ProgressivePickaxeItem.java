@@ -1,19 +1,17 @@
 package com.gigavoid.supermod.item.pickaxe;
 
-import com.gigavoid.supermod.item.SuperItems;
-import cpw.mods.fml.client.config.GuiConfigEntries;
+import com.gigavoid.supermod.gui.ProgPickUpgrades;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.IconFlipped;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagByteArray;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -22,9 +20,11 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     private String material;
     private int level;
 
+    IIcon pickCanBeUpgraded;
+
     public ProgressivePickaxeItem() {
         super(ToolMaterial.WOOD);
-        setMaxDamage(4);
+        setMaxDamage(-1);
         setTextureName("supermod:prog_pickaxe");
     }
 
@@ -32,6 +32,26 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
         this.level = level;
 
     }
+
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        super.registerIcons(iconRegister);
+
+        pickCanBeUpgraded = iconRegister.registerIcon("supermod:prog_pickaxe_upg");
+    }
+
+    @Override
+    public IIcon getIconIndex(ItemStack stack) {
+        if(ProgPickUpgrades.isFullExp(stack))
+            return pickCanBeUpgraded;
+        return super.getIconIndex(stack);
+    }
+
+/*    @Override
+    public IIcon getIconFromDamage(int damage) {
+
+        return super.getIconFromDamage(damage);
+    }*/
 
     @Override
     public int getHarvestLevel(ItemStack stack, String toolClass) {
@@ -46,26 +66,15 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     @Override
     public double getDurabilityForDisplay(ItemStack stack)
     {
-        return 1 - (double)stack.getItemDamageForDisplay() / (double)stack.getMaxDamage();
+        return 1 - Math.min((double) ProgPickUpgrades.getExp(stack) / (double) ProgPickUpgrades.getMaxExp(stack), 1);
     }
+
+
 
     @Override
-    public boolean onBlockDestroyed(ItemStack itemStack, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_, EntityLivingBase entityLivingBase) {
-        super.onBlockDestroyed(itemStack, p_150894_2_, p_150894_3_, p_150894_4_, p_150894_5_, p_150894_6_, entityLivingBase);
-
-        if(itemStack.getItemDamage() == itemStack.getMaxDamage()) {
-            if(entityLivingBase instanceof EntityPlayer) {
-                EntityPlayer player = (EntityPlayer) entityLivingBase;
-                itemStack.setItemDamage(0);
-                setLevel(itemStack, getLevel(itemStack) + 1);
-            }
-        }
-
-        return true;
-    }
-
-    public static int getLevel(ItemStack stack) {
-        return stack.getTagCompound() != null && stack.getTagCompound().hasKey("level") ? stack.getTagCompound().getInteger("level") : 1;
+    public boolean onBlockDestroyed(ItemStack itemStack, World block, Block world, int x, int y, int z, EntityLivingBase entityLivingBase) {
+        ProgPickUpgrades.giveExp(itemStack, 1);
+        return super.onBlockDestroyed(itemStack, block, world, x, y, z, entityLivingBase);
     }
 
     public void setMaterial(String material) {
@@ -78,18 +87,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List description, boolean par4) {
-        description.add(EnumChatFormatting.GRAY + "Level " + getLevel(stack));
-    }
-
-    public static void setLevel(ItemStack stack, int level) {
-        if (!stack.hasTagCompound())
-        {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-        stack.getTagCompound().setInteger("level", level);
-
-        //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Your pickaxe just leveled to " + getLevel(stack) + "!"));
-
+        description.add(EnumChatFormatting.GRAY + "Level " + ProgPickUpgrades.getLevel(stack));
     }
 
     @Override
@@ -99,12 +97,12 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return "Progressive Pickaxe (Level " + getLevel(stack) + ")";
+        return "Progressive Pickaxe (Level " + ProgPickUpgrades.getLevel(stack) + ")";
     }
 
 
 
     public float getSpeedMultiplier(ItemStack stack) {
-        return (float) (getLevel(stack) * 1.1);
+        return (float) (ProgPickUpgrades.getLevel(stack) * 1.1);
     }
 }
