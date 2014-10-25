@@ -66,8 +66,10 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
             if (inv[0] != null && inv[0].getItem() instanceof ProgressivePickaxeItem &&
                     inv[1] != null) {
 
-                inv[2] = new ItemStack(SuperItems.progressivePickaxe);
+                inv[2] = inv[0].copy();
+                ProgPickUpgrades.setExp(inv[2], 0);
                 ProgPickUpgrades.setLevel(inv[2], ProgPickUpgrades.getLevel(inv[0]) + 1);
+                ProgPickUpgrades.upgrade(inv[2], inv[1].getItem());
             } else {
                 inv[2] = null;
             }
