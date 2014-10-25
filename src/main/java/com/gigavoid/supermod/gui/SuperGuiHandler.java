@@ -4,6 +4,7 @@ import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -37,5 +38,6 @@ public class SuperGuiHandler implements IGuiHandler {
 
     public static void initializeGuis() {
         NetworkRegistry.INSTANCE.registerGuiHandler(SuperMod.instance, new SuperGuiHandler());
+        GameRegistry.registerTileEntity(PickBenchTileEntity.class, "containerTiny");
     }
 }

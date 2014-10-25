@@ -102,9 +102,9 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
     public void readFromNBT(NBTTagCompound tagCompound) {
         super.readFromNBT(tagCompound);
 
-        NBTTagList tagList = tagCompound.getTagList("Inventory", Constants.NBT.TAG_BYTE);
+        NBTTagList tagList = tagCompound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < tagList.tagCount(); i++) {
-            NBTTagCompound tag =  tagList.getCompoundTagAt(i);
+            NBTTagCompound tag = tagList.getCompoundTagAt(i);
             byte slot = tag.getByte("Slot");
             if (slot >= 0 && slot < inv.length) {
                 inv[slot] = ItemStack.loadItemStackFromNBT(tag);
@@ -128,4 +128,5 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
         }
         tagCompound.setTag("Inventory", itemList);
     }
+
 }
