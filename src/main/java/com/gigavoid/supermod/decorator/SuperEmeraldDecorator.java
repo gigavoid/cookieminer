@@ -10,6 +10,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
     @Override
     public void genDecorations(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_) {
         super.genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+        genBigTrees(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         genTrees(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         genFlowers(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
     }
@@ -28,7 +29,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
         }
     }
 
-    private void genTrees(World world, Random random, int cx, int cy){
+    private void genBigTrees(World world, Random random, int cx, int cy){
         int trees = emeraldBigTreesPerChunk;
         for (int i = trees; i > 0; i--) {
             int posX = cx + random.nextInt(16);
@@ -67,12 +68,30 @@ public class SuperEmeraldDecorator extends SuperDecorator {
         }
     }
 
+    private void genTrees(World world, Random random, int cx, int cy){
+        int trees = emeraldTreesPerChunk;
+        for (int i = trees; i > 0; i--) {
+            int posX = cx + random.nextInt(16);
+            int posY = cy + random.nextInt(16);
+            for (int j = 128; j > 60; j--) {
+                if (world.getBlock(posX, j, posY) == Block.getBlockById(2) || world.getBlock(posX, j, posY) == Block.getBlockById(3)) {
+                    int height = 9 + random.nextInt(4) - 1;
+                    for (int k = 0; k < height; k++){
+                        world.setBlock(posX, j + k, posY, SuperBlocks.emeraldLog);
+                    }
+                    genTreeHead(world, posX, j + height - 1, posY);
+                    break;
+                }
+            }
+        }
+    }
+
     private void genTreeHead(World world, int x, int y, int z){
         for (int i = -3; i < 4; i++){
             for (int j = -3; j < 4; j++){
                 for (int k = 0; k < 3; k++){
                     if (world.getBlock(x + i, y + k, z + j) == Block.getBlockById(0) && treeHead[(i + 3)  + 7 * (j + 3) + 49 * k]){
-                        world.setBlock(x + i, y + k, z + j, Block.getBlockById(18));
+                        world.setBlock(x + i, y + k, z + j, SuperBlocks.emeraldLeaves);
                     }
                 }
             }

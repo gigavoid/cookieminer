@@ -10,10 +10,11 @@ import net.minecraft.world.World;
 
 public class VoidPickaxeItem extends ItemPickaxe {
     public VoidPickaxeItem() {
-        super(Item.ToolMaterial.EMERALD);
+        super(ToolMaterial.EMERALD);
         setUnlocalizedName("voidPickaxe");
         setTextureName("supermod:void_pickaxe");
         setMaxDamage(5000);
+        efficiencyOnProperMaterial = 10.0f;
     }
 
     @Override
@@ -24,5 +25,10 @@ public class VoidPickaxeItem extends ItemPickaxe {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public int getHarvestLevel(ItemStack stack, String toolClass) {
+        return super.getHarvestLevel(stack, toolClass) == -1 ? -1 : 4;
     }
 }
