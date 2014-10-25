@@ -19,7 +19,7 @@ public class SuperGuiHandler implements IGuiHandler {
         if(ID == PickBenchGui.GUI_ID && tileEntity instanceof PickBenchTileEntity )
             return new PickBenchContainer(player.inventory, (PickBenchTileEntity) tileEntity);
         else if(ID == VoidBenchGui.GUI_ID && tileEntity instanceof VoidBenchTileEntity)
-            return new VoidBenchGui(player.inventory, (VoidBenchTileEntity) tileEntity);
+            return new VoidBenchContainer(player.inventory, (VoidBenchTileEntity) tileEntity);
         return null;
     }
 
