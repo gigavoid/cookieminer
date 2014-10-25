@@ -1,13 +1,9 @@
 package com.gigavoid.supermod.gui;
 
-import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-/**
- * Created by ineentho on 2014-10-25.
- */
 public class VoidBenchSlot extends Slot {
 
     private SlotType slotType;

@@ -36,32 +36,44 @@ public class SuperEmeraldDecorator extends SuperDecorator {
             int posY = cy + random.nextInt(16);
             for (int j = 128; j > 60; j--) {
                 if (world.getBlock(posX, j, posY) == Block.getBlockById(2) || world.getBlock(posX, j, posY) == Block.getBlockById(3)) {
-                    int height = 25 + random.nextInt(10) - 5;
-                    for (int k = 0; k < 5; k++) {
-                        int startheight = 5 + random.nextInt(height - 10);
-                        int bposX = posX + random.nextInt(4) - 1;
-                        int bposY = posY + random.nextInt(4) - 1;
-                        if (bposX == 1)
-                            bposX--;
-                        else if (bposX == 2)
-                            bposX++;
-                        if (bposY == 1)
-                            bposY--;
-                        else if (bposY == 2)
-                            bposY++;
-                        world.setBlock(bposX, j + startheight, bposY, SuperBlocks.emeraldLog);
-                        genTreeHead(world, bposX, j + startheight, bposY);
+                    if (world.getBlock(posX, j + 1, posY) == Block.getBlockById(0) || world.getBlock(posX, j + 1, posY) == Block.getBlockById(9)) {
+                        int height = 40 + random.nextInt(10) - 5;
+                        for (int k = 0; k < 5; k++) {
+                            int startheight = 5 + random.nextInt(height - 10);
+                            int bposX = posX + random.nextInt(4) - 1;
+                            int bposY = posY + random.nextInt(4) - 1;
+                            if (bposX == 1)
+                                bposX--;
+                            else if (bposX == 2)
+                                bposX++;
+                            if (bposY == 1)
+                                bposY--;
+                            else if (bposY == 2)
+                                bposY++;
+                            world.setBlock(bposX, j + startheight, bposY, SuperBlocks.emeraldLog);
+                            genTreeHead(world, bposX, j + startheight, bposY);
+                        }
+                        for (int k = j; k < j + height; k++) {
+                            world.setBlock(posX, k + 1, posY, SuperBlocks.emeraldLog);
+                            world.setBlock(posX + 1, k + 1, posY, SuperBlocks.emeraldLog);
+                            world.setBlock(posX, k + 1, posY + 1, SuperBlocks.emeraldLog);
+                            world.setBlock(posX + 1, k + 1, posY + 1, SuperBlocks.emeraldLog);
+                        }
+                        for (int k = j; k > j - 3; k--) {
+                            if (world.getBlock(posX, k, posY) == Block.getBlockById(0) || world.getBlock(posX, k, posY) == Block.getBlockById(9))
+                                world.setBlock(posX, k, posY, SuperBlocks.emeraldLog);
+                            if (world.getBlock(posX + 1, k, posY) == Block.getBlockById(0) || world.getBlock(posX + 1, k, posY) == Block.getBlockById(9))
+                                world.setBlock(posX + 1, k, posY, SuperBlocks.emeraldLog);
+                            if (world.getBlock(posX, k, posY + 1) == Block.getBlockById(0) || world.getBlock(posX, k, posY + 1) == Block.getBlockById(9))
+                                world.setBlock(posX, k, posY + 1, SuperBlocks.emeraldLog);
+                            if (world.getBlock(posX + 1, k, posY + 1) == Block.getBlockById(0) || world.getBlock(posX + 1, k, posY + 1) == Block.getBlockById(9))
+                                world.setBlock(posX + 1, k, posY + 1, SuperBlocks.emeraldLog);
+                        }
+                        genTreeHead(world, posX, j + height - 1, posY);
+                        genTreeHead(world, posX + 1, j + height - 1, posY);
+                        genTreeHead(world, posX, j + height - 1, posY + 1);
+                        genTreeHead(world, posX + 1, j + height - 1, posY + 1);
                     }
-                    for (int k = j; k < j + height; k++){
-                        world.setBlock(posX, k, posY, SuperBlocks.emeraldLog);
-                        world.setBlock(posX + 1, k, posY, SuperBlocks.emeraldLog);
-                        world.setBlock(posX, k, posY + 1, SuperBlocks.emeraldLog);
-                        world.setBlock(posX + 1, k, posY + 1, SuperBlocks.emeraldLog);
-                    }
-                    genTreeHead(world, posX, j + height - 1, posY);
-                    genTreeHead(world, posX + 1, j + height - 1, posY);
-                    genTreeHead(world, posX, j + height - 1, posY + 1);
-                    genTreeHead(world, posX + 1, j + height - 1, posY + 1);
                     break;
                 }
             }
@@ -77,7 +89,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
                 if (world.getBlock(posX, j, posY) == Block.getBlockById(2) || world.getBlock(posX, j, posY) == Block.getBlockById(3)) {
                     int height = 9 + random.nextInt(4) - 1;
                     for (int k = 0; k < height; k++){
-                        world.setBlock(posX, j + k, posY, SuperBlocks.emeraldLog);
+                        world.setBlock(posX, j + k + 1, posY, SuperBlocks.emeraldLog);
                     }
                     genTreeHead(world, posX, j + height - 1, posY);
                     break;
