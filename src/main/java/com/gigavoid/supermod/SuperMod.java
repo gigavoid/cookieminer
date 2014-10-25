@@ -6,6 +6,7 @@ import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.gui.UpgradeToolGui;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
+import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -30,6 +31,7 @@ public class SuperMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        SuperWorldGens.initializeWorldGens();
         SuperKeyBinds.registerKeybinds();
         SuperGuiHandler.initializeGuis();
     }
