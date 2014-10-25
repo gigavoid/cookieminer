@@ -12,7 +12,7 @@ public class VoidPickaxeItem extends ItemPickaxe {
     public VoidPickaxeItem() {
         super(Item.ToolMaterial.EMERALD);
         setUnlocalizedName("voidPickaxe");
-        setTextureName("voidPickaxe");
+        setTextureName("supermod:void_pickaxe");
         setMaxDamage(5000);
     }
 

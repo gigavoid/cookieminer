@@ -23,8 +23,11 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
+        decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
         decorator.emeraldFlowersPerChunk = 6;
-        decorator.emeraldTreesPerChunk = 4;
+        decorator.emeraldBigTreesPerChunk = 1;
+        decorator.emeraldTreesPerChunk = 6;
+        decorator.emeraldSmallTreesPerChunk = 2;
     }
 
     @Override
