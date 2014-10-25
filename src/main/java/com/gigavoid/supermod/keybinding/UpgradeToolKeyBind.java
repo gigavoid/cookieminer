@@ -1,7 +1,6 @@
 package com.gigavoid.supermod.keybinding;
 
 import com.gigavoid.supermod.SuperMod;
-import com.gigavoid.supermod.gui.UpgradeToolGui;
 import com.gigavoid.supermod.item.ProgressivePickaxeItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
