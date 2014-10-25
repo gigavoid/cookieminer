@@ -7,6 +7,6 @@ import net.minecraft.item.ItemStack;
 
 public class SuperSmeltingRecipie {
     public static void InitializeSmektingRecipes(){
-        //GameRegistry.addSmelting(SuperBlocks.emeraldFlower, new ItemStack(SuperItems.energyPowder, 2), 10);
+        GameRegistry.addSmelting(SuperBlocks.emeraldFlower, new ItemStack(SuperItems.magicPowder, 2), 10);
     }
 }
