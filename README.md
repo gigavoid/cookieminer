@@ -22,3 +22,10 @@ This is the Super Mod!
     gradlew build
     ```
 
+- `git all` alias
+
+    ```bash
+    [alias]
+    	all = "!sh -c 'git add -A ; git commit -m \"$1\" ; git push' -"
+    ```
+    Usage: `git all "message"`
