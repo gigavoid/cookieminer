@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.tileentity;
 
 import com.gigavoid.supermod.gui.ProgPickUpgrades;
+import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -60,25 +61,18 @@ public class VoidBenchTileEntity extends TileEntity implements IInventory {
         if (stack != null && stack.stackSize > getInventoryStackLimit()) {
             stack.stackSize = getInventoryStackLimit();
         }
-/*
-        if (slot == 0 || slot == 1) {
-            if (inv[0] != null && inv[0].getItem() instanceof ProgressivePickaxeItem &&
-                    inv[1] != null) {
 
-                inv[2] = inv[0].copy();
-                ProgPickUpgrades.setExp(inv[2], 0);
-                ProgPickUpgrades.setLevel(inv[2], ProgPickUpgrades.getLevel(inv[0]) + 1);
-                ProgPickUpgrades.upgrade(inv[2], inv[1].getItem());
-            } else {
-                inv[2] = null;
-            }
-        } else {
-            if (stack == null) {
-                // Take out item from the output slot
-                decrStackSize(0, 1);
-                decrStackSize(1, 1);
-            }
-        }*/
+        if (slot == 0 && inv[0] != null) {
+            inv[1] = new ItemStack(SuperItems.voidStone);
+        }
+        else if (slot == 1 && inv[1] == null){
+            decrStackSize(0, 1);
+            if (inv[0] != null)
+                inv[1] = new ItemStack(SuperItems.voidStone);
+        }
+        else if (slot == 0 && inv[0] == null){
+            decrStackSize(1, 1);
+        }
     }
 
     @Override
