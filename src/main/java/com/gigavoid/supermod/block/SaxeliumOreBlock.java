@@ -11,7 +11,7 @@ public class SaxeliumOreBlock extends Block {
     public SaxeliumOreBlock(){
         super(Material.rock);
         this.setHardness(1.0f);
-        this.setBlockTextureName("supermod:op_ore");
+        this.setBlockTextureName("supermod:saxelium_ore");
         this.setHarvestLevel("pickaxe", 4);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockName("saxeliumOre");
