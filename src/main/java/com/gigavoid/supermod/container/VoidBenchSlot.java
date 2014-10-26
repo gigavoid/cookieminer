@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.gui;
+package com.gigavoid.supermod.container;
 
 import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.inventory.IInventory;

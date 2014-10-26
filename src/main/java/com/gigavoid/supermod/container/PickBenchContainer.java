@@ -1,6 +1,6 @@
-package com.gigavoid.supermod.gui;
+package com.gigavoid.supermod.container;
 
-import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
+import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,22 +8,32 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 
-public class VoidBenchContainer extends Container {
+/**
+ * Created by ineentho on 2014-10-25.
+ */
+public class PickBenchContainer extends Container {
 
-    protected VoidBenchTileEntity tileEntity;
+    protected PickBenchTileEntity tileEntity;
 
-    public VoidBenchContainer(InventoryPlayer inventoryPlayer, VoidBenchTileEntity te){
+    public PickBenchContainer (InventoryPlayer inventoryPlayer, PickBenchTileEntity te){
         tileEntity = te;
 
-        //the Slot constructor takes the IInventory and the slot number in that it binds to
-        //and the x-y coordinates it resides on-screen
+        // Pickaxe slot
+        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Pick, te, 0, 56, 17));
 
-        addSlotToContainer(new VoidBenchSlot(te, 0, 52, 35));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 1, 109, 35));
+        // Upgrade material slot
+        addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 56, 53));
+
+        // Output slot
+        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 116,35));
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
     }
+
+
+
+
 
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
         for (int i = 0; i < 3; i++) {

@@ -1,24 +1,18 @@
 package com.gigavoid.supermod.item.pickaxe;
 
-import com.gigavoid.supermod.gui.ProgPickUpgrade;
-import com.gigavoid.supermod.gui.ProgPickUpgrades;
+import com.gigavoid.supermod.progpick.ProgPickUpgrade;
+import com.gigavoid.supermod.progpick.ProgPickUpgrades;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class ProgressivePickaxeItem extends ItemPickaxe {
     private String material;

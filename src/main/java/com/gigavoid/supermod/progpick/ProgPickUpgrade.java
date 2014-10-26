@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.gui;
+package com.gigavoid.supermod.progpick;
 
 public class ProgPickUpgrade {
 

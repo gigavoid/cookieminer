@@ -1,12 +1,10 @@
-package com.gigavoid.supermod.gui;
+package com.gigavoid.supermod.progpick;
 
 import com.gigavoid.supermod.block.SuperBlocks;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 import java.util.HashMap;
 import java.util.Map;
