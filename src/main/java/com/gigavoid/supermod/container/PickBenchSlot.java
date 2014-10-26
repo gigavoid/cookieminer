@@ -1,7 +1,7 @@
-package com.gigavoid.supermod.gui;
+package com.gigavoid.supermod.container;
 
+import com.gigavoid.supermod.progpick.ProgPickUpgrades;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

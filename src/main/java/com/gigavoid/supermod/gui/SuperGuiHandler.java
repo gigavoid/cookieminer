@@ -1,6 +1,8 @@
 package com.gigavoid.supermod.gui;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.container.PickBenchContainer;
+import com.gigavoid.supermod.container.VoidBenchContainer;
 import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
 import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
 import cpw.mods.fml.common.network.IGuiHandler;

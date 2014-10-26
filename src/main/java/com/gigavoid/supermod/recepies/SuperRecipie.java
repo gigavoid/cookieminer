@@ -1,12 +1,10 @@
-package com.gigavoid.supermod.Recipies;
+package com.gigavoid.supermod.recepies;
 
 
 import com.gigavoid.supermod.item.SuperItems;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class SuperRecipie {

@@ -1,8 +1,6 @@
 package com.gigavoid.supermod.tileentity;
 
-import com.gigavoid.supermod.gui.ProgPickUpgrades;
 import com.gigavoid.supermod.item.SuperItems;
-import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

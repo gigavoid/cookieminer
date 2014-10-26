@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.gui;
 
-import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
+import com.gigavoid.supermod.container.VoidBenchContainer;
 import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
