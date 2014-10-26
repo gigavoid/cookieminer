@@ -1,14 +1,20 @@
 package com.gigavoid.supermod.block;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockOldLeaf;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
 public class EmeraldLeavesBlock extends BlockOldLeaf {
+
+    IIcon icon;
+
     public EmeraldLeavesBlock(){
         super();
         this.setHardness(1.0f);
-        this.setBlockTextureName("leaves_jungle_opaque");
+        this.setBlockTextureName("leaves_jungle");
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockName("emeraldLeaves");
         this.setStepSound(soundTypeGrass);
@@ -16,7 +22,14 @@ public class EmeraldLeavesBlock extends BlockOldLeaf {
 
     @Override
     public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-        return super.getIcon(p_149691_1_, 3);
+        return icon;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister p_149651_1_)
+    {
+        this.icon = p_149651_1_.registerIcon("leaves_jungle");
     }
 
     @Override

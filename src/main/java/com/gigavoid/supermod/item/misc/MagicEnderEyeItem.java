@@ -21,8 +21,9 @@ public class MagicEnderEyeItem extends Item {
         if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == this)
         {
             createExplosion(world, null, player.getPosition(0).xCoord, player.getPosition(0).yCoord, player.getPosition(0).zCoord, 2.0f, true);
+            itemStack.stackSize -= 1;
         }
-        return new ItemStack(this, itemStack.stackSize - 1);
+        return itemStack;
     }
 
     public Explosion createExplosion(World world, Entity p_72876_1_, double p_72876_2_, double p_72876_4_, double p_72876_6_, float p_72876_8_, boolean p_72876_9_)

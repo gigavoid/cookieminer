@@ -20,6 +20,7 @@ public class SuperItems {
     public static final IronStickItem ironStick = new IronStickItem();
     public static final MagicPowderItem magicPowder = new MagicPowderItem();
     public static final MagicEnderEyeItem magicEnderEye = new MagicEnderEyeItem();
+    public static final SaxeliumIngotItem saxeliumIngot = new SaxeliumIngotItem();
 
     public static final IFuelHandler fuelHandler = new IFuelHandler() {
         @Override
@@ -40,6 +41,7 @@ public class SuperItems {
         GameRegistry.registerItem(emptyVoidStone, "emptyVoidStone");
         GameRegistry.registerItem(magicPowder, "magicPowder");
         GameRegistry.registerItem(magicEnderEye, "magicEnderEye");
+        GameRegistry.registerItem(saxeliumIngot, "saxeliumIngot");
 
         GameRegistry.registerFuelHandler(fuelHandler);
     }
