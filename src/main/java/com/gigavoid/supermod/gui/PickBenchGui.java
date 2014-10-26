@@ -13,17 +13,24 @@ import org.lwjgl.opengl.GL11;
 public class PickBenchGui  extends GuiContainer{
     public static final int GUI_ID = 20;
     private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("supermod", "textures/gui/pick_bench.png");
+    private PickBenchTileEntity tileEntity;
 
     public PickBenchGui(InventoryPlayer inventoryPlayer,
                         PickBenchTileEntity tileEntity) {
         //the container is instanciated and passed to the superclass for handling
         super(new PickBenchContainer(inventoryPlayer, tileEntity));
+        this.tileEntity = tileEntity;
     }
     @Override
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
         //draw text and stuff here
         //the parameters for drawString are: string, x, y, color
         fontRendererObj.drawString("Pickaxe Workbench", 8, 6, 4210752);
+
+        if(!tileEntity.canUpgrade() && tileEntity.isBothInputsFilled()) {
+            fontRendererObj.drawString(tileEntity.getErrorMessage(), 8, 20, 0xFF0000);
+        }
+
         //draws "Inventory" or your regional equivalent
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
     }

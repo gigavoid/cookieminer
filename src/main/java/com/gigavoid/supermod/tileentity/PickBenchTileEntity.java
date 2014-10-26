@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.tileentity;
 
+import com.gigavoid.supermod.gui.ProgPickUpgrade;
 import com.gigavoid.supermod.gui.ProgPickUpgrades;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.SuperItems;
@@ -55,6 +56,18 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
 
     }
 
+    public boolean canUpgrade() {
+        return inv[1] != null && ProgPickUpgrades.upgrades.get(inv[1].getItem()).reqLevel <= ProgPickUpgrades.getLevel(inv[1]);
+    }
+
+    public boolean isBothInputsFilled() {
+        return inv[0] != null && inv[1] != null;
+    }
+
+    public String getErrorMessage() {
+        return "This upgrade requires level " + ProgPickUpgrades.getLevel(inv[1]) + ".";
+    }
+
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
         inv[slot] = stack;
@@ -67,9 +80,12 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
                     inv[1] != null) {
 
                 inv[2] = inv[0].copy();
+
+
                 ProgPickUpgrades.setExp(inv[2], 0);
                 ProgPickUpgrades.setLevel(inv[2], ProgPickUpgrades.getLevel(inv[0]) + 1);
                 ProgPickUpgrades.upgrade(inv[2], inv[1].getItem());
+
             } else {
                 inv[2] = null;
             }

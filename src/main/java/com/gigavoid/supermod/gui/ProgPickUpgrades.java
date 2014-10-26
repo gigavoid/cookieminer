@@ -15,12 +15,11 @@ import java.util.Map;
  * Created by ineentho on 2014-10-25.
  */
 public class ProgPickUpgrades {
-    public static Map<Item, String> upgrades = new HashMap<Item, String>();
+    public static Map<Item, ProgPickUpgrade> upgrades = new HashMap<Item, ProgPickUpgrade>();
 
     static {
-        upgrades.put(Items.emerald, "Mining Speed");
-        upgrades.put(Items.diamond, "Horizontal Radius");
-        upgrades.put(Item.getItemFromBlock(SuperBlocks.opblock), "Vertical Radius");
+        upgrades.put(Items.emerald, new ProgPickUpgrade("Mining Speed"));
+        upgrades.put(Item.getItemFromBlock(SuperBlocks.opblock), new ProgPickUpgrade("Mining Radius", 10));
     }
 
     public static boolean isUpgradeable(ItemStack stack) {
@@ -32,7 +31,7 @@ public class ProgPickUpgrades {
     }
 
     public static void upgrade(ItemStack stack, Item item) {
-        String upgradeWith = upgrades.get(item);
+        String upgradeWith = upgrades.get(item).name;
         incProperty(stack, upgradeWith);
     }
 
@@ -85,3 +84,5 @@ public class ProgPickUpgrades {
     }
 
 }
+
+

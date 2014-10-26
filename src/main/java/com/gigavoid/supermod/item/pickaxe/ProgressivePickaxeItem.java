@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.item.pickaxe;
 
+import com.gigavoid.supermod.gui.ProgPickUpgrade;
 import com.gigavoid.supermod.gui.ProgPickUpgrades;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.IconFlipped;
@@ -92,11 +93,11 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List description, boolean par4) {
         description.add(EnumChatFormatting.AQUA + "Level " + ProgPickUpgrades.getLevel(stack));
 
-        for (String upg : ProgPickUpgrades.upgrades.values()) {
-            int val = ProgPickUpgrades.getProperty(stack, upg, 0);
+        for (ProgPickUpgrade upg : ProgPickUpgrades.upgrades.values()) {
+            int val = ProgPickUpgrades.getProperty(stack, upg.name, 0);
             if(val == 0)
                 continue;
-            description.add(EnumChatFormatting.GRAY + upg + " Level " + val);
+            description.add(EnumChatFormatting.GRAY + upg.name + " Level " + val);
         }
     }
 
