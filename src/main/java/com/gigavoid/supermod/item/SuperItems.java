@@ -2,6 +2,7 @@ package com.gigavoid.supermod.item;
 
 
 import com.gigavoid.supermod.item.material.*;
+import com.gigavoid.supermod.item.misc.MagicEnderEyeItem;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
 import cpw.mods.fml.common.IFuelHandler;
