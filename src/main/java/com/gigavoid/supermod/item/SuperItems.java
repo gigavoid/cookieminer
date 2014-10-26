@@ -1,10 +1,7 @@
 package com.gigavoid.supermod.item;
 
 
-import com.gigavoid.supermod.item.material.BedrockLumpItem;
-import com.gigavoid.supermod.item.material.IronStickItem;
-import com.gigavoid.supermod.item.material.MagicPowderItem;
-import com.gigavoid.supermod.item.material.VoidStoneItem;
+import com.gigavoid.supermod.item.material.*;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
 import cpw.mods.fml.common.IFuelHandler;
@@ -18,8 +15,10 @@ public class SuperItems {
     public static final VoidPickaxeItem voidPickaxe = new VoidPickaxeItem();
     public static final BedrockLumpItem bedLump = new BedrockLumpItem();
     public static final VoidStoneItem voidStone = new VoidStoneItem();
+    public static final EmptyVoidStoneItem emptyVoidStone = new EmptyVoidStoneItem();
     public static final IronStickItem ironStick = new IronStickItem();
     public static final MagicPowderItem magicPowder = new MagicPowderItem();
+    public static final MagicEnderEyeItem magicEnderEye = new MagicEnderEyeItem();
 
     public static final IFuelHandler fuelHandler = new IFuelHandler() {
         @Override
@@ -37,7 +36,9 @@ public class SuperItems {
         GameRegistry.registerItem(bedLump, "bedrockLump");
         GameRegistry.registerItem(ironStick, "ironStick");
         GameRegistry.registerItem(voidStone, "voidStone");
+        GameRegistry.registerItem(emptyVoidStone, "emptyVoidStone");
         GameRegistry.registerItem(magicPowder, "magicPowder");
+        GameRegistry.registerItem(magicEnderEye, "magicEnderEye");
 
         GameRegistry.registerFuelHandler(fuelHandler);
     }
