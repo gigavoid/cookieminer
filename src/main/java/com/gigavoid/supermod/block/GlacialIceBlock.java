@@ -7,15 +7,15 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class SaxeliumOreBlock extends Block {
-    public SaxeliumOreBlock(){
-        super(Material.rock);
-        this.setHardness(1.0f);
-        this.setBlockTextureName("supermod:op_ore");
-        this.setHarvestLevel("pickaxe", 4);
+public class GlacialIceBlock extends Block {
+    public GlacialIceBlock(){
+        super(Material.ice);
+        this.setHardness(2.0f);
+        this.setBlockTextureName("supermod:northIce");
+        this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("saxeliumOre");
-        this.setStepSound(soundTypeMetal);
+        this.setBlockName("glacialIce");
+        this.setStepSound(soundTypeSnow);
     }
 
     @Override
