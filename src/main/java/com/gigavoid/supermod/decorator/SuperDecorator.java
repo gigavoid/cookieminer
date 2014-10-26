@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class SuperDecorator {
 
-    public static enum GenType {EMERALD_FOREST};
+    public static enum GenType {EMERALD_FOREST, NORTHREND_FOREST, NORTHREND_MOUNTAINS, NORTHREND_GLACIER};
 
     public GenType gtype;
 
@@ -25,8 +25,10 @@ public class SuperDecorator {
 
     public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
     {
-        boolean doGen = gtype == GenType.EMERALD_FOREST;
-        if(doGen) {
+        if(gtype == GenType.EMERALD_FOREST) {
+            genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+        }
+        if(gtype == GenType.NORTHREND_FOREST) {
             genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         }
     }

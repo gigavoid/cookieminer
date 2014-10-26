@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.biome;
 
+import com.gigavoid.supermod.decorator.SuperDecorator;
 import com.gigavoid.supermod.decorator.SuperNorthDecorator;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -22,6 +23,7 @@ public class NorthForestBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 0.0f;
         rainfall = 1.0f;
+        decorator.gtype = SuperDecorator.GenType.NORTHREND_FOREST;
         decorator.northTreesPerChunk = 8;
     }
 

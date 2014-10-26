@@ -13,6 +13,7 @@ public class SuperBlocks {
     public static final VoidToolbenchBlock voidToolbench = new VoidToolbenchBlock();
     public static final GlacialIceBlock glacialIce = new GlacialIceBlock();
     public static final NorthrendLogBlock northLog = new NorthrendLogBlock();
+    public static final NorthLeavesBlock northLeaves = new NorthLeavesBlock();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -24,5 +25,6 @@ public class SuperBlocks {
         GameRegistry.registerBlock(voidToolbench, "voidToolbench");
         GameRegistry.registerBlock(glacialIce, "glacialIce");
         GameRegistry.registerBlock(northLog, "northLog");
+        GameRegistry.registerBlock(northLeaves, "northLeaves");
     }
 }
