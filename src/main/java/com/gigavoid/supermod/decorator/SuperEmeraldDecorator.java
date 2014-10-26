@@ -50,24 +50,24 @@ public class SuperEmeraldDecorator extends SuperDecorator {
                                 bposY--;
                             else if (bposY == 2)
                                 bposY++;
-                            world.setBlock(bposX, j + startheight, bposY, SuperBlocks.emeraldLog);
+                            this.setBlockAndNotifyAdequately(world, bposX, j + startheight, bposY, SuperBlocks.emeraldLog, 0);
                             genTreeHead(world, bposX, j + startheight, bposY);
                         }
                         for (int k = j; k < j + height; k++) {
-                            world.setBlock(posX, k + 1, posY, SuperBlocks.emeraldLog);
-                            world.setBlock(posX + 1, k + 1, posY, SuperBlocks.emeraldLog);
-                            world.setBlock(posX, k + 1, posY + 1, SuperBlocks.emeraldLog);
-                            world.setBlock(posX + 1, k + 1, posY + 1, SuperBlocks.emeraldLog);
+                            this.setBlockAndNotifyAdequately(world, posX, k + 1, posY, SuperBlocks.emeraldLog, 0);
+                            this.setBlockAndNotifyAdequately(world, posX + 1, k + 1, posY, SuperBlocks.emeraldLog, 0);
+                            this.setBlockAndNotifyAdequately(world, posX, k + 1, posY + 1, SuperBlocks.emeraldLog, 0);
+                            this.setBlockAndNotifyAdequately(world, posX + 1, k + 1, posY + 1, SuperBlocks.emeraldLog, 0);
                         }
                         for (int k = j; k > j - 3; k--) {
                             if (world.getBlock(posX, k, posY) == Block.getBlockById(0) || world.getBlock(posX, k, posY) == Block.getBlockById(9))
-                                world.setBlock(posX, k, posY, SuperBlocks.emeraldLog);
+                                this.setBlockAndNotifyAdequately(world, posX, k, posY, SuperBlocks.emeraldLog, 0);
                             if (world.getBlock(posX + 1, k, posY) == Block.getBlockById(0) || world.getBlock(posX + 1, k, posY) == Block.getBlockById(9))
-                                world.setBlock(posX + 1, k, posY, SuperBlocks.emeraldLog);
+                                this.setBlockAndNotifyAdequately(world, posX + 1, k, posY, SuperBlocks.emeraldLog, 0);
                             if (world.getBlock(posX, k, posY + 1) == Block.getBlockById(0) || world.getBlock(posX, k, posY + 1) == Block.getBlockById(9))
-                                world.setBlock(posX, k, posY + 1, SuperBlocks.emeraldLog);
+                                this.setBlockAndNotifyAdequately(world, posX, k, posY + 1, SuperBlocks.emeraldLog, 0);
                             if (world.getBlock(posX + 1, k, posY + 1) == Block.getBlockById(0) || world.getBlock(posX + 1, k, posY + 1) == Block.getBlockById(9))
-                                world.setBlock(posX + 1, k, posY + 1, SuperBlocks.emeraldLog);
+                                this.setBlockAndNotifyAdequately(world, posX + 1, k, posY + 1, SuperBlocks.emeraldLog, 0);
                         }
                         genTreeHead(world, posX, j + height - 1, posY);
                         genTreeHead(world, posX + 1, j + height - 1, posY);
@@ -89,7 +89,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
                 if (world.getBlock(posX, j, posY) == Block.getBlockById(2) || world.getBlock(posX, j, posY) == Block.getBlockById(3)) {
                     int height = 9 + random.nextInt(4) - 1;
                     for (int k = 0; k < height; k++){
-                        world.setBlock(posX, j + k + 1, posY, SuperBlocks.emeraldLog);
+                        this.setBlockAndNotifyAdequately(world, posX, j + k + 1, posY, SuperBlocks.emeraldLog, 0);
                     }
                     genTreeHead(world, posX, j + height - 1, posY);
                     break;
@@ -103,7 +103,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
             for (int j = -3; j < 4; j++){
                 for (int k = 0; k < 3; k++){
                     if (world.getBlock(x + i, y + k, z + j) == Block.getBlockById(0) && emeraldTreeHead[(i + 3)  + 7 * (j + 3) + 49 * k]){
-                        world.setBlock(x + i, y + k, z + j, SuperBlocks.emeraldLeaves);
+                        this.setBlockAndNotifyAdequately(world, x + i, y + k, z + j, SuperBlocks.emeraldLeaves, 0);
                     }
                 }
             }

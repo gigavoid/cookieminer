@@ -24,6 +24,7 @@ public class SuperNorthDecorator extends SuperDecorator {
                     for (int k = 0; k < height; k++){
                         world.setBlock(posX, j + k, posY, SuperBlocks.northLog);
                     }
+                    this.setBlockAndNotifyAdequately(world, posX, j + height + 1, posY, SuperBlocks.northLeaves, 0);
                     genTreeHead(world, posX, j + height - 1, posY);
                     break;
                 }
@@ -35,7 +36,7 @@ public class SuperNorthDecorator extends SuperDecorator {
         for (int i = -2; i < 3; i++){
             for (int j = -2; j < 3; j++){
                 if (world.getBlock(x + i, y, z + j) == Block.getBlockById(0) && northTreeHead[(i + 2) + 5 * (j + 2)]) {
-                    world.setBlock(x + i, y, z + j, SuperBlocks.emeraldLeaves);
+                    this.setBlockAndNotifyAdequately(world, x + i, y, z + j, SuperBlocks.northLeaves, 0);
                 }
             }
         }

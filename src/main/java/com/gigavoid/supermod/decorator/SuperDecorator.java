@@ -1,10 +1,11 @@
 package com.gigavoid.supermod.decorator;
 
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.Random;
 
-public class SuperDecorator {
+public class SuperDecorator extends WorldGenerator {
 
     public static enum GenType {EMERALD_FOREST, NORTHREND_FOREST, NORTHREND_MOUNTAINS, NORTHREND_GLACIER};
 
@@ -23,14 +24,19 @@ public class SuperDecorator {
         setNorthTreeHead();
     }
 
+    @Override
+    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
+        decorate(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_);
+        return true;
+    }
+
     public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
     {
         if(gtype == GenType.EMERALD_FOREST) {
             genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         }
-        if(gtype == GenType.NORTHREND_FOREST) {
             genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
-        }
+
     }
 
     public void genDecorations(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_){}
