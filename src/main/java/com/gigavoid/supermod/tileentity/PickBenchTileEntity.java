@@ -63,7 +63,7 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
     }
 
     public String getErrorMessage() {
-        return "This upgrade requires level " + ProgPickUpgrades.getLevel(inv[1]) + ".";
+        return "Req level: " + ProgPickUpgrades.upgrades.get(inv[1].getItem()).reqLevel;
     }
 
     @Override

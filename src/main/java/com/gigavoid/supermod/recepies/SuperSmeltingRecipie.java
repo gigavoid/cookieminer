@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.Recipies;
+package com.gigavoid.supermod.recepies;
 
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.item.SuperItems;

@@ -26,14 +26,14 @@ public class PickBenchGui  extends GuiContainer{
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
         //draw text and stuff here
         //the parameters for drawString are: string, x, y, color
-        fontRendererObj.drawString("Pickaxe Workbench", 8, 6, 4210752);
+        fontRendererObj.drawString("Pickaxe Workbench", 8, 6, 0x404040);
 
         if(!tileEntity.canUpgrade() && tileEntity.isBothInputsFilled()) {
-            fontRendererObj.drawString(tileEntity.getErrorMessage(), 8, 20, 0xFF0000);
+            fontRendererObj.drawString(tileEntity.getErrorMessage(), 90, 72, 0xFF0000);
         }
 
         //draws "Inventory" or your regional equivalent
-        fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 0x404040);
     }
 
     @Override
