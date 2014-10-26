@@ -18,6 +18,7 @@ public class PickBenchContainer extends Container {
     public PickBenchContainer (InventoryPlayer inventoryPlayer, PickBenchTileEntity te){
         tileEntity = te;
 
+
         // Pickaxe slot
         addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Pick, te, 0, 56, 17));
 
@@ -25,7 +26,7 @@ public class PickBenchContainer extends Container {
         addSlotToContainer(new PickBenchSlot(PickBenchSlot.SlotType.Mat, te, 1, 56, 53));
 
         // Output slot
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 2, 116,35));
+        addSlotToContainer(new PickBenchOutputSlot(inventoryPlayer.player, te, 2, 116,35));
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);

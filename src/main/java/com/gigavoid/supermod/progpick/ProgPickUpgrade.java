@@ -3,6 +3,7 @@ package com.gigavoid.supermod.progpick;
 public class ProgPickUpgrade {
     public String name;
     public int reqLevel;
+    public int maxLevel;
 
     public String getDisplayLevel(int level) {
         if(name == "Harvest Level") {
@@ -28,8 +29,12 @@ public class ProgPickUpgrade {
     }
 
     public ProgPickUpgrade(String name, int reqLevel) {
-        this.name = name;
+        this(name ,reqLevel, -1);
+    }
 
+    public ProgPickUpgrade(String name, int reqLevel, int maxLevel) {
+        this.name = name;
         this.reqLevel = reqLevel;
+        this.maxLevel = maxLevel;
     }
 }

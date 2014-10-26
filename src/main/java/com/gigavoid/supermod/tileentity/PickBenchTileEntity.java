@@ -55,7 +55,7 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
     }
 
     public boolean canUpgrade() {
-        return inv[1] != null && ProgPickUpgrades.upgrades.get(inv[1].getItem()).reqLevel <= ProgPickUpgrades.getLevel(inv[1]);
+        return inv[1] != null && inv[0] != null && ProgPickUpgrades.upgrades.get(inv[1].getItem()).reqLevel <= ProgPickUpgrades.getLevel(inv[0]);
     }
 
     public boolean isBothInputsFilled() {
@@ -68,6 +68,13 @@ public class PickBenchTileEntity extends TileEntity implements IInventory {
 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
+
+        if(slot == 2 && inv[2] != null) {
+            // Tries to take the output
+            if(!canUpgrade())
+                return;
+        }
+
         inv[slot] = stack;
         if (stack != null && stack.stackSize > getInventoryStackLimit()) {
             stack.stackSize = getInventoryStackLimit();
