@@ -7,7 +7,7 @@ public class SuperBlocks {
     public static final EmeraldLogBlock emeraldLog = new EmeraldLogBlock();
     public static final EmeraldLeavesBlock emeraldLeaves = new EmeraldLeavesBlock();
     public static final EmeraldFlowerBlock emeraldFlower = new EmeraldFlowerBlock();
-    public static final OPBlock opblock = new OPBlock();
+    public static final SaxeliumOreBlock saxeliumOre = new SaxeliumOreBlock();
     public static final SuperStoneBlock superStone = new SuperStoneBlock();
     public static final PickaxeToolbenchBlock pickaxeToolbench = new PickaxeToolbenchBlock();
     public static final VoidToolbenchBlock voidToolbench = new VoidToolbenchBlock();
@@ -16,7 +16,7 @@ public class SuperBlocks {
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
         GameRegistry.registerBlock(emeraldLeaves, "emeraldLeaves");
         GameRegistry.registerBlock(emeraldFlower, "emeraldFlower");
-        GameRegistry.registerBlock(opblock, "op");
+        GameRegistry.registerBlock(saxeliumOre, "saxeliumOre");
         GameRegistry.registerBlock(superStone, "stoneBlock");
         GameRegistry.registerBlock(pickaxeToolbench, "pickaxeToolbench");
         GameRegistry.registerBlock(voidToolbench, "voidToolbench");
