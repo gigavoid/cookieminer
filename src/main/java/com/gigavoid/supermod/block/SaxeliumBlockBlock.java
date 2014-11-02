@@ -4,15 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class SuperStoneBlock extends Block {
+public class SaxeliumBlockBlock extends Block {
 
-    protected SuperStoneBlock() {
+    protected SaxeliumBlockBlock() {
         super(Material.rock);
-        this.setBlockName("superStone");
-        this.setResistance(20f);
+        this.setBlockName("saxeliumBlock");
         this.setStepSound(soundTypeStone);
         this.setHardness(2.5f);
-        this.setBlockTextureName("supermod:dairBlock");
+        this.setBlockTextureName("supermod:HardSaxBlock");
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
 }

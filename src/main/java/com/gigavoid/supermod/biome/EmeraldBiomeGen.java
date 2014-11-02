@@ -11,8 +11,6 @@ import java.util.Random;
 
 public class EmeraldBiomeGen extends BiomeGenBase {
 
-    SuperEmeraldDecorator decorator = new SuperEmeraldDecorator();
-
     public EmeraldBiomeGen(){
         super(40);
 
@@ -25,10 +23,10 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
-        decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
+        /*decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
         decorator.emeraldFlowersPerChunk = 2;
         decorator.emeraldBigTreesPerChunk = 1;
-        decorator.emeraldTreesPerChunk = 5;
+        decorator.emeraldTreesPerChunk = 5;*/
     }
 
     @Override

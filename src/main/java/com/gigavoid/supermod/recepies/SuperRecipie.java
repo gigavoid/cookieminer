@@ -12,6 +12,8 @@ public class SuperRecipie {
         superFurnace();
         voidPickaxe();
         ironStick();
+        magicEnderEye();
+        emptyVoidStone();
     }
 
 
