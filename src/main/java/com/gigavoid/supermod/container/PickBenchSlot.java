@@ -2,6 +2,8 @@ package com.gigavoid.supermod.container;
 
 import com.gigavoid.supermod.progpick.ProgPickUpgrades;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
+import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -12,14 +14,16 @@ import net.minecraft.item.ItemStack;
 public class PickBenchSlot extends Slot {
 
     private SlotType slotType;
+    private PickBenchTileEntity tileEntity;
 
     enum SlotType {
         Pick, Mat
     }
 
-    public PickBenchSlot(SlotType slotType, IInventory inventory, int i, int x, int y) {
-        super(inventory, i, x, y);
+    public PickBenchSlot(SlotType slotType, PickBenchTileEntity tileEntity, int i, int x, int y) {
+        super(tileEntity, i, x, y);
         this.slotType = slotType;
+        this.tileEntity = tileEntity;
     }
 
     @Override

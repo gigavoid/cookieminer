@@ -53,7 +53,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
     @Override
     public int getHarvestLevel(ItemStack stack, String toolClass) {
-        return super.getHarvestLevel(stack, toolClass) == -1 ? -1 : 4;
+        return super.getHarvestLevel(stack, toolClass) == -1 ? -1 : ProgPickUpgrades.getProperty(stack, "Harvest Level", 0);
     }
 
     @Override
@@ -89,20 +89,15 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
         for (ProgPickUpgrade upg : ProgPickUpgrades.upgrades.values()) {
             int val = ProgPickUpgrades.getProperty(stack, upg.name, 0);
-            if(val == 0)
+            if(val == 0 && !upg.name.equals("Harvest Level"))
                 continue;
-            description.add(EnumChatFormatting.GRAY + upg.name + " Level " + val);
+            description.add(EnumChatFormatting.BLUE + upg.name + EnumChatFormatting.GRAY + " " + upg.getDisplayLevel(val));
         }
     }
 
     @Override
     public float getDigSpeed(ItemStack stack, Block block, int meta) {
         return super.getDigSpeed(stack, block, meta) * getSpeedMultiplier(stack);
-    }
-
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return "Progressive Pickaxe";
     }
 
 

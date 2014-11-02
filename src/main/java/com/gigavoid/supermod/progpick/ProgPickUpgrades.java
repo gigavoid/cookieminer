@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.progpick;
 
 import com.gigavoid.supermod.block.SuperBlocks;
+import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,8 @@ public class ProgPickUpgrades {
 
     static {
         upgrades.put(Items.emerald, new ProgPickUpgrade("Mining Speed"));
-        upgrades.put(Item.getItemFromBlock(SuperBlocks.saxeliumOre), new ProgPickUpgrade("Mining Radius", 10));
+        upgrades.put(SuperItems.saxeliumIngot, new ProgPickUpgrade("Mining Radius", 10));
+        upgrades.put(Items.diamond, new ProgPickUpgrade("Harvest Level"));
     }
 
     public static boolean isUpgradeable(ItemStack stack) {
