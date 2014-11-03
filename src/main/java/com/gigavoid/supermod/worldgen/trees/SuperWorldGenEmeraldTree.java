@@ -22,7 +22,6 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
     }
 
     private void genSuperTree(World world, Random random, int x, int y, int z) {
-        long startTime = System.nanoTime();
         if (world.getBlock(x, y + 1, z) == Block.getBlockById(0) || world.getBlock(x, y + 1, z) == Block.getBlockById(9)) {
             int height = 70 + random.nextInt(10) - 5;
             for (int k = 0; k < 10; k++) {
@@ -61,8 +60,6 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
             genTreeHead(world, x + 1, y + height - 1, z - 1);
             genTreeHead(world, x - 1, y + height - 1, z - 1);
         }
-        long time = System.nanoTime() - startTime;
-        System.out.println(time / Math.pow(10.0, 9.0));
     }
 
     private void genBigTree(World world, Random random, int x, int y, int z) {

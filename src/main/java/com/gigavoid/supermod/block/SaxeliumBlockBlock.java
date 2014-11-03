@@ -11,7 +11,7 @@ public class SaxeliumBlockBlock extends Block {
         this.setBlockName("saxeliumBlock");
         this.setStepSound(soundTypeStone);
         this.setHardness(2.5f);
-        this.setBlockTextureName("supermod:HardSaxBlock");
+        this.setBlockTextureName("supermod:dairBlock");
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
 }
