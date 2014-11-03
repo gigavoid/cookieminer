@@ -15,6 +15,7 @@ public class SuperBlocks {
     public static final BlockNorthrendLog northLog = new BlockNorthrendLog();
     public static final BlockNorthLeaves northLeaves = new BlockNorthLeaves();
     public static final BlockVoidBlock voidBlock = new BlockVoidBlock();
+    public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -28,5 +29,6 @@ public class SuperBlocks {
         GameRegistry.registerBlock(northLog, "northLog");
         GameRegistry.registerBlock(northLeaves, "northLeaves");
         GameRegistry.registerBlock(voidBlock, "voidBlock");
+        GameRegistry.registerBlock(portalNorthrend, "portalNorthrend");
     }
 }
