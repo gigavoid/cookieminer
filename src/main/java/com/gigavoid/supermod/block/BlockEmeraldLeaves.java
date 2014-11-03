@@ -2,12 +2,13 @@ package com.gigavoid.supermod.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class BlockEmeraldLeaves extends BlockOldLeaf {
+public class BlockEmeraldLeaves extends BlockLeaves {
 
     IIcon icon;
 
