@@ -17,11 +17,11 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import java.awt.*;
 import java.util.Random;
 
-public class EmeraldBiomeGen extends BiomeGenBase {
+public class BiomeGenEmerald extends BiomeGenBase {
     SuperWorldGenEmeraldTree treeGen = new SuperWorldGenEmeraldTree(true);
     SuperEmeraldDecorator decorator = new SuperEmeraldDecorator();
 
-    public EmeraldBiomeGen(){
+    public BiomeGenEmerald(){
         super(40);
 
 
@@ -33,8 +33,9 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
+        theBiomeDecorator.treesPerChunk = 10;
         decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
-        decorator.emeraldFlowersPerChunk = 2;
+        decorator.emeraldFlowersPerChunk = 1;
     }
 
     @Override

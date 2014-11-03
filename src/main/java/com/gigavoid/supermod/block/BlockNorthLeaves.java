@@ -20,7 +20,7 @@ public class BlockNorthLeaves extends BlockLeaves {
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:northLeaves");
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("emeraldLeaves");
+        this.setBlockName("northLeaves");
         this.setStepSound(soundTypeGrass);
     }
 
@@ -53,7 +53,7 @@ public class BlockNorthLeaves extends BlockLeaves {
 
     @Override
     public String[] func_150125_e() {
-        return new String[] {"Emerald"};
+        return new String[] {"North"};
     }
 
     @Override
@@ -63,7 +63,6 @@ public class BlockNorthLeaves extends BlockLeaves {
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
     {
-        //Block block = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
         return true;
     }
 }
