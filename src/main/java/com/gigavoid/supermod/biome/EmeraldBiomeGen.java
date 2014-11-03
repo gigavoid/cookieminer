@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class EmeraldBiomeGen extends BiomeGenBase {
     SuperWorldGenEmeraldTree treeGen = new SuperWorldGenEmeraldTree(true);
+    SuperEmeraldDecorator decorator = new SuperEmeraldDecorator();
 
     public EmeraldBiomeGen(){
         super(40);
@@ -32,17 +33,15 @@ public class EmeraldBiomeGen extends BiomeGenBase {
         fillerBlock = Block.getBlockById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
-        /*decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
+        decorator.gtype = SuperDecorator.GenType.EMERALD_FOREST;
         decorator.emeraldFlowersPerChunk = 2;
-        decorator.emeraldBigTreesPerChunk = 1;
-        decorator.emeraldTreesPerChunk = 5;*/
     }
 
     @Override
     public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
     {
         theBiomeDecorator.decorateChunk(p_76728_1_, p_76728_2_, this, p_76728_3_, p_76728_4_);
-        //decorator.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+        decorator.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
     }
 
     @Override
@@ -62,12 +61,5 @@ public class EmeraldBiomeGen extends BiomeGenBase {
     public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
     {
         return 0x00DD00;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int getSkyColorByTemp(float p_76731_1_)
-    {
-        return 0x009900;
     }
 }

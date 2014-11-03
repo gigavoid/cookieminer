@@ -8,7 +8,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import java.util.Random;
 
 public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
-    public boolean emeraldTreeHead[] = new boolean[7 * 7 * 3];
+    private boolean emeraldTreeHead[] = new boolean[7 * 7 * 3];
 
     public SuperWorldGenEmeraldTree(boolean p_i45448_1_) {
         super(p_i45448_1_);
@@ -17,7 +17,7 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
 
     @Override
     public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        //genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
         genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
         return false;
     }

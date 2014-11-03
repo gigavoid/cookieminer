@@ -10,10 +10,10 @@ public class SuperNorthDecorator extends SuperDecorator {
     @Override
     public void genDecorations(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_) {
         super.genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
-        genTrees(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
+        //genTrees(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
     }
 
-    private void genTrees(World world, Random random, int cx, int cy){
+    /*private void genTrees(World world, Random random, int cx, int cy){
         int trees = northTreesPerChunk;
         for (int i = trees; i > 0; i--) {
             int posX = cx + random.nextInt(16);
@@ -40,5 +40,5 @@ public class SuperNorthDecorator extends SuperDecorator {
                 }
             }
         }
-    }
+    }*/
 }
