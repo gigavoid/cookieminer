@@ -17,7 +17,8 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
 
     @Override
     public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        //genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
         return false;
     }
 
@@ -40,15 +41,15 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
                 genTreeHead(world, bposX, y + startheight, bposY);
             }
             for (int k = y; k < y + height; k++) {
-                this.setBlockAndNotifyAdequately(world, x, k + 1, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k + 1, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k + 1, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k + 1, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k + 1, z - 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k + 1, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k + 1, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k + 1, z - 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k + 1, z - 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z - 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z + 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z - 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z - 1, SuperBlocks.emeraldLog, 0);
             }
             genTreeHead(world, x, y + height - 1, z);
             genTreeHead(world, x + 1, y + height - 1, z);
@@ -81,20 +82,10 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
                 genTreeHead(world, bposX, y + startheight, bposY);
             }
             for (int k = y; k < y + height; k++) {
-                this.setBlockAndNotifyAdequately(world, x, k + 1, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k + 1, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k + 1, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k + 1, z + 1, SuperBlocks.emeraldLog, 0);
-            }
-            for (int k = y; k > y - 3; k--) {
-                if (world.getBlock(x, k, z) == Block.getBlockById(0) || world.getBlock(x, k, z) == Block.getBlockById(9))
-                    this.setBlockAndNotifyAdequately(world, x, k, z, SuperBlocks.emeraldLog, 0);
-                if (world.getBlock(x + 1, k, z) == Block.getBlockById(0) || world.getBlock(x + 1, k, z) == Block.getBlockById(9))
-                    this.setBlockAndNotifyAdequately(world, x + 1, k, z, SuperBlocks.emeraldLog, 0);
-                if (world.getBlock(x, k, z + 1) == Block.getBlockById(0) || world.getBlock(x, k, z + 1) == Block.getBlockById(9))
-                    this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
-                if (world.getBlock(x + 1, k, z + 1) == Block.getBlockById(0) || world.getBlock(x + 1, k, z + 1) == Block.getBlockById(9))
-                    this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
             }
             genTreeHead(world, x, y + height - 1, z);
             genTreeHead(world, x + 1, y + height - 1, z);
@@ -104,13 +95,13 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
     }
 
     private void genTree(World world, Random random, int x, int y, int z) {
-        int height = 9 + random.nextInt(4) - 1;
-        for (int k = 0; k < height; k++) {
-            this.setBlockAndNotifyAdequately(world, x, y + k + 1, x, SuperBlocks.emeraldLog, 0);
+        if (world.getBlock(x, y + 1, z) == Block.getBlockById(0) || world.getBlock(x, y + 1, z) == Block.getBlockById(9)) {
+            int height = 8 + random.nextInt(4);
+            for (int k = 0; k < height; k++) {
+                this.setBlockAndNotifyAdequately(world, x, y + k, z, SuperBlocks.emeraldLog, 0);
+            }
+            genTreeHead(world, x, y + height - 1, x);
         }
-        genTreeHead(world, x, y + height - 1, x);
-
-
     }
 
     private void genTreeHead(World world, int x, int y, int z) {
