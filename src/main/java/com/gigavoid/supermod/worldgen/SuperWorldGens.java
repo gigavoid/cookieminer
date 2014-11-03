@@ -9,6 +9,6 @@ public class SuperWorldGens {
     public static void initializeWorldGens(){
 
         GameRegistry.registerWorldGenerator(new SuperWorldGenOre(), 13);
-        GameRegistry.registerWorldGenerator(new SuperWorldGenTrees(), 14);
+        //GameRegistry.registerWorldGenerator(new SuperWorldGenEmeraldTrees(), 14);
     }
 }
