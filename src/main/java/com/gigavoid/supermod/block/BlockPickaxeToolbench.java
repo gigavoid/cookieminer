@@ -1,9 +1,9 @@
 package com.gigavoid.supermod.block;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -20,42 +20,44 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class VoidToolbenchBlock extends BlockContainer {
+public class BlockPickaxeToolbench extends BlockContainer {
 
     @SideOnly(Side.CLIENT)
-    private IIcon top;
+    private IIcon top, bottom, front;
 
-    public VoidToolbenchBlock(){
-        super(Material.glass);
+    public BlockPickaxeToolbench(){
+        super(Material.rock);
         this.setHardness(3.0f);
         this.setCreativeTab(CreativeTabs.tabDecorations);
-        this.setBlockTextureName("supermod:void_bench");
         this.setBlockName("pickaxeToolbench");
-        this.setStepSound(soundTypeGlass);
+        this.setStepSound(soundTypeStone);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("supermod:void_bench");
-        this.top = par1IconRegister.registerIcon("supermod:void_bench_top");
+        this.blockIcon = par1IconRegister.registerIcon("supermod:progpick_upgtable_side");
+        this.top = par1IconRegister.registerIcon("supermod:progpick_upgtable_top");
+        this.bottom = par1IconRegister.registerIcon("supermod:progpick_upgtable_bottom");
+        this.front = par1IconRegister.registerIcon("supermod:progpick_upgtable_front");
     }
 
     @Override
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.top : this.blockIcon;
+        return par1 == 1 ? this.top : (par1 == 0 ? this.bottom : (par1 == 2 ? this.front : this.blockIcon));
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float what, float these, float are) {
+    public boolean onBlockActivated(World world, int x, int y, int z,
+                                    EntityPlayer player, int metadata, float what, float these, float are) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity == null || player.isSneaking()) {
             return false;
         }
 
-        player.openGui(SuperMod.instance, 21, world, x, y, z);
+        player.openGui(SuperMod.instance, 20, world, x, y, z);
         return true;
     }
 
@@ -102,6 +104,6 @@ public class VoidToolbenchBlock extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new VoidBenchTileEntity();
+        return new PickBenchTileEntity();
     }
 }

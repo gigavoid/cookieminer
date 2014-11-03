@@ -10,12 +10,12 @@ import net.minecraft.util.IIcon;
 
 import java.util.Random;
 
-public class EmeraldLogBlock extends BlockLog {
+public class BlockEmeraldLog extends BlockLog {
 
     @SideOnly(Side.CLIENT)
     private IIcon eLogIconTop;
 
-    public EmeraldLogBlock(){
+    public BlockEmeraldLog(){
         super();
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:eLogSide");

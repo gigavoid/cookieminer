@@ -27,8 +27,8 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
             int height = 70 + random.nextInt(10) - 5;
             for (int k = 0; k < 10; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
-                int bposX = x + random.nextInt(4) - 1;
-                int bposY = z + random.nextInt(4) - 1;
+                int bposX = x + random.nextInt(5) - 2;
+                int bposY = z + random.nextInt(5) - 2;
                 if (bposX == 1)
                     bposX--;
                 else if (bposX == 2)
@@ -100,7 +100,7 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
             for (int k = 0; k < height; k++) {
                 this.setBlockAndNotifyAdequately(world, x, y + k, z, SuperBlocks.emeraldLog, 0);
             }
-            genTreeHead(world, x, y + height - 1, x);
+            genTreeHead(world, x, y + height - 1, z);
         }
     }
 

@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class SaxeliumBlockBlock extends Block {
+public class BlockSaxeliumBlock extends Block {
 
-    protected SaxeliumBlockBlock() {
+    protected BlockSaxeliumBlock() {
         super(Material.rock);
         this.setBlockName("saxeliumBlock");
         this.setStepSound(soundTypeStone);

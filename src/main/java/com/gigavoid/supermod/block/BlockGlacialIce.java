@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class GlacialIceBlock extends Block {
-    public GlacialIceBlock(){
+public class BlockGlacialIce extends Block {
+    public BlockGlacialIce(){
         super(Material.ice);
         this.setHardness(2.0f);
         this.setBlockTextureName("supermod:northIce");

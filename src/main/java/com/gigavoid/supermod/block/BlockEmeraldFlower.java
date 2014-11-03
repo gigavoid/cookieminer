@@ -14,10 +14,10 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-public class EmeraldFlowerBlock extends BlockFlower {
+public class BlockEmeraldFlower extends BlockFlower {
     private IIcon icon;
 
-    public EmeraldFlowerBlock() {
+    public BlockEmeraldFlower() {
         super(0);
         this.setLightLevel(0.5f);
         this.setCreativeTab(CreativeTabs.tabDecorations);

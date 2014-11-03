@@ -13,12 +13,12 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-10-26.
  */
-public class NorthrendLogBlock extends BlockLog {
+public class BlockNorthrendLog extends BlockLog {
 
     @SideOnly(Side.CLIENT)
     private IIcon eLogIconTop;
 
-    public NorthrendLogBlock(){
+    public BlockNorthrendLog(){
         super();
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:log_north");

@@ -10,11 +10,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 
-public class NorthLeavesBlock extends BlockOldLeaf {
+public class BlockNorthLeaves extends BlockOldLeaf {
 
     IIcon icon;
 
-    public NorthLeavesBlock(){
+    public BlockNorthLeaves(){
         super();
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:northLeaves");

@@ -7,11 +7,11 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class EmeraldLeavesBlock extends BlockOldLeaf {
+public class BlockEmeraldLeaves extends BlockOldLeaf {
 
     IIcon icon;
 
-    public EmeraldLeavesBlock(){
+    public BlockEmeraldLeaves(){
         super();
         this.setHardness(1.0f);
         this.setBlockTextureName("leaves_jungle");

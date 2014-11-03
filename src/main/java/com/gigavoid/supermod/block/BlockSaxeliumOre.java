@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class SaxeliumOreBlock extends Block {
-    public SaxeliumOreBlock(){
+public class BlockSaxeliumOre extends Block {
+    public BlockSaxeliumOre(){
         super(Material.rock);
         this.setHardness(1.0f);
         this.setBlockTextureName("supermod:saxelium_ore");
