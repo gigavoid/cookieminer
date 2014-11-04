@@ -12,7 +12,7 @@ public class BiomeGenNorthMountains extends BiomeGenBase {
         super(42);
 
         setBiomeName("Northrend Mountains");
-        setHeight(new BiomeGenBase.Height(2.3f, 0.7f));
+        setHeight(new BiomeGenBase.Height(2.5f, .7f));
         waterColorMultiplier = 0xFFFFFF;
         topBlock = Block.getBlockFromName("snow");
         fillerBlock = Block.getBlockFromName("snow");

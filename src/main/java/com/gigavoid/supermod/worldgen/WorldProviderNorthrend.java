@@ -1,15 +1,16 @@
 package com.gigavoid.supermod.worldgen;
 
-import com.gigavoid.supermod.biome.SuperBiomes;
+import com.gigavoid.supermod.SuperMod;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldProviderNorthrend extends WorldProvider {
 
     public void registerWorldChunkManager() {
-        this.worldChunkMgr = new WorldChunkManagerHell(SuperBiomes.northForest, 1f);
-        this.dimensionId = 3;
+        this.worldChunkMgr = new WorldChunkManagerNorthrend(getSeed(), WorldType.DEFAULT);
+        this.dimensionId = SuperMod.northrendDimID;
     }
 
     public IChunkProvider createChunkGenerator() {

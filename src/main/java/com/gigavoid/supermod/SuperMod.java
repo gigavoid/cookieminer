@@ -8,10 +8,13 @@ import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
+import com.gigavoid.supermod.worldgen.WorldProviderNorthrend;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.common.DimensionManager;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
 public class SuperMod
@@ -22,13 +25,16 @@ public class SuperMod
     public static final String MODID = "supermod";
     public static final String VERSION = "1.0";
 
-    public static final int northrendDimID = 3;
+    public static final int northrendDimID = 2;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
         SuperBlocks.initializeBlocks();
         SuperItems.initializeItems();
         SuperBiomes.registerBiomes();
+
+        DimensionManager.registerProviderType(northrendDimID, WorldProviderNorthrend.class, false);
+        DimensionManager.registerDimension(northrendDimID, northrendDimID);
     }
 
     @EventHandler

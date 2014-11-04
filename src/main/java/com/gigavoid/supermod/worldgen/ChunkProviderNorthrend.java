@@ -52,7 +52,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
     private final double[] field_147434_q;
     private final float[] parabolicField;
     private double[] stoneNoise = new double[256];
-    private MapGenBase caveGenerator = new MapGenCaves();
+    private MapGenBase caveGenerator = new MapGenCavesNorthrend();
     /** Holds Stronghold Generator */
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     /** Holds Village Generator */
@@ -61,7 +61,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
     /** Holds ravine generator */
-    private MapGenBase ravineGenerator = new MapGenRavine();
+    private MapGenBase ravineGenerator = new MapGenRavineNorthrend();
     /** The biomes that are used to generate the chunk */
     private BiomeGenBase[] biomesForGeneration;
     double[] field_147427_d;
@@ -167,11 +167,11 @@ public class ChunkProviderNorthrend implements IChunkProvider
                             {
                                 if ((d15 += d16) > 0.0D)
                                 {
-                                    p_147424_3_[j3 += short1] = SuperBlocks.glacialIce;
+                                    p_147424_3_[j3 += short1] = Blocks.stone;
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
-                                    p_147424_3_[j3 += short1] = Blocks.ice;
+                                    p_147424_3_[j3 += short1] = SuperBlocks.glacialIce;
                                 }
                                 else
                                 {
