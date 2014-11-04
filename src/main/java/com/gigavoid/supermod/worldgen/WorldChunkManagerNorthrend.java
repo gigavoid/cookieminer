@@ -43,7 +43,7 @@ public class WorldChunkManagerNorthrend extends WorldChunkManager {
     public WorldChunkManagerNorthrend(long p_i1975_1_, WorldType p_i1975_3_)
     {
         this();
-        GenLayer[] agenlayer = GenLayer.initializeAllBiomeGenerators(p_i1975_1_, p_i1975_3_);
+        GenLayer[] agenlayer = NorthrendGenLayerBiome.initializeAllBiomeGenerators(p_i1975_1_, p_i1975_3_);
         agenlayer = getModdedBiomeGenerators(p_i1975_3_, p_i1975_1_, agenlayer);
         this.genBiomes = agenlayer[0];
         this.biomeIndexLayer = agenlayer[1];

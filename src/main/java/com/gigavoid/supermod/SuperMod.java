@@ -9,11 +9,13 @@ import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.WorldProviderNorthrend;
+import com.gigavoid.supermod.worldgen.WorldTypeNorthrend;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.common.DimensionManager;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
@@ -45,5 +47,6 @@ public class SuperMod
         SuperGuiHandler.initializeGuis();
         SuperRecipie.initializeRecipes();
         SuperSmeltingRecipie.InitializeSmektingRecipes();
+        WorldType northrend  = new WorldTypeNorthrend(7, "northrend");
     }
 }
