@@ -2,13 +2,16 @@ package com.gigavoid.supermod.worldgen.trees;
 
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.Random;
 
 public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
-    public boolean emeraldTreeHead[] = new boolean[7 * 7 * 3];
+    private boolean emeraldTreeHead[] = new boolean[7 * 7 * 3];
 
     public SuperWorldGenEmeraldTree(boolean p_i45448_1_) {
         super(p_i45448_1_);
@@ -17,14 +20,21 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
 
     @Override
     public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        //genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
-        genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        int a = p_76484_2_.nextInt(100);
+        if (a < 2)
+            genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        else if (a < 15)
+            genBigTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        else
+            genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
         return false;
     }
 
     private void genSuperTree(World world, Random random, int x, int y, int z) {
-        if (world.getBlock(x, y + 1, z) == Block.getBlockById(0) || world.getBlock(x, y + 1, z) == Block.getBlockById(9)) {
-            int height = 70 + random.nextInt(10) - 5;
+        int height = 50 + random.nextInt(10) - 5;
+        Block block2 = world.getBlock(x, y - 1, z);
+        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && y + height + 3 < 256) {
             for (int k = 0; k < 10; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
                 int bposX = x + random.nextInt(5) - 2;
@@ -32,10 +42,14 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
                 if (bposX == 1)
                     bposX--;
                 else if (bposX == 2)
+                    bposX += 2;
+                else if (bposX == 3)
                     bposX++;
                 if (bposY == 1)
                     bposY--;
                 else if (bposY == 2)
+                    bposY += 2;
+                else if (bposY == 3)
                     bposY++;
                 world.setBlock(bposX, y + startheight, bposY, SuperBlocks.emeraldLog);
                 genTreeHead(world, bposX, y + startheight, bposY);
@@ -51,6 +65,19 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
                 this.setBlockAndNotifyAdequately(world, x + 1, k, z - 1, SuperBlocks.emeraldLog, 0);
                 this.setBlockAndNotifyAdequately(world, x - 1, k, z - 1, SuperBlocks.emeraldLog, 0);
             }
+
+            for (int k = y - 1; k > y - 3; k--) {
+                this.setBlockAndNotifyAdequately(world, x, k, z, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z + 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z - 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z + 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z - 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x - 1, k, z - 1, Blocks.dirt, 0);
+            }
+
             genTreeHead(world, x, y + height - 1, z);
             genTreeHead(world, x + 1, y + height - 1, z);
             genTreeHead(world, x - 1, y + height - 1, z);
@@ -64,8 +91,10 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
     }
 
     private void genBigTree(World world, Random random, int x, int y, int z) {
-        if (world.getBlock(x, y + 1, z) == Block.getBlockById(0) || world.getBlock(x, y + 1, z) == Block.getBlockById(9)) {
-            int height = 40 + random.nextInt(10) - 5;
+        int height = 25 + random.nextInt(10);
+        Block block2 = world.getBlock(x, y - 1, z);
+        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && y + height + 3 < 256) {
             for (int k = 0; k < 5; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
                 int bposX = x + random.nextInt(4) - 1;
@@ -87,6 +116,14 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
                 this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
                 this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
             }
+
+            for (int k = y - 1; k > y - 3; k--) {
+                this.setBlockAndNotifyAdequately(world, x, k, z, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x, k, z + 1, Blocks.dirt, 0);
+                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, Blocks.dirt, 0);
+            }
+
             genTreeHead(world, x, y + height - 1, z);
             genTreeHead(world, x + 1, y + height - 1, z);
             genTreeHead(world, x, y + height - 1, z + 1);
@@ -95,11 +132,14 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
     }
 
     private void genTree(World world, Random random, int x, int y, int z) {
-        if (world.getBlock(x, y + 1, z) == Block.getBlockById(0) || world.getBlock(x, y + 1, z) == Block.getBlockById(9)) {
-            int height = 8 + random.nextInt(4);
+        int height = 8 + random.nextInt(4);
+        Block block2 = world.getBlock(x, y - 1, z);
+        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && y + height + 3 < 256) {
             for (int k = 0; k < height; k++) {
                 this.setBlockAndNotifyAdequately(world, x, y + k, z, SuperBlocks.emeraldLog, 0);
             }
+            this.setBlockAndNotifyAdequately(world, x, y - 1, z, Blocks.dirt, 0);
             genTreeHead(world, x, y + height - 1, z);
         }
     }

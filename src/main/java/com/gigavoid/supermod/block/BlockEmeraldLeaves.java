@@ -6,6 +6,7 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockEmeraldLeaves extends BlockLeaves {
 
@@ -39,4 +40,11 @@ public class BlockEmeraldLeaves extends BlockLeaves {
 
     @Override
     public boolean isOpaqueCube(){ return false;}
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
+    {
+        return true;
+    }
 }

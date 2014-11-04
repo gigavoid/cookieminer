@@ -14,7 +14,7 @@ public class SuperEmeraldDecorator extends SuperDecorator {
     }
 
     private void genFlowers(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_) {
-        int flowers = emeraldFlowersPerChunk + p_76728_2_.nextInt(5) - 2;
+        int flowers = emeraldFlowersPerChunk + p_76728_2_.nextInt(1);
         for (int i = flowers; i > 0; i--) {
             int posX = p_76728_3_ + p_76728_2_.nextInt(16);
             int posY = p_76728_4_ + p_76728_2_.nextInt(16);

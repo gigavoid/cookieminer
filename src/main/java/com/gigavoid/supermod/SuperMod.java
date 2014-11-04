@@ -22,6 +22,8 @@ public class SuperMod
     public static final String MODID = "supermod";
     public static final String VERSION = "1.0";
 
+    public static final int northrendDimID = 3;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
         SuperBlocks.initializeBlocks();

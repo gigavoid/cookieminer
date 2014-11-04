@@ -20,6 +20,7 @@ public class SuperBlocks {
     public static final BlockVoidBlock voidBlock = new BlockVoidBlock();
     public static final BlockPylon pylon = new BlockPylon();
     public static final BlockRopeWheel ropeWheel = new BlockRopeWheel();
+    public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -35,5 +36,6 @@ public class SuperBlocks {
         GameRegistry.registerBlock(voidBlock, "voidBlock");
         GameRegistry.registerBlock(pylon, "pylon");
         GameRegistry.registerBlock(ropeWheel, "ropeWheel");
+        GameRegistry.registerBlock(portalNorthrend, "portalNorthrend");
     }
 }
