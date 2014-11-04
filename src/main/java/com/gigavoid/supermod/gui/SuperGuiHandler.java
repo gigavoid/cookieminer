@@ -3,8 +3,11 @@ package com.gigavoid.supermod.gui;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.container.PickBenchContainer;
 import com.gigavoid.supermod.container.VoidBenchContainer;
+import com.gigavoid.supermod.renderer.RendererRopeWheel;
 import com.gigavoid.supermod.tileentity.PickBenchTileEntity;
+import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
 import com.gigavoid.supermod.tileentity.VoidBenchTileEntity;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -39,5 +42,8 @@ public class SuperGuiHandler implements IGuiHandler {
         NetworkRegistry.INSTANCE.registerGuiHandler(SuperMod.instance, new SuperGuiHandler());
         GameRegistry.registerTileEntity(PickBenchTileEntity.class, "pickBench");
         GameRegistry.registerTileEntity(VoidBenchTileEntity.class, "voidBench");
+        GameRegistry.registerTileEntity(TileEntityRopeWheel.class, "ropeWheel");
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRopeWheel.class, new RendererRopeWheel());
+
     }
 }

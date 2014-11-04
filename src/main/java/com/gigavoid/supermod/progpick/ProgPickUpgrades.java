@@ -1,6 +1,5 @@
 package com.gigavoid.supermod.progpick;
 
-import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

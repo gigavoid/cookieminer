@@ -5,6 +5,7 @@ import com.gigavoid.supermod.item.material.*;
 import com.gigavoid.supermod.item.misc.MagicEnderEyeItem;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
+import com.gigavoid.supermod.item.tool.RopewayWrench;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
@@ -21,6 +22,7 @@ public class SuperItems {
     public static final MagicPowderItem magicPowder = new MagicPowderItem();
     public static final MagicEnderEyeItem magicEnderEye = new MagicEnderEyeItem();
     public static final SaxeliumIngotItem saxeliumIngot = new SaxeliumIngotItem();
+    public static final RopewayWrench ropewayWrench = new RopewayWrench();
 
     public static final IFuelHandler fuelHandler = new IFuelHandler() {
         @Override
@@ -42,6 +44,7 @@ public class SuperItems {
         GameRegistry.registerItem(magicPowder, "magicPowder");
         GameRegistry.registerItem(magicEnderEye, "magicEnderEye");
         GameRegistry.registerItem(saxeliumIngot, "saxeliumIngot");
+        GameRegistry.registerItem(ropewayWrench, "ropewayWrench");
 
         GameRegistry.registerFuelHandler(fuelHandler);
     }
