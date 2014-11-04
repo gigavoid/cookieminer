@@ -1,5 +1,8 @@
 package com.gigavoid.supermod.block;
 
+import com.gigavoid.supermod.renderer.RendererRopeWheel;
+import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SuperBlocks {
@@ -15,6 +18,8 @@ public class SuperBlocks {
     public static final BlockNorthrendLog northLog = new BlockNorthrendLog();
     public static final BlockNorthLeaves northLeaves = new BlockNorthLeaves();
     public static final BlockVoidBlock voidBlock = new BlockVoidBlock();
+    public static final BlockPylon pylon = new BlockPylon();
+    public static final BlockRopeWheel ropeWheel = new BlockRopeWheel();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -28,5 +33,7 @@ public class SuperBlocks {
         GameRegistry.registerBlock(northLog, "northLog");
         GameRegistry.registerBlock(northLeaves, "northLeaves");
         GameRegistry.registerBlock(voidBlock, "voidBlock");
+        GameRegistry.registerBlock(pylon, "pylon");
+        GameRegistry.registerBlock(ropeWheel, "ropeWheel");
     }
 }
