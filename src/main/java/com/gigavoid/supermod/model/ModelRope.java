@@ -10,7 +10,7 @@ import net.minecraft.client.model.ModelRenderer;
 public class ModelRope  extends ModelBase {
     private ModelRenderer steltRep;
 
-    public ModelRope(int[] pointB, int[] pointA) {
+    public ModelRope(int[] pointB, int[] pointA, TileEntityRopeWheel ropeWheel) {
 
         Boolean zAxis = pointA[0] - pointB[0] == 0;
         int yDiff = pointA[1] - pointB[1];
@@ -33,10 +33,15 @@ public class ModelRope  extends ModelBase {
         if(followAxisDiff < 0)
             rotation *= -1;
 
-        if(zAxis)
+      //  if(zAxis)
             steltRep.rotateAngleX = rotation;
-        else
-            steltRep.rotateAngleZ = rotation;
+      //  else
+       //     steltRep.rotateAngleZ = rotation;
+
+        if(ropeWheel.direction == 1)
+            steltRep.rotateAngleY = (float)Math.PI;
+        if(ropeWheel.direction == 0)
+            steltRep.rotateAngleY = (float)Math.PI;
     }
 
     public void render() {
