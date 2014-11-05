@@ -420,7 +420,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(256);
             i2 = l + this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
+            (new WorldGenLakes(Blocks.ice)).generate(this.worldObj, this.rand, k1, l1, i2);
         }
 
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && this.rand.nextInt(8) == 0)
@@ -431,7 +431,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
 
             if (l1 < 63 || this.rand.nextInt(10) == 0)
             {
-                (new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+                (new WorldGenLakes(Blocks.obsidian)).generate(this.worldObj, this.rand, k1, l1, i2);
             }
         }
 
