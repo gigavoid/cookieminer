@@ -3,6 +3,7 @@ package com.gigavoid.supermod.worldgen;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.WorldType;
@@ -26,28 +27,28 @@ public class NorthrendGenLayerBiome extends GenLayer
 
         for (BiomeManager.BiomeType type : BiomeManager.BiomeType.values())
         {
-            com.google.common.collect.ImmutableList<BiomeEntry> biomesToAdd = BiomeManager.getBiomes(type);
+            com.google.common.collect.ImmutableList<BiomeEntry> biomesToAdd = BiomeManager.getBiomes(BiomeManager.BiomeType.DESERT);
             int idx = type.ordinal();
 
             if (biomes[idx] == null) biomes[idx] = new ArrayList<BiomeEntry>();
             if (biomesToAdd != null) biomes[idx].addAll(biomesToAdd);
         }
 
-        int desertIdx = BiomeManager.BiomeType.DESERT.ordinal();
+        int iceIdx = BiomeManager.BiomeType.DESERT.ordinal();
 
-        if (p_i2122_4_ == WorldType.DEFAULT_1_1)
+        if (p_i2122_4_ == SuperMod.northrend)
         {
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northGlacier, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northPlains, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northMountains, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northForest, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northGlacier, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northPlains, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northMountains, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northForest, 10));
         }
         else
         {
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northGlacier, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northPlains, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northMountains, 10));
-            biomes[desertIdx].add(new BiomeEntry(SuperBiomes.northForest, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northGlacier, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northPlains, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northMountains, 10));
+            biomes[iceIdx].add(new BiomeEntry(SuperBiomes.northForest, 10));
         }
     }
 
@@ -133,7 +134,7 @@ public class NorthrendGenLayerBiome extends GenLayer
 
     protected BiomeEntry getWeightedBiomeEntry(BiomeManager.BiomeType type)
     {
-        List<BiomeEntry> biomeList = biomes[type.ordinal()];
+        List<BiomeEntry> biomeList = biomes[BiomeManager.BiomeType.DESERT.ordinal()];
         int totalWeight = WeightedRandom.getTotalWeight(biomeList);
         int weight = BiomeManager.isTypeListModded(type)?nextInt(totalWeight):nextInt(totalWeight / 10) * 10;
         return (BiomeEntry)WeightedRandom.getItem(biomeList, weight);

@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.worldgen;
 
+import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,8 +44,7 @@ public class WorldChunkManagerNorthrend extends WorldChunkManager {
     public WorldChunkManagerNorthrend(long p_i1975_1_, WorldType p_i1975_3_)
     {
         this();
-        GenLayer[] agenlayer = NorthrendGenLayerBiome.initializeAllBiomeGenerators(p_i1975_1_, p_i1975_3_);
-        agenlayer = getModdedBiomeGenerators(p_i1975_3_, p_i1975_1_, agenlayer);
+        GenLayer[] agenlayer = NorthrendGenLayerBiome.initializeAllBiomeGenerators(p_i1975_1_, SuperMod.northrend);
         this.genBiomes = agenlayer[0];
         this.biomeIndexLayer = agenlayer[1];
     }

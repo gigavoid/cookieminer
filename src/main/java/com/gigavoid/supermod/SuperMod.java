@@ -16,6 +16,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.world.WorldType;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.DimensionManager;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
@@ -28,6 +29,7 @@ public class SuperMod
     public static final String VERSION = "1.0";
 
     public static final int northrendDimID = 2;
+    public static final WorldType northrend  = new WorldTypeNorthrend(7, "northrend");
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
@@ -47,6 +49,5 @@ public class SuperMod
         SuperGuiHandler.initializeGuis();
         SuperRecipie.initializeRecipes();
         SuperSmeltingRecipie.InitializeSmektingRecipes();
-        WorldType northrend  = new WorldTypeNorthrend(7, "northrend");
     }
 }
