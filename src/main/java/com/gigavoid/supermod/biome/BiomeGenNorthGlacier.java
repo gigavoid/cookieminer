@@ -13,8 +13,8 @@ public class BiomeGenNorthGlacier extends BiomeGenBase{
             setBiomeName("Northrend Glacier");
             setHeight(new BiomeGenBase.Height(-1f, 0.1f));
             waterColorMultiplier = 0xFFFFFF;
-            topBlock = Block.getBlockFromName("snow");
-            fillerBlock = Block.getBlockFromName("snow");
+            topBlock = Block.getBlockFromName("stone");
+            fillerBlock = Block.getBlockFromName("stone");
             temperature = 0.0f;
             rainfall = 1.0f;
         }

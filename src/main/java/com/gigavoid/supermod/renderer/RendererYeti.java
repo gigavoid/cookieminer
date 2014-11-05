@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -18,7 +17,7 @@ import org.lwjgl.opengl.GL12;
 
 @SideOnly(Side.CLIENT)
 public class RendererYeti extends RenderLiving {
-    private static final ResourceLocation yetiTextures = new ResourceLocation("northrend:textures/entitys/YetiTexture.png");
+    private static final ResourceLocation yetiTextures = new ResourceLocation("supermod:textures/entities/YetiTexture.png");
     /**
      * Iron Golem's Model.
      */
@@ -30,24 +29,11 @@ public class RendererYeti extends RenderLiving {
         this.yetiModel = (ModelYeti) this.mainModel;
     }
 
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method,
-     * always casting down its argument and then handing it off to a worker
-     * function which does the actual work. In all probabilty, the class Render
-     * is generic (Render<T extends Entity) and this method has signature public
-     * void doRender(T entity, double d, double d1, double d2, float f, float
-     * f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(EntityYeti par1EntityYeti, double par2, double par4, double par6, float par8, float par9) {
-        super.doRender((EntityLiving) par1EntityYeti, par2, par4, par6,
-                par8, par9);
+    public void doRender(EntityLivingBase par1Entity, double par2, double par4, double par6, float par8, float par9) {
+        this.doRender((EntityYeti) par1Entity, par2, par4, par6, par8, par9);
     }
 
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called
-     * unless you call Render.bindEntityTexture.
-     */
-    protected ResourceLocation getEntityTexture(EntityYeti par1EntityYeti) {
+    protected ResourceLocation getEntityTexture(Entity par1Entity) {
         return yetiTextures;
     }
 
@@ -88,55 +74,11 @@ public class RendererYeti extends RenderLiving {
         }
     }
 
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method,
-     * always casting down its argument and then handing it off to a worker
-     * function which does the actual work. In all probabilty, the class Render
-     * is generic (Render<T extends Entity) and this method has signature public
-     * void doRender(T entity, double d, double d1, double d2, float f, float
-     * f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-        this.doRender((EntityYeti) par1EntityLiving, par2, par4, par6, par8, par9);
-    }
-
     protected void renderEquippedItems(EntityLivingBase par1EntityLivingBase, float par2) {
         this.renderEquippedItems((EntityYeti) par1EntityLivingBase, par2);
     }
 
     protected void rotateCorpse(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4) {
         this.rotateCorpse((EntityYeti) par1EntityLivingBase, par2, par3, par4);
-    }
-
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method,
-     * always casting down its argument and then handing it off to a worker
-     * function which does the actual work. In all probabilty, the class Render
-     * is generic (Render<T extends Entity) and this method has signature public
-     * void doRender(T entity, double d, double d1, double d2, float f, float
-     * f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(EntityLivingBase par1Entity, double par2, double par4, double par6, float par8, float par9) {
-        this.doRender((EntityYeti) par1Entity, par2, par4, par6, par8, par9);
-    }
-
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called
-     * unless you call Render.bindEntityTexture.
-     */
-    protected ResourceLocation getEntityTexture(Entity par1Entity) {
-        return this.getEntityTexture((EntityYeti) par1Entity);
-    }
-
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method,
-     * always casting down its argument and then handing it off to a worker
-     * function which does the actual work. In all probabilty, the class Render
-     * is generic (Render<T extends Entity) and this method has signature public
-     * void doRender(T entity, double d, double d1, double d2, float f, float
-     * f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-        this.doRender((EntityYeti) par1Entity, par2, par4, par6, par8, par9);
     }
 }

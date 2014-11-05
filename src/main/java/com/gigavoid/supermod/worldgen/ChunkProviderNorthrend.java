@@ -156,7 +156,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
 
                         for (int i3 = 0; i3 < 4; ++i3)
                         {
-                            int j3 = i3 + k * 4 << 12 | 0 + j1 * 4 << 8 | k2 * 8 + l2;
+                            int j3 = i3 + k * 4 << 12 | j1 * 4 << 8 | k2 * 8 + l2;
                             short short1 = 256;
                             j3 -= short1;
                             double d14 = 0.25D;

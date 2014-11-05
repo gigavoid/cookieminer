@@ -10,6 +10,7 @@ import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
 import com.gigavoid.supermod.renderer.RendererYeti;
+import com.gigavoid.supermod.renderer.SuperRenderer;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.WorldTypeNorthrend;
@@ -48,6 +49,7 @@ public class SuperMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        SuperRenderer.registerRenderers();
         SuperWorldGens.initializeWorldGens();
         SuperKeyBinds.registerKeybinds();
         SuperGuiHandler.initializeGuis();

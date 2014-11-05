@@ -16,7 +16,11 @@ public class BiomeGenNorthPlains extends BiomeGenBase {
         waterColorMultiplier = 0xFFFFFF;
         topBlock = Block.getBlockFromName("snow");
         fillerBlock = Block.getBlockFromName("snow");
-        spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityYeti.class, 2, 1, 1));
+        spawnableCaveCreatureList.clear();
+        spawnableCreatureList.clear();
+        spawnableMonsterList.clear();
+        spawnableWaterCreatureList.clear();
+        spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityYeti.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
     }

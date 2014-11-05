@@ -7,6 +7,6 @@ import net.minecraft.entity.EntityList;
  */
 public class SuperEntities {
     public static void registerEntities(){
-        EntityList.addMapping(EntityYeti.class, "entityYeti", 67, 643178645, 578914);
+        EntityList.addMapping(EntityYeti.class, "entityYeti", 67, 0xFFFFFF, 0x666666);
     }
 }
