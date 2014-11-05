@@ -22,7 +22,7 @@ public class SuperWorldGenNorthrendTree extends WorldGenAbstractTree {
     }
 
     private void genTrees(World world, Random random, int x, int y, int z) {
-        if (world.getBlock(x, y - 1, z) == Block.getBlockFromName("snow")) {
+        if (world.getBlock(x, y - 1, z) == Block.getBlockFromName("snow") && y < 80) {
             int height = 4 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {
                 world.setBlock(x, y + k, z, SuperBlocks.northLog);

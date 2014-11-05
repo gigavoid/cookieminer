@@ -45,7 +45,7 @@ public class NorthrendGenLayerBiome extends GenLayer
 
     public static GenLayer[] initializeAllBiomeGenerators(long p_75901_0_, WorldType p_75901_2_)  {
         NorthrendGenLayerBiome goodLayer = new NorthrendGenLayerBiome(1000, null, null);
-        GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 4);
+        GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 5);
 
 
         GenLayerVoronoiZoom zoom = new GenLayerVoronoiZoom(10L, gen);
