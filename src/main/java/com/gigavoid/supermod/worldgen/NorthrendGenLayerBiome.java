@@ -36,7 +36,7 @@ public class NorthrendGenLayerBiome extends GenLayer
             for (int j1 = 0; j1 < p_75904_3_; ++j1)
             {
                 this.initChunkSeed((long)(j1 + p_75904_1_), (long)(i1 + p_75904_2_));
-                aint1[j1 + i1 * p_75904_3_] = 41 + this.nextInt(3);
+                aint1[j1 + i1 * p_75904_3_] = 41 + this.nextInt(4);
             }
         }
 
@@ -45,9 +45,16 @@ public class NorthrendGenLayerBiome extends GenLayer
 
     public static GenLayer[] initializeAllBiomeGenerators(long p_75901_0_, WorldType p_75901_2_)  {
         NorthrendGenLayerBiome goodLayer = new NorthrendGenLayerBiome(1000, null, null);
-        GenLayer zoom = GenLayerZoom.magnify(1000L, goodLayer, 4);
+        GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 4);
 
-        return new GenLayer[] {zoom, zoom, zoom};
+
+        GenLayerVoronoiZoom zoom = new GenLayerVoronoiZoom(10L, gen);
+
+        zoom.initWorldGenSeed(p_75901_0_);
+        gen.initWorldGenSeed(p_75901_0_);
+
+
+        return new GenLayer[] {gen, zoom, gen};
     }
 
 }
