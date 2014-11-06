@@ -15,6 +15,8 @@ public class SuperBlocks {
     public static final BlockPickaxeToolbench pickaxeToolbench = new BlockPickaxeToolbench();
     public static final BlockVoidToolbench voidToolbench = new BlockVoidToolbench();
     public static final BlockGlacialIce glacialIce = new BlockGlacialIce();
+    public static final BlockNorthDirt northDirt = new BlockNorthDirt();
+    public static final BlockNorthStone northStone = new BlockNorthStone();
     public static final BlockNorthrendLog northLog = new BlockNorthrendLog();
     public static final BlockNorthLeaves northLeaves = new BlockNorthLeaves();
     public static final BlockVoidBlock voidBlock = new BlockVoidBlock();
@@ -31,6 +33,8 @@ public class SuperBlocks {
         GameRegistry.registerBlock(pickaxeToolbench, "pickaxeToolbench");
         GameRegistry.registerBlock(voidToolbench, "voidToolbench");
         GameRegistry.registerBlock(glacialIce, "glacialIce");
+        GameRegistry.registerBlock(northDirt, "northDirt");
+        GameRegistry.registerBlock(northStone, "northStone");
         GameRegistry.registerBlock(northLog, "northLog");
         GameRegistry.registerBlock(northLeaves, "northLeaves");
         GameRegistry.registerBlock(voidBlock, "voidBlock");

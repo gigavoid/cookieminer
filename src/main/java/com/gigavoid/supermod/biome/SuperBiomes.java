@@ -5,6 +5,7 @@ import net.minecraftforge.common.BiomeManager;
 public class SuperBiomes {
 
     public static final BiomeGenEmerald emeraldForest = new BiomeGenEmerald();
+    public static final BiomeGenBloodMountains bloodMountains = new BiomeGenBloodMountains();
     public static final BiomeGenNorthForest northForest = new BiomeGenNorthForest();
     public static final BiomeGenNorthMountains northMountains = new BiomeGenNorthMountains();
     public static final BiomeGenNorthPlains northPlains = new BiomeGenNorthPlains();
@@ -12,6 +13,7 @@ public class SuperBiomes {
 
     public static void registerBiomes(){
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(emeraldForest, 10));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(bloodMountains, 1000000));
         BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(northForest, 10));
         BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(northMountains, 10));
         BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(northPlains, 10));

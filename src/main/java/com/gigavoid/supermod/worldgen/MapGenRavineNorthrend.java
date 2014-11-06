@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.worldgen;
 
+import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
@@ -257,7 +258,7 @@ public class MapGenRavineNorthrend extends MapGenBase
         Block filler = (isExceptionBiome(biome) ? Blocks.dirt  : biome.fillerBlock);
         Block block  = data[index];
 
-        if (block == Blocks.stone || block == filler || block == top)
+        if (block == SuperBlocks.northStone || block == filler || block == top)
         {
             if (y == 9)
             {
