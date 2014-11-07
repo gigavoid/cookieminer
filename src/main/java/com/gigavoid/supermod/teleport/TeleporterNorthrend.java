@@ -72,7 +72,7 @@ public class TeleporterNorthrend extends Teleporter
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.sandstone : Blocks.air);
+                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.packed_ice : Blocks.air);
                     }
                 }
             }
@@ -460,7 +460,7 @@ public class TeleporterNorthrend extends Teleporter
                         j3 = j5 + l2;
                         i4 = j2 + (i3 - 1) * l5 - k2 * k5;
                         flag = l2 < 0;
-                        this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : Blocks.air);
+                        this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.packed_ice : Blocks.air);
                     }
                 }
             }
@@ -476,7 +476,7 @@ public class TeleporterNorthrend extends Teleporter
                     j3 = j5 + l2;
                     i4 = j2 + (i3 - 1) * l5;
                     flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
-                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : SuperBlocks.portalNorthrend, 0, 2);
+                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.packed_ice : SuperBlocks.portalNorthrend, 0, 2);
                 }
             }
 

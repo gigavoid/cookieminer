@@ -1,6 +1,5 @@
 package com.gigavoid.supermod;
 
-import com.gigavoid.supermod.entity.EntityYeti;
 import com.gigavoid.supermod.entity.SuperEntities;
 import com.gigavoid.supermod.recepies.SuperRecipie;
 import com.gigavoid.supermod.recepies.SuperSmeltingRecipie;
@@ -9,19 +8,15 @@ import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
-import com.gigavoid.supermod.renderer.RendererYeti;
 import com.gigavoid.supermod.renderer.SuperRenderer;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
-import com.gigavoid.supermod.worldgen.WorldProviderNorthrend;
-import com.gigavoid.supermod.worldgen.WorldTypeNorthrend;
-import cpw.mods.fml.client.registry.RenderingRegistry;
+import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
+import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.world.WorldType;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.DimensionManager;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)

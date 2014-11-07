@@ -17,11 +17,11 @@ public class SuperWorldGenNorthrendTree extends WorldGenAbstractTree {
 
     @Override
     public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        genTrees(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+        genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
         return true;
     }
 
-    private void genTrees(World world, Random random, int x, int y, int z) {
+    private void genTree(World world, Random random, int x, int y, int z) {
         if (world.getBlock(x, y - 1, z) == Block.getBlockFromName("snow") && y < 80) {
             int height = 4 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {

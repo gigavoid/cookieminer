@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
 import java.util.List;
 import java.util.Random;

@@ -16,7 +16,7 @@ public class BlockPortalNorthrend extends BlockPortal
     public BlockPortalNorthrend()
     {
         super();
-        setBlockName("portalTutorialBlock");
+        setBlockName("portalNorthrend");
         setCreativeTab(CreativeTabs.tabBlock);
     }
 
