@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.biome;
 
+import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.decorator.NorthrendDecorator;
 import com.gigavoid.supermod.decorator.SuperDecorator;
 import com.gigavoid.supermod.entity.EntityYeti;
@@ -13,7 +14,7 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-11-03.
  */
-public class BiomeGenNorthGlacier extends BiomeGenBase {
+public class BiomeGenNorthGlacier extends SuperBiomeGenBaseNorthrend {
 
     public BiomeGenNorthGlacier() {
         super(44);
@@ -21,8 +22,8 @@ public class BiomeGenNorthGlacier extends BiomeGenBase {
         setBiomeName("Northrend Glacier");
         setHeight(new BiomeGenBase.Height(-1f, 0.1f));
         waterColorMultiplier = 0xFFFFFF;
-        topBlock = Block.getBlockFromName("stone");
-        fillerBlock = Block.getBlockFromName("stone");
+        topBlock = SuperBlocks.northStone;
+        fillerBlock = SuperBlocks.northStone;
         spawnableCaveCreatureList.clear();
         spawnableCreatureList.clear();
         spawnableMonsterList.clear();

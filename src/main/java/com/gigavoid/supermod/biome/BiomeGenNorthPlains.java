@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-11-03.
  */
-public class BiomeGenNorthPlains extends BiomeGenBase {
+public class BiomeGenNorthPlains extends SuperBiomeGenBaseNorthrend {
 
     public BiomeGenNorthPlains(){
         super(43);
@@ -31,11 +31,5 @@ public class BiomeGenNorthPlains extends BiomeGenBase {
         spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
-    }
-
-    @Override
-    public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
-    {
-        //decorator.decorateChunk(p_76728_1_, p_76728_2_, this, p_76728_3_, p_76728_4_);
     }
 }

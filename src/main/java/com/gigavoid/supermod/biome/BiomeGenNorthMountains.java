@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-11-03.
  */
-public class BiomeGenNorthMountains extends BiomeGenBase {
+public class BiomeGenNorthMountains extends SuperBiomeGenBaseNorthrend {
 
     public BiomeGenNorthMountains(){
         super(42);
