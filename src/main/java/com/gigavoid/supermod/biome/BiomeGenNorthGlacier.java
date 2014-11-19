@@ -38,8 +38,11 @@ public class BiomeGenNorthGlacier extends SuperBiomeGenBaseNorthrend {
         theBiomeDecorator.treesPerChunk = 1;
     }
 
+    /*
+    Not to be used.
     @Override
     public WorldGenAbstractTree func_150567_a(Random r) {
         return crackGen;
     }
+    */
 }

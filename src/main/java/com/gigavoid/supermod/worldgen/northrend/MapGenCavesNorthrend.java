@@ -285,11 +285,7 @@ public class MapGenCavesNorthrend extends MapGenBase
 
         if (block == SuperBlocks.northStone || block == filler || block == top)
         {
-            if (y == 9)
-            {
-                data[index] = Blocks.packed_ice;
-            }
-            else if(y < 9) {
+            if(y < 10) {
                 data[index] = Blocks.obsidian;
             }
             else

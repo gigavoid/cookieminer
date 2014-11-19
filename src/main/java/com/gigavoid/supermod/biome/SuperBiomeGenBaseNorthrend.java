@@ -96,10 +96,10 @@ public class SuperBiomeGenBaseNorthrend extends BiomeGenBase {
                             --k;
                             p_150560_3_[i2] = block1;
 
-                            if (k == 0 && block1 == Blocks.sand)
+                            if (k == 0 && block1 == Blocks.ice)
                             {
                                 k = p_150560_2_.nextInt(4) + Math.max(0, l1 - 63);
-                                block1 = Blocks.sandstone;
+                                block1 = Blocks.packed_ice;
                             }
                         }
                     }

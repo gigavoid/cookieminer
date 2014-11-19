@@ -21,28 +21,31 @@ public class SuperWorldGenGlacierCrack extends WorldGenAbstractTree {
     }
 
     private void genCrack(World world, Random random, int x, int y, int z){
-        int dirX = random.nextInt(2);
-        int dirZ = random.nextInt(2);
-        int diffX = 0, diffZ = 0;
-        int currentY = y;
-        if (dirX == 0)
-            dirX = -1;
-        if (dirZ == 0)
-            dirZ = -1;
+        if (world.getBlock(x, y, z) == Blocks.snow_layer && y < 80) {
+            int dirX = random.nextInt(2);
+            int dirZ = random.nextInt(2);
+            int diffX = 0, diffZ = 0;
+            int currentY = y;
+            if (dirX == 0)
+                dirX = -1;
+            if (dirZ == 0)
+                dirZ = -1;
 
-        int length = random.nextInt(15) + 20;
+            int length = random.nextInt(15) + 20;
 
-        for (int i = 0; i < length; i++){
-            int nextX = random.nextInt(2);
-            int nextZ = random.nextInt(2);
-            if (nextX == 0 && nextZ == 0)
-                nextZ = 1;
-            Block block = SuperBlocks.glacialIce;
-            while (block == SuperBlocks.glacialIce){
-                world.setBlock(x + diffX + nextX * dirX, currentY, z + diffZ + nextZ * dirZ, Blocks.air);
+            for (int i = 0; i < length; i++) {
+                int nextX = random.nextInt(2);
+                int nextZ = random.nextInt(2);
+                if (nextX == 0 && nextZ == 0)
+                    nextZ = 1;
+                Block block = world.getBlock(x + diffX + nextX * dirX, currentY, z + diffZ + nextZ * dirZ);
+                while (block == SuperBlocks.glacialIce || block == Blocks.snow_layer) {
+                    world.setBlock(x + diffX + nextX * dirX, currentY, z + diffZ + nextZ * dirZ, Blocks.air);
+                    currentY--;
+                    block = world.getBlock(x + diffX + nextX * dirX, currentY, z + diffZ + nextZ * dirZ);
+                }
                 diffX++;
                 diffZ++;
-                currentY--;
             }
         }
     }
