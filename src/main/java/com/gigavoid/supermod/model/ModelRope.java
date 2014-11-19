@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.model;
 
-import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
+import com.gigavoid.supermod.entity.EntityRope;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
@@ -10,14 +10,14 @@ import net.minecraft.client.model.ModelRenderer;
 public class ModelRope  extends ModelBase {
     private ModelRenderer steltRep;
 
-    public ModelRope(int[] pointB, int[] pointA, TileEntityRopeWheel ropeWheel) {
+    public ModelRope(EntityRope rope) {
+        double xDiff = rope.posX - rope.targetX;
+        double yDiff = rope.posY - rope.targetY;
+        double zDiff = rope.posZ - rope.targetZ;
 
-        Boolean zAxis = pointA[0] - pointB[0] == 0;
-        int yDiff = pointA[1] - pointB[1];
-        int axis = zAxis ? 2 : 0;
-        int followAxisDiff = pointA[axis] - pointB[axis];
+        double length = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2) + Math.pow(zDiff, 2));
 
-        double length = Math.sqrt(Math.pow(yDiff, 2) + Math.pow(followAxisDiff, 2));
+
 
 
 
@@ -27,21 +27,14 @@ public class ModelRope  extends ModelBase {
         steltRep.setTextureSize(32, 64);
 
 
-        float rotation = (float)Math.acos(yDiff / length);
+        //if(followAxisDiff < 0)
+        //    rotation *= -1;
 
 
-        if(followAxisDiff < 0)
-            rotation *= -1;
+        steltRep.rotateAngleY = (float)Math.atan2(xDiff, zDiff) + (float)Math.PI;
 
-      //  if(zAxis)
-            steltRep.rotateAngleX = rotation;
-      //  else
-       //     steltRep.rotateAngleZ = rotation;
-
-        if(ropeWheel.direction == 1)
-            steltRep.rotateAngleY = (float)Math.PI;
-        if(ropeWheel.direction == 0)
-            steltRep.rotateAngleY = (float)Math.PI;
+        // Rotate on height axis
+        steltRep.rotateAngleX = (float)Math.acos(yDiff / length);
     }
 
     public void render() {

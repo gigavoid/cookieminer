@@ -1,5 +1,6 @@
 package com.gigavoid.supermod;
 
+import com.gigavoid.supermod.chat.SuperChatCommands;
 import com.gigavoid.supermod.entity.EntityYeti;
 import com.gigavoid.supermod.entity.SuperEntities;
 import com.gigavoid.supermod.recepies.SuperRecipie;
@@ -19,6 +20,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.BiomeManager;
@@ -56,5 +58,11 @@ public class SuperMod
         SuperRecipie.initializeRecipes();
         SuperSmeltingRecipie.InitializeSmektingRecipes();
         SuperEntities.registerEntities();
+    }
+
+    @EventHandler
+    public void serverStart(FMLServerStartingEvent event) {
+        SuperChatCommands.initializeChatCommands(event);
+
     }
 }

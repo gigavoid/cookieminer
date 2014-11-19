@@ -19,16 +19,6 @@ import java.util.List;
 public class TileEntityRopeWheel extends TileEntity {
     public float rot = 0;
     public short direction;
-    public List<int[]> ropePoints = new ArrayList<int[]>();
-
-    public static void addRopeFromTo(World world, int[] from, int[] to) {
-        TileEntityRopeWheel startBlock = (TileEntityRopeWheel) world.getTileEntity(from[0], from[1], from[2]);
-        startBlock.addRopePoint(to);
-    }
-
-    private void addRopePoint(int[] point) {
-        ropePoints.add(point);
-    }
 
     public void frame() {
         rot += .05f;
@@ -37,24 +27,12 @@ public class TileEntityRopeWheel extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound tags) {
         direction = tags.getShort("direction");
-
-        NBTTagList list = tags.getTagList("ropePoints", Constants.NBT.TAG_INT_ARRAY);
-        for(int i = 0; i < list.tagCount(); i++) {
-            int[] ropePoint = list.func_150306_c(i);
-            ropePoints.add(ropePoint);
-        }
         super.readFromNBT(tags);
     }
 
     @Override
     public void writeToNBT(NBTTagCompound tags) {
         tags.setShort("direction", direction);
-        
-        NBTTagList points = new NBTTagList();
-        for(int[] point : ropePoints)
-            points.appendTag(new NBTTagIntArray(point));
-        tags.setTag("ropePoints", points);
-        
         super.writeToNBT(tags);
 
     }

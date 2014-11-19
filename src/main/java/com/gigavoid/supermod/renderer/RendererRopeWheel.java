@@ -49,8 +49,8 @@ public class RendererRopeWheel extends TileEntitySpecialRenderer {
 
         int[] myPos = {ropeWheel.xCoord, ropeWheel.yCoord, ropeWheel.zCoord};
 
-        for(int[] point : ropeWheel.ropePoints)
-            new ModelRope(myPos, point, ropeWheel).render();
+        //for(int[] point : ropeWheel.ropePoints)
+        //    new ModelRope(myPos, point, ropeWheel).render();
         //Tell it to stop rendering for both the PushMatrix's
         GL11.glPopMatrix();
         GL11.glPopMatrix();

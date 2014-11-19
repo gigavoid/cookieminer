@@ -28,10 +28,7 @@ public class ModelRopeWheel extends ModelBase {
     public void render(TileEntityRopeWheel ropeWheel) {
         float scale = 1 / 16f;
 
-        if(ropeWheel.ropePoints.size() > 0)
-            gear.rotateAngleX = System.nanoTime() / (float)Math.pow(10, 9) * 10;
-        else
-            gear.rotateAngleX = 0;
+        gear.rotateAngleX = System.nanoTime() / (float)Math.pow(10, 9) * 10;
 
         base.render(scale);
         gear.render(scale);
