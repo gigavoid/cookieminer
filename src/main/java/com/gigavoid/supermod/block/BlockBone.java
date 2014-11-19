@@ -8,20 +8,19 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockSaxeliumOre extends Block {
-    public BlockSaxeliumOre(){
+public class BlockBone extends Block {
+    public BlockBone(){
         super(Material.rock);
-        this.setHardness(1.0f);
-        this.setBlockTextureName("supermod:saxelium_ore");
-        this.setHarvestLevel("pickaxe", 4);
+        this.setHardness(2.0f);
+        this.setBlockTextureName("supermod:BoneBlock");
+        this.setHarvestLevel("pickaxe", 2);
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("saxeliumOre");
-        this.setStepSound(soundTypeMetal);
+        this.setBlockName("bone");
+        this.setStepSound(soundTypeStone);
     }
 
     @Override
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
-    {
+    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
         return Item.getItemFromBlock(this);
     }
 

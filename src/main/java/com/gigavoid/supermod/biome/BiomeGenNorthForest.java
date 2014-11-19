@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
-public class BiomeGenNorthForest extends BiomeGenBase {
+public class BiomeGenNorthForest extends SuperBiomeGenBaseNorthrend {
     SuperWorldGenNorthrendTree treeGen = new SuperWorldGenNorthrendTree(true);
 
     public BiomeGenNorthForest(){

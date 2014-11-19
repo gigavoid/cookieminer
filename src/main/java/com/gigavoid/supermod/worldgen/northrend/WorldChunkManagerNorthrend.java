@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.biome.SuperBiomes;

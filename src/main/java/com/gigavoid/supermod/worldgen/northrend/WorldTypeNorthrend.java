@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
 import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;

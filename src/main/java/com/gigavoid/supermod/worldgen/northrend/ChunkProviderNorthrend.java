@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
 import java.util.List;
 import java.util.Random;
@@ -56,7 +56,8 @@ public class ChunkProviderNorthrend implements IChunkProvider
     /** Holds Stronghold Generator */
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     /** Holds Village Generator */
-    private MapGenVillage villageGenerator = new MapGenVillage();
+    private MapGenVillageNorthrend villageGenerator = new MapGenVillageNorthrend();
+    //private MapGenVillage villageGenerator = new MapGenVillage();
     /** Holds Mineshaft Generator */
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
@@ -74,7 +75,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
     {
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
         strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
-        villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
+        villageGenerator = (MapGenVillageNorthrend) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);

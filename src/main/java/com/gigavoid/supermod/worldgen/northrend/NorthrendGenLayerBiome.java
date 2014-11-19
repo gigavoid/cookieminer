@@ -1,13 +1,9 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gigavoid.supermod.SuperMod;
-import com.gigavoid.supermod.biome.SuperBiomes;
-import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.*;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;

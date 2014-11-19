@@ -1,5 +1,6 @@
-package com.gigavoid.supermod.worldgen;
+package com.gigavoid.supermod.worldgen.northrend;
 
+import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -254,9 +255,9 @@ public class MapGenRavineNorthrend extends MapGenBase
     protected void digBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop)
     {
         BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
-        Block top    = (isExceptionBiome(biome) ? Blocks.grass : biome.topBlock);
+        Block top = (biome == SuperBiomes.northGlacier ? SuperBlocks.glacialIce : biome.topBlock);
         Block filler = (isExceptionBiome(biome) ? Blocks.dirt  : biome.fillerBlock);
-        Block block  = data[index];
+        Block block = data[index];
 
         if (block == SuperBlocks.northStone || block == filler || block == top)
         {
@@ -270,11 +271,6 @@ public class MapGenRavineNorthrend extends MapGenBase
             else
             {
                 data[index] = null;
-
-                if (foundTop && data[index - 1] == filler)
-                {
-                    data[index - 1] = top;
-                }
             }
         }
     }
