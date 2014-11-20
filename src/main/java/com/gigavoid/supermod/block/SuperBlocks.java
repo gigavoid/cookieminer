@@ -25,6 +25,11 @@ public class SuperBlocks {
     public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
     public static final BlockMeat meat = new BlockMeat();
     public static final BlockBone bone = new BlockBone();
+    public static final BlockCity cityBlock = new BlockCity();
+    public static final BlockCityPillar cityPillarBlock = new BlockCityPillar();
+    public static final BlockCityLamp cityLampBlock = new BlockCityLamp();
+    public static final BlockCityActivePowercore cityActivePowercoreBlock = new BlockCityActivePowercore();
+    public static final BlockCityInactivePowercore cityInactivePowercoreBlock = new BlockCityInactivePowercore();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -45,5 +50,10 @@ public class SuperBlocks {
         GameRegistry.registerBlock(portalNorthrend, "portalNorthrend");
         GameRegistry.registerBlock(meat, "meat");
         GameRegistry.registerBlock(bone, "bone");
+        GameRegistry.registerBlock(cityBlock, "cityBlock");
+        GameRegistry.registerBlock(cityPillarBlock, "cityPillarBlock");
+        GameRegistry.registerBlock(cityLampBlock, "cityLampBlock");
+        GameRegistry.registerBlock(cityActivePowercoreBlock, "cityActivePowercoreBlock");
+        GameRegistry.registerBlock(cityInactivePowercoreBlock, "cityInactivePowercoreBlock");
     }
 }
