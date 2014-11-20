@@ -16,12 +16,11 @@ public class ModelRope  extends ModelBase {
         double dz = rope.posZ - rope.targetZ;
 
         double length = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2) + Math.pow(dz, 2));
+        double length2D = Math.sqrt(Math.pow(dx, 2) + Math.pow(dz, 2));
 
 
-        float rotX = (float)Math.atan2( dy, dz );
-        float rotY = (float)Math.atan2( dx * Math.cos(rotX), dz );
-        float rotZ = (float)Math.atan2( Math.cos(rotX), Math.sin(rotX) * Math.sin(rotX) );
-        //float rotY =
+        float rotX = (float)Math.asin(length2D/dx);
+        float rotY = (float)Math.acos(length/length2D);
 
 
         steltRep = new ModelRenderer(this, 0, 0);
@@ -31,7 +30,7 @@ public class ModelRope  extends ModelBase {
 
         steltRep.rotateAngleX = rotX;
         steltRep.rotateAngleY = rotY;
-        steltRep.rotateAngleZ = rotZ;
+        steltRep.rotateAngleZ = 0;
     }
 
     public void render() {
