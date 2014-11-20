@@ -1,14 +1,13 @@
 package com.gigavoid.supermod;
 
-import com.gigavoid.supermod.chat.SuperChatCommands;
-import com.gigavoid.supermod.entity.SuperEntities;
-import com.gigavoid.supermod.recepies.SuperRecipie;
-import com.gigavoid.supermod.recepies.SuperSmeltingRecipie;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
+import com.gigavoid.supermod.entity.SuperEntities;
 import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
+import com.gigavoid.supermod.recepies.SuperRecipie;
+import com.gigavoid.supermod.recepies.SuperSmeltingRecipie;
 import com.gigavoid.supermod.renderer.SuperRenderer;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
@@ -17,7 +16,6 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.DimensionManager;
 
@@ -53,11 +51,5 @@ public class SuperMod
         SuperRecipie.initializeRecipes();
         SuperSmeltingRecipie.InitializeSmektingRecipes();
         SuperEntities.registerEntities();
-    }
-
-    @EventHandler
-    public void serverStart(FMLServerStartingEvent event) {
-        SuperChatCommands.initializeChatCommands(event);
-
     }
 }

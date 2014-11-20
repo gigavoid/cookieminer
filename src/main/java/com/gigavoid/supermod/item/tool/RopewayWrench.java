@@ -28,41 +28,11 @@ public class RopewayWrench extends Item {
             return false;
 
         if(RopewayWrench.isPathingInProgress(item)) {
-            int[] pointA = {x, y, z};
             int[] pointB = RopewayWrench.getPathStart(item);
 
-            Boolean onXAxis = false;
-            if(pointA[0] == pointB[0])
-                onXAxis = true;
+            EntityRope newRope = new EntityRope(world, x, y, z, pointB[0], pointB[1], pointB[2]);
+            world.spawnEntityInWorld(newRope);
 
-            if(onXAxis) {
-                int min = Math.min(pointA[2], pointB[2]);
-                int max = Math.max(pointA[2], pointB[2]);
-                for(int i = min; i < max; i++) {
-                    EntityRope newRope = new EntityRope(world, x, y, i, pointB[0], pointB[1], pointB[2]);
-                   /* newRope.targetX = pointB[0];
-                    newRope.targetY = pointB[1];
-                    newRope.targetZ = pointB[2];*/
-                    world.spawnEntityInWorld(newRope);
-
-                }
-            } else {
-                int min = Math.min(pointA[0], pointB[0]);
-                int max = Math.max(pointA[0], pointB[0]);
-                for(int i = min; i < max; i++) {
-                    EntityRope newRope = new EntityRope(world, i, y, z, pointB[0], pointB[1], pointB[2]);
-                  /*  newRope.targetX = pointB[0];
-                    newRope.targetY = pointB[1];
-                    newRope.targetZ = pointB[2];*/
-                    world.spawnEntityInWorld(newRope);
-
-                }
-            }
-
-
-
-           // TileEntityRopeWheel.addRopeFromTo(world, pointA, pointB);
-            //TileEntityRopeWheel.addRopeFromTo(world, pointB, pointA);
             RopewayWrench.clearPathStart(item);
         } else {
             RopewayWrench.setPathStart(item, x, y, z);
@@ -71,8 +41,7 @@ public class RopewayWrench extends Item {
     }
 
     private static int[] getPathStart(ItemStack item) {
-        int[] startBlocks = item.getTagCompound().getIntArray("startBlock");
-        return startBlocks;
+        return item.getTagCompound().getIntArray("startBlock");
     }
 
     private static void clearPathStart(ItemStack stack) {

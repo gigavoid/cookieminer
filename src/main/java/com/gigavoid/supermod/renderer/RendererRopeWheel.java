@@ -1,11 +1,9 @@
 package com.gigavoid.supermod.renderer;
 
-import com.gigavoid.supermod.model.ModelRope;
 import com.gigavoid.supermod.model.ModelRopeWheel;
 import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;

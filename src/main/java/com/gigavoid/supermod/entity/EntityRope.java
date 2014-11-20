@@ -13,16 +13,16 @@ public class EntityRope extends Entity {
 
     public EntityRope(World world) {
         super(world);
+        this.ignoreFrustumCheck = true;
     }
 
     public EntityRope(World world, double x0, double y0, double z0, double x1, double y1, double z1) {
         super(world);
-        this.preventEntitySpawning = true;
         targetX = x1;
         targetY = y1;
         targetZ = z1;
+        this.ignoreFrustumCheck = true;
         setPosition(x0, y0, z0);
-        System.out.println("Created entity roep");
     }
 
     @Override

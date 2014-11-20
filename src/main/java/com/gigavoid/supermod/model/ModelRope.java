@@ -11,14 +11,17 @@ public class ModelRope  extends ModelBase {
     private ModelRenderer steltRep;
 
     public ModelRope(EntityRope rope) {
-        double xDiff = rope.posX - rope.targetX;
-        double yDiff = rope.posY - rope.targetY;
-        double zDiff = rope.posZ - rope.targetZ;
+        double dx = rope.posX - rope.targetX;
+        double dy = rope.posY - rope.targetY;
+        double dz = rope.posZ - rope.targetZ;
 
-        double length = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2) + Math.pow(zDiff, 2));
+        double length = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2) + Math.pow(dz, 2));
 
 
-
+        float rotX = (float)Math.atan2( dy, dz );
+        float rotY = (float)Math.atan2( dx * Math.cos(rotX), dz );
+        float rotZ = (float)Math.atan2( Math.cos(rotX), Math.sin(rotX) * Math.sin(rotX) );
+        //float rotY =
 
 
         steltRep = new ModelRenderer(this, 0, 0);
@@ -26,15 +29,9 @@ public class ModelRope  extends ModelBase {
         steltRep.setRotationPoint(0, 0, 0);
         steltRep.setTextureSize(32, 64);
 
-
-        //if(followAxisDiff < 0)
-        //    rotation *= -1;
-
-
-        steltRep.rotateAngleY = (float)Math.atan2(xDiff, zDiff) + (float)Math.PI;
-
-        // Rotate on height axis
-        steltRep.rotateAngleX = (float)Math.acos(yDiff / length);
+        steltRep.rotateAngleX = rotX;
+        steltRep.rotateAngleY = rotY;
+        steltRep.rotateAngleZ = rotZ;
     }
 
     public void render() {
