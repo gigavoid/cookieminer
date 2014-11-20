@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class SuperDecorator extends BiomeDecorator {
 
-    public static enum GenType {EMERALD_FOREST, NORTHREND};
+    public static enum GenType {EMERALD_FOREST, NORTHREND, CITY};
 
     public GenType gtype;
 
@@ -23,6 +23,8 @@ public class SuperDecorator extends BiomeDecorator {
             genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
         else if (gtype == GenType.NORTHREND)
             genDecorations(bgb);
+        else if (gtype == GenType.CITY)
+            genDecorations(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
     }
 
     public void genDecorations(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_){}
