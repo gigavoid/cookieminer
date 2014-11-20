@@ -19,7 +19,7 @@ public class ModelRope  extends ModelBase {
         double length2D = Math.sqrt(Math.pow(dx, 2) + Math.pow(dz, 2));
 
 
-        float rotX = (float)Math.asin(length2D/dx);
+        float rotX = dx != 0 ? (float)Math.asin(length2D/dx) : .0f;
         float rotY = (float)Math.acos(length/length2D);
 
 
