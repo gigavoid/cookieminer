@@ -23,6 +23,9 @@ public class RopewayWrench extends Item {
 
     @Override
     public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+        if(world.isRemote)
+            return false;
+
         Block block = world.getBlock(x, y, z);
         if(block != SuperBlocks.ropeWheel)
             return false;
@@ -30,8 +33,8 @@ public class RopewayWrench extends Item {
         if(RopewayWrench.isPathingInProgress(item)) {
             int[] pointB = RopewayWrench.getPathStart(item);
 
-            EntityRope newRope = new EntityRope(world, x, y, z, pointB[0], pointB[1], pointB[2]);
-            world.spawnEntityInWorld(newRope);
+                EntityRope newRope = new EntityRope(world, x, y, z, pointB[0], pointB[1], pointB[2]);
+                world.spawnEntityInWorld(newRope);
 
             RopewayWrench.clearPathStart(item);
         } else {

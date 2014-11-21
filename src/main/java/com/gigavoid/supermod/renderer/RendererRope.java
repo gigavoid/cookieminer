@@ -30,7 +30,6 @@ public class RendererRope extends Render {
         GL11.glPushMatrix();
 
 
-        GL11.glRotatef(0, 0f, 1f, 0f);
 
 
         new ModelRope(rope).render();

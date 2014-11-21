@@ -14,6 +14,7 @@ public class EntityRope extends Entity {
     public EntityRope(World world) {
         super(world);
         this.ignoreFrustumCheck = true;
+        System.out.println("vanliga som inte används");
     }
 
     public EntityRope(World world, double x0, double y0, double z0, double x1, double y1, double z1) {
@@ -23,6 +24,7 @@ public class EntityRope extends Entity {
         targetZ = z1;
         this.ignoreFrustumCheck = true;
         setPosition(x0, y0, z0);
+        System.out.println("rigkitagas");
     }
 
     @Override
