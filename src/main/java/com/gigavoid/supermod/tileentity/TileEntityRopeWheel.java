@@ -25,7 +25,7 @@ public class TileEntityRopeWheel extends TileEntity {
     public List<EntityRope> ropes = new ArrayList<EntityRope>();
 
     public TileEntityRopeWheel() {
-        
+
     }
 
     public static void addRopeFromTo(World world, int[] from, int[] to) {

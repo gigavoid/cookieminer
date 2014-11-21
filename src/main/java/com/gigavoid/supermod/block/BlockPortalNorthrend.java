@@ -14,6 +14,8 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 
+import java.lang.reflect.Field;
+
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
@@ -341,10 +343,41 @@ public class BlockPortalNorthrend extends BlockPortal {
             }
         }
 
-        protected boolean func_150857_a(Block p_150857_1_)
+        protected boolean func_150857_a(Block block)
         {
-            return p_150857_1_.blockMaterial == Material.air || p_150857_1_ == SuperBlocks.portalNorthrend;
+            Field blockMaterial = null;
+            try {
+                blockMaterial = getField(Block.class, "blockMaterial");
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+            blockMaterial.setAccessible(true);
+
+            Material mat = null;
+
+            try {
+                mat = (Material)blockMaterial.get(block);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+            return mat == Material.air || block == SuperBlocks.portalNorthrend;
         }
+
+        private static Field getField(Class clazz, String fieldName)
+                throws NoSuchFieldException {
+            try {
+                return clazz.getDeclaredField(fieldName);
+            } catch (NoSuchFieldException e) {
+                Class superClass = clazz.getSuperclass();
+                if (superClass == null) {
+                    throw e;
+                } else {
+                    return getField(superClass, fieldName);
+                }
+            }
+        }
+
 
         public boolean func_150860_b()
         {
