@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.item.tool;
 
 import com.gigavoid.supermod.block.SuperBlocks;
-import com.gigavoid.supermod.entity.EntityRope;
+import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,19 +23,14 @@ public class RopewayWrench extends Item {
 
     @Override
     public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-        if(world.isRemote)
-            return false;
-
         Block block = world.getBlock(x, y, z);
         if(block != SuperBlocks.ropeWheel)
             return false;
 
         if(RopewayWrench.isPathingInProgress(item)) {
+            int[] pointA = {x, y, z};
             int[] pointB = RopewayWrench.getPathStart(item);
-
-                EntityRope newRope = new EntityRope(world, x, y, z, pointB[0], pointB[1], pointB[2]);
-                world.spawnEntityInWorld(newRope);
-
+            TileEntityRopeWheel.addRopeFromTo(world, pointA, pointB);
             RopewayWrench.clearPathStart(item);
         } else {
             RopewayWrench.setPathStart(item, x, y, z);
