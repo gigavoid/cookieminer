@@ -435,13 +435,13 @@ public class TeleporterNorthrend extends Teleporter
             l5 = -l5;
         }
 
-        boolean flag;
+        boolean flag, heightSet = false;
 
         if (d0 < 0.0D)
         {
-            if (i1 < 70)
+            if (i1 < 63)
             {
-                i1 = 70;
+                i1 = 63;
             }
 
             if (i1 > this.worldServerInstance.getActualHeight() - 10)
@@ -458,8 +458,12 @@ public class TeleporterNorthrend extends Teleporter
                     for (l2 = -1; l2 < 3; ++l2)
                     {
                         k3 = i5 + (i3 - 1) * k5 + k2 * l5;
-                        j3 = j5 + l2;
                         i4 = j2 + (i3 - 1) * l5 - k2 * k5;
+                        if(!heightSet) {
+                            j5 = getWorldHeightAtCoordinates(k3, i4);
+                            heightSet = true;
+                        }
+                        j3 = j5 + l2;
                         flag = l2 < 0;
                         this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.packed_ice : Blocks.air);
                     }
@@ -494,6 +498,15 @@ public class TeleporterNorthrend extends Teleporter
         }
 
         return true;
+    }
+
+    private int getWorldHeightAtCoordinates(int x, int z){
+        for (int y = 250; y > 50; --y){
+            if (this.worldServerInstance.getBlock(x, y , z) != Blocks.air && this.worldServerInstance.getBlock(x, y, z) != Blocks.snow_layer && this.worldServerInstance.getBlock(x, y, z) != SuperBlocks.northLeaves){
+                return y - 1;
+            }
+        }
+        return 63;
     }
 
     /**
