@@ -2,6 +2,7 @@ package com.gigavoid.supermod.worldgen.trees;
 
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
@@ -35,7 +36,7 @@ public class SuperWorldGenNorthrendTree extends WorldGenAbstractTree {
     private void genTreeHead(World world, int x, int y, int z) {
         for (int i = -2; i < 3; i++) {
             for (int j = -2; j < 3; j++) {
-                if (world.getBlock(x + i, y, z + j) == Block.getBlockById(0) && northTreeHead[(i + 2) + 5 * (j + 2)]) {
+                if ((world.getBlock(x + i, y, z + j) == Blocks.air || world.getBlock(x + i, y, z + j) == Blocks.snow_layer) && northTreeHead[(i + 2) + 5 * (j + 2)]) {
                     world.setBlock(x + i, y, z + j, SuperBlocks.northLeaves);
                 }
             }

@@ -10,7 +10,8 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockEmeraldLeaves extends BlockLeaves {
 
-    IIcon icon;
+    @SideOnly(Side.CLIENT)
+    private IIcon icon;
 
     public BlockEmeraldLeaves(){
         super();

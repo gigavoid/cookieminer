@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -422,7 +423,7 @@ public class TeleporterNorthrend extends Teleporter
             }
         }
 
-        int i5 = l;
+        int i5 = 1;
         int j5 = i1;
         j2 = j1;
         int k5 = k1 % 2;

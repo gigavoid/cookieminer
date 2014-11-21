@@ -14,7 +14,7 @@ import java.util.Random;
 public class BlockEmeraldLog extends BlockLog {
 
     @SideOnly(Side.CLIENT)
-    private IIcon eLogIconTop;
+    private IIcon IconTop;
 
     public BlockEmeraldLog(){
         super();
@@ -27,9 +27,18 @@ public class BlockEmeraldLog extends BlockLog {
     }
 
     @Override
-    public IIcon getIcon(int par1, int par2)
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
-        return par1 == 1 ? this.eLogIconTop : (par1 == 0 ? this.eLogIconTop : this.blockIcon);
+        int k = p_149691_2_ & 12;
+        if (k == 0 && (p_149691_1_ == 1 || p_149691_1_ == 0))
+            return this.IconTop;
+        else if (k == 4 && (p_149691_1_ == 5 || p_149691_1_ == 4))
+            return this.IconTop;
+        else if (k == 8 && (p_149691_1_ == 2 || p_149691_1_ == 3))
+            return this.IconTop;
+        else
+            return this.blockIcon;
     }
 
     @Override
@@ -37,7 +46,7 @@ public class BlockEmeraldLog extends BlockLog {
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("supermod:eLogSide");
-        this.eLogIconTop = par1IconRegister.registerIcon("supermod:eLogBT");
+        this.IconTop = par1IconRegister.registerIcon("supermod:eLogBT");
     }
 
     @Override
