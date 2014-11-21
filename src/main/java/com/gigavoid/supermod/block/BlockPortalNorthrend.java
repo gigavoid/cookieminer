@@ -53,12 +53,12 @@ public class BlockPortalNorthrend extends BlockPortal
         byte b0 = 0;
         byte b1 = 0;
 
-        if (par1World.getBlock(par2 - 1, par3, par4) == Blocks.sandstone || par1World.getBlock(par2 + 1, par3, par4) == Blocks.sandstone)
+        if (par1World.getBlock(par2 - 1, par3, par4) == Blocks.packed_ice || par1World.getBlock(par2 + 1, par3, par4) == Blocks.packed_ice)
         {
             b0 = 1;
         }
 
-        if (par1World.getBlock(par2, par3, par4 - 1) == Blocks.sandstone || par1World.getBlock(par2, par3, par4 + 1) == Blocks.sandstone)
+        if (par1World.getBlock(par2, par3, par4 - 1) == Blocks.packed_ice || par1World.getBlock(par2, par3, par4 + 1) == Blocks.packed_ice)
         {
             b1 = 1;
         }
@@ -91,7 +91,7 @@ public class BlockPortalNorthrend extends BlockPortal
 
                         if (flag)
                         {
-                            if (j1 != Blocks.sandstone)
+                            if (j1 != Blocks.packed_ice)
                             {
                                 return false;
                             }
@@ -135,7 +135,7 @@ public class BlockPortalNorthrend extends BlockPortal
             ;
         }
 
-        if (par1World.getBlock(par2, i1 - 1, par4) != Blocks.sandstone)
+        if (par1World.getBlock(par2, i1 - 1, par4) != Blocks.packed_ice)
         {
             par1World.setBlockToAir(par2, par3, par4);
         }
@@ -148,7 +148,7 @@ public class BlockPortalNorthrend extends BlockPortal
                 ;
             }
 
-            if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == Blocks.sandstone)
+            if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == Blocks.packed_ice)
             {
                 boolean flag = par1World.getBlock(par2 - 1, par3, par4) == this || par1World.getBlock(par2 + 1, par3, par4) == this;
                 boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == this || par1World.getBlock(par2, par3, par4 + 1) == this;
@@ -159,7 +159,7 @@ public class BlockPortalNorthrend extends BlockPortal
                 }
                 else
                 {
-                    if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != Blocks.sandstone || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != Blocks.sandstone || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
+                    if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != Blocks.packed_ice || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != Blocks.packed_ice || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
                     {
                         par1World.setBlockToAir(par2, par3, par4);
                     }

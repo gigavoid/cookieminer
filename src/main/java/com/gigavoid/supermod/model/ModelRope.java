@@ -20,7 +20,8 @@ public class ModelRope  extends ModelBase {
 
 
         float rotX = dx != 0 ? (float)Math.asin(length2D/dx) : .0f;
-        float rotY = (float)Math.acos(length/length2D);
+        float rotY = (float)Math.acos(length / length2D);
+        float rotZ = dz != 0 ? (float)Math.asin(length2D/dz) : .0f;
 
 
         steltRep = new ModelRenderer(this, 0, 0);
@@ -30,7 +31,7 @@ public class ModelRope  extends ModelBase {
 
         steltRep.rotateAngleX = rotX;
         steltRep.rotateAngleY = rotY;
-        steltRep.rotateAngleZ = 0;
+        steltRep.rotateAngleZ = rotZ;
     }
 
     public void render() {

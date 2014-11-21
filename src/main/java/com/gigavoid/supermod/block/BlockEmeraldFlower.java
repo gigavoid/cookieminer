@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockEmeraldFlower extends BlockFlower {
+
+    @SideOnly(Side.CLIENT)
     private IIcon icon;
 
     public BlockEmeraldFlower() {
