@@ -44,55 +44,40 @@ public class BlockPortalNorthrend extends BlockPortal {
     }
 
     @Override
-    public boolean func_150000_e(World par1World, int par2, int par3, int par4) {
-        byte b0 = 0;
-        byte b1 = 0;
+    public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
+    {
+        BlockPortal.Size size = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
+        BlockPortal.Size size1 = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
 
-        if (par1World.getBlock(par2 - 1, par3, par4) == Blocks.packed_ice || par1World.getBlock(par2 + 1, par3, par4) == Blocks.packed_ice) {
-            b0 = 1;
+        Field funk = null;
+        try {
+            funk = getField(Size.class, "field_150864_e");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        funk.setAccessible(true);
+
+        Material mat = null;
+
+        try {
+            mat = (Material)funk.get(block);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
 
-        if (par1World.getBlock(par2, par3, par4 - 1) == Blocks.packed_ice || par1World.getBlock(par2, par3, par4 + 1) == Blocks.packed_ice) {
-            b1 = 1;
-        }
-
-        if (b0 == b1) {
-            return false;
-        } else {
-            if (par1World.isAirBlock(par2 - b0, par3, par4 - b1)) {
-                par2 -= b0;
-                par4 -= b1;
-            }
-
-            int l;
-            int i1;
-
-            for (l = -1; l <= 2; ++l) {
-                for (i1 = -1; i1 <= 3; ++i1) {
-                    boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
-
-                    if (l != -1 && l != 2 || i1 != -1 && i1 != 3) {
-                        Block j1 = par1World.getBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
-                        boolean isAirBlock = par1World.isAirBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
-
-                        if (flag) {
-                            if (j1 != Blocks.packed_ice) {
-                                return false;
-                            }
-                        } else if (!isAirBlock && j1 != Blocks.fire) {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            for (l = 0; l < 2; ++l) {
-                for (i1 = 0; i1 < 3; ++i1) {
-                    par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, SuperBlocks.portalNorthrend, 0, 2);
-                }
-            }
-
+        if (size.func_150860_b() && size.field_150864_e == 0)
+        {
+            size.func_150859_c();
             return true;
+        }
+        else if (size1.func_150860_b() && size1.field_150864_e == 0)
+        {
+            size1.func_150859_c();
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -140,60 +125,10 @@ public class BlockPortalNorthrend extends BlockPortal {
 
     @Override
     public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-        int heightPosition = 0, axisAlignX = 0, axisAlignZ = 0;
-        boolean thereIsPortal = false;
-
-        for (int i = 1; i < 3; i++) {
-            axisAlignX = p_149726_1_.getBlock(p_149726_2_ + i, p_149726_3_, p_149726_4_) == Blocks.packed_ice ? 2 - i : -1;
-            axisAlignZ = p_149726_1_.getBlock(p_149726_2_, p_149726_3_, p_149726_4_ + i) == Blocks.packed_ice ? 2 - i : -1;
-        }
-
-        for (int i = 1; i < 4; i++){
-            heightPosition = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ + i, p_149726_4_) == Blocks.packed_ice ? 3 - i : -1;
-        }
-
-        if (axisAlignX != -1 && heightPosition != -1){
-            for (int i = -axisAlignX - 1; i < 3 - axisAlignX; i++){
-                for (int j = -heightPosition - 2; i < 5 - heightPosition; j++){
-                    if (i == -axisAlignX - 1 || i == 2 - axisAlignX)
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_ + i, p_149726_3_ + j, p_149726_4_) == Blocks.packed_ice;
-                    else if (j == -heightPosition - 2 || j == 4 - heightPosition)
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_ + i, p_149726_3_ + j, p_149726_4_) == Blocks.packed_ice;
-                    else
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_ + i, p_149726_3_ + j, p_149726_4_) == Blocks.air;
-                }
-            }
-            if (thereIsPortal) {
-                for (int i = -axisAlignX - 1; i < 3 - axisAlignX; i++) {
-                    for (int j = -heightPosition - 2; i < 5 - heightPosition; j++) {
-                        if ((i > -axisAlignX - 1 || i < 2 - axisAlignX) && (j < -heightPosition - 2 || j > 4 - heightPosition))
-                            p_149726_1_.setBlock(p_149726_2_ + i, p_149726_3_ + j, p_149726_4_, SuperBlocks.portalNorthrend);
-                    }
-                }
-            }
-        }
-        else if (axisAlignZ != -1 && heightPosition != -1){
-            for (int i = -axisAlignZ - 1; i < 3 - axisAlignZ; i++){
-                for (int j = -heightPosition - 2; i < 5 - heightPosition; j++){
-                    if (i == -axisAlignZ - 1 || i == 2 - axisAlignZ)
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ + j, p_149726_4_ + i) == Blocks.packed_ice;
-                    else if (j == -heightPosition - 2 || j == 4 - heightPosition)
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ + j, p_149726_4_ + i) == Blocks.packed_ice;
-                    else
-                        thereIsPortal = p_149726_1_.getBlock(p_149726_2_, p_149726_3_ + j, p_149726_4_ + i) == Blocks.air;
-                }
-            }
-            if (thereIsPortal) {
-                for (int i = -axisAlignZ - 1; i < 3 - axisAlignZ; i++) {
-                    for (int j = -heightPosition - 2; i < 5 - heightPosition; j++) {
-                        if ((i > -axisAlignZ - 1 || i < 2 - axisAlignZ) && (j < -heightPosition - 2 || j > 4 - heightPosition))
-                            p_149726_1_.setBlock(p_149726_2_, p_149726_3_ + j, p_149726_4_ + i, SuperBlocks.portalNorthrend);
-                    }
-                }
-            }
-        }
-        else
+        if (p_149726_1_.provider.dimensionId > 0 || !SuperBlocks.portalNorthrend.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
+        {
             p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
+        }
     }
 
     public static class Size
@@ -364,21 +299,6 @@ public class BlockPortalNorthrend extends BlockPortal {
             return mat == Material.air || block == SuperBlocks.portalNorthrend;
         }
 
-        private static Field getField(Class clazz, String fieldName)
-                throws NoSuchFieldException {
-            try {
-                return clazz.getDeclaredField(fieldName);
-            } catch (NoSuchFieldException e) {
-                Class superClass = clazz.getSuperclass();
-                if (superClass == null) {
-                    throw e;
-                } else {
-                    return getField(superClass, fieldName);
-                }
-            }
-        }
-
-
         public boolean func_150860_b()
         {
             return this.field_150861_f != null && this.field_150868_h >= 2 && this.field_150868_h <= 21 && this.field_150862_g >= 3 && this.field_150862_g <= 21;
@@ -396,6 +316,20 @@ public class BlockPortalNorthrend extends BlockPortal {
                     int i1 = this.field_150861_f.posY + l;
                     this.field_150867_a.setBlock(j, i1, k, SuperBlocks.portalNorthrend, this.field_150865_b, 2);
                 }
+            }
+        }
+    }
+
+    private static Field getField(Class clazz, String fieldName)
+            throws NoSuchFieldException {
+        try {
+            return clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            Class superClass = clazz.getSuperclass();
+            if (superClass == null) {
+                throw e;
+            } else {
+                return getField(superClass, fieldName);
             }
         }
     }
