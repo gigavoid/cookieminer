@@ -18,14 +18,25 @@ import java.util.List;
  * Created by ineentho on 2014-11-03.
  */
 public class TileEntityRopeWheel extends TileEntity {
+    public static List<TileEntityRopeWheel> allTileEntities = new ArrayList<TileEntityRopeWheel>();
+
+
     public float rot = 0;
     public short direction;
     public List<int[]> ropePoints = new ArrayList<int[]>();
 
     public List<EntityRope> ropes = new ArrayList<EntityRope>();
 
-    public TileEntityRopeWheel() {
 
+
+    public TileEntityRopeWheel() {
+        allTileEntities.add(this);
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        allTileEntities.remove(this);
+        super.finalize();
     }
 
     public static void addRopeFromTo(World world, int[] from, int[] to) {
@@ -102,14 +113,16 @@ public class TileEntityRopeWheel extends TileEntity {
     @Override
     public void invalidate() {
         super.invalidate();
-        despawnRopes();
-        for(int[] rope : ropePoints) {
-            TileEntity tileEntity = worldObj.getTileEntity(rope[0], rope[1], rope[2]);
-            if(tileEntity == null || !(tileEntity instanceof TileEntityRopeWheel))
-                continue;
-            TileEntityRopeWheel ropeWheel = (TileEntityRopeWheel) tileEntity;
-            ropeWheel.refreshRopes();
 
+        for(TileEntityRopeWheel ropeWheel : TileEntityRopeWheel.allTileEntities) {
+            ropeWheel.despawnRopes();
+            for(int[] rope : ropePoints) {
+                TileEntity tileEntity = ropeWheel.worldObj.getTileEntity(rope[0], rope[1], rope[2]);
+                if (tileEntity == null || !(tileEntity instanceof TileEntityRopeWheel))
+                    continue;
+                TileEntityRopeWheel otherRopeWheel = (TileEntityRopeWheel) tileEntity;
+                otherRopeWheel.refreshRopes();
+            }
         }
     }
 

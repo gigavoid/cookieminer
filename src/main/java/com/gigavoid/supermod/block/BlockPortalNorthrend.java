@@ -2,6 +2,7 @@ package com.gigavoid.supermod.block;
 
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.teleport.TeleporterNorthrend;
+import com.gigavoid.supermod.util.SuperReflection;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
@@ -13,8 +14,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
-
-import java.lang.reflect.Field;
 
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
@@ -43,34 +42,24 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
     }
 
+
     @Override
     public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
     {
         BlockPortal.Size size = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
         BlockPortal.Size size1 = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
 
-        Field funk = null;
-        try {
-            funk = getField(Size.class, "field_150864_e");
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        funk.setAccessible(true);
 
-        Material mat = null;
+        int sizeVal = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size);
+        int size1Val = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size1);
 
-        try {
-            mat = (Material)funk.get(block);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
 
-        if (size.func_150860_b() && size.field_150864_e == 0)
+        if (size.func_150860_b() && sizeVal == 0)
         {
             size.func_150859_c();
             return true;
         }
-        else if (size1.func_150860_b() && size1.field_150864_e == 0)
+        else if (size1.func_150860_b() && size1Val == 0)
         {
             size1.func_150859_c();
             return true;
@@ -280,22 +269,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
         protected boolean func_150857_a(Block block)
         {
-            Field blockMaterial = null;
-            try {
-                blockMaterial = getField(Block.class, "blockMaterial");
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-            blockMaterial.setAccessible(true);
-
-            Material mat = null;
-
-            try {
-                mat = (Material)blockMaterial.get(block);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-
+            Material mat = (Material)SuperReflection.getFieldValue("blockMaterial", Block.class, block);
             return mat == Material.air || block == SuperBlocks.portalNorthrend;
         }
 
@@ -320,17 +294,5 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
     }
 
-    private static Field getField(Class clazz, String fieldName)
-            throws NoSuchFieldException {
-        try {
-            return clazz.getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            Class superClass = clazz.getSuperclass();
-            if (superClass == null) {
-                throw e;
-            } else {
-                return getField(superClass, fieldName);
-            }
-        }
-    }
+
 }
