@@ -45,21 +45,21 @@ public class BlockPortalNorthrend extends BlockPortal {
 
     @Override
     public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
-    {
-        BlockPortal.Size size = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
-        BlockPortal.Size size1 = new BlockPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
+     {
+        BlockPortalNorthrend.Size size = new BlockPortalNorthrend.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
+        BlockPortalNorthrend.Size size1 = new BlockPortalNorthrend.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
 
 
-        int sizeVal = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size);
-        int size1Val = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size1);
+        //int sizeVal = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size);
+        //int size1Val = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size1);
 
 
-        if (size.func_150860_b() && sizeVal == 0)
+        if (size.func_150860_b() && size.field_150864_e == 0)
         {
             size.func_150859_c();
             return true;
         }
-        else if (size1.func_150860_b() && size1Val == 0)
+        else if (size1.func_150860_b() && size1.field_150864_e == 0)
         {
             size1.func_150859_c();
             return true;
@@ -116,71 +116,78 @@ public class BlockPortalNorthrend extends BlockPortal {
     public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
         if (p_149726_1_.provider.dimensionId > 0 || !SuperBlocks.portalNorthrend.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
         {
-            p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
+            if (!World.doesBlockHaveSolidTopSurface(p_149726_1_, p_149726_2_, p_149726_3_ - 1, p_149726_4_))
+            {
+                p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
+            }
+            else
+            {
+                p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_) + p_149726_1_.rand.nextInt(10));
+            }
         }
     }
 
     public static class Size
     {
-        private final World field_150867_a;
+        private final World world;
         private final int field_150865_b;
         private final int field_150866_c;
         private final int field_150863_d;
         private int field_150864_e = 0;
-        private ChunkCoordinates field_150861_f;
-        private int field_150862_g;
+        private ChunkCoordinates chunkCoordinates;
+        private int y;
         private int field_150868_h;
         private static final String __OBFID = "CL_00000285";
 
-        public Size(World p_i45415_1_, int p_i45415_2_, int p_i45415_3_, int p_i45415_4_, int p_i45415_5_)
+        public Size(World world, int x, int y, int z, int index)
         {
-            this.field_150867_a = p_i45415_1_;
-            this.field_150865_b = p_i45415_5_;
-            this.field_150863_d = BlockPortalNorthrend.field_150001_a[p_i45415_5_][0];
-            this.field_150866_c = BlockPortalNorthrend.field_150001_a[p_i45415_5_][1];
+            this.world = world;
+            this.field_150865_b = index;
+            this.field_150863_d = BlockPortalNorthrend.field_150001_a[index][0];
+            this.field_150866_c = BlockPortalNorthrend.field_150001_a[index][1];
 
-            for (int i1 = p_i45415_3_; p_i45415_3_ > i1 - 21 && p_i45415_3_ > 0 && this.func_150857_a(p_i45415_1_.getBlock(p_i45415_2_, p_i45415_3_ - 1, p_i45415_4_)); --p_i45415_3_)
+            for (int i1 = y; y > i1 - 21 && y > 0 && this.func_150857_a(world.getBlock(x, y - 1, z)); --y)
             {
                 ;
             }
 
-            int j1 = this.func_150853_a(p_i45415_2_, p_i45415_3_, p_i45415_4_, this.field_150863_d) - 1;
+            int j1 = this.func_150853_a(x, y, z, this.field_150863_d) - 1;
 
             if (j1 >= 0)
             {
-                this.field_150861_f = new ChunkCoordinates(p_i45415_2_ + j1 * Direction.offsetX[this.field_150863_d], p_i45415_3_, p_i45415_4_ + j1 * Direction.offsetZ[this.field_150863_d]);
-                this.field_150868_h = this.func_150853_a(this.field_150861_f.posX, this.field_150861_f.posY, this.field_150861_f.posZ, this.field_150866_c);
+                this.chunkCoordinates = new ChunkCoordinates(x + j1 * Direction.offsetX[this.field_150863_d], y, z + j1 * Direction.offsetZ[this.field_150863_d]);
+                this.field_150868_h = this.func_150853_a(this.chunkCoordinates.posX, this.chunkCoordinates.posY, this.chunkCoordinates.posZ, this.field_150866_c);
 
                 if (this.field_150868_h < 2 || this.field_150868_h > 21)
                 {
-                    this.field_150861_f = null;
+                    this.chunkCoordinates = null;
                     this.field_150868_h = 0;
                 }
             }
 
-            if (this.field_150861_f != null)
+            if (this.chunkCoordinates != null)
             {
-                this.field_150862_g = this.func_150858_a();
+                this.y = this.func_150858_a();
             }
         }
 
-        protected int func_150853_a(int p_150853_1_, int p_150853_2_, int p_150853_3_, int p_150853_4_)
+        protected int func_150853_a(int x, int y, int z, int index)
         {
-            int j1 = Direction.offsetX[p_150853_4_];
-            int k1 = Direction.offsetZ[p_150853_4_];
+            int offsetX = Direction.offsetX[index];
+            int offsetZ = Direction.offsetZ[index];
             int i1;
             Block block;
 
             for (i1 = 0; i1 < 22; ++i1)
             {
-                block = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
+                block = this.world.getBlock(x + offsetX * i1, y, z + offsetZ * i1);
 
                 if (!this.func_150857_a(block))
                 {
                     break;
                 }
 
-                Block block1 = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_ - 1, p_150853_3_ + k1 * i1);
+                Block block1 = this.world.getBlock(x + offsetX * i1, y - 1, z + offsetZ * i1);
 
                 if (block1 != Blocks.packed_ice)
                 {
@@ -188,7 +195,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                 }
             }
 
-            block = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
+            block = this.world.getBlock(x + offsetX * i1, y, z + offsetZ * i1);
             return block == Blocks.packed_ice ? i1 : 0;
         }
 
@@ -200,15 +207,15 @@ public class BlockPortalNorthrend extends BlockPortal {
             int l;
             label56:
 
-            for (this.field_150862_g = 0; this.field_150862_g < 21; ++this.field_150862_g)
+            for (this.y = 0; this.y < 21; ++this.y)
             {
-                i = this.field_150861_f.posY + this.field_150862_g;
+                i = this.chunkCoordinates.posY + this.y;
 
                 for (j = 0; j < this.field_150868_h; ++j)
                 {
-                    k = this.field_150861_f.posX + j * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                    l = this.field_150861_f.posZ + j * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                    Block block = this.field_150867_a.getBlock(k, i, l);
+                    k = this.chunkCoordinates.posX + j * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                    l = this.chunkCoordinates.posZ + j * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                    Block block = this.world.getBlock(k, i, l);
 
                     if (!this.func_150857_a(block))
                     {
@@ -222,7 +229,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
                     if (j == 0)
                     {
-                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
+                        block = this.world.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
 
                         if (block != Blocks.packed_ice)
                         {
@@ -231,7 +238,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                     }
                     else if (j == this.field_150868_h - 1)
                     {
-                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
+                        block = this.world.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
 
                         if (block != Blocks.packed_ice)
                         {
@@ -243,26 +250,26 @@ public class BlockPortalNorthrend extends BlockPortal {
 
             for (i = 0; i < this.field_150868_h; ++i)
             {
-                j = this.field_150861_f.posX + i * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                k = this.field_150861_f.posY + this.field_150862_g;
-                l = this.field_150861_f.posZ + i * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                j = this.chunkCoordinates.posX + i * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                k = this.chunkCoordinates.posY + this.y;
+                l = this.chunkCoordinates.posZ + i * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
 
-                if (this.field_150867_a.getBlock(j, k, l) != Blocks.packed_ice)
+                if (this.world.getBlock(j, k, l) != Blocks.packed_ice)
                 {
-                    this.field_150862_g = 0;
+                    this.y = 0;
                     break;
                 }
             }
 
-            if (this.field_150862_g <= 21 && this.field_150862_g >= 3)
+            if (this.y <= 21 && this.y >= 3)
             {
-                return this.field_150862_g;
+                return this.y;
             }
             else
             {
-                this.field_150861_f = null;
+                this.chunkCoordinates = null;
                 this.field_150868_h = 0;
-                this.field_150862_g = 0;
+                this.y = 0;
                 return 0;
             }
         }
@@ -275,24 +282,22 @@ public class BlockPortalNorthrend extends BlockPortal {
 
         public boolean func_150860_b()
         {
-            return this.field_150861_f != null && this.field_150868_h >= 2 && this.field_150868_h <= 21 && this.field_150862_g >= 3 && this.field_150862_g <= 21;
+            return this.chunkCoordinates != null && this.field_150868_h >= 2 && this.field_150868_h <= 21 && this.y >= 3 && this.y <= 21;
         }
 
         public void func_150859_c()
         {
             for (int i = 0; i < this.field_150868_h; ++i)
             {
-                int j = this.field_150861_f.posX + Direction.offsetX[this.field_150866_c] * i;
-                int k = this.field_150861_f.posZ + Direction.offsetZ[this.field_150866_c] * i;
+                int j = this.chunkCoordinates.posX + Direction.offsetX[this.field_150866_c] * i;
+                int k = this.chunkCoordinates.posZ + Direction.offsetZ[this.field_150866_c] * i;
 
-                for (int l = 0; l < this.field_150862_g; ++l)
+                for (int l = 0; l < this.y; ++l)
                 {
-                    int i1 = this.field_150861_f.posY + l;
-                    this.field_150867_a.setBlock(j, i1, k, SuperBlocks.portalNorthrend, this.field_150865_b, 2);
+                    int i1 = this.chunkCoordinates.posY + l;
+                    this.world.setBlock(j, i1, k, SuperBlocks.portalNorthrend, this.field_150865_b, 2);
                 }
             }
         }
     }
-
-
 }
