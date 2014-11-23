@@ -444,9 +444,9 @@ public class TeleporterNorthrend extends Teleporter
                 i1 = 63;
             }
 
-            if (i1 > this.worldServerInstance.getActualHeight() - 10)
+            if (i1 > this.worldServerInstance.getActualHeight())
             {
-                i1 = this.worldServerInstance.getActualHeight() - 10;
+                i1 = this.worldServerInstance.getActualHeight();
             }
 
             j5 = i1;
@@ -459,10 +459,7 @@ public class TeleporterNorthrend extends Teleporter
                     {
                         k3 = i5 + (i3 - 1) * k5 + k2 * l5;
                         i4 = j2 + (i3 - 1) * l5 - k2 * k5;
-                        if(!heightSet) {
-                            j5 = getWorldHeightAtCoordinates(k3, i4);
-                            heightSet = true;
-                        }
+                        j5 = i1 = SuperBiomes.northGlacier == this.worldServerInstance.getBiomeGenForCoords(k3, i4) ? 63 : i1;
                         j3 = j5 + l2;
                         flag = l2 < 0;
                         this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.packed_ice : Blocks.air);

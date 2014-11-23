@@ -32,7 +32,7 @@ public class NorthrendGenLayerBiome extends GenLayer
             for (int j1 = 0; j1 < p_75904_3_; ++j1)
             {
                 this.initChunkSeed((long)(j1 + p_75904_1_), (long)(i1 + p_75904_2_));
-                aint1[j1 + i1 * p_75904_3_] = 41 + this.nextInt(4);
+                aint1[j1 + i1 * p_75904_3_] = WorldChunkManagerNorthrend.allowedBiomes.get(this.nextInt(WorldChunkManagerNorthrend.allowedBiomes.size())).biomeID;
             }
         }
 

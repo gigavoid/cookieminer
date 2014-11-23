@@ -1,8 +1,11 @@
 package com.gigavoid.supermod.biome;
 
 import com.gigavoid.supermod.block.SuperBlocks;
+import com.gigavoid.supermod.entity.EntityYeti;
+import com.gigavoid.supermod.worldgen.northrend.WorldChunkManagerNorthrend;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -14,6 +17,21 @@ public class SuperBiomeGenBaseNorthrend extends BiomeGenBase {
     public SuperBiomeGenBaseNorthrend(int p_i1971_1_)
     {
         super(p_i1971_1_, true);
+        this.setEnableSnow();
+        spawnableCaveCreatureList.clear();
+        spawnableCreatureList.clear();
+        spawnableMonsterList.clear();
+        spawnableWaterCreatureList.clear();
+        spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityYeti.class, 2, 1, 1));
+        spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
+        temperature = 0.0f;
+        rainfall = 1.0f;
+        waterColorMultiplier = 0xFFFFFF;
+    }
+
+    @Override
+    public int getSkyColorByTemp(float p_76731_1_) {
+        return 0x000044;
     }
 
     @Override
@@ -33,7 +51,7 @@ public class SuperBiomeGenBaseNorthrend extends BiomeGenBase {
         {
             int i2 = (j1 * 16 + i1) * k1 + l1;
 
-            if (l1 <= 0 + p_150560_2_.nextInt(5))
+            if (l1 <= p_150560_2_.nextInt(5))
             {
                 p_150560_3_[i2] = Blocks.bedrock;
             }

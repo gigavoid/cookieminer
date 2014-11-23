@@ -16,8 +16,8 @@ import java.util.Random;
 public class BiomeGenBloodMarshes extends BiomeGenBase {
     SuperWorldGenBloodTree treeGen = new SuperWorldGenBloodTree(true);
 
-    public BiomeGenBloodMarshes(){
-        super(45);
+    public BiomeGenBloodMarshes(int id){
+        super(id);
         setBiomeName("Blood Marshes");
         setHeight(new BiomeGenBase.Height(-0.1f, 0.01f));
         setColor(0x00FF00);

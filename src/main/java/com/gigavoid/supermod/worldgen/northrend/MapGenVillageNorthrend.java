@@ -1,16 +1,20 @@
 package com.gigavoid.supermod.worldgen.northrend;
 
 import com.gigavoid.supermod.biome.SuperBiomes;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.MapGenVillage;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureStart;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Random;
 
 public class MapGenVillageNorthrend extends MapGenVillage
 {
     public MapGenVillageNorthrend() {
-        villageSpawnBiomes = Arrays.asList(new BiomeGenBase[]{SuperBiomes.northPlains});
+        villageSpawnBiomes = Arrays.asList(new BiomeGenBase[]{SuperBiomes.northPlains, SuperBiomes.northHighlands});
     }
 
     @Override

@@ -37,7 +37,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                 player.mcServer.getConfigurationManager().transferPlayerToDimension(player, SuperMod.northrendDimID, new TeleporterNorthrend(mServer.worldServerForDimension(SuperMod.northrendDimID)));
             } else {
                 player.timeUntilPortal = 10;
-                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterNorthrend(mServer.worldServerForDimension(1)));
+                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterNorthrend(mServer.worldServerForDimension(0)));
             }
         }
     }
@@ -114,7 +114,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
     @Override
     public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-        if (p_149726_1_.provider.dimensionId > 0 || !SuperBlocks.portalNorthrend.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
+        if (!SuperBlocks.portalNorthrend.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
         {
             if (!World.doesBlockHaveSolidTopSurface(p_149726_1_, p_149726_2_, p_149726_3_ - 1, p_149726_4_))
             {
@@ -222,7 +222,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                         break label56;
                     }
 
-                    if (block == SuperBlocks.portalNorthrend)
+                    if (block == SuperBlocks.cityBlock)
                     {
                         ++this.field_150864_e;
                     }

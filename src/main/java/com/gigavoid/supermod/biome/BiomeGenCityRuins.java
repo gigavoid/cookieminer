@@ -19,8 +19,8 @@ import java.util.Random;
 public class BiomeGenCityRuins extends  BiomeGenBase {
     CityDecorator decorator = new CityDecorator();
 
-    public BiomeGenCityRuins(){
-        super(46);
+    public BiomeGenCityRuins(int id){
+        super(id);
         setBiomeName("Old City");
         setHeight(new BiomeGenBase.Height(-0.1f, .0f));
         setColor(0x00FF00);
