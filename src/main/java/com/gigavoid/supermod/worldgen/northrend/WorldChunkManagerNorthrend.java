@@ -24,7 +24,9 @@ import java.util.List;
 import java.util.Random;
 
 public class WorldChunkManagerNorthrend extends WorldChunkManager {
-    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(SuperBiomes.northForest, SuperBiomes.northGlacier, SuperBiomes.northMountains, SuperBiomes.northPlains));
+    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(
+            SuperBiomes.northForest, SuperBiomes.northFirForest, SuperBiomes.northGlacier, SuperBiomes.northMountains,
+            SuperBiomes.northPlains, SuperBiomes.northHighlands, SuperBiomes.northHugeMountains));
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;

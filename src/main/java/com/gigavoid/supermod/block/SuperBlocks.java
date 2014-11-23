@@ -30,6 +30,8 @@ public class SuperBlocks {
     public static final BlockCityLamp cityLampBlock = new BlockCityLamp();
     public static final BlockCityActivePowercore cityActivePowercoreBlock = new BlockCityActivePowercore();
     public static final BlockCityInactivePowercore cityInactivePowercoreBlock = new BlockCityInactivePowercore();
+    public static final BlockNorthPlanks northPlanks = new BlockNorthPlanks();
+    public static final BlockNorthCobblestone northCobble = new BlockNorthCobblestone();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -55,5 +57,7 @@ public class SuperBlocks {
         GameRegistry.registerBlock(cityLampBlock, "cityLampBlock");
         GameRegistry.registerBlock(cityActivePowercoreBlock, "cityActivePowercoreBlock");
         GameRegistry.registerBlock(cityInactivePowercoreBlock, "cityInactivePowercoreBlock");
+        GameRegistry.registerBlock(northPlanks, "northPlanks");
+        GameRegistry.registerBlock(northCobble, "northCobblestone");
     }
 }

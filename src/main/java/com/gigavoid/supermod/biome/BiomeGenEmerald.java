@@ -21,10 +21,8 @@ public class BiomeGenEmerald extends BiomeGenBase {
     SuperWorldGenEmeraldTree treeGen = new SuperWorldGenEmeraldTree(true);
     SuperEmeraldDecorator decorator = new SuperEmeraldDecorator();
 
-    public BiomeGenEmerald(){
-        super(40);
-
-
+    public BiomeGenEmerald(int id){
+        super(id);
         setBiomeName("Emerald Forest");
         setHeight(new BiomeGenBase.Height(0.0f, 0.2f));
         setColor(0x00FF00);

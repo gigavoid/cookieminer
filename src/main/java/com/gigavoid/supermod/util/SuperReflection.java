@@ -20,7 +20,7 @@ public class SuperReflection {
     }
 
 
-    private static Field getField(Class clazz, String fieldName) {
+    public static Field getField(Class clazz, String fieldName) {
         try {
             return clazz.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {

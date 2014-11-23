@@ -19,4 +19,10 @@ public class WorldProviderNorthrend extends WorldProvider {
     public String getDimensionName() {
         return "Northrend";
     }
+
+    @Override
+    public void updateWeather() {
+        worldObj.setRainStrength(1.0f);
+        worldObj.getWorldInfo().setRaining(true);
+    }
 }

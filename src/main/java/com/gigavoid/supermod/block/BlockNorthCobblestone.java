@@ -11,11 +11,11 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-11-06.
  */
-public class BlockNorthStone extends Block {
-    public BlockNorthStone(){
+public class BlockNorthCobblestone extends Block {
+    public BlockNorthCobblestone(){
         super(Material.ice);
         this.setHardness(2.0f);
-        this.setBlockTextureName("supermod:northStone");
+        this.setBlockTextureName("supermod:northCobble");
         this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockName("glacialIce");
@@ -25,7 +25,7 @@ public class BlockNorthStone extends Block {
     @Override
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return Item.getItemFromBlock(SuperBlocks.northCobble);
+        return Item.getItemFromBlock(this);
     }
 
     @Override

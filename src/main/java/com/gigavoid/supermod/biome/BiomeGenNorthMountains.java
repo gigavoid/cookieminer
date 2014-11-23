@@ -15,21 +15,12 @@ import java.util.Random;
  */
 public class BiomeGenNorthMountains extends SuperBiomeGenBaseNorthrend {
 
-    public BiomeGenNorthMountains(){
-        super(42);
+    public BiomeGenNorthMountains(int id){
+        super(id);
 
         setBiomeName("Northrend Mountains");
-        setHeight(new BiomeGenBase.Height(2.5f, .8f));
-        waterColorMultiplier = 0xFFFFFF;
+        setHeight(new BiomeGenBase.Height(1.5f, .6f));
         topBlock = Block.getBlockFromName("snow");
         fillerBlock = Block.getBlockFromName("snow");
-        spawnableCaveCreatureList.clear();
-        spawnableCreatureList.clear();
-        spawnableMonsterList.clear();
-        spawnableWaterCreatureList.clear();
-        spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityYeti.class, 2, 1, 1));
-        spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
-        temperature = 0.0f;
-        rainfall = 1.0f;
     }
 }
