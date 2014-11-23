@@ -12,46 +12,62 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by ineentho on 2014-11-03.
  */
 public class TileEntityRopeWheel extends TileEntity {
-    public static List<TileEntityRopeWheel> allTileEntities = new ArrayList<TileEntityRopeWheel>();
-
-
-    public float rot = 0;
     public short direction;
     public List<int[]> ropePoints = new ArrayList<int[]>();
+    private HashMap<Integer, EntityRope> spawnedRopes = new HashMap<Integer, EntityRope>();
 
-    public List<EntityRope> ropes = new ArrayList<EntityRope>();
+    public static int getRopeId(int[] to, int[] from) {
+        int[] id = new int[6];
+        if(to[0] > from[0]){
+            id[0] = to[0];
+            id[1] = from[0];
+        }
 
+        if(to[1] > from[1]){
+            id[2] = to[1];
+            id[3] = from[1];
+        }
 
+        if(to[2] > from[2]){
+            id[4] = to[2];
+            id[5] = from[2];
+        }
 
-    public TileEntityRopeWheel() {
-        allTileEntities.add(this);
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        allTileEntities.remove(this);
-        super.finalize();
+        String idString = "";
+        for(int i : id) {
+            idString += i + ".";
+        }
+        return idString.hashCode();
     }
 
     public static void addRopeFromTo(World world, int[] from, int[] to) {
+        if(from[0] == to[0] && from[1] == to[1] && from[2] == to[2])
+            return;
+
+        int id = getRopeId(to, from);
+
         TileEntity fromTileEntity = world.getTileEntity(from[0], from[1], from[2]);
         TileEntity toTileEntity = world.getTileEntity(to[0], to[1], to[2]);
-        
+
         if(fromTileEntity == null || toTileEntity == null)
             return;
-        
-        
+
+
         TileEntityRopeWheel fromWheel = (TileEntityRopeWheel) fromTileEntity;
         TileEntityRopeWheel toWheel = (TileEntityRopeWheel) toTileEntity;
 
-        if(!fromWheel.containsRopePoint(to) && !toWheel.containsRopePoint(from))
-            fromWheel.addRopePoint(to);
+        if(!fromWheel.containsRopePoint(to))
+            fromWheel.addRopePoint(to, id, 0);
+
+        if(!toWheel.containsRopePoint(from))
+            toWheel.addRopePoint(from, id, 1);
     }
 
     private boolean containsRopePoint(int[] to) {
@@ -62,13 +78,12 @@ public class TileEntityRopeWheel extends TileEntity {
         return false;
     }
 
-    private void addRopePoint(int[] point) {
-        ropePoints.add(point);
-        refreshRopes();
-    }
+    private void addRopePoint(int[] point, int id, int direction) {
+        int[] rope = new int[] {point[0], point[1], point[2], id, direction};
+        ropePoints.add(rope);
 
-    public void frame() {
-        rot += .05f;
+        if(direction == 1 && worldObj.isRemote)
+            spawnRope(rope);
     }
 
     @Override
@@ -97,6 +112,42 @@ public class TileEntityRopeWheel extends TileEntity {
     }
 
     @Override
+    public void invalidate() {
+        super.invalidate();
+
+        for(EntityRope rope : spawnedRopes.values()) {
+            rope.setDead();
+        }
+
+        for(int[] rope : ropePoints) {
+            int x = rope[0];
+            int y = rope[1];
+            int z = rope[2];
+
+            TileEntity tileEntity = worldObj.getTileEntity(x, y, z);
+            if(tileEntity != null && tileEntity instanceof TileEntityRopeWheel) {
+                TileEntityRopeWheel ropeWheel = (TileEntityRopeWheel) tileEntity;
+                ropeWheel.removeRopeTo(getPos());
+            }
+        }
+    }
+
+    private void removeRopeTo(int[] pos) {
+        for(int[] rope : ropePoints) {
+            if(rope[0] == pos[0] && rope[1] == pos[1] && rope[2] == pos[2]) {
+                ropePoints.remove(rope);
+                int id = rope[3];
+
+                EntityRope entityRope = spawnedRopes.get(id);
+                if(entityRope != null)
+                    entityRope.setDead();
+
+                return;
+            }
+        }
+    }
+
+    @Override
     public Packet getDescriptionPacket() {
         NBTTagCompound tags = new NBTTagCompound();
         writeToNBT(tags);
@@ -107,61 +158,33 @@ public class TileEntityRopeWheel extends TileEntity {
     @Override
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
         readFromNBT(pkt.func_148857_g());
-        refreshRopes();
-    }
-
-    @Override
-    public void invalidate() {
-        super.invalidate();
-
-        for(TileEntityRopeWheel ropeWheel : TileEntityRopeWheel.allTileEntities) {
-            ropeWheel.despawnRopes();
-            for(int[] rope : ropePoints) {
-                TileEntity tileEntity = ropeWheel.worldObj.getTileEntity(rope[0], rope[1], rope[2]);
-                if (tileEntity == null || !(tileEntity instanceof TileEntityRopeWheel))
-                    continue;
-                TileEntityRopeWheel otherRopeWheel = (TileEntityRopeWheel) tileEntity;
-                otherRopeWheel.refreshRopes();
-            }
-        }
-    }
-
-    private void spawnRopes() {
-        for(int[] ropePoint : ropePoints) {
-            int rX = ropePoint[0];
-            int rY = ropePoint[1];
-            int rZ = ropePoint[2];
-            EntityRope rope = new EntityRope(worldObj, xCoord, yCoord, zCoord, rX, rY, rZ);
-            worldObj.spawnEntityInWorld(rope);
-            ropes.add(rope);
-        }
-    }
-
-
-    public void refreshRopes() {
-        if(!worldObj.isRemote)
-            return;
-
-        despawnRopes();
-        cleanupOldRopes();
         spawnRopes();
     }
 
-    private void cleanupOldRopes() {
-        List<int[]> oldRopes = new ArrayList<int[]>(ropePoints);
-        for(int[] rope : oldRopes){
-            TileEntityRopeWheel.addRopeFromTo(worldObj, getPos(), rope);
+
+    private void spawnRope(int[] ropePoint) {
+        int direction = ropePoint[4];
+        if(direction == 0)
+            return;
+
+        int rX = ropePoint[0];
+        int rY = ropePoint[1];
+        int rZ = ropePoint[2];
+        int id = ropePoint[3];
+        EntityRope rope = new EntityRope(worldObj, xCoord, yCoord, zCoord, rX, rY, rZ);
+        worldObj.spawnEntityInWorld(rope);
+        spawnedRopes.put(id, rope);
+    }
+
+    public void spawnRopes() {
+        for(int[] ropePoint : ropePoints) {
+            spawnRope(ropePoint);
         }
     }
 
-    private void despawnRopes() {
-        for(EntityRope rope : ropes) {
-            worldObj.removeEntity(rope);
-        }
-        ropes.clear();
-    }
 
     public int[] getPos() {
         return new int[]{xCoord, yCoord, zCoord};
     }
+
 }
