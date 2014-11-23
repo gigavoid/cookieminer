@@ -9,6 +9,7 @@ import com.gigavoid.supermod.keybinding.SuperKeyBinds;
 import com.gigavoid.supermod.recepies.SuperRecipie;
 import com.gigavoid.supermod.recepies.SuperSmeltingRecipie;
 import com.gigavoid.supermod.renderer.SuperRenderer;
+import com.gigavoid.supermod.tileentity.SuperTileEntities;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
@@ -51,5 +52,6 @@ public class SuperMod
         SuperRecipie.initializeRecipes();
         SuperSmeltingRecipie.InitializeSmektingRecipes();
         SuperEntities.registerEntities();
+        SuperTileEntities.initializeEntities();
     }
 }

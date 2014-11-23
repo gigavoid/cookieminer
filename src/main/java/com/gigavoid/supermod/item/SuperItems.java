@@ -3,6 +3,7 @@ package com.gigavoid.supermod.item;
 
 import com.gigavoid.supermod.item.material.*;
 import com.gigavoid.supermod.item.misc.MagicEnderEyeItem;
+import com.gigavoid.supermod.item.misc.ItemRopewayBasket;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
 import com.gigavoid.supermod.item.tool.RopewayWrench;
@@ -23,6 +24,7 @@ public class SuperItems {
     public static final MagicEnderEyeItem magicEnderEye = new MagicEnderEyeItem();
     public static final SaxeliumIngotItem saxeliumIngot = new SaxeliumIngotItem();
     public static final RopewayWrench ropewayWrench = new RopewayWrench();
+    public static final ItemRopewayBasket ropewayBasket = new ItemRopewayBasket();
 
     public static final IFuelHandler fuelHandler = new IFuelHandler() {
         @Override
@@ -45,6 +47,7 @@ public class SuperItems {
         GameRegistry.registerItem(magicEnderEye, "magicEnderEye");
         GameRegistry.registerItem(saxeliumIngot, "saxeliumIngot");
         GameRegistry.registerItem(ropewayWrench, "ropewayWrench");
+        GameRegistry.registerItem(ropewayBasket, "ropewayBasket");
 
         GameRegistry.registerFuelHandler(fuelHandler);
     }
