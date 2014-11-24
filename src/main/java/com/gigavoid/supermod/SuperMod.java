@@ -11,6 +11,7 @@ import com.gigavoid.supermod.recepies.SuperSmeltingRecipie;
 import com.gigavoid.supermod.renderer.SuperRenderer;
 import com.gigavoid.supermod.tileentity.SuperTileEntities;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
+import com.gigavoid.supermod.worldgen.northrend.NorthrendVillageBlockReplacer;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
 import cpw.mods.fml.common.Mod;
@@ -55,7 +56,7 @@ public class SuperMod
         SuperEntities.registerEntities();
         SuperTileEntities.initializeEntities();
 
-        MinecraftForge.TERRAIN_GEN_BUS.register(new SuperVillageGenerator());
+        MinecraftForge.TERRAIN_GEN_BUS.register(new NorthrendVillageBlockReplacer());
 
     }
 }

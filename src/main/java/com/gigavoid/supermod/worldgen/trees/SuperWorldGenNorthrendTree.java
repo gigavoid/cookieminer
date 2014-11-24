@@ -24,11 +24,14 @@ public class SuperWorldGenNorthrendTree extends WorldGenAbstractTree {
 
     @Override
     public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        if (type == TreeType.REGULAR)
-            genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
-        else if (type == TreeType.FIR)
-            genTreeFir(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
-        return true;
+        if (p_76484_1_.getBlock(p_76484_3_, p_76484_4_- 2, p_76484_5_) == SuperBlocks.northDirt) {
+            if (type == TreeType.REGULAR)
+                genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+            else if (type == TreeType.FIR)
+                genTreeFir(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+            return true;
+        }
+        return false;
     }
 
     private void genTree(World world, Random random, int x, int y, int z) {

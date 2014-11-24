@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class BlockNorthCobblestone extends Block {
     public BlockNorthCobblestone(){
-        super(Material.ice);
+        super(Material.rock);
         this.setHardness(2.0f);
         this.setBlockTextureName("supermod:northCobble");
         this.setHarvestLevel("pickaxe", 0);
