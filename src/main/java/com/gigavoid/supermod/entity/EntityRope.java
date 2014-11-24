@@ -33,7 +33,7 @@ public class EntityRope extends Entity {
         targetZ = z1;
         this.ignoreFrustumCheck = true;
         setPosition(x0, y0, z0);
-        setSize(.1f ,.1f);
+        //setSize(.1f ,.1f);
         model = new ModelRope(this);
     }
 

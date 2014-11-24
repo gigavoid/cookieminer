@@ -30,6 +30,9 @@ public class RopewayWrench extends Item {
         if(RopewayWrench.isPathingInProgress(item)) {
             int[] pointA = {x, y, z};
             int[] pointB = RopewayWrench.getPathStart(item);
+            if(pointA[0] - pointB[0] != 0 && pointA[2] - pointB[2] != 0)
+                return false;
+
             TileEntityRopeWheel.addRopeFromTo(world, pointA, pointB);
             RopewayWrench.clearPathStart(item);
         } else {
