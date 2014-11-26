@@ -441,6 +441,9 @@ public class TeleporterNorthrend extends Teleporter
 
         boolean flag;
 
+        if(j2 < 100)
+            j2 = worldServerInstance.getHeightValue(k5, k2);
+
         if (d0 < 0.0D)
         {
             if (i1 < 70)
