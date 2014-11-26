@@ -6,18 +6,16 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
 import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.settings.KeyBinding;
-import org.lwjgl.input.Keyboard;
-import scala.Array;
-
-import java.util.List;
 
 /**
  * Created by ineentho on 2014-10-25.
  */
 public class SuperKeyBinds {
     public static SuperKeyBinding[] keybinds =  {
-            new UpgradeToolKeyBind()
+            new UpgradeToolKeyBind(),
+            new AutoFlightKeyBind(),
+            new FlightSpeedUpKeyBind(),
+            new FlightSpeedDownKeyBind()
     };
 
     public static void registerKeybinds() {
