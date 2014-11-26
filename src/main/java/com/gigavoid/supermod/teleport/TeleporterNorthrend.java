@@ -435,7 +435,7 @@ public class TeleporterNorthrend extends Teleporter
             l5 = -l5;
         }
 
-        boolean flag, heightSet = false;
+        boolean flag;
 
         if (d0 < 0.0D)
         {
