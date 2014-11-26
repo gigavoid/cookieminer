@@ -1,16 +1,17 @@
 package com.gigavoid.supermod.biome;
 
 import com.gigavoid.supermod.block.SuperBlocks;
-import com.gigavoid.supermod.entity.EntityYeti;
-import com.gigavoid.supermod.worldgen.trees.SuperWorldGenGlacierCrack;
-import net.minecraft.entity.monster.EntitySkeleton;
+import com.gigavoid.supermod.worldgen.trees.SuperWorldGenIgloo;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+
+import java.util.Random;
 
 /**
  * Created by Rasmus on 2014-11-03.
  */
 public class BiomeGenNorthGlacier extends SuperBiomeGenBaseNorthrend {
-    SuperWorldGenGlacierCrack crackGen = new SuperWorldGenGlacierCrack(true);
+    SuperWorldGenIgloo iglooGen = new SuperWorldGenIgloo(true);
 
     public BiomeGenNorthGlacier(int id) {
         super(id);
@@ -22,11 +23,8 @@ public class BiomeGenNorthGlacier extends SuperBiomeGenBaseNorthrend {
         theBiomeDecorator.treesPerChunk = 1;
     }
 
-    /*
-    Not to be used.
     @Override
     public WorldGenAbstractTree func_150567_a(Random r) {
-        return crackGen;
+        return iglooGen;
     }
-    */
 }

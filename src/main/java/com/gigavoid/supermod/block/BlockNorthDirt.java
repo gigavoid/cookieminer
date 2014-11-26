@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class BlockNorthDirt extends Block {
     public BlockNorthDirt() {
-        super(Material.ice);
+        super(Material.ground);
         this.setHardness(2.0f);
         this.setBlockTextureName("supermod:north_dirt");
         this.setHarvestLevel("pickaxe", 0);

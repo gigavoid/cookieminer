@@ -31,7 +31,12 @@ public class SuperBlocks {
     public static final BlockCityActivePowercore cityActivePowercoreBlock = new BlockCityActivePowercore();
     public static final BlockCityInactivePowercore cityInactivePowercoreBlock = new BlockCityInactivePowercore();
     public static final BlockNorthPlanks northPlanks = new BlockNorthPlanks();
+    public static final BlockNorthStairs northStairs = new BlockNorthStairs(0);
     public static final BlockNorthCobblestone northCobble = new BlockNorthCobblestone();
+    public static final BlockNorthStoneStairs northCobbleStairs = new BlockNorthStoneStairs(0);
+    public static final BlockNorthFence northFence = new BlockNorthFence();
+    public static final BlockNorthFenceGate northFenceGate = new BlockNorthFenceGate();
+    public static final BlockNorthGlaciemPlant northGlaciemPlant = new BlockNorthGlaciemPlant();
 
     public static void initializeBlocks(){
         GameRegistry.registerBlock(emeraldLog, "emeraldLog");
@@ -58,6 +63,11 @@ public class SuperBlocks {
         GameRegistry.registerBlock(cityActivePowercoreBlock, "cityActivePowercoreBlock");
         GameRegistry.registerBlock(cityInactivePowercoreBlock, "cityInactivePowercoreBlock");
         GameRegistry.registerBlock(northPlanks, "northPlanks");
+        GameRegistry.registerBlock(northStairs, "northStairs");
         GameRegistry.registerBlock(northCobble, "northCobblestone");
+        GameRegistry.registerBlock(northCobbleStairs, "northCobbleStairs");
+        GameRegistry.registerBlock(northFence, "northFence");
+        GameRegistry.registerBlock(northFenceGate, "northFenceGate");
+        GameRegistry.registerBlock(northGlaciemPlant, "northGlaciemPlant");
     }
 }
