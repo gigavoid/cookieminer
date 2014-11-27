@@ -14,6 +14,7 @@ import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.northrend.NorthrendVillageBlockReplacer;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
+import com.gigavoid.supermod.worldgen.structure.SuperStructureVillagePieces;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -42,6 +43,8 @@ public class SuperMod
 
         DimensionManager.registerProviderType(northrendDimID, WorldProviderNorthrend.class, false);
         DimensionManager.registerDimension(northrendDimID, northrendDimID);
+
+        SuperStructureVillagePieces.registerStructures();
     }
 
     @EventHandler

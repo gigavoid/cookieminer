@@ -10,7 +10,9 @@ public class NorthrendVillageBlockReplacer {
 
     @SubscribeEvent
     public void event(BiomeEvent.GetVillageBlockID event){
-        if (WorldChunkManagerNorthrend.allowedBiomes.indexOf(event.biome) != -1 || event.biome == null){
+        if(event.type > 100)
+            System.out.println(event.type);
+        if (WorldChunkManagerNorthrend.allowedBiomes.indexOf(event.biome) != -1){
             event.setResult(Event.Result.DENY);
             if (event.original == Blocks.log || event.original == Blocks.log2) {
                 event.replacement = SuperBlocks.northLog;
