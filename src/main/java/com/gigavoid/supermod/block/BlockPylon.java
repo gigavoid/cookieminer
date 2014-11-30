@@ -11,7 +11,5 @@ public class BlockPylon extends Block {
     protected BlockPylon() {
         super(Material.wood);
         this.setCreativeTab(CreativeTabs.tabDecorations);
-        this.setBlockTextureName("supermod:pylon");
-        this.setBlockName("pylon");
     }
 }

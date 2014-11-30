@@ -2,6 +2,7 @@ package com.gigavoid.supermod.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -15,16 +16,14 @@ public class BlockNorthStone extends Block {
     public BlockNorthStone(){
         super(Material.rock);
         this.setHardness(2.0f);
-        this.setBlockTextureName("supermod:northStone");
         this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("glacialIce");
         this.setStepSound(soundTypeSnow);
     }
 
     @Override
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(SuperBlocks.northCobble);
+        return Item.getItemFromBlock(this);
     }
 }

@@ -10,12 +10,7 @@ import net.minecraft.world.World;
  */
 public class BlockNorthFence extends BlockFence {
     public BlockNorthFence(){
-        super("supermod:planks_north", Material.wood);
+        super(Material.wood);
         this.setCreativeTab(CreativeTabs.tabDecorations);
-    }
-
-    @Override
-    public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
-        return true;
     }
 }

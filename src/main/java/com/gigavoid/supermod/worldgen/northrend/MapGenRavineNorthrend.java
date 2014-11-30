@@ -3,7 +3,9 @@ package com.gigavoid.supermod.worldgen.northrend;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -233,7 +235,7 @@ public class MapGenRavineNorthrend extends MapGenBase
     //Vanilla bugs to make sure that we generate the map the same way vanilla does.
     private boolean isTopBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ)
     {
-        BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
+        BiomeGenBase biome = worldObj.getBiomeGenForCoords(new BlockPos(x + chunkX * 16, y, z + chunkZ * 16));
         return (isExceptionBiome(biome) ? data[index] == Blocks.grass : data[index] == biome.topBlock);
     }
 
@@ -254,9 +256,9 @@ public class MapGenRavineNorthrend extends MapGenBase
      */
     protected void digBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop)
     {
-        BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
-        Block top = (biome == SuperBiomes.northGlacier ? SuperBlocks.glacialIce : biome.topBlock);
-        Block filler = (isExceptionBiome(biome) ? Blocks.dirt  : biome.fillerBlock);
+        BiomeGenBase biome = worldObj.getBiomeGenForCoords(new BlockPos(x + chunkX * 16, y, z + chunkZ * 16));
+        IBlockState top = (biome == SuperBiomes.northGlacier ? SuperBlocks.glacialIce.getDefaultState() : biome.topBlock);
+        IBlockState filler = (isExceptionBiome(biome) ? Blocks.dirt.getDefaultState() : biome.fillerBlock);
         Block block = data[index];
 
         if (block == SuperBlocks.northStone || block == filler || block == top)

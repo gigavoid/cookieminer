@@ -1,9 +1,6 @@
 package com.gigavoid.supermod.block;
 
-import com.gigavoid.supermod.renderer.RendererRopeWheel;
-import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperBlocks {
 
@@ -25,11 +22,6 @@ public class SuperBlocks {
     public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
     public static final BlockMeat meat = new BlockMeat();
     public static final BlockBone bone = new BlockBone();
-    public static final BlockCity cityBlock = new BlockCity();
-    public static final BlockCityPillar cityPillarBlock = new BlockCityPillar();
-    public static final BlockCityLamp cityLampBlock = new BlockCityLamp();
-    public static final BlockCityActivePowercore cityActivePowercoreBlock = new BlockCityActivePowercore();
-    public static final BlockCityInactivePowercore cityInactivePowercoreBlock = new BlockCityInactivePowercore();
     public static final BlockNorthPlanks northPlanks = new BlockNorthPlanks();
     public static final BlockNorthStairs northStairs = new BlockNorthStairs(0);
     public static final BlockNorthCobblestone northCobble = new BlockNorthCobblestone();
@@ -57,11 +49,6 @@ public class SuperBlocks {
         GameRegistry.registerBlock(portalNorthrend, "portalNorthrend");
         GameRegistry.registerBlock(meat, "meat");
         GameRegistry.registerBlock(bone, "bone");
-        GameRegistry.registerBlock(cityBlock, "cityBlock");
-        GameRegistry.registerBlock(cityPillarBlock, "cityPillarBlock");
-        GameRegistry.registerBlock(cityLampBlock, "cityLampBlock");
-        GameRegistry.registerBlock(cityActivePowercoreBlock, "cityActivePowercoreBlock");
-        GameRegistry.registerBlock(cityInactivePowercoreBlock, "cityInactivePowercoreBlock");
         GameRegistry.registerBlock(northPlanks, "northPlanks");
         GameRegistry.registerBlock(northStairs, "northStairs");
         GameRegistry.registerBlock(northCobble, "northCobblestone");

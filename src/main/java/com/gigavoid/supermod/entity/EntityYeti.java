@@ -2,9 +2,6 @@ package com.gigavoid.supermod.entity;
 
 import java.util.UUID;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -29,11 +26,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeModContainer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityYeti extends EntityMob {
 
@@ -62,8 +60,8 @@ public class EntityYeti extends EntityMob {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true, false));
         this.setSize(0.8F, 1.8F);
     }
 
@@ -88,7 +86,7 @@ public class EntityYeti extends EntityMob {
     }
 
     public boolean getCanSpawnHere() {
-        return this.worldObj.difficultySetting != EnumDifficulty.PEACEFUL && this.isValidLightLevel();
+        return this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.isValidLightLevel();
     }
 
     /**
@@ -108,7 +106,7 @@ public class EntityYeti extends EntityMob {
     /**
      * Returns true if the newer Entity AI code should be run
      */
-    @Override
+
     protected boolean isAIEnabled() {
         return true;
     }
@@ -156,59 +154,6 @@ public class EntityYeti extends EntityMob {
     }
 
     /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    @Override
-    public void onLivingUpdate() {
-        if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild()) {
-            float f = this.getBrightness(1.0F);
-
-            if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))) {
-                boolean flag = true;
-                ItemStack itemstack = this.getEquipmentInSlot(4);
-
-                if (itemstack != null) {
-                    if (itemstack.isItemStackDamageable()) {
-                        itemstack.setItemDamage(itemstack.getItemDamageForDisplay() + this.rand.nextInt(2));
-
-                        if (itemstack.getItemDamageForDisplay() >= itemstack.getMaxDamage()) {
-                            this.renderBrokenItemStack(itemstack);
-                            this.setCurrentItemOrArmor(4, (ItemStack) null);
-                        }
-                    }
-
-                    flag = false;
-                }
-            }
-        }
-
-        super.onLivingUpdate();
-    }
-
-    /**
-     * Called when the entity is attacked.
-     */
-    @Override
-    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
-        if (!super.attackEntityFrom(par1DamageSource, par2)) {
-            return false;
-        } else {
-            EntityLivingBase entitylivingbase = this.getAttackTarget();
-
-            if (entitylivingbase == null && this.getEntityToAttack() instanceof EntityLivingBase) {
-                entitylivingbase = (EntityLivingBase) this.getEntityToAttack();
-            }
-
-            if (entitylivingbase == null && par1DamageSource.getEntity() instanceof EntityLivingBase) {
-                entitylivingbase = (EntityLivingBase) par1DamageSource.getEntity();
-            }
-
-            return true;
-        }
-    }
-
-    /**
      * Called to update the entity's position/logic.
      */
     @Override
@@ -221,7 +166,7 @@ public class EntityYeti extends EntityMob {
         boolean flag = super.attackEntityAsMob(par1Entity);
 
         if (flag) {
-            int i = this.worldObj.difficultySetting.getDifficultyId();
+            int i = this.worldObj.getDifficulty().getDifficultyId();
 
             if (this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < (float) i * 0.3F) {
                 par1Entity.setFire(2 * i);
@@ -256,11 +201,6 @@ public class EntityYeti extends EntityMob {
     }
 
     @Override
-    protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_) {
-        this.playSound("mob.zombie.step", 0.15F, 1.0F);
-    }
-
-    @Override
     protected Item getDropItem() {
         return Items.rotten_flesh;
     }
@@ -271,20 +211,6 @@ public class EntityYeti extends EntityMob {
     @Override
     public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.UNDEFINED;
-    }
-
-    @Override
-    protected void dropRareDrop(int par1) {
-        switch (this.rand.nextInt(3)) {
-            case 0:
-                this.dropItem(Items.iron_ingot, 1);
-                break;
-            case 1:
-                this.dropItem(Items.carrot, 1);
-                break;
-            case 2:
-                this.dropItem(Items.potato, 1);
-        }
     }
 
     /**
@@ -318,7 +244,7 @@ public class EntityYeti extends EntityMob {
     public void onKillEntity(EntityLivingBase par1EntityLivingBase) {
         super.onKillEntity(par1EntityLivingBase);
 
-        if ((this.worldObj.difficultySetting == EnumDifficulty.NORMAL || this.worldObj.difficultySetting == EnumDifficulty.HARD) && par1EntityLivingBase instanceof EntityVillager) {
+        if ((this.worldObj.getDifficulty() == EnumDifficulty.NORMAL || this.worldObj.getDifficulty() == EnumDifficulty.HARD) && par1EntityLivingBase instanceof EntityVillager) {
             if (this.rand.nextBoolean()) {
                 return;
             }
@@ -333,7 +259,7 @@ public class EntityYeti extends EntityMob {
             }
 
             this.worldObj.spawnEntityInWorld(entityYeti);
-            this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+            this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016, new BlockPos((int) this.posX, (int) this.posY, (int) this.posZ), 0);
         }
     }
 

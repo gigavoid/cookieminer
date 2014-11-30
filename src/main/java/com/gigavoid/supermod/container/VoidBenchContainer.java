@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 
 public class VoidBenchContainer extends Container {
@@ -19,7 +19,7 @@ public class VoidBenchContainer extends Container {
         //and the x-y coordinates it resides on-screen
 
         addSlotToContainer(new VoidBenchSlot(te, 0, 52, 35));
-        addSlotToContainer(new SlotFurnace(inventoryPlayer.player, te, 1, 109, 35));
+        addSlotToContainer(new SlotFurnaceOutput(inventoryPlayer.player, te, 1, 109, 35));
 
         //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);

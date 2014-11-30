@@ -7,10 +7,10 @@ import net.minecraft.client.model.ModelRenderer;
 public class ModelRope  extends ModelBase {
     private ModelRenderer rope;
 
-    public ModelRope(EntityRope rope) {
-        double dx = rope.posX - rope.targetX;
-        double dy = rope.posY - rope.targetY;
-        double dz = rope.posZ - rope.targetZ;
+        public ModelRope(EntityRope rope) {
+        double dx = rope.posX - rope.target.getX();
+        double dy = rope.posY - rope.target.getY();
+        double dz = rope.posZ - rope.target.getZ();
 
         double length = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2) + Math.pow(dz, 2));
 

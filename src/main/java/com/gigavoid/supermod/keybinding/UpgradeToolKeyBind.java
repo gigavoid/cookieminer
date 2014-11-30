@@ -3,7 +3,6 @@ package com.gigavoid.supermod.keybinding;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 

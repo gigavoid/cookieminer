@@ -25,4 +25,9 @@ public class WorldProviderNorthrend extends WorldProvider {
         worldObj.setRainStrength(1.0f);
         worldObj.getWorldInfo().setRaining(true);
     }
+
+    @Override
+    public String getInternalNameSuffix() {
+        return "Northrend";
+    }
 }

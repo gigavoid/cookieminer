@@ -36,122 +36,130 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
         int height = 50 + random.nextInt(10) - 5;
         IBlockState block2 = world.getBlockState(pos.add(0, -1, 0));
         boolean isSoil = block2.getBlock().canSustainPlant(world, pos.add(0, -1, 0), EnumFacing.UP, (BlockSapling) Blocks.sapling);
-        if (isSoil && pos.getY() + height + 3 < 256) {
+        boolean groundExists = true;
+        for (int i = -1; i < 2; i++){
+            for (int j = -1; j < 2; j++){
+                if(world.getBlockState(pos.add(i, -3, j)) != Blocks.air && world.getBlockState(pos.add(i, -3, j)) != Blocks.water && world.getBlockState(pos.add(i, -3, j)) != Blocks.flowing_water){
+                    groundExists = false;
+                }
+            }
+        }
+        if (isSoil && groundExists && pos.getY() + height + 3 < 256) {
             for (int k = 0; k < 10; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
-                int bposX = x + random.nextInt(5) - 2;
-                int bposY = z + random.nextInt(5) - 2;
-                if (bposX == 1)
+                int bposX = random.nextInt(5) - 2;
+                int bposY = random.nextInt(5) - 2;
+                if (bposX == -1)
                     bposX--;
-                else if (bposX == 2)
+                else if (bposX == 0)
                     bposX += 2;
-                else if (bposX == 3)
+                else if (bposX == 1)
                     bposX++;
-                if (bposY == 1)
+                if (bposY == -1)
                     bposY--;
-                else if (bposY == 2)
+                else if (bposY == 0)
                     bposY += 2;
-                else if (bposY == 3)
+                else if (bposY == 1)
                     bposY++;
-                world.setBlock(bposX, y + startheight, bposY, SuperBlocks.emeraldLog);
-                genTreeHead(world, bposX, y + startheight, bposY);
+                world.setBlockState(pos.add(bposX, startheight, bposY), SuperBlocks.emeraldLog.getDefaultState());
+                genTreeHead(world, pos.add(bposX, startheight, bposY));
             }
-            for (int k = y; k < y + height; k++) {
-                this.setBlockAndNotifyAdequately(world, x, k, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z - 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z - 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z - 1, SuperBlocks.emeraldLog, 0);
-            }
-
-            for (int k = y - 1; k > y - 3; k--) {
-                this.setBlockAndNotifyAdequately(world, x, k, z, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z + 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z - 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z + 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z - 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x - 1, k, z - 1, Blocks.dirt, 0);
+            for (int k = 0; k < height; k++) {
+                world.setBlockState(pos.add(0, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, 1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, -1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, -1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, 1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, -1), SuperBlocks.emeraldLog.getDefaultState(), 0);
             }
 
-            genTreeHead(world, x, y + height - 1, z);
-            genTreeHead(world, x + 1, y + height - 1, z);
-            genTreeHead(world, x - 1, y + height - 1, z);
-            genTreeHead(world, x, y + height - 1, z + 1);
-            genTreeHead(world, x, y + height - 1, z - 1);
-            genTreeHead(world, x + 1, y + height - 1, z + 1);
-            genTreeHead(world, x - 1, y + height - 1, z + 1);
-            genTreeHead(world, x + 1, y + height - 1, z - 1);
-            genTreeHead(world, x - 1, y + height - 1, z - 1);
+            for (int k = -1; k > -3; k--) {
+                world.setBlockState(pos.add(0, k, 0), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 0), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, 0), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, 1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, -1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, -1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, 1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(-1, k, -1), Blocks.dirt.getDefaultState(), 0);
+            }
+
+            genTreeHead(world, pos.add(0, height - 1, 0));
+            genTreeHead(world, pos.add(1, height - 1, 0));
+            genTreeHead(world, pos.add(-1, height - 1, 0));
+            genTreeHead(world, pos.add(0, height - 1, 1));
+            genTreeHead(world, pos.add(0, height - 1, -1));
+            genTreeHead(world, pos.add(1, height - 1, 1));
+            genTreeHead(world, pos.add(1, height - 1, -1));
+            genTreeHead(world, pos.add(-1, height - 1, 1));
+            genTreeHead(world, pos.add(-1, height - 1, -1));
         }
     }
 
     private void genBigTree(World world, Random random, BlockPos pos) {
         int height = 25 + random.nextInt(10);
-        Block block2 = world.getBlock(x, y - 1, z);
-        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
-        if (isSoil && y + height + 3 < 256) {
+        IBlockState block2 = world.getBlockState(pos.add(0, -1, 0));
+        boolean isSoil = block2.getBlock().canSustainPlant(world, pos.add(0, -1, 0), EnumFacing.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && pos.getY() + height + 3 < 256) {
             for (int k = 0; k < 5; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
-                int bposX = x + random.nextInt(4) - 1;
-                int bposY = z + random.nextInt(4) - 1;
-                if (bposX == 1)
+                int bposX = random.nextInt(4) - 1;
+                int bposY = random.nextInt(4) - 1;
+                if (bposX == 0)
                     bposX--;
-                else if (bposX == 2)
+                else if (bposX == 1)
                     bposX++;
-                if (bposY == 1)
+                if (bposY == 0)
                     bposY--;
-                else if (bposY == 2)
+                else if (bposY == 1)
                     bposY++;
-                this.setBlockAndNotifyAdequately(world, bposX, y + startheight, bposY, SuperBlocks.emeraldLog, 0);
-                genTreeHead(world, bposX, y + startheight, bposY);
+                world.setBlockState(pos.add(bposX, startheight, bposY), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                genTreeHead(world, pos.add(bposX, startheight, bposY));
             }
-            for (int k = y; k < y + height; k++) {
-                this.setBlockAndNotifyAdequately(world, x, k, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z + 1, SuperBlocks.emeraldLog, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, SuperBlocks.emeraldLog, 0);
-            }
-
-            for (int k = y - 1; k > y - 3; k--) {
-                this.setBlockAndNotifyAdequately(world, x, k, z, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x, k, z + 1, Blocks.dirt, 0);
-                this.setBlockAndNotifyAdequately(world, x + 1, k, z + 1, Blocks.dirt, 0);
+            for (int k = 0; k < height; k++) {
+                world.setBlockState(pos.add(0, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, 1), SuperBlocks.emeraldLog.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 1), SuperBlocks.emeraldLog.getDefaultState(), 0);
             }
 
-            genTreeHead(world, x, y + height - 1, z);
-            genTreeHead(world, x + 1, y + height - 1, z);
-            genTreeHead(world, x, y + height - 1, z + 1);
-            genTreeHead(world, x + 1, y + height - 1, z + 1);
+            for (int k = -1; k > -3; k--) {
+                world.setBlockState(pos.add(0, k, 0), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 0), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(0, k, 1), Blocks.dirt.getDefaultState(), 0);
+                world.setBlockState(pos.add(1, k, 1), Blocks.dirt.getDefaultState(), 0);
+            }
+
+            genTreeHead(world, pos.add(0, height - 1, 0));
+            genTreeHead(world, pos.add(1, height - 1, 0));
+            genTreeHead(world, pos.add(0, height - 1, 1));
+            genTreeHead(world, pos.add(1, height - 1, 1));
         }
     }
 
     private void genTree(World world, Random random, BlockPos pos) {
         int height = 8 + random.nextInt(4);
-        Block block2 = world.getBlock(x, y - 1, z);
-        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
-        if (isSoil && y + height + 3 < 256) {
+        IBlockState block2 = world.getBlockState(pos.add(0, -1, 0));
+        boolean isSoil = block2.getBlock().canSustainPlant(world, pos.add(0, -1, 0), EnumFacing.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && pos.getY() + height + 3 < 256) {
             for (int k = 0; k < height; k++) {
-                this.setBlockAndNotifyAdequately(world, x, y + k, z, SuperBlocks.emeraldLog, 0);
+                world.setBlockState(pos.add(0, k, 0), SuperBlocks.emeraldLog.getDefaultState(), 0);
             }
-            this.setBlockAndNotifyAdequately(world, x, y - 1, z, Blocks.dirt, 0);
-            genTreeHead(world, x, y + height - 1, z);
+            world.setBlockState(pos.add(0, -1, 0), Blocks.dirt.getDefaultState(), 0);
+            genTreeHead(world, pos.add(0, height - 1, 0));
         }
     }
 
-    private void genTreeHead(World world, int x, int y, int z) {
+    private void genTreeHead(World world, BlockPos pos) {
         for (int i = -3; i < 4; i++) {
             for (int j = -3; j < 4; j++) {
                 for (int k = 0; k < 3; k++) {
-                    if (world.getBlock(x + i, y + k, z + j) == Block.getBlockById(0) && emeraldTreeHead[(i + 3) + 7 * (j + 3) + 49 * k]) {
-                        this.setBlockAndNotifyAdequately(world, x + i, y + k, z + j, SuperBlocks.emeraldLeaves, 0);
+                    if (world.getBlockState(pos.add(i, k, j)) == Block.getBlockById(0) && emeraldTreeHead[(i + 3) + 7 * (j + 3) + 49 * k]) {
+                        world.setBlockState(pos.add(i, k, j), SuperBlocks.emeraldLeaves.getDefaultState(), 0);
                     }
                 }
             }
