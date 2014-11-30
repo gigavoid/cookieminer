@@ -3,10 +3,12 @@ package com.gigavoid.supermod.worldgen.trees;
 import com.gigavoid.supermod.block.SuperBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.Random;
 
@@ -19,22 +21,22 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
     }
 
     @Override
-    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-        int a = p_76484_2_.nextInt(100);
-        if (a < 2)
-            genSuperTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
-        else if (a < 15)
-            genBigTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+    public boolean generate(World p_76484_1_, Random p_76484_2_, BlockPos pos) {
+        float a = p_76484_2_.nextFloat();
+        if (a < .02f)
+            genSuperTree(p_76484_1_, p_76484_2_, pos);
+        else if (a < .15f)
+            genBigTree(p_76484_1_, p_76484_2_, pos);
         else
-            genTree(p_76484_1_, p_76484_2_, p_76484_3_, p_76484_4_, p_76484_5_);
+            genTree(p_76484_1_, p_76484_2_, pos);
         return false;
     }
 
-    private void genSuperTree(World world, Random random, int x, int y, int z) {
+    private void genSuperTree(World world, Random random, BlockPos pos) {
         int height = 50 + random.nextInt(10) - 5;
-        Block block2 = world.getBlock(x, y - 1, z);
-        boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
-        if (isSoil && y + height + 3 < 256) {
+        IBlockState block2 = world.getBlockState(pos.add(0, -1, 0));
+        boolean isSoil = block2.getBlock().canSustainPlant(world, pos.add(0, -1, 0), EnumFacing.UP, (BlockSapling) Blocks.sapling);
+        if (isSoil && pos.getY() + height + 3 < 256) {
             for (int k = 0; k < 10; k++) {
                 int startheight = 5 + random.nextInt(height - 10);
                 int bposX = x + random.nextInt(5) - 2;
@@ -90,7 +92,7 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
         }
     }
 
-    private void genBigTree(World world, Random random, int x, int y, int z) {
+    private void genBigTree(World world, Random random, BlockPos pos) {
         int height = 25 + random.nextInt(10);
         Block block2 = world.getBlock(x, y - 1, z);
         boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
@@ -131,7 +133,7 @@ public class SuperWorldGenEmeraldTree extends WorldGenAbstractTree {
         }
     }
 
-    private void genTree(World world, Random random, int x, int y, int z) {
+    private void genTree(World world, Random random, BlockPos pos) {
         int height = 8 + random.nextInt(4);
         Block block2 = world.getBlock(x, y - 1, z);
         boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);

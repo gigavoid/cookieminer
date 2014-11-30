@@ -13,12 +13,12 @@ import com.gigavoid.supermod.tileentity.SuperTileEntities;
 import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
 public class SuperMod
@@ -32,7 +32,7 @@ public class SuperMod
     public static final int northrendDimID = 2;
     public static final WorldType northrend  = new WorldTypeNorthrend(7, "northrend");
 
-    @EventHandler
+    @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         SuperBlocks.initializeBlocks();
         SuperItems.initializeItems();
@@ -42,7 +42,7 @@ public class SuperMod
         DimensionManager.registerDimension(northrendDimID, northrendDimID);
     }
 
-    @EventHandler
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
         SuperRenderer.registerRenderers();

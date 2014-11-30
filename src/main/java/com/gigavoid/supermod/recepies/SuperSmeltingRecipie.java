@@ -2,8 +2,8 @@ package com.gigavoid.supermod.recepies;
 
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.item.SuperItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperSmeltingRecipie {
     public static void InitializeSmektingRecipes(){
