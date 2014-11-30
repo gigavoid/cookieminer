@@ -16,6 +16,7 @@ public class MagicEnderEyeItem extends Item {
         setTextureName("supermod:magic_ender_eye");
     }
 
+    @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
     {
         if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == this)

@@ -35,7 +35,6 @@ public class NorthrendGenLayerBiome extends GenLayer
                 aint1[j1 + i1 * p_75904_3_] = WorldChunkManagerNorthrend.allowedBiomes.get(this.nextInt(WorldChunkManagerNorthrend.allowedBiomes.size())).biomeID;
             }
         }
-
         return aint1;
     }
 

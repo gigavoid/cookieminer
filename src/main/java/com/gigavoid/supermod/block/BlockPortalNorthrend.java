@@ -3,23 +3,45 @@ package com.gigavoid.supermod.block;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.teleport.TeleporterNorthrend;
 import com.gigavoid.supermod.util.SuperReflection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
         setBlockName("portalNorthrend");
         setCreativeTab(CreativeTabs.tabBlock);
+    }
+
+    @Override
+    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    {
+        super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
+
+        if (p_149674_1_.provider.isSurfaceWorld() && p_149674_1_.getGameRules().getGameRuleBooleanValue("doMobSpawning") && p_149674_5_.nextInt(2000) < p_149674_1_.difficultySetting.getDifficultyId())
+        {
+            int l;
+
+            for (l = p_149674_3_; !World.doesBlockHaveSolidTopSurface(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
+            {
+                ;
+            }
+        }
     }
 
     @Override
@@ -124,6 +146,50 @@ public class BlockPortalNorthrend extends BlockPortal {
             {
                 p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_) + p_149726_1_.rand.nextInt(10));
             }
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister p_149651_1_)
+    {
+        this.blockIcon = p_149651_1_.registerIcon("water_still");
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+    {
+        if (p_149734_5_.nextInt(100) == 0)
+        {
+            p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, "portal.portal", 0.5F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
+        }
+
+        for (int l = 0; l < 4; ++l)
+        {
+            double d0 = (double)((float)p_149734_2_ + p_149734_5_.nextFloat());
+            double d1 = (double)((float)p_149734_3_ + p_149734_5_.nextFloat());
+            double d2 = (double)((float)p_149734_4_ + p_149734_5_.nextFloat());
+            double d3 = 0.0D;
+            double d4 = 0.0D;
+            double d5 = 0.0D;
+            int i1 = p_149734_5_.nextInt(2) * 2 - 1;
+            d3 = ((double)p_149734_5_.nextFloat() - 0.5D);
+            d4 = ((double)p_149734_5_.nextFloat() - 0.5D);
+            d5 = ((double)p_149734_5_.nextFloat() - 0.5D);
+
+            if (p_149734_1_.getBlock(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.getBlock(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
+            {
+                d0 = (double)p_149734_2_ + 0.5D + 0.25D * (double)i1;
+                d3 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+            }
+            else
+            {
+                d2 = (double)p_149734_4_ + 0.5D + 0.25D * (double)i1;
+                d5 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+            }
+
+            p_149734_1_.spawnParticle("snowshovel", d0, d1, d2, d3 * 0.1d, d4, d5 * 0.1d);
         }
     }
 

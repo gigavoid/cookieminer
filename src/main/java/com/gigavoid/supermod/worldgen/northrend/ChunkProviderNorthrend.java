@@ -54,7 +54,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
     private double[] stoneNoise = new double[256];
     private MapGenBase caveGenerator = new MapGenCavesNorthrend();
     /** Holds Stronghold Generator */
-    private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+    private MapGenStrongholdNorthrend strongholdGenerator = new MapGenStrongholdNorthrend();
     /** Holds Village Generator */
     private MapGenVillageNorthrend villageGenerator = new MapGenVillageNorthrend();
     //private MapGenVillage villageGenerator = new MapGenVillage();
@@ -74,7 +74,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
 
     {
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
-        strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
+        strongholdGenerator = (MapGenStrongholdNorthrend) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
         villageGenerator = (MapGenVillageNorthrend) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
