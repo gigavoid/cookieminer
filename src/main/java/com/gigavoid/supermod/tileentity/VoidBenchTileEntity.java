@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IChatComponent;
 import net.minecraftforge.common.util.Constants;
 
 
@@ -74,41 +75,49 @@ public class VoidBenchTileEntity extends TileEntity implements IInventory {
     }
 
     @Override
-    public String getInventoryName() {
-        return "pickBenchTileEntity";
-    }
-
-    @Override
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
-
-    @Override
     public int getInventoryStackLimit() {
         return 64;
     }
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this &&
-                player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+        return worldObj.getTileEntity(pos) == this &&
+                player.getDistanceSq(pos.add(.5, .5, .5)) < 64;
     }
 
     @Override
-    public void openInventory() {
+    public void openInventory(EntityPlayer playerIn) {
 
     }
 
     @Override
-    public void closeInventory() {
+    public void closeInventory(EntityPlayer playerIn) {
 
     }
-
-
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public int getField(int id) {
+        return 0;
+    }
+
+    @Override
+    public void setField(int id, int value) {
+
+    }
+
+    @Override
+    public int getFieldCount() {
+        return 0;
+    }
+
+    @Override
+    public void clear() {
+
     }
 
     @Override
@@ -143,5 +152,18 @@ public class VoidBenchTileEntity extends TileEntity implements IInventory {
     }
 
 
+    @Override
+    public String getName() {
+        return null;
+    }
 
+    @Override
+    public boolean hasCustomName() {
+        return false;
+    }
+
+    @Override
+    public IChatComponent getDisplayName() {
+        return null;
+    }
 }

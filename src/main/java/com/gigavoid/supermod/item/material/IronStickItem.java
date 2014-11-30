@@ -7,6 +7,5 @@ public class IronStickItem extends Item {
     public IronStickItem(){
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("supermod:iron_stick");
     }
 }

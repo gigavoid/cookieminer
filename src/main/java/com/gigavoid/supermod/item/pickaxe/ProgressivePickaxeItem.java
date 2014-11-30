@@ -3,13 +3,13 @@ package com.gigavoid.supermod.item.pickaxe;
 import com.gigavoid.supermod.progpick.ProgPickUpgrade;
 import com.gigavoid.supermod.progpick.ProgPickUpgrades;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -18,19 +18,18 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     private String material;
     private int level;
 
-    IIcon pickCanBeUpgraded;
+    //IIcon pickCanBeUpgraded;
 
     public ProgressivePickaxeItem() {
         super(ToolMaterial.WOOD);
         setMaxDamage(-1);
-        setTextureName("supermod:prog_pickaxe");
     }
 
     public void setToolLevel(int level) {
         this.level = level;
 
     }
-
+/*
     @Override
     public void registerIcons(IIconRegister iconRegister) {
         super.registerIcons(iconRegister);
@@ -44,7 +43,7 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
             return pickCanBeUpgraded;
         return super.getIconIndex(stack);
     }
-
+*/
 /*    @Override
     public IIcon getIconFromDamage(int damage) {
 
@@ -70,9 +69,9 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
 
 
     @Override
-    public boolean onBlockDestroyed(ItemStack itemStack, World block, Block world, int x, int y, int z, EntityLivingBase entityLivingBase) {
+    public boolean onBlockDestroyed(ItemStack itemStack, World block, Block world, BlockPos pos, EntityLivingBase entityLivingBase) {
         ProgPickUpgrades.giveExp(itemStack, 1);
-        return super.onBlockDestroyed(itemStack, block, world, x, y, z, entityLivingBase);
+        return super.onBlockDestroyed(itemStack, block, world, pos, entityLivingBase);
     }
 
     public void setMaterial(String material) {
@@ -96,8 +95,8 @@ public class ProgressivePickaxeItem extends ItemPickaxe {
     }
 
     @Override
-    public float getDigSpeed(ItemStack stack, Block block, int meta) {
-        return super.getDigSpeed(stack, block, meta) * getSpeedMultiplier(stack);
+    public float getDigSpeed(ItemStack stack, IBlockState block) {
+        return super.getDigSpeed(stack, block) * getSpeedMultiplier(stack);
     }
 
 

@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
@@ -13,7 +14,6 @@ public class MagicEnderEyeItem extends Item {
         super();
         maxStackSize = 16;
         setCreativeTab(CreativeTabs.tabMisc);
-        setTextureName("supermod:magic_ender_eye");
     }
 
     @Override
@@ -21,7 +21,8 @@ public class MagicEnderEyeItem extends Item {
     {
         if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == this)
         {
-            createExplosion(world, null, player.getPosition(0).xCoord, player.getPosition(0).yCoord, player.getPosition(0).zCoord, 2.0f, true);
+            BlockPos playerPos = player.getPosition();
+            createExplosion(world, null, playerPos.getX(), playerPos.getY(), playerPos.getZ(), 2.0f, true);
             itemStack.stackSize -= 1;
         }
         return itemStack;

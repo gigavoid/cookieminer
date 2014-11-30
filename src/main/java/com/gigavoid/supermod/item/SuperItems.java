@@ -2,14 +2,14 @@ package com.gigavoid.supermod.item;
 
 
 import com.gigavoid.supermod.item.material.*;
-import com.gigavoid.supermod.item.misc.MagicEnderEyeItem;
 import com.gigavoid.supermod.item.misc.ItemRopewayBasket;
+import com.gigavoid.supermod.item.misc.MagicEnderEyeItem;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import com.gigavoid.supermod.item.pickaxe.VoidPickaxeItem;
 import com.gigavoid.supermod.item.tool.RopewayWrench;
-import cpw.mods.fml.common.IFuelHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperItems {
 

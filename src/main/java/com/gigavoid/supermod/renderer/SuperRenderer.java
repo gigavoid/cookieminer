@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.renderer;
 
 import com.gigavoid.supermod.entity.EntityYeti;
-import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
  * Created by Rasmus on 2014-11-05.

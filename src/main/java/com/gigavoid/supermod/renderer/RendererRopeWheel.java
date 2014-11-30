@@ -20,7 +20,7 @@ public class RendererRopeWheel extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float scale) {
+    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float scale, int p_180535_9_) {
         TileEntityRopeWheel ropeWheel = (TileEntityRopeWheel) tileEntity;
 
         GL11.glPushMatrix();
@@ -43,9 +43,6 @@ public class RendererRopeWheel extends TileEntitySpecialRenderer {
         GL11.glRotatef(rotAngle, 0f, 1f, 0f);
 
         modelRopeWheel.render(ropeWheel);
-
-        int[] myPos = {ropeWheel.xCoord, ropeWheel.yCoord, ropeWheel.zCoord};
-
         //for(int[] point : ropeWheel.ropePoints)
         //    new ModelRope(myPos, point, ropeWheel).render();
         //Tell it to stop rendering for both the PushMatrix's

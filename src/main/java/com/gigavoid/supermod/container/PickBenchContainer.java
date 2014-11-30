@@ -5,7 +5,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -28,12 +27,8 @@ public class PickBenchContainer extends Container {
         // Output slot
         addSlotToContainer(new PickBenchOutputSlot(inventoryPlayer.player, te, 2, 116,35));
 
-        //commonly used vanilla code that adds the player's inventory
         bindPlayerInventory(inventoryPlayer);
     }
-
-
-
 
 
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

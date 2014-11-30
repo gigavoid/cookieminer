@@ -1,8 +1,8 @@
 package com.gigavoid.supermod.tileentity;
 
 import com.gigavoid.supermod.renderer.RendererRopeWheel;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by ineentho on 2014-11-22.

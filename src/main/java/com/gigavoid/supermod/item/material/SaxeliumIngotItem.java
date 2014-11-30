@@ -8,6 +8,5 @@ public class SaxeliumIngotItem extends Item{
     public SaxeliumIngotItem() {
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("supermod:saxelium_ingot");
     }
 }

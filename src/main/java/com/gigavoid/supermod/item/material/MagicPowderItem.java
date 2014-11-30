@@ -7,6 +7,5 @@ public class MagicPowderItem extends Item{
     public MagicPowderItem(){
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("supermod:magic_powder");
     }
 }

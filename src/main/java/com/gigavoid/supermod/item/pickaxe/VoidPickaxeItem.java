@@ -3,30 +3,29 @@ package com.gigavoid.supermod.item.pickaxe;
 import com.gigavoid.supermod.item.SuperItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class VoidPickaxeItem extends ItemPickaxe {
     public VoidPickaxeItem() {
         super(ToolMaterial.EMERALD);
         setUnlocalizedName("voidPickaxe");
-        setTextureName("supermod:void_pickaxe");
         setMaxDamage(5000);
         efficiencyOnProperMaterial = 10.0f;
     }
 
     @Override
-    public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-        if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == Block.getBlockById(7)){
-            p_77648_2_.inventory.addItemStackToInventory(new ItemStack(SuperItems.bedLump));
-            p_77648_1_.damageItem(500, p_77648_2_);
+    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (world.getBlockState(pos) == Block.getBlockById(7)){
+            playerIn.inventory.addItemStackToInventory(new ItemStack(SuperItems.bedLump));
+            stack.damageItem(500, playerIn);
             return true;
         }
         return false;
     }
-
     @Override
     public int getHarvestLevel(ItemStack stack, String toolClass) {
         return super.getHarvestLevel(stack, toolClass) == -1 ? -1 : 4;

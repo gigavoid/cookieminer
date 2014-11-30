@@ -3,6 +3,7 @@ package com.gigavoid.supermod.entity;
 import com.gigavoid.supermod.model.ModelRope;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 /**
@@ -10,11 +11,11 @@ import net.minecraft.world.World;
  */
 public class EntityRope extends Entity {
     public final ModelRope model;
-    public double targetX, targetY, targetZ;
+    public BlockPos target;
 
 
     public EntityRope(World world) {
-        this(world, 0, 0, 0, 0, 0, 0);
+        this(world, null, null);
     }
 
     @Override
@@ -26,13 +27,11 @@ public class EntityRope extends Entity {
     @Override
     protected void writeEntityToNBT(NBTTagCompound p_70014_1_) { }
 
-    public EntityRope(World world, double x0, double y0, double z0, double x1, double y1, double z1) {
+    public EntityRope(World world, BlockPos a, BlockPos b) {
         super(world);
-        targetX = x1;
-        targetY = y1;
-        targetZ = z1;
+        target = b;
         this.ignoreFrustumCheck = true;
-        setPosition(x0, y0, z0);
+        setPosition(a.getX(), a.getY(), a.getZ());
         //setSize(.1f ,.1f);
         model = new ModelRope(this);
     }

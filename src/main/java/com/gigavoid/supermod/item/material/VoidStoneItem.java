@@ -7,6 +7,5 @@ public class VoidStoneItem extends Item {
     public VoidStoneItem(){
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("supermod:void_stone");
     }
 }

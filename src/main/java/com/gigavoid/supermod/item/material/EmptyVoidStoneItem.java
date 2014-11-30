@@ -7,6 +7,5 @@ public class EmptyVoidStoneItem extends Item {
     public EmptyVoidStoneItem(){
         super();
         setCreativeTab(CreativeTabs.tabMaterials);
-        setTextureName("supermod:empty_void_stone");
     }
 }

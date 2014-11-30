@@ -3,6 +3,7 @@ package com.gigavoid.supermod.renderer;
 import com.gigavoid.supermod.entity.ModelBasket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
@@ -13,6 +14,10 @@ import org.lwjgl.opengl.GL11;
 public class RendererBasket extends Render {
 
     public ModelBasket model = new ModelBasket();
+
+    public RendererBasket(RenderManager p_i46179_1_) {
+        super(p_i46179_1_);
+    }
 
     @Override
     public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float p_76986_9_) {
