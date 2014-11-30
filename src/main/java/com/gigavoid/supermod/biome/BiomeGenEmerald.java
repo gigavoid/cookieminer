@@ -3,18 +3,14 @@ package com.gigavoid.supermod.biome;
 import com.gigavoid.supermod.decorator.SuperDecorator;
 import com.gigavoid.supermod.decorator.SuperEmeraldDecorator;
 import com.gigavoid.supermod.worldgen.trees.SuperWorldGenEmeraldTree;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.ColorizerFoliage;
-import net.minecraft.world.ColorizerGrass;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.awt.*;
 import java.util.Random;
 
 public class BiomeGenEmerald extends BiomeGenBase {
@@ -27,8 +23,8 @@ public class BiomeGenEmerald extends BiomeGenBase {
         setHeight(new BiomeGenBase.Height(0.0f, 0.2f));
         setColor(0x00FF00);
         waterColorMultiplier = 0x00FF00; //0x44FF44;
-        topBlock = Block.getBlockById(2);
-        fillerBlock = Block.getBlockById(3);
+        topBlock = Block.getStateById(2);
+        fillerBlock = Block.getStateById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
         theBiomeDecorator.treesPerChunk = 10;
@@ -37,27 +33,27 @@ public class BiomeGenEmerald extends BiomeGenBase {
     }
 
     @Override
-    public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
+    public void func_180624_a(World p_76728_1_, Random p_76728_2_, BlockPos pos)
     {
-        theBiomeDecorator.decorateChunk(p_76728_1_, p_76728_2_, this, p_76728_3_, p_76728_4_);
-        decorator.decorateChunk(p_76728_1_, p_76728_2_, this, p_76728_3_, p_76728_4_);
+        theBiomeDecorator.func_180292_a(p_76728_1_, p_76728_2_, this, pos);
+        decorator.func_180292_a(p_76728_1_, p_76728_2_, this, pos);
     }
 
     @Override
-    public WorldGenAbstractTree func_150567_a(Random r) {
+    public WorldGenAbstractTree genBigTreeChance(Random r) {
         return treeGen;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    public int getModdedBiomeGrassColor(int p_150558_1_)
     {
         return 0x00DD00;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
+    public int getModdedBiomeFoliageColor(int p_150571_1_)
     {
         return 0x00DD00;
     }

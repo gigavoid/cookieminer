@@ -14,13 +14,13 @@ public class BiomeGenNorthFirForest extends SuperBiomeGenBaseNorthrend {
         super(id);
         setBiomeName("Northrend Fir Forest");
         setHeight(new Height(0.1f, 0.1f));
-        topBlock = Block.getBlockFromName("snow");
-        fillerBlock = SuperBlocks.northDirt;
+        topBlock = Block.getBlockFromName("snow").getDefaultState();
+        fillerBlock = SuperBlocks.northDirt.getDefaultState();
         theBiomeDecorator.treesPerChunk = 14;
     }
 
     @Override
-    public WorldGenAbstractTree func_150567_a(Random r) {
+    public WorldGenAbstractTree genBigTreeChance(Random r) {
         return treeGen;
     }
 }

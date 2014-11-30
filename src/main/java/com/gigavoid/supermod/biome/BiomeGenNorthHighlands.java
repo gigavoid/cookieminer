@@ -12,7 +12,7 @@ public class BiomeGenNorthHighlands extends SuperBiomeGenBaseNorthrend {
 
         setBiomeName("Northrend Highlands");
         setHeight(new Height(0.8f, .15f));
-        topBlock = Block.getBlockFromName("snow");
-        fillerBlock = Block.getBlockFromName("snow");
+        topBlock = Block.getBlockFromName("snow").getDefaultState();
+        fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }
 }

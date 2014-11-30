@@ -2,10 +2,10 @@ package com.gigavoid.supermod.recepies;
 
 
 import com.gigavoid.supermod.item.SuperItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperRecipie {
     public static void initializeRecipes(){
@@ -21,7 +21,7 @@ public class SuperRecipie {
         ItemStack dirtStack = new ItemStack(Items.emerald);
         ItemStack gravelStack = new ItemStack(Items.diamond);
 
-        GameRegistry.addRecipe(new ItemStack(Blocks.cobblestone), "xyx", "y y","xyx",
+        GameRegistry.addRecipe(new ItemStack(Blocks.cobblestone), "xyx", "y y", "xyx",
                 'x', dirtStack, 'y', gravelStack);
     }
 

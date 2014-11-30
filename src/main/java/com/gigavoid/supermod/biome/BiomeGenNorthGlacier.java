@@ -18,13 +18,13 @@ public class BiomeGenNorthGlacier extends SuperBiomeGenBaseNorthrend {
 
         setBiomeName("Northrend Glacier");
         setHeight(new BiomeGenBase.Height(-1f, 0.1f));
-        topBlock = SuperBlocks.northStone;
-        fillerBlock = SuperBlocks.northStone;
+        topBlock = SuperBlocks.northStone.getDefaultState();
+        fillerBlock = SuperBlocks.northStone.getDefaultState();
         theBiomeDecorator.treesPerChunk = 1;
     }
 
     @Override
-    public WorldGenAbstractTree func_150567_a(Random r) {
+    public WorldGenAbstractTree genBigTreeChance(Random r) {
         return iglooGen;
     }
 }

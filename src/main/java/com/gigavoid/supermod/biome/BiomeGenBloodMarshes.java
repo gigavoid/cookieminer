@@ -1,12 +1,11 @@
 package com.gigavoid.supermod.biome;
 
-import com.gigavoid.supermod.decorator.SuperDecorator;
 import com.gigavoid.supermod.worldgen.trees.SuperWorldGenBloodTree;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -22,8 +21,8 @@ public class BiomeGenBloodMarshes extends BiomeGenBase {
         setHeight(new BiomeGenBase.Height(-0.1f, 0.01f));
         setColor(0x00FF00);
         waterColorMultiplier = 0xFF0000; //0x44FF44;
-        topBlock = Block.getBlockById(2);
-        fillerBlock = Block.getBlockById(3);
+        topBlock = Block.getStateById(2);
+        fillerBlock = Block.getStateById(3);
         temperature = 1.0f;
         rainfall = 0.6f;
         theBiomeDecorator.treesPerChunk = 4;
@@ -31,20 +30,20 @@ public class BiomeGenBloodMarshes extends BiomeGenBase {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    public int getModdedBiomeGrassColor(int p_150558_1_)
     {
         return 0xAA0000;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public int getBiomeFoliageColor(int p_150571_1_, int p_150571_2_, int p_150571_3_)
+    public int getModdedBiomeFoliageColor(int p_150571_1_)
     {
         return 0xAA0000;
     }
 
     @Override
-    public WorldGenAbstractTree func_150567_a(Random r) {
+    public WorldGenAbstractTree genBigTreeChance(Random r) {
         return treeGen;
     }
 }

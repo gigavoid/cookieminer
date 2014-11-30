@@ -20,7 +20,7 @@ public class BiomeGenNorthMountains extends SuperBiomeGenBaseNorthrend {
 
         setBiomeName("Northrend Mountains");
         setHeight(new BiomeGenBase.Height(1.5f, .6f));
-        topBlock = Block.getBlockFromName("snow");
-        fillerBlock = Block.getBlockFromName("snow");
+        topBlock = Block.getBlockFromName("snow").getDefaultState();
+        fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }
 }
