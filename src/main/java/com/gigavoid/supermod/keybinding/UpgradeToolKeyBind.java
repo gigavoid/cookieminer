@@ -3,6 +3,7 @@ package com.gigavoid.supermod.keybinding;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.item.pickaxe.ProgressivePickaxeItem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
@@ -16,7 +17,7 @@ public class UpgradeToolKeyBind extends SuperKeyBinding {
 
     @Override
     public void Pressed() {
-        EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         ItemStack currentItem = player.inventory.getCurrentItem();
         if (currentItem != null && currentItem.getItem() instanceof ProgressivePickaxeItem) {
             ProgressivePickaxeItem pickaxe = (ProgressivePickaxeItem) currentItem.getItem();

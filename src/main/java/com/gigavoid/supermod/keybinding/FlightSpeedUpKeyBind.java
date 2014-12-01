@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.keybinding;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.entity.EntityPlayerSP;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -14,7 +14,7 @@ public class FlightSpeedUpKeyBind extends SuperKeyBinding {
 
     @Override
     public void Pressed() {
-        EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         player.capabilities.setFlySpeed(player.capabilities.getFlySpeed() * 1.2f);
     }
 }
