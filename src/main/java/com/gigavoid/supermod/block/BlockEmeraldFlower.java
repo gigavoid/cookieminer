@@ -1,17 +1,14 @@
 package com.gigavoid.supermod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-
-import java.util.List;
 import java.util.Random;
 
 public class BlockEmeraldFlower extends BlockFlower {
@@ -23,11 +20,17 @@ public class BlockEmeraldFlower extends BlockFlower {
     }
 
     @Override
-    public void updateTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_) {
-        super.randomDisplayTick(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_, p_149734_5_);
-        double d0 = (double)p_149734_5_.nextFloat() - .5f;
-        double d1 = (double)p_149734_5_.nextFloat() - .5f;
-        double d2 = (double)p_149734_5_.nextFloat() - .5f;
-        p_149734_1_.spawnParticle("happyVillager", p_149734_2_ + 0.5, p_149734_3_ + 0.5, p_149734_4_ + 0.5, d0, d1, d2);
+    public EnumFlowerColor func_176495_j() {
+        return EnumFlowerColor.YELLOW;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        super.randomDisplayTick(worldIn, pos, state, rand);
+        double d0 = (double)rand.nextFloat() - .5f;
+        double d1 = (double)rand.nextFloat() - .5f;
+        double d2 = (double)rand.nextFloat() - .5f;
+        worldIn.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, pos.getX(), pos.getY(), pos.getZ(), d0, d1, d2, 0);
     }
 }

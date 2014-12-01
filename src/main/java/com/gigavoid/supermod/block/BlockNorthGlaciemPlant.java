@@ -1,30 +1,22 @@
 package com.gigavoid.supermod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable
-{
-    @SideOnly(Side.CLIENT)
-    private IIcon[] field_149867_a;
-    private static final String __OBFID = "CL_00000222";
-
+public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
     protected BlockNorthGlaciemPlant()
     {
         this.setTickRandomly(true);
@@ -36,17 +28,32 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable
         this.disableStats();
     }
 
-    /**
-     * is the block grass, dirt or farmland
-     */
-    protected boolean canPlaceBlockOn(Block p_149854_1_) {
-        return p_149854_1_ == SuperBlocks.northDirt;
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+        return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.getBlockState(pos.offsetDown()).getBlock() == SuperBlocks.northDirt;
     }
 
-    /**
-     * Ticks the block if it's been scheduled
-     */
-    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    @Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(worldIn, pos, state, rand);
+        if (worldIn.getBlockState(pos.offset(EnumFacing.UP)).getBlock().getLightValue() >= 9)
+        {
+            int l = worldIn.getBlockMetadata(p_149674_2_, p_149674_3_, p_149674_4_);
+
+            if (l < 7)
+            {
+                float f = this.func_149864_n(worldIn, p_149674_2_, p_149674_3_, p_149674_4_);
+
+                if (p_149674_5_.nextInt((int)(25.0F / f) + 1) == 0)
+                {
+                    ++l;
+                    worldIn.setBlockMetadataWithNotify(p_149674_2_, p_149674_3_, p_149674_4_, l, 2);
+                }
+            }
+        }
+    }
+
+    /*public void updateTick(World worldIn, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
 
@@ -65,7 +72,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable
                 }
             }
         }
-    }
+    }*/
 
     public void func_149863_m(World p_149863_1_, int p_149863_2_, int p_149863_3_, int p_149863_4_)
     {
@@ -121,19 +128,6 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable
         return f;
     }
 
-    /**
-     * Gets the block's texture. Args: side, meta
-     */
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-        if (p_149691_2_ < 0 || p_149691_2_ > 6)
-        {
-            p_149691_2_ = 6;
-        }
-
-        return this.field_149867_a[p_149691_2_];
-    }
 
     /**
      * The type of render function that is called for this block

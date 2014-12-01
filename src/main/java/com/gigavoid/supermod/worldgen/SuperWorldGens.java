@@ -1,8 +1,6 @@
 package com.gigavoid.supermod.worldgen;
 
-
-import com.gigavoid.supermod.decorator.SuperDecorator;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperWorldGens {
 
