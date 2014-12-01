@@ -8,22 +8,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
-import static net.minecraftforge.common.util.ForgeDirection.*;
-
-/**
- * Created by ineentho on 2014-11-03.
- */
 public class BlockRopeWheel extends Block implements ITileEntityProvider {
 
     protected BlockRopeWheel() {
         super(Material.wood);
         this.setCreativeTab(CreativeTabs.tabDecorations);
-        this.setBlockTextureName("supermod:rope_wheel");
-        this.setBlockName("ropeWheel");
     }
 
     @Override
@@ -43,7 +36,7 @@ public class BlockRopeWheel extends Block implements ITileEntityProvider {
 
     @Override
     public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side) {
-        ForgeDirection dir = ForgeDirection.getOrientation(side);
+        EnumFacing dir = EnumFacing.getOrientation(side);
 
 
         return (dir == NORTH && world.isSideSolid(x, y, z + 1, NORTH) && world.getBlock(x, y, z + 1) == SuperBlocks.pylon) ||

@@ -1,65 +1,42 @@
 package com.gigavoid.supermod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.IIcon;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlockNorthLeaves extends BlockLeaves {
-
-    IIcon icon;
-
     public BlockNorthLeaves(){
         super();
         this.setHardness(1.0f);
-        this.setBlockTextureName("supermod:northLeaves");
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("northLeaves");
         this.setStepSound(soundTypeGrass);
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public int getRenderColor(int p_149741_1_)
-    {
-        return 0xFFFFFF;
+    public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
+        List<ItemStack> list = new ArrayList<ItemStack>();
+        list.add(new ItemStack(Item.getItemFromBlock(this)));
+        return list;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public int colorMultiplier(IBlockAccess p_149720_1_, int p_149720_2_, int p_149720_3_, int p_149720_4_)
-    {
-        return 0xFFFFFF;
-    }
-
-
-    @Override
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-        return this.icon;
+    public BlockPlanks.EnumType func_176233_b(int p_176233_1_) {
+        return BlockPlanks.EnumType.SPRUCE;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister p_149651_1_)
-    {
-        this.icon = p_149651_1_.registerIcon("supermod:northLeaves");
-    }
-
-    @Override
-    public String[] func_150125_e() {
-        return new String[] {"North"};
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return true;
     }
 
     @Override
     public boolean isOpaqueCube(){ return false;}
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
-    {
-        return true;
-    }
 }

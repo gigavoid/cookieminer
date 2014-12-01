@@ -3,29 +3,23 @@ package com.gigavoid.supermod.block;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.teleport.TeleporterNorthrend;
 import com.gigavoid.supermod.util.SuperReflection;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.Direction;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
-        setBlockName("portalNorthrend");
-        setCreativeTab(CreativeTabs.tabBlock);
+        setCreativeTab(null);
     }
 
     @Override
@@ -147,13 +141,6 @@ public class BlockPortalNorthrend extends BlockPortal {
                 p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_) + p_149726_1_.rand.nextInt(10));
             }
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister p_149651_1_)
-    {
-        this.blockIcon = p_149651_1_.registerIcon("water_still");
     }
 
     @Override
