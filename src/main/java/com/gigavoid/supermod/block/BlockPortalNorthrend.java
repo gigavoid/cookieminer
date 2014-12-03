@@ -6,10 +6,17 @@ import com.gigavoid.supermod.util.SuperReflection;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.*;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,278 +29,343 @@ public class BlockPortalNorthrend extends BlockPortal {
         setCreativeTab(null);
     }
 
-    @Override
-    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
-        super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
+        super.updateTick(worldIn, pos, state, rand);
 
-        if (p_149674_1_.provider.isSurfaceWorld() && p_149674_1_.getGameRules().getGameRuleBooleanValue("doMobSpawning") && p_149674_5_.nextInt(2000) < p_149674_1_.difficultySetting.getDifficultyId())
+        if (worldIn.provider.isSurfaceWorld() && worldIn.getGameRules().getGameRuleBooleanValue("doMobSpawning") && rand.nextInt(2000) < worldIn.getDifficulty().getDifficultyId())
         {
-            int l;
+            int i = pos.getY();
+            BlockPos blockpos1;
 
-            for (l = p_149674_3_; !World.doesBlockHaveSolidTopSurface(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
+            for (blockpos1 = pos; !World.doesBlockHaveSolidTopSurface(worldIn, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.offsetDown())
             {
                 ;
             }
-        }
-    }
 
-    @Override
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-        if ((par5Entity.ridingEntity == null) && (par5Entity.riddenByEntity == null) && ((par5Entity instanceof EntityPlayerMP))) {
-            EntityPlayerMP player = (EntityPlayerMP) par5Entity;
+            if (i > 0 && !worldIn.getBlockState(blockpos1.offsetUp()).getBlock().isNormalCube())
+            {
+                Entity entity = ItemMonsterPlacer.spawnCreature(worldIn, 57, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.1D, (double) blockpos1.getZ() + 0.5D);
 
-            MinecraftServer mServer = MinecraftServer.getServer();
-
-            if (player.timeUntilPortal > 0) {
-                player.timeUntilPortal = 10;
-            } else if (player.dimension != SuperMod.northrendDimID) {
-                player.timeUntilPortal = 10;
-
-                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, SuperMod.northrendDimID, new TeleporterNorthrend(mServer.worldServerForDimension(SuperMod.northrendDimID)));
-            } else {
-                player.timeUntilPortal = 10;
-                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterNorthrend(mServer.worldServerForDimension(0)));
+                if (entity != null)
+                {
+                    entity.timeUntilPortal = entity.getPortalCooldown();
+                }
             }
         }
     }
 
+    public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-    @Override
-    public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
-     {
-        BlockPortalNorthrend.Size size = new BlockPortalNorthrend.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
-        BlockPortalNorthrend.Size size1 = new BlockPortalNorthrend.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
+    public void setBlockBoundsBasedOnState(IBlockAccess access, BlockPos pos)
+    {
+        EnumFacing.Axis axis = (EnumFacing.Axis)access.getBlockState(pos).getValue(field_176550_a);
+        float f = 0.125F;
+        float f1 = 0.125F;
 
+        if (axis == EnumFacing.Axis.X)
+        {
+            f = 0.5F;
+        }
 
-        //int sizeVal = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size);
-        //int size1Val = (Integer)SuperReflection.getFieldValue("field_150864_e", Size.class, size1);
+        if (axis == EnumFacing.Axis.Z)
+        {
+            f1 = 0.5F;
+        }
 
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+    }
+
+    public static int func_176549_a(EnumFacing.Axis p_176549_0_)
+    {
+        return p_176549_0_ == EnumFacing.Axis.X ? 1 : (p_176549_0_ == EnumFacing.Axis.Z ? 2 : 0);
+    }
+
+    public boolean isFullCube()
+    {
+        return false;
+    }
+
+    public boolean func_176548_d(World worldIn, BlockPos p_176548_2_)
+    {
+        BlockPortal.Size size = new BlockPortal.Size(worldIn, p_176548_2_, EnumFacing.Axis.X);
 
         if (size.func_150860_b() && size.field_150864_e == 0)
         {
             size.func_150859_c();
             return true;
         }
-        else if (size1.func_150860_b() && size1.field_150864_e == 0)
-        {
-            size1.func_150859_c();
-            return true;
-        }
         else
         {
-            return false;
-        }
-    }
+            BlockPortal.Size size1 = new BlockPortal.Size(worldIn, p_176548_2_, EnumFacing.Axis.Z);
 
-    @Override
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-        byte b0 = 0;
-        byte b1 = 1;
-
-        if (par1World.getBlock(par2 - 1, par3, par4) == this || par1World.getBlock(par2 + 1, par3, par4) == this) {
-            b0 = 1;
-            b1 = 0;
-        }
-
-        int i1;
-
-        for (i1 = par3; par1World.getBlock(par2, i1 - 1, par4) == this; --i1) {
-            ;
-        }
-
-        if (par1World.getBlock(par2, i1 - 1, par4) != Blocks.packed_ice) {
-            par1World.setBlockToAir(par2, par3, par4);
-        } else {
-            int j1;
-
-            for (j1 = 1; j1 < 4 && par1World.getBlock(par2, i1 + j1, par4) == this; ++j1) {
-                ;
-            }
-
-            if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == Blocks.packed_ice) {
-                boolean flag = par1World.getBlock(par2 - 1, par3, par4) == this || par1World.getBlock(par2 + 1, par3, par4) == this;
-                boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == this || par1World.getBlock(par2, par3, par4 + 1) == this;
-
-                if (flag && flag1) {
-                    par1World.setBlockToAir(par2, par3, par4);
-                } else {
-                    if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != Blocks.packed_ice || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != Blocks.packed_ice || par1World.getBlock(par2 + b0, par3, par4 + b1) != this)) {
-                        par1World.setBlockToAir(par2, par3, par4);
-                    }
-                }
-            } else {
-                par1World.setBlockToAir(par2, par3, par4);
-            }
-        }
-    }
-
-    @Override
-    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-        if (!SuperBlocks.portalNorthrend.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
-        {
-            if (!World.doesBlockHaveSolidTopSurface(p_149726_1_, p_149726_2_, p_149726_3_ - 1, p_149726_4_))
+            if (size1.func_150860_b() && size1.field_150864_e == 0)
             {
-                p_149726_1_.setBlockToAir(p_149726_2_, p_149726_3_, p_149726_4_);
+                size1.func_150859_c();
+                return true;
             }
             else
             {
-                p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_) + p_149726_1_.rand.nextInt(10));
+                return false;
             }
         }
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
     {
-        if (p_149734_5_.nextInt(100) == 0)
+        EnumFacing.Axis axis = (EnumFacing.Axis)state.getValue(field_176550_a);
+        BlockPortal.Size size;
+
+        if (axis == EnumFacing.Axis.X)
         {
-            p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, "portal.portal", 0.5F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
+            size = new BlockPortal.Size(worldIn, pos, EnumFacing.Axis.X);
+
+            if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g)
+            {
+                worldIn.setBlockState(pos, Blocks.air.getDefaultState());
+            }
+        }
+        else if (axis == EnumFacing.Axis.Z)
+        {
+            size = new BlockPortal.Size(worldIn, pos, EnumFacing.Axis.Z);
+
+            if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g)
+            {
+                worldIn.setBlockState(pos, Blocks.air.getDefaultState());
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
+    {
+        EnumFacing.Axis axis = null;
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+
+        if (worldIn.getBlockState(pos).getBlock() == this)
+        {
+            axis = (EnumFacing.Axis)iblockstate.getValue(field_176550_a);
+
+            if (axis == null)
+            {
+                return false;
+            }
+
+            if (axis == EnumFacing.Axis.Z && side != EnumFacing.EAST && side != EnumFacing.WEST)
+            {
+                return false;
+            }
+
+            if (axis == EnumFacing.Axis.X && side != EnumFacing.SOUTH && side != EnumFacing.NORTH)
+            {
+                return false;
+            }
         }
 
-        for (int l = 0; l < 4; ++l)
-        {
-            double d0 = (double)((float)p_149734_2_ + p_149734_5_.nextFloat());
-            double d1 = (double)((float)p_149734_3_ + p_149734_5_.nextFloat());
-            double d2 = (double)((float)p_149734_4_ + p_149734_5_.nextFloat());
-            double d3 = 0.0D;
-            double d4 = 0.0D;
-            double d5 = 0.0D;
-            int i1 = p_149734_5_.nextInt(2) * 2 - 1;
-            d3 = ((double)p_149734_5_.nextFloat() - 0.5D);
-            d4 = ((double)p_149734_5_.nextFloat() - 0.5D);
-            d5 = ((double)p_149734_5_.nextFloat() - 0.5D);
+        boolean flag = worldIn.getBlockState(pos.offsetWest()).getBlock() == this && worldIn.getBlockState(pos.offsetWest(2)).getBlock() != this;
+        boolean flag1 = worldIn.getBlockState(pos.offsetEast()).getBlock() == this && worldIn.getBlockState(pos.offsetEast(2)).getBlock() != this;
+        boolean flag2 = worldIn.getBlockState(pos.offsetNorth()).getBlock() == this && worldIn.getBlockState(pos.offsetNorth(2)).getBlock() != this;
+        boolean flag3 = worldIn.getBlockState(pos.offsetSouth()).getBlock() == this && worldIn.getBlockState(pos.offsetSouth(2)).getBlock() != this;
+        boolean flag4 = flag || flag1 || axis == EnumFacing.Axis.X;
+        boolean flag5 = flag2 || flag3 || axis == EnumFacing.Axis.Z;
+        return flag4 && side == EnumFacing.WEST ? true : (flag4 && side == EnumFacing.EAST ? true : (flag5 && side == EnumFacing.NORTH ? true : flag5 && side == EnumFacing.SOUTH));
+    }
 
-            if (p_149734_1_.getBlock(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.getBlock(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
+    /**
+     * Returns the quantity of items to drop on block destruction.
+     */
+    public int quantityDropped(Random random)
+    {
+        return 0;
+    }
+
+    /**
+     * Called When an Entity Collided with the Block
+     */
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+    {
+        if (entityIn.ridingEntity == null && entityIn.riddenByEntity == null)
+        {
+            entityIn.setInPortal();
+        }
+    }
+
+    /**
+     * Convert the given metadata into a BlockState for this Block
+     */
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(field_176550_a, (meta & 3) == 2 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (rand.nextInt(100) == 0)
+        {
+            worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, "portal.portal", 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+        }
+
+        for (int i = 0; i < 4; ++i)
+        {
+            double d0 = (double)((float)pos.getX() + rand.nextFloat());
+            double d1 = (double)((float)pos.getY() + rand.nextFloat());
+            double d2 = (double)((float)pos.getZ() + rand.nextFloat());
+            double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double d4 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            int j = rand.nextInt(2) * 2 - 1;
+
+            if (worldIn.getBlockState(pos.offsetWest()).getBlock() != this && worldIn.getBlockState(pos.offsetEast()).getBlock() != this)
             {
-                d0 = (double)p_149734_2_ + 0.5D + 0.25D * (double)i1;
-                d3 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+                d0 = (double)pos.getX() + 0.5D + 0.25D * (double)j;
+                d3 = (double)(rand.nextFloat() * 2.0F * (float)j);
             }
             else
             {
-                d2 = (double)p_149734_4_ + 0.5D + 0.25D * (double)i1;
-                d5 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+                d2 = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
+                d5 = (double)(rand.nextFloat() * 2.0F * (float)j);
             }
 
-            p_149734_1_.spawnParticle("snowshovel", d0, d1, d2, d3 * 0.1d, d4, d5 * 0.1d);
+            worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0, d1, d2, d3, d4, d5, new int[0]);
         }
+    }
+
+    /**
+     * Convert the BlockState into the correct metadata value
+     */
+    public int getMetaFromState(IBlockState state)
+    {
+        return func_176549_a((EnumFacing.Axis)state.getValue(field_176550_a));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World worldIn, BlockPos pos)
+    {
+        return null;
+    }
+
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {field_176550_a});
     }
 
     public static class Size
     {
-        private final World world;
-        private final int field_150865_b;
-        private final int field_150866_c;
-        private final int field_150863_d;
+        private final World field_150867_a;
+        private final EnumFacing.Axis field_150865_b;
+        private final EnumFacing field_150866_c;
+        private final EnumFacing field_150863_d;
         private int field_150864_e = 0;
-        private ChunkCoordinates chunkCoordinates;
-        private int y;
+        private BlockPos field_150861_f;
+        private int field_150862_g;
         private int field_150868_h;
         private static final String __OBFID = "CL_00000285";
 
-        public Size(World world, int x, int y, int z, int index)
+        public Size(World worldIn, BlockPos p_i45694_2_, EnumFacing.Axis p_i45694_3_)
         {
-            this.world = world;
-            this.field_150865_b = index;
-            this.field_150863_d = BlockPortalNorthrend.field_150001_a[index][0];
-            this.field_150866_c = BlockPortalNorthrend.field_150001_a[index][1];
+            this.field_150867_a = worldIn;
+            this.field_150865_b = p_i45694_3_;
 
-            for (int i1 = y; y > i1 - 21 && y > 0 && this.func_150857_a(world.getBlock(x, y - 1, z)); --y)
+            if (p_i45694_3_ == EnumFacing.Axis.X)
+            {
+                this.field_150863_d = EnumFacing.EAST;
+                this.field_150866_c = EnumFacing.WEST;
+            }
+            else
+            {
+                this.field_150863_d = EnumFacing.NORTH;
+                this.field_150866_c = EnumFacing.SOUTH;
+            }
+
+            for (BlockPos blockpos1 = p_i45694_2_; p_i45694_2_.getY() > blockpos1.getY() - 21 && p_i45694_2_.getY() > 0 && this.func_150857_a(worldIn.getBlockState(p_i45694_2_.offsetDown()).getBlock()); p_i45694_2_ = p_i45694_2_.offsetDown())
             {
                 ;
             }
 
-            int j1 = this.func_150853_a(x, y, z, this.field_150863_d) - 1;
+            int i = this.func_180120_a(p_i45694_2_, this.field_150863_d) - 1;
 
-            if (j1 >= 0)
+            if (i >= 0)
             {
-                this.chunkCoordinates = new ChunkCoordinates(x + j1 * Direction.offsetX[this.field_150863_d], y, z + j1 * Direction.offsetZ[this.field_150863_d]);
-                this.field_150868_h = this.func_150853_a(this.chunkCoordinates.posX, this.chunkCoordinates.posY, this.chunkCoordinates.posZ, this.field_150866_c);
+                this.field_150861_f = p_i45694_2_.offset(this.field_150863_d, i);
+                this.field_150868_h = this.func_180120_a(this.field_150861_f, this.field_150866_c);
 
                 if (this.field_150868_h < 2 || this.field_150868_h > 21)
                 {
-                    this.chunkCoordinates = null;
+                    this.field_150861_f = null;
                     this.field_150868_h = 0;
                 }
             }
 
-            if (this.chunkCoordinates != null)
+            if (this.field_150861_f != null)
             {
-                this.y = this.func_150858_a();
+                this.field_150862_g = this.func_150858_a();
             }
         }
 
-        protected int func_150853_a(int x, int y, int z, int index)
+        protected int func_180120_a(BlockPos p_180120_1_, EnumFacing p_180120_2_)
         {
-            int offsetX = Direction.offsetX[index];
-            int offsetZ = Direction.offsetZ[index];
-            int i1;
-            Block block;
+            int i;
 
-            for (i1 = 0; i1 < 22; ++i1)
+            for (i = 0; i < 22; ++i)
             {
-                block = this.world.getBlock(x + offsetX * i1, y, z + offsetZ * i1);
+                BlockPos blockpos1 = p_180120_1_.offset(p_180120_2_, i);
 
-                if (!this.func_150857_a(block))
-                {
-                    break;
-                }
-
-                Block block1 = this.world.getBlock(x + offsetX * i1, y - 1, z + offsetZ * i1);
-
-                if (block1 != Blocks.packed_ice)
+                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != Blocks.obsidian)
                 {
                     break;
                 }
             }
 
-            block = this.world.getBlock(x + offsetX * i1, y, z + offsetZ * i1);
-            return block == Blocks.packed_ice ? i1 : 0;
+            Block block = this.field_150867_a.getBlockState(p_180120_1_.offset(p_180120_2_, i)).getBlock();
+            return block == Blocks.obsidian ? i : 0;
         }
 
         protected int func_150858_a()
         {
             int i;
-            int j;
-            int k;
-            int l;
             label56:
 
-            for (this.y = 0; this.y < 21; ++this.y)
+            for (this.field_150862_g = 0; this.field_150862_g < 21; ++this.field_150862_g)
             {
-                i = this.chunkCoordinates.posY + this.y;
-
-                for (j = 0; j < this.field_150868_h; ++j)
+                for (i = 0; i < this.field_150868_h; ++i)
                 {
-                    k = this.chunkCoordinates.posX + j * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                    l = this.chunkCoordinates.posZ + j * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                    Block block = this.world.getBlock(k, i, l);
+                    BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g);
+                    Block block = this.field_150867_a.getBlockState(blockpos).getBlock();
 
                     if (!this.func_150857_a(block))
                     {
                         break label56;
                     }
 
-                    if (block == SuperBlocks.cityBlock)
+                    if (block == Blocks.portal)
                     {
                         ++this.field_150864_e;
                     }
 
-                    if (j == 0)
+                    if (i == 0)
                     {
-                        block = this.world.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
+                        block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150863_d)).getBlock();
 
-                        if (block != Blocks.packed_ice)
+                        if (block != Blocks.obsidian)
                         {
                             break label56;
                         }
                     }
-                    else if (j == this.field_150868_h - 1)
+                    else if (i == this.field_150868_h - 1)
                     {
-                        block = this.world.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
+                        block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150866_c)).getBlock();
 
-                        if (block != Blocks.packed_ice)
+                        if (block != Blocks.obsidian)
                         {
                             break label56;
                         }
@@ -303,52 +375,45 @@ public class BlockPortalNorthrend extends BlockPortal {
 
             for (i = 0; i < this.field_150868_h; ++i)
             {
-                j = this.chunkCoordinates.posX + i * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                k = this.chunkCoordinates.posY + this.y;
-                l = this.chunkCoordinates.posZ + i * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
-
-                if (this.world.getBlock(j, k, l) != Blocks.packed_ice)
+                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != Blocks.obsidian)
                 {
-                    this.y = 0;
+                    this.field_150862_g = 0;
                     break;
                 }
             }
 
-            if (this.y <= 21 && this.y >= 3)
+            if (this.field_150862_g <= 21 && this.field_150862_g >= 3)
             {
-                return this.y;
+                return this.field_150862_g;
             }
             else
             {
-                this.chunkCoordinates = null;
+                this.field_150861_f = null;
                 this.field_150868_h = 0;
-                this.y = 0;
+                this.field_150862_g = 0;
                 return 0;
             }
         }
 
-        protected boolean func_150857_a(Block block)
+        protected boolean func_150857_a(Block p_150857_1_)
         {
-            Material mat = (Material)SuperReflection.getFieldValue("blockMaterial", Block.class, block);
-            return mat == Material.air || block == SuperBlocks.portalNorthrend;
+            return p_150857_1_.blockMaterial == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == Blocks.portal;
         }
 
         public boolean func_150860_b()
         {
-            return this.chunkCoordinates != null && this.field_150868_h >= 2 && this.field_150868_h <= 21 && this.y >= 3 && this.y <= 21;
+            return this.field_150861_f != null && this.field_150868_h >= 2 && this.field_150868_h <= 21 && this.field_150862_g >= 3 && this.field_150862_g <= 21;
         }
 
         public void func_150859_c()
         {
             for (int i = 0; i < this.field_150868_h; ++i)
             {
-                int j = this.chunkCoordinates.posX + Direction.offsetX[this.field_150866_c] * i;
-                int k = this.chunkCoordinates.posZ + Direction.offsetZ[this.field_150866_c] * i;
+                BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
-                for (int l = 0; l < this.y; ++l)
+                for (int j = 0; j < this.field_150862_g; ++j)
                 {
-                    int i1 = this.chunkCoordinates.posY + l;
-                    this.world.setBlock(j, i1, k, SuperBlocks.portalNorthrend, this.field_150865_b, 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), Blocks.portal.getDefaultState().withProperty(BlockPortal.field_176550_a, this.field_150865_b), 2);
                 }
             }
         }

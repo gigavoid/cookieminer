@@ -254,7 +254,7 @@ public class ChunkProviderNorthrend implements IChunkProvider
             (new WorldGenDungeons()).generate(this.worldObj, this.rand, new BlockPos(l1, i2, j2));
         }
 
-        biomegenbase.decorate(this.worldObj, this.rand, k, l);
+        biomegenbase.func_180624_a(this.worldObj, this.rand, new BlockPos(p_73153_2_, 64, p_73153_3_));
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
         {
             SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);

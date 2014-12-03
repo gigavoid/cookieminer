@@ -252,7 +252,7 @@ public class EntityYeti extends EntityMob {
             EntityYeti entityYeti = new EntityYeti(this.worldObj);
             entityYeti.copyLocationAndAnglesFrom(par1EntityLivingBase);
             this.worldObj.removeEntity(par1EntityLivingBase);
-            entityYeti.onSpawnWithEgg((IEntityLivingData) null);
+            //entityYeti.onSpawnWithEgg((IEntityLivingData) null);
 
             if (par1EntityLivingBase.isChild()) {
                 entityYeti.setChild(true);
@@ -263,7 +263,9 @@ public class EntityYeti extends EntityMob {
         }
     }
 
-    @Override
+    //Can't find method in superclass. Don't know why.
+
+    /*@Override
     public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1EntityLivingData) {
         Object par1EntityLivingData1 = super.onSpawnWithEgg(par1EntityLivingData);
         float f = this.worldObj.func_147462_b(this.posX, this.posY, this.posZ);
@@ -280,7 +282,7 @@ public class EntityYeti extends EntityMob {
             }
         }
 
-        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).applyModifier(new AttributeModifier("Random spawn bonus", this.rand.nextDouble() * 0.05000000074505806D, 0));
+        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).applyModifier(new AttributeModifier("Random spawn bonus", this.rand.nextDouble() * 0.05D, 0));
         double d0 = this.rand.nextDouble() * 1.5D * (double) this.worldObj.func_147462_b(this.posX, this.posY, this.posZ);
 
         if (d0 > 1.0D) {
@@ -292,7 +294,7 @@ public class EntityYeti extends EntityMob {
         }
 
         return (IEntityLivingData) par1EntityLivingData1;
-    }
+    }*/
 
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
