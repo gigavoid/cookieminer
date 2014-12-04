@@ -25,7 +25,7 @@ public class RendererBasket extends Render {
         //GL11.glTranslatef((float) x + 0.5f, (float) y +.5f, (float) z + 0.5f);
         GL11.glTranslatef((float)x, (float)y, (float)z);
 
-        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeWheel.png"));
+        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeway_engine.png"));
         Minecraft.getMinecraft().renderEngine.bindTexture(textures);
 
 

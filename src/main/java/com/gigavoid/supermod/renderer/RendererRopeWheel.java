@@ -26,7 +26,7 @@ public class RendererRopeWheel extends TileEntitySpecialRenderer {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y + .5f, (float) z + 0.5f);
 
-        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeWheel.png"));
+        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeway_engine.png"));
         Minecraft.getMinecraft().renderEngine.bindTexture(textures);
 
         //This rotation part is very important! Without it, your modelRopeWheel will render upside-down! And for some reason you DO need PushMatrix again!

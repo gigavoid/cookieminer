@@ -23,7 +23,7 @@ public class RendererRope extends Render {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y + .5f, (float) z + 0.5f);
 
-        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeWheel.png"));
+        ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeway_engine.png"));
         Minecraft.getMinecraft().renderEngine.bindTexture(textures);
 
         GL11.glPushMatrix();
