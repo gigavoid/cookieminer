@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
  */
 public class SuperEntities {
     public static void registerEntities(){
-        EntityList.addMapping(EntityYeti.class, "entityYeti", 67, 0xFFFFFF, 0x666666);
+        EntityList.addMapping(EntityYeti.class, "entityYeti", 255, 0xFFFFFF, 0x666666);
 
         registerWithRenderer(EntityRope.class, new RendererRope(Minecraft.getMinecraft().getRenderManager()), "entityRope", 64, -1, 5);
         registerWithRenderer(EntityBasket.class, new RendererBasket(Minecraft.getMinecraft().getRenderManager()), "entityBasket", 64, 1, 6);

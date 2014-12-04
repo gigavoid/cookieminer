@@ -13,7 +13,7 @@ public class WorldProviderNorthrend extends WorldProvider {
     }
 
     public IChunkProvider createChunkGenerator() {
-        return new ChunkProviderNorthrend(worldObj, worldObj.getSeed(), true);
+        return new ChunkProviderNorthrend(worldObj, worldObj.getSeed(), true, "northrend");
     }
 
     public String getDimensionName() {

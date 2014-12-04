@@ -91,7 +91,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
     public boolean func_176548_d(World worldIn, BlockPos p_176548_2_)
     {
-        BlockPortal.Size size = new BlockPortal.Size(worldIn, p_176548_2_, EnumFacing.Axis.X);
+        BlockPortalNorthrend.Size size = new BlockPortalNorthrend.Size(worldIn, p_176548_2_, EnumFacing.Axis.X);
 
         if (size.func_150860_b() && size.field_150864_e == 0)
         {
@@ -100,7 +100,7 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
         else
         {
-            BlockPortal.Size size1 = new BlockPortal.Size(worldIn, p_176548_2_, EnumFacing.Axis.Z);
+            BlockPortalNorthrend.Size size1 = new BlockPortalNorthrend.Size(worldIn, p_176548_2_, EnumFacing.Axis.Z);
 
             if (size1.func_150860_b() && size1.field_150864_e == 0)
             {
@@ -117,11 +117,11 @@ public class BlockPortalNorthrend extends BlockPortal {
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
     {
         EnumFacing.Axis axis = (EnumFacing.Axis)state.getValue(field_176550_a);
-        BlockPortal.Size size;
+        BlockPortalNorthrend.Size size;
 
         if (axis == EnumFacing.Axis.X)
         {
-            size = new BlockPortal.Size(worldIn, pos, EnumFacing.Axis.X);
+            size = new BlockPortalNorthrend.Size(worldIn, pos, EnumFacing.Axis.X);
 
             if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g)
             {
@@ -130,7 +130,7 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
         else if (axis == EnumFacing.Axis.Z)
         {
-            size = new BlockPortal.Size(worldIn, pos, EnumFacing.Axis.Z);
+            size = new BlockPortalNorthrend.Size(worldIn, pos, EnumFacing.Axis.Z);
 
             if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g)
             {
@@ -347,7 +347,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                         break label56;
                     }
 
-                    if (block == Blocks.portal)
+                    if (block == SuperBlocks.portalNorthrend)
                     {
                         ++this.field_150864_e;
                     }
@@ -397,7 +397,8 @@ public class BlockPortalNorthrend extends BlockPortal {
 
         protected boolean func_150857_a(Block p_150857_1_)
         {
-            return p_150857_1_.blockMaterial == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == Blocks.portal;
+            Material material = (Material)SuperReflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
+            return material == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == SuperBlocks.portalNorthrend;
         }
 
         public boolean func_150860_b()
@@ -413,7 +414,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
                 for (int j = 0; j < this.field_150862_g; ++j)
                 {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), Blocks.portal.getDefaultState().withProperty(BlockPortal.field_176550_a, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), SuperBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortal.field_176550_a, this.field_150865_b), 2);
                 }
             }
         }

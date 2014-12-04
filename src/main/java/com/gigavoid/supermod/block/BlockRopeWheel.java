@@ -4,10 +4,12 @@ import com.gigavoid.supermod.tileentity.TileEntityRopeWheel;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -30,19 +32,18 @@ public class BlockRopeWheel extends Block implements ITileEntityProvider {
     }
 
     @Override
-    public boolean renderAsNormalBlock() {
-        return false;
+    public boolean canReplace(World worldIn, BlockPos pos, EnumFacing side, ItemStack stack)
+    {
+        return this.canPlaceBlockOnSide(worldIn, pos, side);
     }
 
     @Override
-    public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side) {
-        EnumFacing dir = EnumFacing.getOrientation(side);
-
-
-        return (dir == NORTH && world.isSideSolid(x, y, z + 1, NORTH) && world.getBlock(x, y, z + 1) == SuperBlocks.pylon) ||
-                (dir == SOUTH && world.isSideSolid(x, y, z - 1, SOUTH) && world.getBlock(x, y, z - 1) == SuperBlocks.pylon) ||
-                (dir == WEST  && world.isSideSolid(x + 1, y, z, WEST) && world.getBlock(x + 1, y, z) == SuperBlocks.pylon) ||
-                (dir == EAST  && world.isSideSolid(x - 1, y, z, EAST) && world.getBlock(x - 1, y, z) == SuperBlocks.pylon);
+    public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side) {
+        EnumFacing dir = side;
+        return (dir == EnumFacing.NORTH && world.isSideSolid(pos.add(0, 0, 1), EnumFacing.NORTH) && world.getBlockState(pos.add(0, 0, 1)) == SuperBlocks.pylon) ||
+                (dir == EnumFacing.SOUTH && world.isSideSolid(pos.add(0, 0, -1), EnumFacing.SOUTH) && world.getBlockState(pos.add(0, 0, -1)) == SuperBlocks.pylon) ||
+                (dir == EnumFacing.WEST  && world.isSideSolid(pos.add(1, 0, 0), EnumFacing.WEST) && world.getBlockState(pos.add(1, 0, 0)) == SuperBlocks.pylon) ||
+                (dir == EnumFacing.EAST  && world.isSideSolid(pos.add(-1, 0, 0), EnumFacing.EAST) && world.getBlockState(pos.add(-1, 0, 0)) == SuperBlocks.pylon);
     }
 
     @Override
@@ -50,29 +51,26 @@ public class BlockRopeWheel extends Block implements ITileEntityProvider {
         return new TileEntityRopeWheel();
     }
 
-
-
-
     @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack p_149689_6_) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 
-        TileEntityRopeWheel te = (TileEntityRopeWheel) world.getTileEntity(x, y, z);
-        te.direction = (short)(MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360) + 0.50) & 3);
+        TileEntityRopeWheel te = (TileEntityRopeWheel) world.getTileEntity(pos);
+        te.direction = (short)(MathHelper.floor_double((double) (placer.rotationYaw * 4.0F / 360) + 0.50) & 3);
 
         System.out.println(te.direction);
 
         for(int i = 0; i < 2; i++) {
 
-            if (te.direction == 0 && world.getBlock(x, y, z + 1) != SuperBlocks.pylon)
+            if (te.direction == 0 && world.getBlockState(pos.add(0, 0, 1)) != SuperBlocks.pylon)
                 te.direction = 1;
 
-            if (te.direction == 1 && world.getBlock(x - 1, y, z) != SuperBlocks.pylon)
+            if (te.direction == 1 && world.getBlockState(pos.add(-1, 0, 0)) != SuperBlocks.pylon)
                 te.direction = 2;
 
-            if (te.direction == 2 && world.getBlock(x, y, z - 1) != SuperBlocks.pylon)
+            if (te.direction == 2 && world.getBlockState(pos.add(0, 0, -1)) != SuperBlocks.pylon)
                 te.direction = 3;
 
-            if (te.direction == 3 && world.getBlock(x + 1, y, z) != SuperBlocks.pylon)
+            if (te.direction == 3 && world.getBlockState(pos.add(1, 0, 0)) != SuperBlocks.pylon)
                 te.direction = 0;
 
         }
