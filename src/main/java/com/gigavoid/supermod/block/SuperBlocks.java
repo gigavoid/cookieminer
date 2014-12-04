@@ -1,5 +1,9 @@
 package com.gigavoid.supermod.block;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SuperBlocks {
@@ -31,30 +35,37 @@ public class SuperBlocks {
     public static final BlockNorthGlaciemPlant northGlaciemPlant = new BlockNorthGlaciemPlant();
 
     public static void initializeBlocks(){
-        GameRegistry.registerBlock(emeraldLog, "emeraldLog");
-        GameRegistry.registerBlock(emeraldLeaves, "emeraldLeaves");
-        GameRegistry.registerBlock(emeraldFlower, "emeraldFlower");
-        GameRegistry.registerBlock(saxeliumOre, "saxeliumOre");
-        GameRegistry.registerBlock(saxeliumBlock, "saxeliumBlock");
-        GameRegistry.registerBlock(pickaxeToolbench, "pickaxeToolbench");
-        GameRegistry.registerBlock(voidToolbench, "voidToolbench");
-        GameRegistry.registerBlock(glacialIce, "glacialIce");
-        GameRegistry.registerBlock(northDirt, "northDirt");
-        GameRegistry.registerBlock(northStone, "northStone");
-        GameRegistry.registerBlock(northLog, "northLog");
-        GameRegistry.registerBlock(northLeaves, "northLeaves");
-        GameRegistry.registerBlock(voidBlock, "voidBlock");
-        GameRegistry.registerBlock(pylon, "pylon");
-        GameRegistry.registerBlock(ropeWheel, "ropeWheel");
-        GameRegistry.registerBlock(portalNorthrend, "portalNorthrend");
-        GameRegistry.registerBlock(meat, "meat");
-        GameRegistry.registerBlock(bone, "bone");
-        GameRegistry.registerBlock(northPlanks, "northPlanks");
-        GameRegistry.registerBlock(northStairs, "northStairs");
-        GameRegistry.registerBlock(northCobble, "northCobblestone");
-        GameRegistry.registerBlock(northCobbleStairs, "northCobbleStairs");
-        GameRegistry.registerBlock(northFence, "northFence");
-        GameRegistry.registerBlock(northFenceGate, "northFenceGate");
-        GameRegistry.registerBlock(northGlaciemPlant, "northGlaciemPlant");
+        registerBlock(emeraldLog, "emeraldLog");
+        registerBlock(emeraldLeaves, "emeraldLeaves");
+        registerBlock(emeraldFlower, "emeraldFlower");
+        registerBlock(saxeliumOre, "saxeliumOre");
+        registerBlock(saxeliumBlock, "saxeliumBlock");
+        registerBlock(pickaxeToolbench, "pickaxeToolbench");
+        registerBlock(voidToolbench, "voidToolbench");
+        registerBlock(glacialIce, "glacialIce");
+        registerBlock(northDirt, "northDirt");
+        registerBlock(northStone, "northStone");
+        registerBlock(northLog, "northLog");
+        registerBlock(northLeaves, "northLeaves");
+        registerBlock(voidBlock, "voidBlock");
+        registerBlock(pylon, "pylon");
+        registerBlock(ropeWheel, "ropeWheel");
+        registerBlock(portalNorthrend, "portalNorthrend");
+        registerBlock(meat, "meat");
+        registerBlock(bone, "block_bone");
+        registerBlock(northPlanks, "northPlanks");
+        registerBlock(northStairs, "northStairs");
+        registerBlock(northCobble, "northCobblestone");
+        registerBlock(northCobbleStairs, "northCobbleStairs");
+        registerBlock(northFence, "northFence");
+        registerBlock(northFenceGate, "northFenceGate");
+        registerBlock(northGlaciemPlant, "northGlaciemPlant");
+    }
+
+    private static void registerBlock(Block block, String name) {
+        block.setUnlocalizedName(name);
+        GameRegistry.registerBlock(block, name);
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation("supermod:" + name, "inventory"));
+
     }
 }
