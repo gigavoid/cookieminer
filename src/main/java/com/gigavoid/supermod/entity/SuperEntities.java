@@ -9,9 +9,6 @@ import net.minecraft.entity.EntityList;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-/**
- * Created by Rasmus on 2014-11-05.
- */
 public class SuperEntities {
     public static void registerEntities(){
         EntityList.addMapping(EntityYeti.class, "entityYeti", 255, 0xFFFFFF, 0x666666);
