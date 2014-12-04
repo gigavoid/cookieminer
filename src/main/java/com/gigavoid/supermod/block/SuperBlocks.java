@@ -35,31 +35,31 @@ public class SuperBlocks {
     public static final BlockNorthGlaciemPlant northGlaciemPlant = new BlockNorthGlaciemPlant();
 
     public static void initializeBlocks(){
-        registerBlock(emeraldLog, "emeraldLog");
-        registerBlock(emeraldLeaves, "emeraldLeaves");
-        registerBlock(emeraldFlower, "emeraldFlower");
-        registerBlock(saxeliumOre, "saxeliumOre");
-        registerBlock(saxeliumBlock, "saxeliumBlock");
-        registerBlock(pickaxeToolbench, "pickaxeToolbench");
-        registerBlock(voidToolbench, "voidToolbench");
-        registerBlock(glacialIce, "glacialIce");
-        registerBlock(northDirt, "northDirt");
-        registerBlock(northStone, "northStone");
-        registerBlock(northLog, "northLog");
-        registerBlock(northLeaves, "northLeaves");
-        registerBlock(voidBlock, "voidBlock");
+        registerBlock(emeraldLog, "emerald_log");
+        registerBlock(emeraldLeaves, "emerald_leaves");
+        registerBlock(emeraldFlower, "flower_emerald");
+        registerBlock(saxeliumOre, "saxelium_ore");
+        registerBlock(saxeliumBlock, "saxelium_block");
+        registerBlock(pickaxeToolbench, "progpick_upgtable");
+        registerBlock(voidToolbench, "void_bench");
+        registerBlock(glacialIce, "north_ice");
+        registerBlock(northDirt, "north_dirt");
+        registerBlock(northStone, "north_stone");
+        registerBlock(northLog, "north_log");
+        registerBlock(northLeaves, "north_leaves");
+        registerBlock(voidBlock, "void_block");
         registerBlock(pylon, "pylon");
-        registerBlock(ropeWheel, "ropeWheel");
-        registerBlock(portalNorthrend, "portalNorthrend");
+        registerBlock(ropeWheel, "ropeway_engine");
+        registerBlock(portalNorthrend, "north_portal");
         registerBlock(meat, "meat");
-        registerBlock(bone, "block_bone");
-        registerBlock(northPlanks, "northPlanks");
-        registerBlock(northStairs, "northStairs");
-        registerBlock(northCobble, "northCobblestone");
-        registerBlock(northCobbleStairs, "northCobbleStairs");
-        registerBlock(northFence, "northFence");
-        registerBlock(northFenceGate, "northFenceGate");
-        registerBlock(northGlaciemPlant, "northGlaciemPlant");
+        registerBlock(bone, "bone");
+        registerBlock(northPlanks, "north_planks");
+        registerBlock(northStairs, "north_stairs");
+        registerBlock(northCobble, "north_cobblestone");
+        registerBlock(northCobbleStairs, "north_cobble_stairs");
+        registerBlock(northFence, "north_fence");
+        registerBlock(northFenceGate, "north_fence_gate");
+        registerBlock(northGlaciemPlant, "glaciem_plant");
     }
 
     private static void registerBlock(Block block, String name) {
