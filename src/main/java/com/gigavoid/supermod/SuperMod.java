@@ -34,7 +34,6 @@ public class SuperMod
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
-        SuperBlocks.initializeBlocks();
         SuperItems.initializeItems();
         SuperBiomes.registerBiomes();
 
@@ -45,6 +44,7 @@ public class SuperMod
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
+        SuperBlocks.initializeBlocks();
         SuperRenderer.registerRenderers();
         SuperWorldGens.initializeWorldGens();
         SuperKeyBinds.registerKeybinds();
