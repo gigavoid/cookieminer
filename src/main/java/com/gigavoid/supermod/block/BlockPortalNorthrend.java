@@ -1,7 +1,5 @@
 package com.gigavoid.supermod.block;
 
-import com.gigavoid.supermod.SuperMod;
-import com.gigavoid.supermod.teleport.TeleporterNorthrend;
 import com.gigavoid.supermod.util.SuperReflection;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
@@ -9,12 +7,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -26,7 +23,7 @@ import java.util.Random;
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
-        setCreativeTab(null);
+        setCreativeTab(CreativeTabs.tabBlock);
     }
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
@@ -187,9 +184,13 @@ public class BlockPortalNorthrend extends BlockPortal {
      */
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
     {
-        if (entityIn.ridingEntity == null && entityIn.riddenByEntity == null)
+        if (entityIn.ridingEntity == null && entityIn.riddenByEntity == null && !worldIn.isRemote && entityIn.dimension != 2)
         {
-            entityIn.setInPortal();
+            entityIn.travelToDimension(2);
+        }
+        else if (entityIn.ridingEntity == null && entityIn.riddenByEntity == null && !worldIn.isRemote)
+        {
+            entityIn.travelToDimension(0);
         }
     }
 
@@ -320,14 +321,14 @@ public class BlockPortalNorthrend extends BlockPortal {
             {
                 BlockPos blockpos1 = p_180120_1_.offset(p_180120_2_, i);
 
-                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != Blocks.obsidian)
+                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != Blocks.packed_ice)
                 {
                     break;
                 }
             }
 
             Block block = this.field_150867_a.getBlockState(p_180120_1_.offset(p_180120_2_, i)).getBlock();
-            return block == Blocks.obsidian ? i : 0;
+            return block == Blocks.packed_ice ? i : 0;
         }
 
         protected int func_150858_a()
@@ -356,7 +357,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                     {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150863_d)).getBlock();
 
-                        if (block != Blocks.obsidian)
+                        if (block != Blocks.packed_ice)
                         {
                             break label56;
                         }
@@ -365,7 +366,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                     {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150866_c)).getBlock();
 
-                        if (block != Blocks.obsidian)
+                        if (block != Blocks.packed_ice)
                         {
                             break label56;
                         }
@@ -375,7 +376,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
             for (i = 0; i < this.field_150868_h; ++i)
             {
-                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != Blocks.obsidian)
+                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != Blocks.packed_ice)
                 {
                     this.field_150862_g = 0;
                     break;
@@ -414,7 +415,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
                 for (int j = 0; j < this.field_150862_g; ++j)
                 {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), SuperBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortal.field_176550_a, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), SuperBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortalNorthrend.field_176550_a, this.field_150865_b), 2);
                 }
             }
         }
