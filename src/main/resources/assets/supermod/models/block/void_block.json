@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "supermod:blocks/block_bone"
+        "all": "supermod:blocks/void_block"
     }
 }

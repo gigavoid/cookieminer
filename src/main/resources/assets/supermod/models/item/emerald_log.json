@@ -1,5 +1,5 @@
 {
-    "parent": "supermod:block/block_bone",
+    "parent": "supermod:block/emerald_log",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
