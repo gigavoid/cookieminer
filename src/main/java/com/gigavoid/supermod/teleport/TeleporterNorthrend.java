@@ -2,7 +2,7 @@ package com.gigavoid.supermod.teleport;
 
 import com.gigavoid.supermod.block.BlockPortalNorthrend;
 import com.gigavoid.supermod.block.SuperBlocks;
-import net.minecraft.block.BlockPortal;
+import com.gigavoid.supermod.util.SuperReflection;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;

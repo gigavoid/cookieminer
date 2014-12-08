@@ -38,7 +38,7 @@ public class NorthrendGenLayerBiome extends GenLayer
         return aint1;
     }
 
-    public static GenLayer[] initializeAllBiomeGenerators(long p_75901_0_, WorldType p_75901_2_)  {
+    public static GenLayer[] func_180781_a(long p_75901_0_, WorldType p_75901_2_, String genType)  {
         NorthrendGenLayerBiome goodLayer = new NorthrendGenLayerBiome(1000, null, null);
         GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 5);
 

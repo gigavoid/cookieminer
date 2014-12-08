@@ -8,7 +8,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 public class WorldProviderNorthrend extends WorldProvider {
 
     public void registerWorldChunkManager() {
-        this.worldChunkMgr = new WorldChunkManagerNorthrend(getSeed(), WorldType.DEFAULT);
+        this.worldChunkMgr = new WorldChunkManagerNorthrend(getSeed(), WorldType.DEFAULT, "northrend");
         this.dimensionId = SuperMod.northrendDimID;
     }
 

@@ -3,6 +3,7 @@ package com.gigavoid.supermod;
 import com.gigavoid.supermod.biome.SuperBiomes;
 import com.gigavoid.supermod.block.SuperBlocks;
 import com.gigavoid.supermod.entity.SuperEntities;
+import com.gigavoid.supermod.events.SuperWorldEvents;
 import com.gigavoid.supermod.gui.SuperGuiHandler;
 import com.gigavoid.supermod.item.SuperItems;
 import com.gigavoid.supermod.keybinding.SuperKeyBinds;
@@ -14,11 +15,15 @@ import com.gigavoid.supermod.worldgen.SuperWorldGens;
 import com.gigavoid.supermod.worldgen.northrend.WorldProviderNorthrend;
 import com.gigavoid.supermod.worldgen.northrend.WorldTypeNorthrend;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = SuperMod.MODID, version = SuperMod.VERSION)
 public class SuperMod
@@ -53,5 +58,6 @@ public class SuperMod
         SuperSmeltingRecipie.InitializeSmektingRecipes();
         SuperEntities.registerEntities();
         SuperTileEntities.initializeEntities();
+        MinecraftForge.EVENT_BUS.register(new SuperWorldEvents());
     }
 }
