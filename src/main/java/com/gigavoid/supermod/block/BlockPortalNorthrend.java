@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.block;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.teleport.TeleporterNorthrend;
 import com.gigavoid.supermod.util.SuperReflection;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
@@ -10,15 +11,17 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -154,34 +157,24 @@ public class BlockPortalNorthrend extends BlockPortal {
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-        if (entity.ridingEntity == null && entity.riddenByEntity == null && !world.isRemote && entity.dimension != SuperMod.northrendDimID && !entity.isDead) {
-            world.theProfiler.startSection("changeDimension");
-            MinecraftServer minecraftserver = MinecraftServer.getServer();
-            WorldServer worldserver = minecraftserver.worldServerForDimension(entity.dimension);
-            WorldServer worldserver1 = minecraftserver.worldServerForDimension(SuperMod.northrendDimID);
-            entity.dimension = SuperMod.northrendDimID;
-            world.removeEntity(entity);
-            entity.isDead = false;
-            world.theProfiler.startSection("reposition");
-            minecraftserver.getConfigurationManager().transferEntityToWorld(entity, entity.dimension, worldserver, worldserver1);
-            world.theProfiler.endStartSection("reloading");
-            Entity entity1 = EntityList.createEntityByName(EntityList.getEntityString(entity), worldserver1);
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+       // public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+            if ((entityIn.ridingEntity == null) && (entityIn.riddenByEntity == null) && ((entityIn instanceof EntityPlayerMP))) {
+                EntityPlayerMP player = (EntityPlayerMP) entityIn;
 
-            if (entity1 != null) {
-                entity1.func_180432_n(entity);
-                worldserver1.spawnEntityInWorld(entity1);
+                MinecraftServer mServer = MinecraftServer.getServer();
+
+                if (player.timeUntilPortal > 0) {
+                    player.timeUntilPortal = 10;
+                } else if (player.dimension != SuperMod.northrendDimID) {
+                    player.timeUntilPortal = 10;
+
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, SuperMod.northrendDimID, new TeleporterNorthrend(mServer.worldServerForDimension(SuperMod.northrendDimID)));
+                } else {
+                    player.timeUntilPortal = 10;
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterNorthrend(mServer.worldServerForDimension(0)));
+                }
             }
-
-            entity.isDead = true;
-            world.theProfiler.endSection();
-            worldserver.resetUpdateEntityTick();
-            worldserver1.resetUpdateEntityTick();
-            world.theProfiler.endSection();
-        }
-        else if (entity.ridingEntity == null && entity.riddenByEntity == null && !world.isRemote) {
-            entity.travelToDimension(0);
-        }
     }
 
     /**
