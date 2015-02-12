@@ -2,6 +2,7 @@
 *.iml
 *.ipr
 
+.idea/
 .gradle/
 out/
 eclipse/
