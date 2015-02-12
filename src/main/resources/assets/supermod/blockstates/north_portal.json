@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "axis=z": { "model": "supermod:north_portal_ew" },
-        "axis=x": { "model": "supermod:north_portal_ns" }
-    }
-}
