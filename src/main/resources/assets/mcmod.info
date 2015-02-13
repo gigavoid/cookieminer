@@ -1,0 +1,16 @@
+[
+{
+  "modid": "supermod",
+  "name": "The Super Mod",
+  "description": "A very superb mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Ineentho", "Kofotsmordarn", "SnuRRaN"],
+  "credits": "Made possible by the Forge and FML guys.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
