@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.ropeway.block;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.ropeway.creativetab.RopewayCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -12,6 +13,6 @@ public class BlockRopewayPylon extends Block {
         super(Material.rock);
         this.setHardness(2.0f);
         this.setHarvestLevel("pickaxe", 0);
-        this.setCreativeTab(RopewayBlocks.ropewayCreativeTab);
+        this.setCreativeTab(RopewayCreativeTabs.tabBlock);
     }
 }

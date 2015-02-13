@@ -11,8 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class RopewayBlocks {
 
-    public static CreativeTabRopeway ropewayCreativeTab = new CreativeTabRopeway();
-    
     public static final BlockRopewayPylon ropewayPylon = new BlockRopewayPylon();
 
     public static void initializeBlocks() {
