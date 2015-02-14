@@ -15,4 +15,9 @@ public class RegisterFunctions {
         GameRegistry.registerBlock(block, name);
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation("supermod:" + name, "inventory"));
     }
+
+    public static void registerItem(Item item, String name) {
+        item.setUnlocalizedName(name);
+        GameRegistry.registerItem(block, name);
+    }
 }

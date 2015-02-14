@@ -30,6 +30,6 @@ public class NorthrendBlocks {
         registerBlock(northCobbleStairs, "north_cobble_stairs");
         registerBlock(northFence, "north_fence");
         registerBlock(northFenceGate, "north_fence_gate");
-        registerBlock(northGlaciemPlant, "glaciem_plant");
+        //registerBlock(northGlaciemPlant, "glaciem_plant");
     }
 }

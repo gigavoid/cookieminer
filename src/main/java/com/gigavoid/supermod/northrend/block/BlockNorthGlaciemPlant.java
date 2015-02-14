@@ -46,7 +46,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
         if (worldIn.getLightFromNeighbors(pos.offsetUp()) >= 9)
         {
-            int i = ((Integer)state.getValue(AGE)).intValue();
+            int i = (Integer) state.getValue(AGE);
 
             if (i < 6)
             {
@@ -54,7 +54,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
                 if (rand.nextInt((int)(25.0F / f) + 1) == 0)
                 {
-                    worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+                    worldIn.setBlockState(pos, state.withProperty(AGE, i + 1), 2);
                 }
             }
         }
@@ -62,14 +62,14 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
     public void growCrops(World worldIn, BlockPos p_176487_2_, IBlockState p_176487_3_)
     {
-        int i = ((Integer)p_176487_3_.getValue(AGE)).intValue() + MathHelper.getRandomIntegerInRange(worldIn.rand, 2, 5);
+        int i = (Integer) p_176487_3_.getValue(AGE) + MathHelper.getRandomIntegerInRange(worldIn.rand, 2, 5);
 
         if (i > 6)
         {
             i = 6;
         }
 
-        worldIn.setBlockState(p_176487_2_, p_176487_3_.withProperty(AGE, Integer.valueOf(i)), 2);
+        worldIn.setBlockState(p_176487_2_, p_176487_3_.withProperty(AGE, i), 2);
     }
 
     protected static float getGrowthChance(Block p_180672_0_, World worldIn, BlockPos p_180672_2_)
@@ -160,12 +160,12 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return ((Integer)state.getValue(AGE)).intValue() == 6 ? this.getCrop() : this.getSeed();
+        return (Integer) state.getValue(AGE) == 6 ? this.getCrop() : this.getSeed();
     }
 
     public boolean isStillGrowing(World worldIn, BlockPos p_176473_2_, IBlockState p_176473_3_, boolean p_176473_4_)
     {
-        return ((Integer)p_176473_3_.getValue(AGE)).intValue() < 6;
+        return (Integer) p_176473_3_.getValue(AGE) < 6;
     }
 
     public boolean canUseBonemeal(World worldIn, Random p_180670_2_, BlockPos p_180670_3_, IBlockState p_180670_4_)
@@ -189,7 +189,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(AGE, meta);
     }
 
     /**
@@ -202,14 +202,14 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {AGE});
+        return new BlockState(this, AGE);
     }
 
     @Override
     public java.util.List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         java.util.List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
-        int age = ((Integer)state.getValue(AGE)).intValue();
+        int age = (Integer) state.getValue(AGE);
         Random rand = world instanceof World ? ((World)world).rand : new Random();
 
         if (age >= 6)
