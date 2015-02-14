@@ -1,6 +1,7 @@
 package com.gigavoid.supermod;
 
 import com.gigavoid.supermod.common.module.ModuleLoader;
+import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import com.gigavoid.supermod.ropeway.ModuleRopeway;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,6 +20,7 @@ public class SuperMod
     
     public SuperMod() {
         moduleLoader.registerModule(new ModuleRopeway());
+        moduleLoader.registerModule(new ModuleNorthrend());
     }
 
     @Mod.EventHandler

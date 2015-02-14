@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y": { "model": "supermod:north_log" },
+        "axis=z": { "model": "supermod:north_log_side" },
+        "axis=x": { "model": "supermod:north_log_side", "y": 90 },
+        "axis=none": { "model": "supermod:north_log_bark" }
+    }
+}
