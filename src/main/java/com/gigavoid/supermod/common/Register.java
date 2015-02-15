@@ -5,9 +5,11 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.world.WorldProvider;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class RegisterFunctions {
+public class Register {
     public static void registerBlock(Block block, String name) {
         block.setUnlocalizedName(name);
         GameRegistry.registerBlock(block, name);
@@ -18,5 +20,10 @@ public class RegisterFunctions {
         item.setUnlocalizedName(name);
         GameRegistry.registerItem(item, name);
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(SuperMod.MODID + ":" + name, "inventory"));
+    }
+
+    public static void registerDimension(int id, Class<? extends WorldProvider> provider, boolean keepLoaded){
+        DimensionManager.registerProviderType(id, provider, keepLoaded);
+        DimensionManager.registerDimension(id, id);
     }
 }
