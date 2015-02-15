@@ -1,14 +1,14 @@
 package com.gigavoid.supermod.northrend.biome;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import com.gigavoid.supermod.northrend.worldgen.tree.SuperWorldGenTree;
+import com.gigavoid.supermod.northrend.worldgen.tree.WorldGenTree;
 import net.minecraft.block.Block;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
 public class BiomeGenNorthForest extends NorthrendBiomeGenBase {
-    SuperWorldGenTree treeGen = new SuperWorldGenTree(true, SuperWorldGenTree.TreeType.REGULAR);
+    WorldGenTree treeGen = new WorldGenTree(true, WorldGenTree.TreeType.REGULAR);
 
     public BiomeGenNorthForest(int id){
         super(id);
@@ -17,7 +17,6 @@ public class BiomeGenNorthForest extends NorthrendBiomeGenBase {
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
         theBiomeDecorator.treesPerChunk = 14;
-        worldGeneratorTrees = treeGen;
     }
 
     @Override

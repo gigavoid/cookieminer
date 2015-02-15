@@ -1,13 +1,13 @@
 package com.gigavoid.supermod.northrend.biome;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import com.gigavoid.supermod.northrend.worldgen.tree.SuperWorldGenIgloo;
+import com.gigavoid.supermod.northrend.worldgen.tree.WorldGenIgloo;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
 public class BiomeGenNorthGlacier extends NorthrendBiomeGenBase {
-    SuperWorldGenIgloo iglooGen = new SuperWorldGenIgloo(true);
+    WorldGenIgloo iglooGen = new WorldGenIgloo(true);
 
     public BiomeGenNorthGlacier(int id) {
         super(id);

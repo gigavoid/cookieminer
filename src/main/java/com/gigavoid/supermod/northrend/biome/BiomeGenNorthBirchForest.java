@@ -7,10 +7,10 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
-public class BiomeGenNorthFirForest extends NorthrendBiomeGenBase {
-    WorldGenTree treeGen = new WorldGenTree(true, WorldGenTree.TreeType.FIR);
+public class BiomeGenNorthBirchForest extends NorthrendBiomeGenBase {
+    WorldGenTree treeGen = new WorldGenTree(true, WorldGenTree.TreeType.BIRCH);
 
-    public BiomeGenNorthFirForest(int id){
+    public BiomeGenNorthBirchForest(int id){
         super(id);
         setBiomeName("Northrend Fir Forest");
         setHeight(new Height(0.1f, 0.1f));

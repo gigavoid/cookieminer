@@ -11,8 +11,8 @@ import sun.org.mozilla.javascript.internal.ast.Block;
 
 import java.util.Random;
 
-public class BlockNorthrendLog extends BlockLog {
-    public BlockNorthrendLog(){
+public class BlockNorthLog extends BlockLog {
+    public BlockNorthLog(){
         super();
         this.setHardness(1.0f);
         this.setHarvestLevel("axe", 0);

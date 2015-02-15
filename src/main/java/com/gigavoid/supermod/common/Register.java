@@ -5,12 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-<<<<<<< HEAD:src/main/java/com/gigavoid/supermod/common/RegisterFunctions.java
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-=======
 import net.minecraft.world.WorldProvider;
 import net.minecraftforge.common.DimensionManager;
->>>>>>> e7039dfa0ff87fde8aa77118f5baa7444e20014e:src/main/java/com/gigavoid/supermod/common/Register.java
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 

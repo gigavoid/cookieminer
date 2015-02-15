@@ -11,10 +11,10 @@ import java.util.Random;
 /**
  * Created by Rasmus on 2014-11-07.
  */
-public class SuperWorldGenIgloo extends WorldGenAbstractTree {
+public class WorldGenIgloo extends WorldGenAbstractTree {
     String structureIgloo;
 
-    public SuperWorldGenIgloo(boolean b){
+    public WorldGenIgloo(boolean b){
         super(b);
         initIgloo();
     }

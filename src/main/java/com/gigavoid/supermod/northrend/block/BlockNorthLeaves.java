@@ -2,12 +2,18 @@ package com.gigavoid.supermod.northrend.block;
 
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +24,13 @@ public class BlockNorthLeaves extends BlockLeaves {
         this.setHardness(1.0f);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setStepSound(soundTypeGrass);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
     }
 
     @Override
@@ -38,5 +51,17 @@ public class BlockNorthLeaves extends BlockLeaves {
     }
 
     @Override
-    public boolean isOpaqueCube(){ return false;}
+    public boolean isVisuallyOpaque() { return false; }
+
+    @Override
+    public int getMetaFromState(IBlockState state) { return 0; }
+
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, BlockLeaves.field_176236_b);
+    }
+
+    @Override
+    public boolean isOpaqueCube() { return false; }
 }

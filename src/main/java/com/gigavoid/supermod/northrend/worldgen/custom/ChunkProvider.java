@@ -121,7 +121,7 @@ public class ChunkProvider implements IChunkProvider {
         if (p_i45636_5_ != null)
         {
             this.field_177477_r = ChunkProviderSettings.Factory.func_177865_a(p_i45636_5_).func_177864_b();
-            this.field_177476_s = this.field_177477_r.field_177778_E ? Blocks.obsidian : Blocks.ice;
+            this.field_177476_s = this.field_177477_r.field_177778_E ? Blocks.obsidian : NorthrendBlocks.glacialIce;
         }
 
         NoiseGenerator[] noiseGens = {field_147431_j, field_147432_k, field_147429_l, field_147430_m, noiseGen5, noiseGen6, mobSpawnerNoise};
