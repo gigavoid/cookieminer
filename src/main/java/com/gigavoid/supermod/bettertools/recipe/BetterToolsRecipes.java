@@ -12,13 +12,21 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BetterToolsRecipes {
     public static void initializeRecipes(){
         obsidianPickaxAxe();
+        ironStick();
+    }
+
+    private static void ironStick() {
+        ItemStack iron = new ItemStack(Items.iron_ingot);
+
+        GameRegistry.addRecipe(new ItemStack(BetterToolsItems.ironStick, 4), "   ", " i ", " i ",
+                'i', iron);
     }
 
     private static void obsidianPickaxAxe() {
         ItemStack obsidian = new ItemStack(Blocks.obsidian);
-        ItemStack diamond = new ItemStack(Items.diamond);
+        ItemStack ironStick = new ItemStack(BetterToolsItems.ironStick);
 
-        GameRegistry.addRecipe(new ItemStack(BetterToolsItems.obsidianPickaxeAxe), "ooo", " d ", " d ",
-                'o', obsidian, 'd', diamond);
+        GameRegistry.addRecipe(new ItemStack(BetterToolsItems.obsidianPickaxeAxe), "ooo", " i ", " i ",
+                'o', obsidian, 'i', ironStick);
     }
 }
