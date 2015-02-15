@@ -1,13 +1,15 @@
 package com.gigavoid.supermod.bettertools.item;
 
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+
 import static com.gigavoid.supermod.common.RegisterFunctions.registerItem;
 
 /**
  * Created by Lukas on 2015-02-14.
  */
 public class BetterToolsItems {
-    public static final ItemPickaxeAxe pickaxeAxe = new ItemPickaxeAxe();
-    public static void initializeItems(){
-        registerItem(pickaxeAxe, "pickaxe_axe");
+    public static final ItemPickaxeAxe obsidianPickaxeAxe = new ItemPickaxeAxe();
+    public static void initializeItems(FMLInitializationEvent event){
+        registerItem(obsidianPickaxeAxe, "obsidian_pickaxeaxe", event);
     }
 }
