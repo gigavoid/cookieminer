@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.bettertools.item;
 
-import static com.gigavoid.supermod.common.RegisterFunctions.registerItem;
+import static com.gigavoid.supermod.common.Register.registerItem;
 
 /**
  * Created by Lukas on 2015-02-14.

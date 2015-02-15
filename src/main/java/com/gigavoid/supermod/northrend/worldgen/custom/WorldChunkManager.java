@@ -51,8 +51,7 @@ public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManag
     {
         this();
         this.field_180301_f = p_i45744_4_;
-        GenLayer[] agenlayer = GenLayer.func_180781_a(p_i45744_1_, p_i45744_3_, p_i45744_4_);
-        agenlayer = getModdedBiomeGenerators(p_i45744_3_, p_i45744_1_, agenlayer);
+        GenLayer[] agenlayer = GenLayerBiome.func_180781_a(p_i45744_1_);
         this.genBiomes = agenlayer[0];
         this.biomeIndexLayer = agenlayer[1];
     }

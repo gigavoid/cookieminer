@@ -6,11 +6,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 
 import java.util.Random;
 
-public class SuperWorldGenTree extends WorldGenAbstractTree {
+public class SuperWorldGenTree extends WorldGenTrees {
     private boolean northTreeHead[] = new boolean[5 * 5];
 
     public static enum TreeType{ REGULAR, FIR }

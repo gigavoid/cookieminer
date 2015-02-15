@@ -4,6 +4,7 @@ import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -22,7 +23,7 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
         spawnableMonsterList.clear();
         spawnableWaterCreatureList.clear();
         //spawnableMonsterList.add(new SpawnListEntry(EntityYeti.class, 2, 1, 1));
-        //spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
         waterColorMultiplier = 0xFFFFFF;
@@ -88,7 +89,6 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
                         {
                             iblockstate = null;
                             iblockstate1 = NorthrendBlocks.northStone.getDefaultState();
-                            p_180628_3_.setBlockState(j1, k1, i1, Blocks.gravel.getDefaultState());
                         }
                         else
                         {

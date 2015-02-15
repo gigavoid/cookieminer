@@ -12,11 +12,12 @@ public class BiomeGenNorthForest extends NorthrendBiomeGenBase {
 
     public BiomeGenNorthForest(int id){
         super(id);
-        this.setBiomeName("Northrend Forest");
-        this.setHeight(new Height(0.1f, 0.1f));
-        this.topBlock = Block.getBlockFromName("snow").getDefaultState();
-        this.fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
-        this.theBiomeDecorator.treesPerChunk = 14;
+        setBiomeName("Northrend Forest");
+        setHeight(new Height(0.1f, 0.1f));
+        topBlock = Block.getBlockFromName("snow").getDefaultState();
+        fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
+        theBiomeDecorator.treesPerChunk = 14;
+        worldGeneratorTrees = treeGen;
     }
 
     @Override

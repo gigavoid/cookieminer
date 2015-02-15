@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
+import com.gigavoid.supermod.northrend.ModuleNorthrend;
+import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -31,9 +33,6 @@ import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCAT
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 
-/**
- * Created by Rasmus on 2/15/2015.
- */
 public class ChunkProvider implements IChunkProvider {
 
     /** RNG. */
@@ -87,7 +86,7 @@ public class ChunkProvider implements IChunkProvider {
 
     public ChunkProvider(World worldIn, long p_i45636_2_, boolean p_i45636_4_, String p_i45636_5_)
     {
-        this.field_177476_s = Blocks.water;
+        this.field_177476_s = Blocks.ice;
         this.stoneNoise = new double[256];
         this.caveGenerator = new MapGenCaves();
         this.strongholdGenerator = new MapGenStronghold();
@@ -122,7 +121,7 @@ public class ChunkProvider implements IChunkProvider {
         if (p_i45636_5_ != null)
         {
             this.field_177477_r = ChunkProviderSettings.Factory.func_177865_a(p_i45636_5_).func_177864_b();
-            this.field_177476_s = this.field_177477_r.field_177778_E ? Blocks.lava : Blocks.water;
+            this.field_177476_s = this.field_177477_r.field_177778_E ? Blocks.obsidian : Blocks.ice;
         }
 
         NoiseGenerator[] noiseGens = {field_147431_j, field_147432_k, field_147429_l, field_147430_m, noiseGen5, noiseGen6, mobSpawnerNoise};
@@ -183,7 +182,7 @@ public class ChunkProvider implements IChunkProvider {
                             {
                                 if ((d15 += d16) > 0.0D)
                                 {
-                                    p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, Blocks.stone.getDefaultState());
+                                    p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, NorthrendBlocks.northStone.getDefaultState());
                                 }
                                 else if (k2 * 8 + l2 < this.field_177477_r.field_177841_q)
                                 {
@@ -464,7 +463,7 @@ public class ChunkProvider implements IChunkProvider {
             k1 = this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(256);
             i2 = this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
+            (new WorldGenLakes(Blocks.ice)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
         }
 
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && this.rand.nextInt(this.field_177477_r.field_177777_D / 10) == 0 && this.field_177477_r.field_177783_C)
@@ -475,7 +474,7 @@ public class ChunkProvider implements IChunkProvider {
 
             if (l1 < 63 || this.rand.nextInt(this.field_177477_r.field_177777_D / 8) == 0)
             {
-                (new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
+                (new WorldGenLakes(Blocks.obsidian)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
             }
         }
 

@@ -1,5 +1,5 @@
 {
-    "parent": "supermod:block/north_fence_gate_closed",
+    "parent": "supermod:block/north_fence_gate_inventory",
     "display": {
         "thirdperson": {
             "rotation": [ 0, -90, 170 ],

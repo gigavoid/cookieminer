@@ -4,6 +4,7 @@ import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.worldgen.tree.SuperWorldGenTree;
 import net.minecraft.block.Block;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 
 import java.util.Random;
 
@@ -17,6 +18,7 @@ public class BiomeGenNorthFirForest extends NorthrendBiomeGenBase {
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
         theBiomeDecorator.treesPerChunk = 14;
+        worldGeneratorTrees = treeGen;
     }
 
     @Override

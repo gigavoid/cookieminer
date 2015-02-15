@@ -37,7 +37,7 @@ public class GenLayerBiome extends GenLayer {
         return aint1;
     }
 
-    public static GenLayer[] func_180781_a(long p_75901_0_, net.minecraft.world.WorldType p_75901_2_, String genType)  {
+    public static GenLayer[] func_180781_a(long p_75901_0_)  {
         GenLayerBiome goodLayer = new GenLayerBiome(1000, null, null);
         GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 5);
 
