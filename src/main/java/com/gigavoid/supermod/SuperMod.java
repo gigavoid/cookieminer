@@ -1,5 +1,6 @@
 package com.gigavoid.supermod;
 
+import com.gigavoid.supermod.bettertools.ModuleBetterTools;
 import com.gigavoid.supermod.bonus.ModuleBonus;
 import com.gigavoid.supermod.common.module.ModuleLoader;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
@@ -23,6 +24,7 @@ public class SuperMod
         moduleLoader.registerModule(new ModuleRopeway());
         moduleLoader.registerModule(new ModuleNorthrend());
         moduleLoader.registerModule(new ModuleBonus());
+        moduleLoader.registerModule(new ModuleBetterTools());
     }
 
     @Mod.EventHandler
