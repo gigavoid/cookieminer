@@ -10,7 +10,9 @@ import static com.gigavoid.supermod.common.Register.registerItem;
  */
 public class BetterToolsItems {
     public static final ItemPickaxeAxe obsidianPickaxeAxe = new ItemPickaxeAxe();
+    public static final ItemIronStick ironStick = new ItemIronStick();
     public static void initializeItems(FMLInitializationEvent event){
         registerItem(obsidianPickaxeAxe, "obsidian_pickaxeaxe", event);
+        registerItem(ironStick, "iron_stick", event);
     }
 }
