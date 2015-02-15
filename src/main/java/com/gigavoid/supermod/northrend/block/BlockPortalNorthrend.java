@@ -1,8 +1,8 @@
-/*package com.gigavoid.supermod.northrend.block;
+package com.gigavoid.supermod.northrend.block;
 
-import com.gigavoid.supermod.SuperMod;
-import com.gigavoid.supermod.teleport.TeleporterNorthrend;
-import com.gigavoid.supermod.util.SuperReflection;
+import com.gigavoid.supermod.common.util.Reflection;
+import com.gigavoid.supermod.northrend.ModuleNorthrend;
+import com.gigavoid.supermod.northrend.teleporter.Teleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
@@ -165,13 +165,13 @@ public class BlockPortalNorthrend extends BlockPortal {
 
                 if (player.timeUntilPortal > 0) {
                     player.timeUntilPortal = 10;
-                } else if (player.dimension != SuperMod.northrendDimID) {
+                } else if (player.dimension != ModuleNorthrend.dimensionId) {
                     player.timeUntilPortal = 10;
 
-                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, SuperMod.northrendDimID, new TeleporterNorthrend(mServer.worldServerForDimension(SuperMod.northrendDimID)));
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, ModuleNorthrend.dimensionId, new Teleporter(mServer.worldServerForDimension(ModuleNorthrend.dimensionId)));
                 } else {
                     player.timeUntilPortal = 10;
-                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterNorthrend(mServer.worldServerForDimension(0)));
+                    player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new Teleporter(mServer.worldServerForDimension(0)));
                 }
             }
     }
@@ -297,7 +297,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                         break label56;
                     }
 
-                    if (block == SuperBlocks.portalNorthrend) {
+                    if (block == NorthrendBlocks.portalNorthrend) {
                         ++this.field_150864_e;
                     }
 
@@ -335,8 +335,8 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
 
         protected boolean func_150857_a(Block p_150857_1_) {
-            Material material = (Material) SuperReflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
-            return material == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == SuperBlocks.portalNorthrend;
+            Material material = (Material) Reflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
+            return material == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == NorthrendBlocks.portalNorthrend;
         }
 
         public boolean func_150860_b() {
@@ -348,9 +348,9 @@ public class BlockPortalNorthrend extends BlockPortal {
                 BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
                 for (int j = 0; j < this.field_150862_g; ++j) {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), SuperBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortalNorthrend.field_176550_a, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), NorthrendBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortalNorthrend.field_176550_a, this.field_150865_b), 2);
                 }
             }
         }
     }
-}*/
+}

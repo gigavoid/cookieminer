@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
-import static com.gigavoid.supermod.common.RegisterFunctions.registerBlock;
+import static com.gigavoid.supermod.common.Register.registerBlock;
 
 public class NorthrendBlocks {
     public static final BlockGlacialIce glacialIce = new BlockGlacialIce();
@@ -8,7 +8,7 @@ public class NorthrendBlocks {
     public static final BlockNorthStone northStone = new BlockNorthStone();
     public static final BlockNorthrendLog northLog = new BlockNorthrendLog();
     public static final BlockNorthLeaves northLeaves = new BlockNorthLeaves();
-    //public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
+    public static final BlockPortalNorthrend portalNorthrend = new BlockPortalNorthrend();
     public static final BlockNorthPlanks northPlanks = new BlockNorthPlanks();
     public static final BlockNorthStairs northStairs = new BlockNorthStairs(0);
     public static final BlockNorthCobblestone northCobble = new BlockNorthCobblestone();
@@ -23,7 +23,7 @@ public class NorthrendBlocks {
         registerBlock(northStone, "north_stone");
         registerBlock(northLog, "north_log");
         registerBlock(northLeaves, "north_leaves");
-        //registerBlock(portalNorthrend, "north_portal");
+        registerBlock(portalNorthrend, "north_portal");
         registerBlock(northPlanks, "north_planks");
         registerBlock(northStairs, "north_stairs");
         registerBlock(northCobble, "north_cobblestone");

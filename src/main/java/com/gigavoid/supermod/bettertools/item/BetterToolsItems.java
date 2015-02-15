@@ -1,8 +1,9 @@
 package com.gigavoid.supermod.bettertools.item;
 
+
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-import static com.gigavoid.supermod.common.RegisterFunctions.registerItem;
+import static com.gigavoid.supermod.common.Register.registerItem;
 
 /**
  * Created by Lukas on 2015-02-14.
