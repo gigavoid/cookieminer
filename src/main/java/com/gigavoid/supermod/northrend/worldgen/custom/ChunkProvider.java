@@ -1,7 +1,8 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
-import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
+import com.gigavoid.supermod.northrend.worldgen.gen.MapGenCaves;
+import com.gigavoid.supermod.northrend.worldgen.gen.MapGenRavine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;

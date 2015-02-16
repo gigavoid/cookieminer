@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraft.world.WorldProvider;
 import net.minecraftforge.common.DimensionManager;
@@ -29,5 +30,9 @@ public class Register {
     public static void registerDimension(int id, Class<? extends WorldProvider> provider, boolean keepLoaded){
         DimensionManager.registerProviderType(id, provider, keepLoaded);
         DimensionManager.registerDimension(id, id);
+    }
+
+    public static void registerWorldGenerator(IWorldGenerator generator, int id){
+        GameRegistry.registerWorldGenerator(generator, 13);
     }
 }
