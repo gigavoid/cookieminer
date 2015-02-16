@@ -7,6 +7,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 public class ModuleRopeway extends Module {
     @Override
     public void init(FMLInitializationEvent e) {
-        RopewayBlocks.initializeBlocks();
+        RopewayBlocks.initializeBlocks(getRegister());
     }
 }

@@ -13,13 +13,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class Register {
-    public static void registerBlock(Block block, String name) {
+    private int nextDimensionId = 2;
+
+    public void registerBlock(Block block, String name) {
         block.setUnlocalizedName(name);
         GameRegistry.registerBlock(block, name);
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + name, "inventory"));
     }
 
-    public static void registerItem(Item item, String name, FMLInitializationEvent event) {
+    public void registerItem(Item item, String name, FMLInitializationEvent event) {
         item.setUnlocalizedName(name);
         GameRegistry.registerItem(item, name);
         if(event.getSide() == Side.CLIENT) {
@@ -27,12 +29,13 @@ public class Register {
         }
     }
 
-    public static void registerDimension(int id, Class<? extends WorldProvider> provider, boolean keepLoaded){
-        DimensionManager.registerProviderType(id, provider, keepLoaded);
-        DimensionManager.registerDimension(id, id);
+    public int registerDimension(Class<? extends WorldProvider> provider, boolean keepLoaded){
+        DimensionManager.registerProviderType(nextDimensionId, provider, keepLoaded);
+        DimensionManager.registerDimension(nextDimensionId, nextDimensionId);
+        return nextDimensionId++;
     }
 
-    public static void registerWorldGenerator(IWorldGenerator generator, int id){
+    public void registerWorldGenerator(IWorldGenerator generator, int id){
         GameRegistry.registerWorldGenerator(generator, 13);
     }
 }

@@ -1,11 +1,11 @@
 package com.gigavoid.supermod.bonus.block;
-import static com.gigavoid.supermod.common.Register.registerBlock;
-/**
- * Created by SnuRRaN on 2015-02-14.
-*/
+
+import com.gigavoid.supermod.common.Register;
+
 public class BonusBlocks {
     public static final BlockBonus bonus = new BlockBonus();
-    public static void initializeBlocks() {
-        registerBlock(bonus,"bonus_block");
+
+    public static void initializeBlocks(Register register) {
+        register.registerBlock(bonus, "bonus_block");
     }
 }
