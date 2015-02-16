@@ -1,5 +1,5 @@
 {
-  "parent": "supermod:block/pylon",
+  "parent": "supermod:block/ropeway_engine",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

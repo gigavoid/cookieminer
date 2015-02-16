@@ -1,26 +1,15 @@
 package com.gigavoid.supermod.ropeway.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import static com.gigavoid.supermod.common.Register.registerBlock;
 
-/**
- * Created by Henrik on 2015-02-13.
- */
 public class RopewayBlocks {
 
-    public static final BlockRopewayPylon ropewayPylon = new BlockRopewayPylon();
+    public static final BlockRopewayPylon pylon = new BlockRopewayPylon();
+    public static final BlockRopewayEngine engine = new BlockRopewayEngine();
 
     public static void initializeBlocks() {
-        registerBlock(ropewayPylon, "pylon");
+        registerBlock(pylon, "ropeway_pylon");
+        registerBlock(engine, "ropeway_engine");
     }
 
-    private static void registerBlock(Block block, String name) {
-        block.setUnlocalizedName(name);
-        GameRegistry.registerBlock(block, name);
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation("supermod:" + name, "inventory"));
-
-    }
 }

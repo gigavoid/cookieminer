@@ -7,7 +7,6 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import sun.org.mozilla.javascript.internal.ast.Block;
 
 import java.util.Random;
 

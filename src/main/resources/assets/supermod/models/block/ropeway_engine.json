@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "supermod:blocks/pylon"
+        "all": "supermod:blocks/ropeway_engine"
     }
 }
