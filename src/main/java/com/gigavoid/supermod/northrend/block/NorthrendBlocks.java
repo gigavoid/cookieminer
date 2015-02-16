@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
-import static com.gigavoid.supermod.common.Register.registerBlock;
+import com.gigavoid.supermod.common.Register;
 
 public class NorthrendBlocks {
     public static final BlockGlacialIce glacialIce = new BlockGlacialIce();
@@ -18,20 +18,20 @@ public class NorthrendBlocks {
     public static final BlockNorthGlaciemPlant northGlaciemPlant = new BlockNorthGlaciemPlant();
     public static final BlockBlight blight = new BlockBlight();
 
-    public static void initializeBlocks(){
-        registerBlock(glacialIce, "north_ice");
-        registerBlock(northDirt, "north_dirt");
-        registerBlock(northStone, "north_stone");
-        registerBlock(northLog, "north_log");
-        registerBlock(northLeaves, "north_leaves");
-        registerBlock(portalNorthrend, "north_portal");
-        registerBlock(northPlanks, "north_planks");
-        registerBlock(northStairs, "north_stairs");
-        registerBlock(northCobble, "north_cobblestone");
-        registerBlock(northCobbleStairs, "north_cobble_stairs");
-        registerBlock(northFence, "north_fence");
-        registerBlock(northFenceGate, "north_fence_gate");
-        //registerBlock(northGlaciemPlant, "glaciem_plant");
-        registerBlock(blight, "north_blight");
+    public static void initializeBlocks(Register register){
+        register.registerBlock(glacialIce, "north_ice");
+        register.registerBlock(northDirt, "north_dirt");
+        register.registerBlock(northStone, "north_stone");
+        register.registerBlock(northLog, "north_log");
+        register.registerBlock(northLeaves, "north_leaves");
+        register.registerBlock(portalNorthrend, "north_portal");
+        register.registerBlock(northPlanks, "north_planks");
+        register.registerBlock(northStairs, "north_stairs");
+        register.registerBlock(northCobble, "north_cobblestone");
+        register.registerBlock(northCobbleStairs, "north_cobble_stairs");
+        register.registerBlock(northFence, "north_fence");
+        register.registerBlock(northFenceGate, "north_fence_gate");
+        //register.registerBlock(northGlaciemPlant, "glaciem_plant");
+        register.registerBlock(blight, "north_blight");
     }
 }
