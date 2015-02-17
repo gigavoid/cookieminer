@@ -48,7 +48,6 @@ public class GenLayerBiome extends GenLayer {
         zoom.initWorldGenSeed(p_75901_0_);
         genLayer.initWorldGenSeed(p_75901_0_);
 
-
         return new GenLayer[] {genLayer, zoom, genLayer};
     }
 

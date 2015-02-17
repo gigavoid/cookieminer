@@ -74,7 +74,6 @@ public class ChunkProvider implements IChunkProvider {
     double[] field_147428_e;
     double[] field_147425_f;
     double[] field_147426_g;
-    private static final String __OBFID = "CL_00000396";
 
     {
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
@@ -291,8 +290,6 @@ public class ChunkProvider implements IChunkProvider {
         this.field_147427_d = this.field_147429_l.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)(f / this.chunkProviderSettings.field_177825_h), (double)(f1 / this.chunkProviderSettings.field_177827_i), (double)(f / this.chunkProviderSettings.field_177821_j));
         this.field_147428_e = this.field_147431_j.generateNoiseOctaves(this.field_147428_e, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
         this.field_147425_f = this.field_147432_k.generateNoiseOctaves(this.field_147425_f, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
-        boolean flag1 = false;
-        boolean flag = false;
         int l = 0;
         int i1 = 0;
 

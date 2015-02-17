@@ -6,13 +6,10 @@ import com.gigavoid.supermod.bonus.block.BonusBlocks;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.worldgen.custom.WorldGenMinable;
-import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.common.IWorldGenerator;
-
-import javax.sql.rowset.Predicate;
 
 public class MapGenOres implements IWorldGenerator
 {
@@ -81,10 +78,10 @@ public class MapGenOres implements IWorldGenerator
         rn = 14 + random.nextInt(6);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
-            int y = 40 + random.nextInt(25);
+            int y = 45 + random.nextInt(10);
             int z = chunkZ + random.nextInt(16);
             BlockPos pos = new BlockPos(x, y, z);
-            (new WorldGenMinable(NorthrendBlocks.northPlanks.getDefaultState(), 6 + random.nextInt(5), NorthrendBlocks.glacialIce)).generate(world, random, pos);
+            (new WorldGenMinable(NorthrendBlocks.dragonBone.getDefaultState(), 6 + random.nextInt(5), NorthrendBlocks.glacialIce)).generate(world, random, pos);
         }
     }
 }
