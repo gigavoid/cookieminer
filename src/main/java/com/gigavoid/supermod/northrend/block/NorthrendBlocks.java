@@ -6,7 +6,7 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
 public class NorthrendBlocks {
-    public static Fluid baseFluid;
+    //public static Fluid baseFluid;
 
     public static BlockGlacialIce glacialIce;
     public static BlockNorthDirt northDirt;
@@ -22,7 +22,7 @@ public class NorthrendBlocks {
     public static BlockNorthFenceGate northFenceGate;
     public static BlockNorthGlaciemPlant northGlaciemPlant;
     public static BlockBlight blight;
-    public static BlockFluidClassic poison;
+    //public static BlockFluidClassic poison;
     public static BlockCoalOre coalOre;
     public static BlockDiamondOre diamondOre;
     public static BlockEmeraldOre emeraldOre;
@@ -35,8 +35,8 @@ public class NorthrendBlocks {
     public static BlockDragonHead dragonHead;
 
     public static void initializeBlocks(Register register) {
-        baseFluid = new Fluid("baseFluid");
-        register.registerFluid(baseFluid, "baseFluid");
+        //baseFluid = new Fluid("baseFluid");
+        //register.registerFluid(baseFluid, "baseFluid");
 
         glacialIce = new BlockGlacialIce();
         northDirt = new BlockNorthDirt();
@@ -52,7 +52,7 @@ public class NorthrendBlocks {
         northFenceGate = new BlockNorthFenceGate();
         northGlaciemPlant = new BlockNorthGlaciemPlant();
         blight = new BlockBlight();
-        poison = new BlockPoisonFluid(baseFluid, Material.water);
+        //poison = new BlockPoisonFluid(baseFluid, Material.water);
         coalOre = new BlockCoalOre();
         diamondOre = new BlockDiamondOre();
         emeraldOre = new BlockEmeraldOre();
@@ -80,7 +80,7 @@ public class NorthrendBlocks {
         register.registerBlock(northFenceGate, "north_fence_gate");
         //register.registerBlock(northGlaciemPlant, "glaciem_plant");
         register.registerBlock(blight, "north_blight");
-        register.registerBlock(poison, "poisonFluid");
+        //register.registerBlock(poison, "poisonFluid");
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");
         register.registerBlock(emeraldOre, "north_emerald_ore");
