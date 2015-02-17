@@ -10,8 +10,8 @@ import java.util.Random;
 public class BiomeGenNorthForest extends NorthrendBiomeGenBase {
     WorldGenTree treeGen = new WorldGenTree(true, WorldGenTree.TreeType.REGULAR);
 
-    public BiomeGenNorthForest(int id){
-        super(id);
+    public BiomeGenNorthForest(int id, int weight){
+        super(id, weight);
         setBiomeName("Northrend Forest");
         setHeight(new Height(0.1f, 0.1f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();

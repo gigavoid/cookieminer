@@ -9,8 +9,8 @@ import net.minecraft.world.biome.BiomeGenBase;
  */
 public class BiomeGenNorthBlight extends NorthrendBiomeGenBase{
 
-    public BiomeGenNorthBlight(int id) {
-        super(id);
+    public BiomeGenNorthBlight(int id, int weight){
+        super(id, weight);
 
         setBiomeName("Northrend Plains");
         setHeight(new BiomeGenBase.Height(.2f, .05f));

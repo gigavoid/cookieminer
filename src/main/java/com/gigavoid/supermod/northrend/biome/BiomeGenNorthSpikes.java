@@ -13,8 +13,8 @@ public class BiomeGenNorthSpikes extends NorthrendBiomeGenBase {
     private WorldGenIceSpike iceSpikeGen = new WorldGenIceSpike();
     private WorldGenIcePath icePathGen = new WorldGenIcePath(4);
 
-    public BiomeGenNorthSpikes(int id){
-        super(id);
+    public BiomeGenNorthSpikes(int id, int weight){
+        super(id, weight);
 
         setBiomeName("Northrend Plains");
         setHeight(new Height(.1f, .05f));

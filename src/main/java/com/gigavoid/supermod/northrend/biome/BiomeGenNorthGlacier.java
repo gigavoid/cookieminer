@@ -9,8 +9,8 @@ import java.util.Random;
 public class BiomeGenNorthGlacier extends NorthrendBiomeGenBase {
     WorldGenIgloo iglooGen = new WorldGenIgloo(true);
 
-    public BiomeGenNorthGlacier(int id) {
-        super(id);
+    public BiomeGenNorthGlacier(int id, int weight){
+        super(id, weight);
 
         setBiomeName("Northrend Glacier");
         setHeight(new Height(-1.0f, 0.1f));

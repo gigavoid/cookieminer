@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
+import com.gigavoid.supermod.northrend.biome.NorthrendBiomeGenBase;
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.google.common.collect.Lists;
 
@@ -24,13 +25,12 @@ import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManager
 {
-    public static ArrayList<BiomeGenBase> allowedBiomes = Lists.newArrayList(
-            (BiomeGenBase)NorthrendBiomes.northForest, (BiomeGenBase)NorthrendBiomes.northFirForest,
-            (BiomeGenBase)NorthrendBiomes.northGlacier, (BiomeGenBase)NorthrendBiomes.northMountains,
-            (BiomeGenBase)NorthrendBiomes.northPlains, (BiomeGenBase)NorthrendBiomes.northHighlands,
-            (BiomeGenBase)NorthrendBiomes.northHugeMountains, (BiomeGenBase)NorthrendBiomes.northBirchForest,
-            (BiomeGenBase)NorthrendBiomes.northSmallMountains, (BiomeGenBase)NorthrendBiomes.northPlains2,
-            (BiomeGenBase)NorthrendBiomes.northSpikes);
+    public static ArrayList<NorthrendBiomeGenBase> allowedBiomes = Lists.newArrayList(
+            (NorthrendBiomeGenBase)NorthrendBiomes.northForest, (NorthrendBiomeGenBase)NorthrendBiomes.northFirForest,
+            (NorthrendBiomeGenBase)NorthrendBiomes.northGlacier, (NorthrendBiomeGenBase)NorthrendBiomes.northMountains,
+            (NorthrendBiomeGenBase)NorthrendBiomes.northPlains, (NorthrendBiomeGenBase)NorthrendBiomes.northHighlands,
+            (NorthrendBiomeGenBase)NorthrendBiomes.northHugeMountains, (NorthrendBiomeGenBase)NorthrendBiomes.northBirchForest,
+            (NorthrendBiomeGenBase)NorthrendBiomes.northHills, (NorthrendBiomeGenBase)NorthrendBiomes.northSpikes);
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;

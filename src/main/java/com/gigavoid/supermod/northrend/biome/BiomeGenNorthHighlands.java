@@ -4,8 +4,8 @@ import net.minecraft.block.Block;
 
 public class BiomeGenNorthHighlands extends NorthrendBiomeGenBase {
 
-    public BiomeGenNorthHighlands(int id){
-        super(id);
+    public BiomeGenNorthHighlands(int id, int weight){
+        super(id, weight);
 
         setBiomeName("Northrend Highlands");
         setHeight(new Height(0.7f, .15f));
