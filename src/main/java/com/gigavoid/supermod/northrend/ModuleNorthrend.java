@@ -4,14 +4,12 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.worldgen.custom.WorldProvider;
-import com.gigavoid.supermod.northrend.worldgen.custom.WorldType;
 import com.gigavoid.supermod.northrend.worldgen.gen.MapGenOres;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
-    public static final net.minecraft.world.WorldType northrend = new WorldType(7, "northrend");
 
     @Override
     public void preInit(FMLPreInitializationEvent e){

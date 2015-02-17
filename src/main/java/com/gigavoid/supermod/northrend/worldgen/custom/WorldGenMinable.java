@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.google.common.base.Predicate;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.util.BlockPos;
@@ -20,6 +21,11 @@ public class WorldGenMinable extends net.minecraft.world.gen.feature.WorldGenMin
     public WorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_)
     {
         this(p_i45630_1_, p_i45630_2_, BlockHelper.forBlock(NorthrendBlocks.northStone));
+    }
+
+    public WorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_, Block block)
+    {
+        this(p_i45630_1_, p_i45630_2_, BlockHelper.forBlock(block));
     }
 
     public WorldGenMinable(IBlockState p_i45631_1_, int p_i45631_2_, Predicate p_i45631_3_)

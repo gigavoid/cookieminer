@@ -31,6 +31,8 @@ public class NorthrendBlocks {
     public static BlockLapisOre lapisOre;
     public static BlockRedstoneOre redstoneOre;
     public static BlockRedstoneOre lit_redstoneOre;
+    public static BlockDragonBone dragonBone;
+    public static BlockDragonHead dragonHead;
 
     public static void initializeBlocks(Register register) {
         baseFluid = new Fluid("baseFluid");
@@ -59,6 +61,8 @@ public class NorthrendBlocks {
         lapisOre = new BlockLapisOre();
         redstoneOre = new BlockRedstoneOre(false);
         lit_redstoneOre = new BlockRedstoneOre(true);
+        dragonBone = new BlockDragonBone();
+        dragonHead = new BlockDragonHead();
     }
 
     public static void registerBlocks(Register register){
@@ -85,5 +89,7 @@ public class NorthrendBlocks {
         register.registerBlock(lapisOre, "north_lapis_ore");
         register.registerBlock(redstoneOre, "north_red_stone_ore");
         register.registerBlock(lit_redstoneOre, "north_lit_red_stone_ore", "north_red_stone_ore");
+        register.registerBlock(dragonBone, "north_dragon_bone");
+        register.registerBlock(dragonHead, "north_dragonhead");
     }
 }

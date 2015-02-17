@@ -40,17 +40,16 @@ public class GenLayerBiome extends GenLayer {
     }
 
     public static GenLayer[] func_180781_a(long p_75901_0_)  {
-        GenLayerBiome goodLayer = new GenLayerBiome(1000, null, null);
-        GenLayer gen = GenLayerZoom.magnify(1000L, goodLayer, 5);
+        GenLayerBiome genLayerBiome = new GenLayerBiome(1000, null, null);
+        GenLayer genLayer = GenLayerZoom.magnify(1000L, genLayerBiome, 5);
 
-
-        GenLayerVoronoiZoom zoom = new GenLayerVoronoiZoom(10L, gen);
+        GenLayerVoronoiZoom zoom = new GenLayerVoronoiZoom(10L, genLayer);
 
         zoom.initWorldGenSeed(p_75901_0_);
-        gen.initWorldGenSeed(p_75901_0_);
+        genLayer.initWorldGenSeed(p_75901_0_);
 
 
-        return new GenLayer[] {gen, zoom, gen};
+        return new GenLayer[] {genLayer, zoom, genLayer};
     }
 
     private int getWeightedBiome(ArrayList<NorthrendBiomeGenBase> biomes){
