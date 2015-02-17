@@ -1,10 +1,9 @@
 package com.gigavoid.supermod.ropeway;
 
 import com.gigavoid.supermod.common.module.Module;
-import com.gigavoid.supermod.renderer.RendererRopewayEngine;
+import com.gigavoid.supermod.ropeway.renderer.RendererRopewayEngine;
 import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
