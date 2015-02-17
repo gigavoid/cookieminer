@@ -15,6 +15,7 @@ public class BlockGlacialIce extends Block {
         this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setStepSound(soundTypeStone);
+        this.slipperiness = .99f;
     }
 
     @Override

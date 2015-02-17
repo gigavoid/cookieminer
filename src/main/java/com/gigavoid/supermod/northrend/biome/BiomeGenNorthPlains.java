@@ -5,11 +5,11 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeGenNorthPlains extends NorthrendBiomeGenBase {
 
-    public BiomeGenNorthPlains(int id){
-        super(id);
+    public BiomeGenNorthPlains(int id, int weight){
+        super(id, weight);
 
         setBiomeName("Northrend Plains");
-        setHeight(new BiomeGenBase.Height(.2f, .05f));
+        setHeight(new BiomeGenBase.Height(.1f, .05f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }

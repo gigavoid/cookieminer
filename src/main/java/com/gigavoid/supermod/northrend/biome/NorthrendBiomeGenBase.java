@@ -13,10 +13,12 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import java.util.Random;
 
 public class NorthrendBiomeGenBase extends BiomeGenBase {
+    int weight = 0;
 
-    public NorthrendBiomeGenBase(int p_i1971_1_)
+    public NorthrendBiomeGenBase(int p_i1971_1_, int weight)
     {
         super(p_i1971_1_, true);
+        this.weight = weight;
         this.setEnableSnow();
         spawnableCaveCreatureList.clear();
         spawnableCreatureList.clear();
@@ -27,6 +29,10 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
         temperature = 0.0f;
         rainfall = 1.0f;
         waterColorMultiplier = 0xFFFFFF;
+    }
+
+    public int getWeight(){
+        return weight;
     }
 
     @Override
@@ -107,6 +113,9 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
                         }
                     }
                 }
+            }
+            if (k1 < 63 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow){
+                p_180628_3_.setBlockState(j1, k1, i1, NorthrendBlocks.glacialIce.getDefaultState());
             }
         }
     }

@@ -31,6 +31,7 @@ public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
         setCreativeTab(CreativeTabs.tabBlock);
+        setHardness(-1);
     }
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
@@ -54,6 +55,7 @@ public class BlockPortalNorthrend extends BlockPortal {
         }
     }
 
+    @Override
     public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
         return null;
     }
@@ -148,7 +150,6 @@ public class BlockPortalNorthrend extends BlockPortal {
         boolean flag5 = flag2 || flag3 || axis == EnumFacing.Axis.Z;
         return flag4 && side == EnumFacing.WEST ? true : (flag4 && side == EnumFacing.EAST ? true : (flag5 && side == EnumFacing.NORTH ? true : flag5 && side == EnumFacing.SOUTH));
     }
-
 
     //Returns the quantity of items to drop on block destruction.
     public int quantityDropped(Random random) {
