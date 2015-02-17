@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomeGenBase;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
@@ -15,7 +16,7 @@ public class GenLayerBiome extends GenLayer {
 
     private static final String __OBFID = "CL_00000555";
 
-    public GenLayerBiome(long p_i2122_1_, GenLayer p_i2122_3_, net.minecraft.world.WorldType p_i2122_4_)
+    public GenLayerBiome(long p_i2122_1_, GenLayer p_i2122_3_, WorldType p_i2122_4_)
     {
         super(p_i2122_1_);
     }

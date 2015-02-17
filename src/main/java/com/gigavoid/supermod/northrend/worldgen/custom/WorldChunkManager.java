@@ -30,7 +30,8 @@ public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManag
             (NorthrendBiomeGenBase)NorthrendBiomes.northGlacier, (NorthrendBiomeGenBase)NorthrendBiomes.northMountains,
             (NorthrendBiomeGenBase)NorthrendBiomes.northPlains, (NorthrendBiomeGenBase)NorthrendBiomes.northHighlands,
             (NorthrendBiomeGenBase)NorthrendBiomes.northHugeMountains, (NorthrendBiomeGenBase)NorthrendBiomes.northBirchForest,
-            (NorthrendBiomeGenBase)NorthrendBiomes.northHills, (NorthrendBiomeGenBase)NorthrendBiomes.northSpikes);
+            (NorthrendBiomeGenBase)NorthrendBiomes.northHills, (NorthrendBiomeGenBase)NorthrendBiomes.northSpikes,
+            (NorthrendBiomeGenBase)NorthrendBiomes.northRockyGlacier);
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;
