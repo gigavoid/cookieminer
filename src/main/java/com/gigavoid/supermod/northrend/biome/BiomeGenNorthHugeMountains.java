@@ -8,7 +8,7 @@ public class BiomeGenNorthHugeMountains extends NorthrendBiomeGenBase {
         super(id);
 
         setBiomeName("Northrend Huge Mountains");
-        setHeight(new Height(2.5f, .8f));
+        setHeight(new Height(3f, .75f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }

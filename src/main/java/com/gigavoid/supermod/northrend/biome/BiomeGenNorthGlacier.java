@@ -13,7 +13,7 @@ public class BiomeGenNorthGlacier extends NorthrendBiomeGenBase {
         super(id);
 
         setBiomeName("Northrend Glacier");
-        setHeight(new Height(-1f, 0.1f));
+        setHeight(new Height(-1.0f, 0.1f));
         topBlock = NorthrendBlocks.northStone.getDefaultState();
         fillerBlock = NorthrendBlocks.northStone.getDefaultState();
         theBiomeDecorator.treesPerChunk = 1;

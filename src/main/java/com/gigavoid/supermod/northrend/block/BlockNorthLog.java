@@ -38,7 +38,6 @@ public class BlockNorthLog extends BlockLog {
                 return 3;
             default:
                 return 0;
-
         }
     }
 

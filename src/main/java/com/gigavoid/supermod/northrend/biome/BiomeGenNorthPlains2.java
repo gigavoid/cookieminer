@@ -1,15 +1,14 @@
 package com.gigavoid.supermod.northrend.biome;
 
 import net.minecraft.block.Block;
-import net.minecraft.world.biome.BiomeGenBase;
 
-public class BiomeGenNorthPlains extends NorthrendBiomeGenBase {
+public class BiomeGenNorthPlains2 extends NorthrendBiomeGenBase {
 
-    public BiomeGenNorthPlains(int id){
+    public BiomeGenNorthPlains2(int id){
         super(id);
 
         setBiomeName("Northrend Plains");
-        setHeight(new BiomeGenBase.Height(.1f, .05f));
+        setHeight(new Height(.2f, .05f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }

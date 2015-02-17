@@ -15,13 +15,12 @@ public class ModuleNorthrend extends Module {
 
     @Override
     public void preInit(FMLPreInitializationEvent e){
+        NorthrendBlocks.initializeBlocks(getRegister());
         NorthrendBiomes.registerBiomes();
         dimensionId = getRegister().registerDimension(WorldProvider.class, false);
-        getRegister().registerWorldGenerator(new MapGenOres(), 25);
+        getRegister().registerWorldGenerator(new MapGenOres(), 20);
     }
 
     @Override
-    public void init(FMLInitializationEvent e) {
-        NorthrendBlocks.initializeBlocks(getRegister());
-    }
+    public void  init(FMLInitializationEvent e){NorthrendBlocks.registerBlocks(getRegister());}
 }

@@ -4,17 +4,12 @@ import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.google.common.base.Predicate;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockHelper;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.Random;
 
-/**
- * Created by Rasmus on 2/16/2015.
- */
 public class WorldGenMinable extends net.minecraft.world.gen.feature.WorldGenMinable
 {
     private final IBlockState oreBlock;

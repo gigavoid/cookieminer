@@ -9,9 +9,6 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-/**
- * Created by Rasmus on 2014-11-06.
- */
 public class BlockNorthDirt extends Block {
     public BlockNorthDirt() {
         super(Material.ground);

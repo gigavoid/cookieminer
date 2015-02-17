@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraft.world.WorldProvider;
@@ -19,6 +21,17 @@ public class Register {
         block.setUnlocalizedName(name);
         GameRegistry.registerBlock(block, name);
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + name, "inventory"));
+    }
+
+    public void registerBlock(Block block, String name, String resourceName) {
+        block.setUnlocalizedName(name);
+        GameRegistry.registerBlock(block, name);
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + resourceName, "inventory"));
+    }
+
+    public void registerFluid(Fluid fluid, String name) {
+        fluid.setUnlocalizedName(name);
+        FluidRegistry.registerFluid(fluid);
     }
 
     public void registerItem(Item item, String name, FMLInitializationEvent event) {

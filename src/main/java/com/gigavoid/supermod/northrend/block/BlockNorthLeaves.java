@@ -2,7 +2,6 @@ package com.gigavoid.supermod.northrend.block;
 
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,6 +37,24 @@ public class BlockNorthLeaves extends BlockLeaves {
         List<ItemStack> list = new ArrayList<ItemStack>();
         list.add(new ItemStack(Item.getItemFromBlock(this)));
         return list;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getBlockColor() {
+        return 0xFFFFFF;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(IBlockState state) {
+        return 0xFFFFFF;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass) {
+        return 0xFFFFFF;
     }
 
     @Override
