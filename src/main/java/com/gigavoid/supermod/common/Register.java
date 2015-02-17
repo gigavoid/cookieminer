@@ -49,6 +49,6 @@ public class Register {
     }
 
     public void registerWorldGenerator(IWorldGenerator generator, int id){
-        GameRegistry.registerWorldGenerator(generator, 13);
+        GameRegistry.registerWorldGenerator(generator, id);
     }
 }
