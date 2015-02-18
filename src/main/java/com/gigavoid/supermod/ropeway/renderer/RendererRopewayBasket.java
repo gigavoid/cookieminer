@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.ropeway.renderer;
 
-import com.gigavoid.supermod.ropeway.model.ModelBasket.ModelBasket;
+import com.gigavoid.supermod.ropeway.model.ModelRopewayBasket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -8,10 +8,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class RendererBasket extends Render {
-    public ModelBasket model = new ModelBasket();
+public class RendererRopewayBasket extends Render {
+    public ModelRopewayBasket model = new ModelRopewayBasket();
 
-    public RendererBasket(RenderManager p_i46179_1_) {
+    public RendererRopewayBasket(RenderManager p_i46179_1_) {
         super(p_i46179_1_);
     }
 

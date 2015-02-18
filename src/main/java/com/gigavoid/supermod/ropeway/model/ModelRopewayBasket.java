@@ -1,9 +1,9 @@
-package com.gigavoid.supermod.ropeway.model.ModelBasket;
+package com.gigavoid.supermod.ropeway.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
-public class ModelBasket  extends ModelBase {
+public class ModelRopewayBasket extends ModelBase {
     private ModelRenderer basket;
 
 
@@ -14,7 +14,7 @@ public class ModelBasket  extends ModelBase {
     ModelRenderer Shape3;
     ModelRenderer Shape2;
 
-    public ModelBasket() {
+    public ModelRopewayBasket() {
         textureWidth = 64;
         textureHeight = 32;
 

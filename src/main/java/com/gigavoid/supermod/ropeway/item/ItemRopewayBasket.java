@@ -2,9 +2,8 @@ package com.gigavoid.supermod.ropeway.item;
 
 import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
 import com.gigavoid.supermod.ropeway.creativetab.RopewayCreativeTabs;
-import com.gigavoid.supermod.ropeway.entity.EntityBasket;
+import com.gigavoid.supermod.ropeway.entity.EntityRopewayBasket;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,7 +24,7 @@ public class ItemRopewayBasket extends Item {
             return false;
 
         if (!world.isRemote) {
-            EntityBasket basket = new EntityBasket(world, pos.getX() + .5f, pos.getY() - 1.1f, pos.getZ() + .5f);
+            EntityRopewayBasket basket = new EntityRopewayBasket(world, pos.getX() + .5f, pos.getY() - 1.1f, pos.getZ() + .5f);
             player.worldObj.spawnEntityInWorld(basket);
         }
         return true;
