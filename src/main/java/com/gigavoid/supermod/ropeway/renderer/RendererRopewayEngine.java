@@ -1,6 +1,6 @@
-package com.gigavoid.supermod.renderer;
+package com.gigavoid.supermod.ropeway.renderer;
 
-import com.gigavoid.supermod.model.ModelRopewayEngine;
+import com.gigavoid.supermod.ropeway.model.ModelRopewayEngine;
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

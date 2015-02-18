@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.model;
+package com.gigavoid.supermod.ropeway.model;
 
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
 import net.minecraft.client.model.ModelBase;

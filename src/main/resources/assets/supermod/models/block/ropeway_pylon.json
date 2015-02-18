@@ -1,6 +1,7 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "supermod:blocks/ropeway_pylon"
-    }
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "supermod:blocks/ropeway_pylon_top",
+    "side": "supermod:blocks/ropeway_pylon_side"
+  }
 }

@@ -29,3 +29,8 @@ This is the Super Mod!
     	all = "!sh -c 'git add -A ; git commit -m \"$1\" ; git push' -"
     ```
     Usage: `git all "message"`
+
+- Clear the saves folder
+    ```
+    ./clear-saves
+    ```

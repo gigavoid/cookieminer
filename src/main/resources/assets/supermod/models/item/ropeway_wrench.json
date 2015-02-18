@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "supermod:items/ropeway_engine"
+    "layer0": "supermod:items/ropeway_wrench"
   },
   "display": {
     "thirdperson": {
