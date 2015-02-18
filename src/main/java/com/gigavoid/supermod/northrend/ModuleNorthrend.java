@@ -21,5 +21,6 @@ public class ModuleNorthrend extends Module {
 
     @Override
     public void  init(FMLInitializationEvent e){
-        NorthrendBlocks.registerBlocks(getRegister());}
+        NorthrendBlocks.registerBlocks(getRegister());
+    }
 }

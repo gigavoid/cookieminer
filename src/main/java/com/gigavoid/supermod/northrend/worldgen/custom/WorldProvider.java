@@ -3,9 +3,6 @@ package com.gigavoid.supermod.northrend.worldgen.custom;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import net.minecraft.world.chunk.IChunkProvider;
 
-/**
- * Created by Rasmus on 2/15/2015.
- */
 public class WorldProvider extends net.minecraft.world.WorldProvider {
     public void registerWorldChunkManager() {
         this.worldChunkMgr = new WorldChunkManager(getSeed(), net.minecraft.world.WorldType.DEFAULT, "northrend");

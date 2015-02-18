@@ -9,7 +9,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * Created by Henrik on 2015-02-13.
 */
 public abstract class Module {
-    private final Register register = new Register();
+    private Register register;
+
+    protected void setRegister(Register register) {
+        this.register = register;
+    }
 
     public Register getRegister() {
         return register;

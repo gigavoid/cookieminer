@@ -13,7 +13,7 @@ public class NorthrendBiomes {
     public static final BiomeGenNorthHills northHills = new BiomeGenNorthHills(47, 60);
     public static final BiomeGenNorthBirchForest northBirchForest = new BiomeGenNorthBirchForest(48, 10);
     public static final BiomeGenNorthBlight northBlight = new BiomeGenNorthBlight(49, 10);
-    public static final BiomeGenNorthSpikes northSpikes = new BiomeGenNorthSpikes(50, 7);
+    public static final BiomeGenNorthSpikes northSpikes = new BiomeGenNorthSpikes(50, 5);
 
     public static void registerBiomes(){
         BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(northForest, 0));

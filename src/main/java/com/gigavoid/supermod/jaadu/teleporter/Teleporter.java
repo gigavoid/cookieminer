@@ -1,7 +1,7 @@
-package com.gigavoid.supermod.northrend.teleporter;
+package com.gigavoid.supermod.jaadu.teleporter;
 
-import com.gigavoid.supermod.northrend.block.BlockPortalNorthrend;
-import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
+import com.gigavoid.supermod.jaadu.block.BlockPortalJaadu;
+import com.gigavoid.supermod.jaadu.block.JaaduBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -102,9 +102,9 @@ public class Teleporter extends net.minecraft.world.Teleporter
                     {
                         blockpos1 = blockpos.offsetDown();
 
-                        if (this.worldServerInstance.getBlockState(blockpos).getBlock() == NorthrendBlocks.portalNorthrend)
+                        if (this.worldServerInstance.getBlockState(blockpos).getBlock() == JaaduBlocks.jaaduPortal)
                         {
-                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offsetDown()).getBlock() == NorthrendBlocks.portalNorthrend)
+                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offsetDown()).getBlock() == JaaduBlocks.jaaduPortal)
                             {
                                 blockpos = blockpos1;
                             }
@@ -135,22 +135,22 @@ public class Teleporter extends net.minecraft.world.Teleporter
             double d6 = (double)((BlockPos)object).getZ() + 0.5D;
             EnumFacing enumfacing = null;
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetWest()).getBlock() == NorthrendBlocks.portalNorthrend)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetWest()).getBlock() == JaaduBlocks.jaaduPortal)
             {
                 enumfacing = EnumFacing.NORTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetEast()).getBlock() == NorthrendBlocks.portalNorthrend)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetEast()).getBlock() == JaaduBlocks.jaaduPortal)
             {
                 enumfacing = EnumFacing.SOUTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetNorth()).getBlock() == NorthrendBlocks.portalNorthrend)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetNorth()).getBlock() == JaaduBlocks.jaaduPortal)
             {
                 enumfacing = EnumFacing.EAST;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetSouth()).getBlock() == NorthrendBlocks.portalNorthrend)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetSouth()).getBlock() == JaaduBlocks.jaaduPortal)
             {
                 enumfacing = EnumFacing.WEST;
             }
@@ -452,7 +452,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
             }
         }
 
-        IBlockState iblockstate = NorthrendBlocks.portalNorthrend.getDefaultState().withProperty(BlockPortalNorthrend.field_176550_a, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
+        IBlockState iblockstate = JaaduBlocks.jaaduPortal.getDefaultState().withProperty(BlockPortalJaadu.field_176550_a, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
 
         for (j3 = 0; j3 < 4; ++j3)
         {
