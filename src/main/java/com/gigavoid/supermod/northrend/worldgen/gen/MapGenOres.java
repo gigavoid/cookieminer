@@ -20,7 +20,7 @@ public class MapGenOres implements IWorldGenerator
     }
 
     private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
-        int rn = 85 + random.nextInt(15);
+        int rn = 95 + random.nextInt(15);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(255);
@@ -28,7 +28,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(NorthrendBlocks.coalOre.getDefaultState(), 4 + random.nextInt(13), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 55 + random.nextInt(10);
+        rn = 70 + random.nextInt(20);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(128);
@@ -36,7 +36,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(NorthrendBlocks.ironOre.getDefaultState(), 3 + random.nextInt(7), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 14 + random.nextInt(6);
+        rn = 17 + random.nextInt(6);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(45);
@@ -44,7 +44,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(NorthrendBlocks.goldOre.getDefaultState(), 2 + random.nextInt(7), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 2 + random.nextInt(3);
+        rn = 4 + random.nextInt(4);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(16);
@@ -52,7 +52,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(NorthrendBlocks.diamondOre.getDefaultState(), 2 + random.nextInt(3), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 1 + random.nextInt(2);
+        rn = 2 + random.nextInt(2);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(40);
@@ -60,7 +60,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(NorthrendBlocks.emeraldOre.getDefaultState(), 1 + random.nextInt(3), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 8 + random.nextInt(6);
+        rn = 12 + random.nextInt(6);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = random.nextInt(25);
@@ -75,7 +75,7 @@ public class MapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new WorldGenMinable(BonusBlocks.bonus.getDefaultState(), 1, NorthrendBlocks.northStone)).generate(world, random, pos);
         }
-        rn = 14 + random.nextInt(6);
+        rn = random.nextInt(3);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
             int y = 45 + random.nextInt(10);
