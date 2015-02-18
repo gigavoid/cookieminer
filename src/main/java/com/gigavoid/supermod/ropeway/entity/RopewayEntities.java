@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.ropeway.entity;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.ropeway.renderer.RendererBasket;
 import com.gigavoid.supermod.ropeway.renderer.RendererRope;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class RopewayEntities {
     public static void registerEntities(){
         registerWithRenderer(EntityRope.class, new RendererRope(Minecraft.getMinecraft().getRenderManager()), "entity_rope", 64, -1, 5);
-        //registerWithRenderer(EntityBasket.class, new RendererBasket(Minecraft.getMinecraft().getRenderManager()), "entity_basket", 64, 1, 6);
+        registerWithRenderer(EntityBasket.class, new RendererBasket(Minecraft.getMinecraft().getRenderManager()), "entity_basket", 64, 1, 6);
 
     }
 
