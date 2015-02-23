@@ -13,15 +13,15 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
-public class WorldGenTree extends WorldGenAbstractTree {
+public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     private boolean northTreeHead[] = new boolean[5 * 5];
 
     public static final PropertyEnum AXIS_PROP = PropertyEnum.create("axis", BlockLog.EnumAxis.class);
-    public static enum TreeType{ REGULAR, FIR, BIRCH }
+    public static enum TreeType{ REGULAR, FIR, BIRCH}
 
     TreeType type;
 
-    public WorldGenTree(boolean p_i45448_1_, TreeType type) {
+    public NorthrendWorldGenTree(boolean p_i45448_1_, TreeType type) {
         super(p_i45448_1_);
         this.type = type;
         setNorthTreeHead();

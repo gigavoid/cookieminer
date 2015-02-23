@@ -5,9 +5,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.MapGenRavine;
 
 
-public class MapGenRavine extends net.minecraft.world.gen.MapGenRavine
+public class NorthrendMapGenRavine extends MapGenRavine
 {
     protected void digBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop)
     {

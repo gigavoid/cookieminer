@@ -8,27 +8,28 @@ import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 
 import java.util.Random;
 
-public class WorldGenMinable extends net.minecraft.world.gen.feature.WorldGenMinable
+public class NorthrendWorldGenMinable extends WorldGenMinable
 {
     private final IBlockState oreBlock;
     /** The number of blocks to generate. */
     private final int numberOfBlocks;
     private final Predicate field_175919_c;
 
-    public WorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_)
+    public NorthrendWorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_)
     {
         this(p_i45630_1_, p_i45630_2_, BlockHelper.forBlock(NorthrendBlocks.northStone));
     }
 
-    public WorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_, Block block)
+    public NorthrendWorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_, Block block)
     {
         this(p_i45630_1_, p_i45630_2_, BlockHelper.forBlock(block));
     }
 
-    public WorldGenMinable(IBlockState p_i45631_1_, int p_i45631_2_, Predicate p_i45631_3_)
+    public NorthrendWorldGenMinable(IBlockState p_i45631_1_, int p_i45631_2_, Predicate p_i45631_3_)
     {
         super(p_i45631_1_, p_i45631_2_, p_i45631_3_);
         this.oreBlock = p_i45631_1_;

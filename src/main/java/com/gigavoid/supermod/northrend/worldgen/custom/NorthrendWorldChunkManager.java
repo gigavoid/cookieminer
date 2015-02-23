@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
-public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManager
+public class NorthrendWorldChunkManager extends WorldChunkManager
 {
     public static ArrayList<NorthrendBiomeGenBase> allowedBiomes = Lists.newArrayList(
             (NorthrendBiomeGenBase)NorthrendBiomes.northForest, (NorthrendBiomeGenBase)NorthrendBiomes.northFirForest,
@@ -41,7 +42,7 @@ public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManag
     private String field_180301_f;
     private static final String __OBFID = "CL_00000166";
 
-    protected WorldChunkManager()
+    protected NorthrendWorldChunkManager()
     {
         this.biomeCache = new BiomeCache(this);
         this.field_180301_f = "";
@@ -49,16 +50,16 @@ public class WorldChunkManager extends net.minecraft.world.biome.WorldChunkManag
         this.biomesToSpawnIn.addAll(allowedBiomes);
     }
 
-    public WorldChunkManager(long p_i45744_1_, WorldType p_i45744_3_, String p_i45744_4_)
+    public NorthrendWorldChunkManager(long p_i45744_1_, WorldType p_i45744_3_, String p_i45744_4_)
     {
         this();
         this.field_180301_f = p_i45744_4_;
-        GenLayer[] agenlayer = GenLayerBiome.func_180781_a(p_i45744_1_);
+        GenLayer[] agenlayer = NorthrendGenLayerBiome.func_180781_a(p_i45744_1_);
         this.genBiomes = agenlayer[0];
         this.biomeIndexLayer = agenlayer[1];
     }
 
-    public WorldChunkManager(World worldIn)
+    public NorthrendWorldChunkManager(World worldIn)
     {
         this(worldIn.getSeed(), worldIn.getWorldInfo().getTerrainType(), worldIn.getWorldInfo().getGeneratorOptions());
     }

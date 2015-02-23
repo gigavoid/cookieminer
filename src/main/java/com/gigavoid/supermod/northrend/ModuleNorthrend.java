@@ -4,8 +4,9 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.event.NorthrendEventHandler;
-import com.gigavoid.supermod.northrend.worldgen.custom.WorldProvider;
-import com.gigavoid.supermod.northrend.worldgen.gen.MapGenOres;
+import com.gigavoid.supermod.northrend.item.NorthrendItems;
+import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendWorldProvider;
+import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -14,20 +15,21 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
-    public static final DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor();
+    public static final DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor().setDamageIsAbsolute();
 
     @Override
     public void preInit(FMLPreInitializationEvent e){
         NorthrendBlocks.initializeBlocks(getRegister());
         NorthrendBiomes.registerBiomes();
-        dimensionId = getRegister().registerDimension(WorldProvider.class, false);
-        getRegister().registerWorldGenerator(new MapGenOres(), 20);
+        dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
+        getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
 
     }
 
     @Override
     public void init(FMLInitializationEvent e){
         NorthrendBlocks.registerBlocks(getRegister());
+        NorthrendItems.registerItems(e, getRegister());
 
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);

@@ -101,6 +101,10 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
                             p_180628_3_.setBlockState(j1, k1, i1, iblockstate1);
                         }
                     }
+                    else if (k > 0){
+                        --k;
+                        p_180628_3_.setBlockState(j1, k1, i1, iblockstate1);
+                    }
                 }
             }
             if (k1 < 62 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow){

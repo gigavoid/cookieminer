@@ -16,7 +16,7 @@ public class BiomeGenNorthSpikes extends NorthrendBiomeGenBase {
     public BiomeGenNorthSpikes(int id, int weight){
         super(id, weight);
 
-        setBiomeName("Northrend Plains");
+        setBiomeName("Northrend Spike Plains");
         setHeight(new Height(.1f, .05f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();

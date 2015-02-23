@@ -1,8 +1,8 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import com.gigavoid.supermod.northrend.worldgen.gen.MapGenCaves;
-import com.gigavoid.supermod.northrend.worldgen.gen.MapGenRavine;
+import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenCaves;
+import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenRavine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -34,7 +34,7 @@ import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCAT
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 
-public class ChunkProvider implements IChunkProvider {
+public class NorthrendChunkProvider implements IChunkProvider {
 
     /** RNG. */
     private Random rand;
@@ -84,16 +84,16 @@ public class ChunkProvider implements IChunkProvider {
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
     }
 
-    public ChunkProvider(World worldIn, long p_i45636_2_, boolean p_i45636_4_, String p_i45636_5_)
+    public NorthrendChunkProvider(World worldIn, long p_i45636_2_, boolean p_i45636_4_, String p_i45636_5_)
     {
         this.oceanFiller = Blocks.ice;
         this.stoneNoise = new double[256];
-        this.caveGenerator = new MapGenCaves();
+        this.caveGenerator = new NorthrendMapGenCaves();
         this.strongholdGenerator = new MapGenStronghold();
         this.villageGenerator = new MapGenVillage();
         this.mineshaftGenerator = new MapGenMineshaft();
         this.scatteredFeatureGenerator = new MapGenScatteredFeature();
-        this.ravineGenerator = new MapGenRavine();
+        this.ravineGenerator = new NorthrendMapGenRavine();
         this.oceanTempleGenerator = new StructureOceanMonument();
         this.worldObj = worldIn;
         this.mapFeaturesEnabled = p_i45636_4_;
@@ -121,7 +121,7 @@ public class ChunkProvider implements IChunkProvider {
         if (p_i45636_5_ != null)
         {
             this.chunkProviderSettings = ChunkProviderSettings.Factory.func_177865_a(p_i45636_5_).func_177864_b();
-            this.oceanFiller = this.chunkProviderSettings.field_177778_E ? Blocks.obsidian : NorthrendBlocks.glacialIce;
+            this.oceanFiller = NorthrendBlocks.glacialIce;
         }
 
         NoiseGenerator[] noiseGens = {field_147431_j, field_147432_k, field_147429_l, field_147430_m, noiseGen5, noiseGen6, mobSpawnerNoise};

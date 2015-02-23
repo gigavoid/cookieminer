@@ -6,8 +6,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.MapGenCaves;
 
-public class MapGenCaves extends net.minecraft.world.gen.MapGenCaves
+public class NorthrendMapGenCaves extends MapGenCaves
 {
     protected void digBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop, IBlockState state, IBlockState up)
     {

@@ -1,14 +1,14 @@
 package com.gigavoid.supermod.northrend.biome;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import com.gigavoid.supermod.northrend.worldgen.tree.WorldGenTree;
+import com.gigavoid.supermod.northrend.worldgen.tree.NorthrendWorldGenTree;
 import net.minecraft.block.Block;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
 public class BiomeGenNorthBirchForest extends NorthrendBiomeGenBase {
-    WorldGenTree treeGen = new WorldGenTree(true, WorldGenTree.TreeType.BIRCH);
+    NorthrendWorldGenTree treeGen = new NorthrendWorldGenTree(true, NorthrendWorldGenTree.TreeType.BIRCH);
 
     public BiomeGenNorthBirchForest(int id, int weight){
         super(id, weight);

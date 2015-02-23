@@ -10,12 +10,12 @@ import net.minecraftforge.common.BiomeManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenLayerBiome extends GenLayer {
+public class NorthrendGenLayerBiome extends GenLayer {
     private List<BiomeManager.BiomeEntry>[] biomes = new ArrayList[BiomeManager.BiomeType.values().length];
 
     private static final String __OBFID = "CL_00000555";
 
-    public GenLayerBiome(long p_i2122_1_, GenLayer p_i2122_3_, net.minecraft.world.WorldType p_i2122_4_)
+    public NorthrendGenLayerBiome(long p_i2122_1_, GenLayer p_i2122_3_, net.minecraft.world.WorldType p_i2122_4_)
     {
         super(p_i2122_1_);
     }
@@ -33,15 +33,15 @@ public class GenLayerBiome extends GenLayer {
             for (int j1 = 0; j1 < areaWidth; ++j1)
             {
                 this.initChunkSeed((long)(j1 + areaX), (long)(i1 + areaY));
-                aint1[j1 + i1 * areaWidth] = WorldChunkManager.allowedBiomes.get(getWeightedBiome(WorldChunkManager.allowedBiomes)).biomeID;
+                aint1[j1 + i1 * areaWidth] = NorthrendWorldChunkManager.allowedBiomes.get(getWeightedBiome(NorthrendWorldChunkManager.allowedBiomes)).biomeID;
             }
         }
         return aint1;
     }
 
     public static GenLayer[] func_180781_a(long p_75901_0_)  {
-        GenLayerBiome genLayerBiome = new GenLayerBiome(1000, null, null);
-        GenLayer genLayer = GenLayerZoom.magnify(1000L, genLayerBiome, 5);
+        NorthrendGenLayerBiome genLayerBiomeNorthrend = new NorthrendGenLayerBiome(1000, null, null);
+        GenLayer genLayer = GenLayerZoom.magnify(1000L, genLayerBiomeNorthrend, 5);
 
         GenLayerVoronoiZoom zoom = new GenLayerVoronoiZoom(10L, genLayer);
 

@@ -16,6 +16,7 @@ public class NorthrendEventHandler {
             tickNum++;
         }
     }
+
     @SubscribeEvent
     public void livingUpdateEvent(PlayerEvent.LivingUpdateEvent e) {
         if (tickNum % 200 == 0 && e.entity instanceof EntityPlayer && e.entity.dimension == ModuleNorthrend.dimensionId) {
