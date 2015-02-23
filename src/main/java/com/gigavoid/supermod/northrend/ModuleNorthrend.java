@@ -5,6 +5,7 @@ import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.event.NorthrendEventHandler;
 import com.gigavoid.supermod.northrend.item.NorthrendItems;
+import com.gigavoid.supermod.northrend.recipe.NorthrendRecipies;
 import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendWorldProvider;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
 import net.minecraft.util.DamageSource;
@@ -30,6 +31,7 @@ public class ModuleNorthrend extends Module {
     public void init(FMLInitializationEvent e){
         NorthrendBlocks.registerBlocks(getRegister());
         NorthrendItems.registerItems(e, getRegister());
+        NorthrendRecipies.registerRecipies();
 
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);

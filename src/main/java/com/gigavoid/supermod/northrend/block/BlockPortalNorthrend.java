@@ -205,7 +205,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                 d2 = (double) pos.getZ() + 0.5D + 0.25D * (double) j;
             }
 
-            worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5, new int[0]);
+            worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5);
         }
     }
 
@@ -220,7 +220,7 @@ public class BlockPortalNorthrend extends BlockPortal {
     }
 
     protected BlockState createBlockState() {
-        return new BlockState(this, new IProperty[]{field_176550_a});
+        return new BlockState(this, field_176550_a);
     }
 
     public static class Size {
