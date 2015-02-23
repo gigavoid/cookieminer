@@ -16,10 +16,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -208,7 +205,7 @@ public class BlockPortalNorthrend extends BlockPortal {
                 d2 = (double) pos.getZ() + 0.5D + 0.25D * (double) j;
             }
 
-            //worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5, new int[0]);
+            worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5, new int[0]);
         }
     }
 
