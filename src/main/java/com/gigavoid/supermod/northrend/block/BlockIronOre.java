@@ -14,6 +14,8 @@ public class BlockIronOre extends Block {
     public BlockIronOre() {
         super(Material.rock);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 1);
     }
 
     @Override

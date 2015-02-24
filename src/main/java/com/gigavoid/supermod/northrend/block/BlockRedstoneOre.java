@@ -25,6 +25,8 @@ public class BlockRedstoneOre extends Block{
     {
         super(Material.rock);
         setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 2);
 
         if (p_i45420_1_)
         {

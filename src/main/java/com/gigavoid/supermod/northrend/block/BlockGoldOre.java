@@ -14,6 +14,8 @@ public class BlockGoldOre extends Block {
     public BlockGoldOre() {
         super(Material.rock);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 2);
     }
 
     @Override

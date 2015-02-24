@@ -18,9 +18,7 @@ public class Register {
     private int nextDimensionId = 2;
 
     public void registerBlock(Block block, String name) {
-        block.setUnlocalizedName(name);
-        GameRegistry.registerBlock(block, name);
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + name, "inventory"));
+        registerBlock(block, name, name);
     }
 
     public void registerBlock(Block block, String name, String resourceName) {

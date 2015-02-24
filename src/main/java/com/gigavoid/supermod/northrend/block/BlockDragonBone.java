@@ -17,6 +17,8 @@ public class BlockDragonBone extends Block {
     public BlockDragonBone() {
         super(Material.rock);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(2.0f);
+        this.setHarvestLevel("pickaxe", 1);
     }
 
     @Override

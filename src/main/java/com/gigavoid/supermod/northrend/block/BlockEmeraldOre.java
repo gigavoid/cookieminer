@@ -17,6 +17,8 @@ public class BlockEmeraldOre extends Block {
     public BlockEmeraldOre() {
         super(Material.rock);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 2);
     }
 
     @Override
