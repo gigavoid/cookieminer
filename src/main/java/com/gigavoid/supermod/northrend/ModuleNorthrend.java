@@ -9,6 +9,9 @@ import com.gigavoid.supermod.northrend.recipe.NorthrendRecipies;
 import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendWorldProvider;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
+import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenVillage;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureFortressPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVillagePieces;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.MapGenVillage;
@@ -32,10 +35,6 @@ public class ModuleNorthrend extends Module {
 
         dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
         getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
-
-        List villageSpawnBiomes = new ArrayList(MapGenVillage.villageSpawnBiomes);
-        villageSpawnBiomes.addAll(Arrays.asList(NorthrendBiomes.northHighlands, NorthrendBiomes.northPlains));
-        MapGenVillage.villageSpawnBiomes = villageSpawnBiomes;
     }
 
     @Override
@@ -43,7 +42,11 @@ public class ModuleNorthrend extends Module {
         NorthrendBlocks.registerBlocks(getRegister());
         NorthrendItems.registerItems(e, getRegister());
         NorthrendRecipies.registerRecipies();
+
         MapGenStructureIO.registerStructure(NorthrendMapGenFortress.Start.class, "Northrend Fortress");
+        MapGenStructureIO.registerStructure(NorthrendMapGenVillage.Start.class, "Northrend Village");
+        NorthrendStructureFortressPieces.registerNetherFortressPieces();
+        NorthrendStructureVillagePieces.registerVillagePieces();
 
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);
