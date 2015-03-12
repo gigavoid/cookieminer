@@ -26,7 +26,7 @@ public class NorthrendWorldGenIgloo extends WorldGenAbstractTree {
     }
 
     private void genIgloo(World world, Random random, BlockPos pos){
-        if (.9999f < random.nextFloat()) {
+        if (.99f < random.nextFloat()) {
             boolean canPlaceIgloo = true, invert, alignZ;
             int setI, setJ;
             invert = 0.5 < random.nextFloat();
@@ -50,10 +50,10 @@ public class NorthrendWorldGenIgloo extends WorldGenAbstractTree {
                         } else if (canPlaceIgloo) {
                             block = world.getBlockState(pos.add(setI, k, setJ));
                             block = charToBlock(structureIgloo.charAt(7 * 8 * (k + 1) + 7 * (j + 3) + (i + 3)), block);
-                            if (block != Blocks.bed && block != Blocks.beacon)
+                            if (block.getBlock() != Blocks.bed && block.getBlock() != Blocks.beacon)
                                 world.setBlockState(pos.add(setI, k, setJ), block);
                             else {
-                                if (block == Blocks.beacon) {
+                                if (block.getBlock() == Blocks.beacon) {
                                     block = Blocks.bed.getDefaultState();
                                     if (setI < 0)
                                         world.setBlockState(pos.add(setI, k, setJ), block, 9);

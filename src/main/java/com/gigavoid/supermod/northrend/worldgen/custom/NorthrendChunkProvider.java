@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenCaves;
+import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenRavine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -25,6 +26,7 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -59,7 +61,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
     private double[] stoneNoise;
     private MapGenBase caveGenerator;
     /** Holds Stronghold Generator */
-    private MapGenStronghold strongholdGenerator;
+    private NorthrendMapGenFortress netherBridgeGenerator;
     /** Holds Village Generator */
     private MapGenVillage villageGenerator;
     /** Holds Mineshaft Generator */
@@ -77,7 +79,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
 
     {
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
-        strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
+        netherBridgeGenerator = (NorthrendMapGenFortress) TerrainGen.getModdedMapGen(netherBridgeGenerator, STRONGHOLD);
         villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
@@ -89,7 +91,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
         this.oceanFiller = Blocks.ice;
         this.stoneNoise = new double[256];
         this.caveGenerator = new NorthrendMapGenCaves();
-        this.strongholdGenerator = new MapGenStronghold();
+        this.netherBridgeGenerator = new NorthrendMapGenFortress();
         this.villageGenerator = new MapGenVillage();
         this.mineshaftGenerator = new MapGenMineshaft();
         this.scatteredFeatureGenerator = new MapGenScatteredFeature();
@@ -184,7 +186,11 @@ public class NorthrendChunkProvider implements IChunkProvider {
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, NorthrendBlocks.northStone.getDefaultState());
                                 }
-                                else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q)
+                                else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q - 1)
+                                {
+                                        p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
+                                }
+                                else if (k2 * 8 + l2 == this.chunkProviderSettings.field_177841_q - 1 && rand.nextFloat() < .1f)
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
                                 }
@@ -257,7 +263,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
 
         if (this.chunkProviderSettings.field_177833_u && this.mapFeaturesEnabled)
         {
-            this.strongholdGenerator.func_175792_a(this, this.worldObj, p_73154_1_, p_73154_2_, chunkprimer);
+            this.netherBridgeGenerator.func_175792_a(this, this.worldObj, p_73154_1_, p_73154_2_, chunkprimer);
         }
 
         if (this.chunkProviderSettings.field_177854_x && this.mapFeaturesEnabled)
@@ -438,7 +444,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
 
         if (this.chunkProviderSettings.field_177833_u && this.mapFeaturesEnabled)
         {
-            this.strongholdGenerator.func_175794_a(this.worldObj, this.rand, chunkcoordintpair);
+            this.netherBridgeGenerator.func_175794_a(this.worldObj, this.rand, chunkcoordintpair);
         }
 
         if (this.chunkProviderSettings.field_177854_x && this.mapFeaturesEnabled)
@@ -593,7 +599,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
 
     public BlockPos func_180513_a(World worldIn, String p_180513_2_, BlockPos p_180513_3_)
     {
-        return "Stronghold".equals(p_180513_2_) && this.strongholdGenerator != null ? this.strongholdGenerator.func_180706_b(worldIn, p_180513_3_) : null;
+        return "Stronghold".equals(p_180513_2_) && this.netherBridgeGenerator != null ? this.netherBridgeGenerator.func_180706_b(worldIn, p_180513_3_) : null;
     }
 
     public int getLoadedChunkCount()
@@ -615,7 +621,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
 
         if (this.chunkProviderSettings.field_177833_u && this.mapFeaturesEnabled)
         {
-            this.strongholdGenerator.func_175792_a(this, this.worldObj, p_180514_2_, p_180514_3_, (ChunkPrimer)null);
+            this.netherBridgeGenerator.func_175792_a(this, this.worldObj, p_180514_2_, p_180514_3_, (ChunkPrimer)null);
         }
 
         if (this.chunkProviderSettings.field_177854_x && this.mapFeaturesEnabled)
