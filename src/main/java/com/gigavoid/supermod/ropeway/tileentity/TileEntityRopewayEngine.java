@@ -113,15 +113,24 @@ public class TileEntityRopewayEngine extends TileEntity {
             rope.setDead();
         }
 
-        for(int[] rope : ropePoints) {
+        for(BlockPos otherRope : getConnectedRopes()) {
+            ((TileEntityRopewayEngine) worldObj.getTileEntity(otherRope)).removeRopeTo(pos);
+        }
+    }
+    
+    public List<BlockPos> getConnectedRopes() {
+        List<BlockPos> otherRopes = new ArrayList<BlockPos>();
+        for (int[] rope : ropePoints) {
             BlockPos otherPos = new BlockPos(rope[0], rope[1], rope[2]);
 
             TileEntity tileEntity = worldObj.getTileEntity(otherPos);
-            if(tileEntity != null && tileEntity instanceof TileEntityRopewayEngine) {
+            if (tileEntity != null && tileEntity instanceof TileEntityRopewayEngine) {
                 TileEntityRopewayEngine otherRopeWheel = (TileEntityRopewayEngine) tileEntity;
-                otherRopeWheel.removeRopeTo(pos);
+                otherRopes.add(otherPos);
             }
         }
+        
+        return otherRopes;
     }
 
     private void removeRopeTo(BlockPos pos) {

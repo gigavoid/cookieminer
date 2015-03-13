@@ -1,23 +1,42 @@
 package com.gigavoid.supermod.ropeway.entity;
 
 
+import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
+import com.gigavoid.supermod.ropeway.item.RopewayItems;
+import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+import java.util.Random;
+
 public class EntityRopewayBasket extends Entity {
 
+    public static final double SPEED = .03;
+    /**
+     * The block that the basket is moving towards.
+     */
+    private BlockPos target;
+    private Random r = new Random();
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
         this.preventEntitySpawning = true;
+    }
+
+    public void setTarget(BlockPos target) {
+        this.target = target;
     }
 
     @Override
@@ -27,12 +46,18 @@ public class EntityRopewayBasket extends Entity {
 
     @Override
     protected void readEntityFromNBT(NBTTagCompound tagCompund) {
-
+        int x = tagCompund.getInteger("targetX");
+        int y = tagCompund.getInteger("targetY");
+        int z = tagCompund.getInteger("targetZ");
+        
+        target = new BlockPos(x, y, z);
     }
 
     @Override
     protected void writeEntityToNBT(NBTTagCompound tagCompound) {
-
+        tagCompound.setInteger("targetX", target.getX());
+        tagCompound.setInteger("targetY", target.getY());
+        tagCompound.setInteger("targetZ", target.getZ());
     }
 
     @Override
@@ -91,8 +116,37 @@ public class EntityRopewayBasket extends Entity {
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
-        addVelocity(50, 50, 50);
-        motionY += 15;
+        if (target != null) {
+            if (worldObj.getBlockState(target).getBlock() != RopewayBlocks.engine) {
+                // The engine the basket is moving towards has been destroyed
+                worldObj.spawnEntityInWorld(new EntityItem(worldObj, posX, posY, posZ, new ItemStack(RopewayItems.basket)));
+                kill();
+                return;
+            }
+            
+            double xDiff = target.getX() + .5f - posX;
+            double yDiff = target.getY() - 1.1f - posY;
+            double zDiff = target.getZ() + .5f - posZ;
+
+            if (Math.abs(xDiff) + Math.abs(yDiff) + Math.abs(zDiff) < .3) {
+                // The basket has (almost) reached its target
+                findNewTarget();
+                return;
+            }
+
+            Vec3 diff = new Vec3(xDiff, yDiff, zDiff);
+            diff = diff.normalize();
+
+            posX += diff.xCoord * SPEED;
+            posY += diff.yCoord * SPEED;
+            posZ += diff.zCoord * SPEED;
+        }
+    }
+
+    private void findNewTarget() {
+        TileEntityRopewayEngine targetEntity = (TileEntityRopewayEngine) worldObj.getTileEntity(target);
+        List<BlockPos> connectedRopes = targetEntity.getConnectedRopes();
+        target = connectedRopes.get(r.nextInt(connectedRopes.size()));
     }
 
     public EntityRopewayBasket(World world, double x, double y, double z) {
