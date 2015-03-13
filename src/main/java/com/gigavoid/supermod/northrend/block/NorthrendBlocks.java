@@ -78,7 +78,7 @@ public class NorthrendBlocks {
         register.registerBlock(northCobbleStairs, "north_cobble_stairs");
         register.registerBlock(northFence, "north_fence");
         register.registerBlock(northFenceGate, "north_fence_gate");
-        //register.registerBlock(northGlaciemPlant, "glaciem_plant");
+        register.registerBlock(northGlaciemPlant, "glaciem_plant");
         register.registerBlock(blight, "north_blight");
         //register.registerBlock(poison, "poisonFluid");
         register.registerBlock(coalOre, "north_coal_ore");

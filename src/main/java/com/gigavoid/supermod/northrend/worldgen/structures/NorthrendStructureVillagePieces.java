@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSandStone;
-import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityVillager;
@@ -36,6 +36,8 @@ import static net.minecraftforge.common.ChestGenHooks.*;
 
 public class NorthrendStructureVillagePieces
 {
+    public static final PropertyEnum AXIS_PROP = PropertyEnum.create("axis", BlockLog.EnumAxis.class);
+
     private static final String __OBFID = "CL_00000516";
     public static Block stone = NorthrendBlocks.northCobble;
     public static Block stoneStairs = NorthrendBlocks.northCobbleStairs;
@@ -45,6 +47,7 @@ public class NorthrendStructureVillagePieces
     public static Block log = NorthrendBlocks.northLog;
     public static Block path = NorthrendBlocks.northDirt;
     public static Block farm = NorthrendBlocks.northDirt;
+    public static Block plant = NorthrendBlocks.northLeaves;
 
     public static void registerVillagePieces()
     {
@@ -150,10 +153,10 @@ public class NorthrendStructureVillagePieces
         {
             object = NorthrendStructureVillagePieces.House3.func_175849_a(p_176065_0_, p_176065_2_, p_176065_3_, p_176065_4_, p_176065_5_, p_176065_6_, p_176065_7_, p_176065_8_);
         }
-        else
+        /*else
         {
-            object = net.minecraftforge.fml.common.registry.VillagerRegistry.getVillageComponent(p_176065_1_, p_176065_0_ , p_176065_2_, p_176065_3_, p_176065_4_, p_176065_5_, p_176065_6_, p_176065_7_, p_176065_8_);
-        }
+            object = net.minecraftforge.fml.common.registry.VillagerRegistry.getVillageComponent(p_176065_1_, p_176065_0_, p_176065_2_, p_176065_3_, p_176065_4_, p_176065_5_, p_176065_6_, p_176065_7_, p_176065_8_);
+        }*/
 
         return (NorthrendStructureVillagePieces.Village)object;
     }
@@ -458,15 +461,7 @@ public class NorthrendStructureVillagePieces
 
         private Block func_151559_a(Random p_151559_1_)
         {
-            switch (p_151559_1_.nextInt(5))
-            {
-                case 0:
-                    return Blocks.carrots;
-                case 1:
-                    return Blocks.potatoes;
-                default:
-                    return Blocks.wheat;
-            }
+            return plant;
         }
 
         public static NorthrendStructureVillagePieces.Field1 func_175851_a(NorthrendStructureVillagePieces.Start p_175851_0_, List p_175851_1_, Random p_175851_2_, int p_175851_3_, int p_175851_4_, int p_175851_5_, EnumFacing p_175851_6_, int p_175851_7_)
@@ -498,11 +493,11 @@ public class NorthrendStructureVillagePieces
             this.func_175804_a(worldIn, p_74875_3_, 4, 0, 1, 5, 0, 7, farm.getDefaultState(), farm.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 7, 0, 1, 8, 0, 7, farm.getDefaultState(), farm.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 10, 0, 1, 11, 0, 7, farm.getDefaultState(), farm.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 0, 0, 0, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 6, 0, 0, 6, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 12, 0, 0, 12, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 0, 11, 0, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 8, 11, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 0, 0, 0, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 6, 0, 0, 6, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 12, 0, 0, 12, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 0, 11, 0, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 8, 11, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             this.func_175804_a(worldIn, p_74875_3_, 3, 0, 1, 3, 0, 7, Blocks.water.getDefaultState(), Blocks.water.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 9, 0, 1, 9, 0, 7, Blocks.water.getDefaultState(), Blocks.water.getDefaultState(), false);
             int i;
@@ -573,15 +568,7 @@ public class NorthrendStructureVillagePieces
 
         private Block func_151560_a(Random p_151560_1_)
         {
-            switch (p_151560_1_.nextInt(5))
-            {
-                case 0:
-                    return Blocks.carrots;
-                case 1:
-                    return Blocks.potatoes;
-                default:
-                    return Blocks.wheat;
-            }
+            return plant;
         }
 
         public static NorthrendStructureVillagePieces.Field2 func_175852_a(NorthrendStructureVillagePieces.Start p_175852_0_, List p_175852_1_, Random p_175852_2_, int p_175852_3_, int p_175852_4_, int p_175852_5_, EnumFacing p_175852_6_, int p_175852_7_)
@@ -611,10 +598,10 @@ public class NorthrendStructureVillagePieces
             this.func_175804_a(worldIn, p_74875_3_, 0, 1, 0, 6, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 1, 0, 1, 2, 0, 7, farm.getDefaultState(), farm.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 4, 0, 1, 5, 0, 7, farm.getDefaultState(), farm.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 0, 0, 0, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 6, 0, 0, 6, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 0, 5, 0, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 8, 5, 0, 8, log.getDefaultState(), log.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 0, 0, 0, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 6, 0, 0, 6, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 0, 5, 0, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 1, 0, 8, 5, 0, 8, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             this.func_175804_a(worldIn, p_74875_3_, 3, 0, 1, 3, 0, 7, Blocks.water.getDefaultState(), Blocks.water.getDefaultState(), false);
             int i;
 
@@ -711,10 +698,10 @@ public class NorthrendStructureVillagePieces
                 }
             }
 
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 2, 1, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 2, 4, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 1, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 2, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 2, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 4, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 0, 2, 2, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 0, 2, 3, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 8, 2, 2, p_74875_3_);
@@ -963,9 +950,9 @@ public class NorthrendStructureVillagePieces
             this.func_175804_a(worldIn, p_74875_3_, 0, 5, 0, 9, 5, 6, Blocks.stone_slab.getDefaultState(), Blocks.stone_slab.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 1, 5, 1, 8, 5, 5, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 1, 1, 0, 2, 3, 0, wood.getDefaultState(), wood.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 0, 0, 4, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 0, 3, 4, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 6, 0, 4, 6, log.getDefaultState(), log.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 0, 0, 4, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 0, 3, 4, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 6, 0, 4, 6, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             this.func_175811_a(worldIn, wood.getDefaultState(), 3, 3, 1, p_74875_3_);
             this.func_175804_a(worldIn, p_74875_3_, 3, 1, 2, 3, 3, 2, wood.getDefaultState(), wood.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 4, 1, 3, 5, 3, 3, wood.getDefaultState(), wood.getDefaultState(), false);
@@ -1135,29 +1122,29 @@ public class NorthrendStructureVillagePieces
                 }
             }
 
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 2, 1, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 2, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 2, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 2, 4, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 0, 2, 2, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 0, 2, 3, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 4, 2, 0, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 4, 2, 0, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 5, 2, 0, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 6, 2, 0, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 6, 2, 0, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 1, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 8, 2, 2, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 8, 2, 3, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 4, p_74875_3_);
             this.func_175811_a(worldIn, wood.getDefaultState(), 8, 2, 5, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 6, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 6, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 8, 2, 7, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 8, 2, 8, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 8, 2, 9, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 2, 2, 6, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 8, 2, 9, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 2, 2, 6, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 2, 2, 7, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 2, 2, 8, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 2, 2, 9, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 4, 4, 10, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 2, 2, 9, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 4, 4, 10, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.glass_pane.getDefaultState(), 5, 4, 10, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 6, 4, 10, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 6, 4, 10, p_74875_3_);
             this.func_175811_a(worldIn, wood.getDefaultState(), 5, 5, 10, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.air.getDefaultState(), 2, 1, 0, p_74875_3_);
             this.func_175811_a(worldIn, Blocks.air.getDefaultState(), 2, 2, 0, p_74875_3_);
@@ -1251,7 +1238,7 @@ public class NorthrendStructureVillagePieces
             }
 
             this.func_175804_a(worldIn, p_74875_3_, 0, 0, 0, 4, 0, 4, stone.getDefaultState(), stone.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 4, 0, 4, 4, 4, log.getDefaultState(), log.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 4, 0, 4, 4, 4, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             this.func_175804_a(worldIn, p_74875_3_, 1, 4, 1, 3, 4, 3, wood.getDefaultState(), wood.getDefaultState(), false);
             this.func_175811_a(worldIn, stone.getDefaultState(), 0, 1, 0, p_74875_3_);
             this.func_175811_a(worldIn, stone.getDefaultState(), 0, 2, 0, p_74875_3_);
@@ -1963,27 +1950,27 @@ public class NorthrendStructureVillagePieces
 
             if (this.isTallHouse)
             {
-                this.func_175804_a(worldIn, p_74875_3_, 1, 4, 1, 2, 4, 3, log.getDefaultState(), log.getDefaultState(), false);
+                this.func_175804_a(worldIn, p_74875_3_, 1, 4, 1, 2, 4, 3, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             }
             else
             {
-                this.func_175804_a(worldIn, p_74875_3_, 1, 5, 1, 2, 5, 3, log.getDefaultState(), log.getDefaultState(), false);
+                this.func_175804_a(worldIn, p_74875_3_, 1, 5, 1, 2, 5, 3, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             }
 
-            this.func_175811_a(worldIn, log.getDefaultState(), 1, 4, 0, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 2, 4, 0, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 1, 4, 4, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 2, 4, 4, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 4, 1, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 4, 2, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 0, 4, 3, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 3, 4, 1, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 3, 4, 2, p_74875_3_);
-            this.func_175811_a(worldIn, log.getDefaultState(), 3, 4, 3, p_74875_3_);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 0, 0, 3, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 0, 3, 3, 0, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 4, 0, 3, 4, log.getDefaultState(), log.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 4, 3, 3, 4, log.getDefaultState(), log.getDefaultState(), false);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 1, 4, 0, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 2, 4, 0, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 1, 4, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 2, 4, 4, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 4, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 4, 2, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 0, 4, 3, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 3, 4, 1, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 3, 4, 2, p_74875_3_);
+            this.func_175811_a(worldIn, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), 3, 4, 3, p_74875_3_);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 0, 0, 3, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 0, 3, 3, 0, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 0, 1, 4, 0, 3, 4, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 1, 4, 3, 3, 4, log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), log.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)), false);
             this.func_175804_a(worldIn, p_74875_3_, 0, 1, 1, 0, 3, 3, wood.getDefaultState(), wood.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 3, 1, 1, 3, 3, 3, wood.getDefaultState(), wood.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 1, 1, 0, 2, 3, 0, wood.getDefaultState(), wood.getDefaultState(), false);

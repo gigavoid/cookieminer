@@ -11,6 +11,8 @@ import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenVillage;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureFortressPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureMineshaftPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureMineshaftStart;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVillagePieces;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
@@ -49,8 +51,10 @@ public class ModuleNorthrend extends Module {
 
         MapGenStructureIO.registerStructure(NorthrendMapGenFortress.Start.class, "Northrend Fortress");
         MapGenStructureIO.registerStructure(NorthrendMapGenVillage.Start.class, "Northrend Village");
+        MapGenStructureIO.registerStructure(NorthrendStructureMineshaftStart.class, "Northrend Mineshaft");
         NorthrendStructureFortressPieces.registerNetherFortressPieces();
         NorthrendStructureVillagePieces.registerVillagePieces();
+        NorthrendStructureMineshaftPieces.registerStructurePieces();
 
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);
