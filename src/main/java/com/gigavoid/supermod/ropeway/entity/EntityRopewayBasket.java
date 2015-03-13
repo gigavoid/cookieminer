@@ -29,6 +29,10 @@ public class EntityRopewayBasket extends Entity {
      */
     private BlockPos target;
     private Random r = new Random();
+    
+    private double velocityX;
+    private double velocityY;
+    private double velocityZ;
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
@@ -116,6 +120,13 @@ public class EntityRopewayBasket extends Entity {
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
+        
+        if (worldObj.isRemote)
+        {
+            return;
+        }
+        
+        System.out.println("asdf");
         if (target != null) {
             if (worldObj.getBlockState(target).getBlock() != RopewayBlocks.engine) {
                 // The engine the basket is moving towards has been destroyed
@@ -136,6 +147,10 @@ public class EntityRopewayBasket extends Entity {
 
             Vec3 diff = new Vec3(xDiff, yDiff, zDiff);
             diff = diff.normalize();
+            
+            lastTickPosX = posX;
+            lastTickPosY = posY;
+            lastTickPosZ = posZ;
 
             posX += diff.xCoord * SPEED;
             posY += diff.yCoord * SPEED;
@@ -168,5 +183,4 @@ public class EntityRopewayBasket extends Entity {
             this.prevPosZ = z;
         }
     }
-
 }
