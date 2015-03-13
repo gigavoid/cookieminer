@@ -110,7 +110,7 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
             if (k1 < 62 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow){
                 p_180628_3_.setBlockState(j1, k1, i1, NorthrendBlocks.glacialIce.getDefaultState());
             }
-            else if (k1 == 63 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow && .5f < p_180628_2_.nextFloat()) {
+            else if (k1 == 62 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow && .5f < p_180628_2_.nextFloat()) {
                 p_180628_3_.setBlockState(j1, k1, i1, NorthrendBlocks.glacialIce.getDefaultState());
             }
         }

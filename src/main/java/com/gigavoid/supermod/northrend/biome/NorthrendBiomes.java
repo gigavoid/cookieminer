@@ -3,7 +3,7 @@ package com.gigavoid.supermod.northrend.biome;
 import net.minecraftforge.common.BiomeManager;
 
 public class NorthrendBiomes {
-    public static final BiomeGenNorthForest northForest = new BiomeGenNorthForest(40, 10);
+    public static final BiomeGenNorthPineForest northForest = new BiomeGenNorthPineForest(40, 10);
     public static final BiomeGenNorthFirForest northFirForest = new BiomeGenNorthFirForest(41, 10);
     public static final BiomeGenNorthMountains northMountains = new BiomeGenNorthMountains(42, 30);
     public static final BiomeGenNorthPlains northPlains = new BiomeGenNorthPlains(43, 60);

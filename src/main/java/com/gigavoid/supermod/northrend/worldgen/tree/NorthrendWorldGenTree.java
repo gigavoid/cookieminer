@@ -17,7 +17,7 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     private boolean northTreeHead[] = new boolean[5 * 5];
 
     public static final PropertyEnum AXIS_PROP = PropertyEnum.create("axis", BlockLog.EnumAxis.class);
-    public static enum TreeType{ REGULAR, FIR, BIRCH}
+    public static enum TreeType{ DEFAULT, PINE, FIR, BIRCH}
 
     TreeType type;
 
@@ -39,18 +39,20 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
             }
         }
         if (noTreesNear && p_76484_1_.getBlockState(pos.add(0, -2, 0)) == NorthrendBlocks.northDirt.getDefaultState()) {
-            if (type == TreeType.REGULAR)
-                genTree(p_76484_1_, p_76484_2_, pos);
+            if (type == TreeType.PINE)
+                genPineTree(p_76484_1_, p_76484_2_, pos);
             else if (type == TreeType.FIR)
                 genTreeFir(p_76484_1_, p_76484_2_, pos);
             else if (type == TreeType.BIRCH)
                 genTreeBirch(p_76484_1_, p_76484_2_, pos);
+            else
+                genPineTree(p_76484_1_, p_76484_2_, pos);
             ret = true;
         }
         return ret;
     }
 
-    private void genTree(World world, Random random, BlockPos pos) {
+    private void genPineTree(World world, Random random, BlockPos pos) {
         if (world.getBlockState(pos.add(0, -1, 0)).getBlock() == Block.getBlockFromName("snow") && pos.getY() < 80) {
             int height = 4 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {

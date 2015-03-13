@@ -1,10 +1,7 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenCaves;
-import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
-import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenRavine;
-import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenVillage;
+import com.gigavoid.supermod.northrend.worldgen.gen.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -65,7 +62,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
     /** Holds Village Generator */
     private NorthrendMapGenVillage villageGenerator;
     /** Holds Mineshaft Generator */
-    private MapGenMineshaft mineshaftGenerator;
+    private NorthrendMapGenMineshaft mineshaftGenerator;
     private MapGenScatteredFeature scatteredFeatureGenerator;
     /** Holds ravine generator */
     private MapGenBase ravineGenerator;
@@ -81,7 +78,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
         netherBridgeGenerator = (NorthrendMapGenFortress) TerrainGen.getModdedMapGen(netherBridgeGenerator, STRONGHOLD);
         villageGenerator = (NorthrendMapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
-        mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
+        mineshaftGenerator = (NorthrendMapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
     }
@@ -93,7 +90,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
         this.caveGenerator = new NorthrendMapGenCaves();
         this.netherBridgeGenerator = new NorthrendMapGenFortress();
         this.villageGenerator = new NorthrendMapGenVillage();
-        this.mineshaftGenerator = new MapGenMineshaft();
+        this.mineshaftGenerator = new NorthrendMapGenMineshaft();
         this.scatteredFeatureGenerator = new MapGenScatteredFeature();
         this.ravineGenerator = new NorthrendMapGenRavine();
         this.oceanTempleGenerator = new StructureOceanMonument();
@@ -186,11 +183,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, NorthrendBlocks.northStone.getDefaultState());
                                 }
-                                else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q - 1)
-                                {
-                                        p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
-                                }
-                                else if (k2 * 8 + l2 == this.chunkProviderSettings.field_177841_q - 1 && rand.nextFloat() < .1f)
+                                else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q)
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
                                 }

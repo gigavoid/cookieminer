@@ -30,7 +30,8 @@ public class NorthrendStructureFortressPieces
     public static Block mainBlock = NorthrendBlocks.northCobble;
     public static Block fenceBlock = NorthrendBlocks.northFence;
     public static Block stairBlock = NorthrendBlocks.northCobbleStairs;
-    public static Block plantBlock = NorthrendBlocks.northGlaciemPlant;
+    public static Block plantBlock = NorthrendBlocks.northLeaves;
+    public static Block farmBlock = NorthrendBlocks.northDirt;
     public static String spawnerType = "Blaze";
 
     public static void registerNetherFortressPieces()
@@ -1053,10 +1054,10 @@ public class NorthrendStructureFortressPieces
             this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 3, p_74875_3_);
             this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 9, p_74875_3_);
             this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 10, p_74875_3_);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 4, 4, 4, 4, 8, Blocks.soul_sand.getDefaultState(), Blocks.soul_sand.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 8, 4, 4, 9, 4, 8, Blocks.soul_sand.getDefaultState(), Blocks.soul_sand.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 5, 4, 4, 5, 8, Blocks.nether_wart.getDefaultState(), Blocks.nether_wart.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 8, 5, 4, 9, 5, 8, Blocks.nether_wart.getDefaultState(), Blocks.nether_wart.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 4, 4, 4, 4, 8, farmBlock.getDefaultState(), farmBlock.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 8, 4, 4, 9, 4, 8, farmBlock.getDefaultState(), farmBlock.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 5, 4, 4, 5, 8, plantBlock.getDefaultState(), plantBlock.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 8, 5, 4, 9, 5, 8, plantBlock.getDefaultState(), plantBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 4, 2, 0, 8, 2, 12, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 0, 2, 4, 12, 2, 8, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 4, 0, 0, 8, 1, 3, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);

@@ -26,7 +26,7 @@ public class NorthrendWorldGenIgloo extends WorldGenAbstractTree {
     }
 
     private void genIgloo(World world, Random random, BlockPos pos){
-        if (.99f < random.nextFloat()) {
+        if (.999f < random.nextFloat()) {
             boolean canPlaceIgloo = true, invert, alignZ;
             int setI, setJ;
             invert = 0.5 < random.nextFloat();

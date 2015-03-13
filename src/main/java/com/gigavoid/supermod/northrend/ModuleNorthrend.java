@@ -11,6 +11,8 @@ import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenVillage;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureFortressPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureMineshaftPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureMineshaftStart;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVillagePieces;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
@@ -35,6 +37,10 @@ public class ModuleNorthrend extends Module {
 
         dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
         getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
+
+        List villageSpawnBiomes = new ArrayList(MapGenVillage.villageSpawnBiomes);
+        villageSpawnBiomes.addAll(Arrays.asList(NorthrendBiomes.northHighlands, NorthrendBiomes.northPlains));
+        MapGenVillage.villageSpawnBiomes = villageSpawnBiomes;
     }
 
     @Override
@@ -45,11 +51,14 @@ public class ModuleNorthrend extends Module {
 
         MapGenStructureIO.registerStructure(NorthrendMapGenFortress.Start.class, "Northrend Fortress");
         MapGenStructureIO.registerStructure(NorthrendMapGenVillage.Start.class, "Northrend Village");
+        MapGenStructureIO.registerStructure(NorthrendStructureMineshaftStart.class, "Northrend Mineshaft");
         NorthrendStructureFortressPieces.registerNetherFortressPieces();
         NorthrendStructureVillagePieces.registerVillagePieces();
+        NorthrendStructureMineshaftPieces.registerStructurePieces();
 
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);
         MinecraftForge.EVENT_BUS.register(northendEventHandler);
+        //MinecraftForge.TERRAIN_GEN_BUS.register(northendEventHandler);
     }
 }

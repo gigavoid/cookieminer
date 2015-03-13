@@ -7,12 +7,12 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;
 
-public class BiomeGenNorthForest extends NorthrendBiomeGenBase {
-    NorthrendWorldGenTree treeGen = new NorthrendWorldGenTree(true, NorthrendWorldGenTree.TreeType.REGULAR);
+public class BiomeGenNorthPineForest extends NorthrendBiomeGenBase {
+    NorthrendWorldGenTree treeGen = new NorthrendWorldGenTree(true, NorthrendWorldGenTree.TreeType.PINE);
 
-    public BiomeGenNorthForest(int id, int weight){
+    public BiomeGenNorthPineForest(int id, int weight){
         super(id, weight);
-        setBiomeName("Northrend Forest");
+        setBiomeName("Northrend Pine Forest");
         setHeight(new Height(0.1f, 0.1f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
