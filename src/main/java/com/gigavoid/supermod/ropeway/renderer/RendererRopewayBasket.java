@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
 import org.lwjgl.opengl.GL11;
 
 public class RendererRopewayBasket extends Render {
@@ -16,9 +17,14 @@ public class RendererRopewayBasket extends Render {
     }
 
     @Override
-    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float p_76986_9_) {
+    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float tickProgress) {
         GL11.glPushMatrix();
         //GL11.glTranslatef((float) x + 0.5f, (float) y +.5f, (float) z + 0.5f);
+
+        x += (entity.posX - entity.lastTickPosX) * (double)tickProgress;
+        y += (entity.posY - entity.lastTickPosY) * (double)tickProgress;
+        z += (entity.posZ - entity.lastTickPosZ) * (double)tickProgress;
+
         GL11.glTranslatef((float)x, (float)y, (float)z);
 
         ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeway_engine.png"));

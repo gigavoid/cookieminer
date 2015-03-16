@@ -5,6 +5,7 @@ import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
 import com.gigavoid.supermod.ropeway.item.RopewayItems;
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
 import net.minecraft.block.Block;
+import net.minecraft.entity.DataWatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,13 +16,14 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
 
-public class EntityRopewayBasket extends Entity {
+public class EntityRopewayBasket extends Entity{
 
     public static final double SPEED = .03;
     /**
@@ -29,10 +31,7 @@ public class EntityRopewayBasket extends Entity {
      */
     private BlockPos target;
     private Random r = new Random();
-    
-    private double velocityX;
-    private double velocityY;
-    private double velocityZ;
+
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
@@ -41,19 +40,38 @@ public class EntityRopewayBasket extends Entity {
 
     public void setTarget(BlockPos target) {
         this.target = target;
+
+        if (!worldObj.isRemote) {
+            dataWatcher.updateObject(20, target.getX());
+            dataWatcher.updateObject(21, target.getY());
+            dataWatcher.updateObject(22, target.getZ());
+        }
     }
 
     @Override
     protected void entityInit() {
+        DataWatcher dw = getDataWatcher();
 
+        int x = 0, y = 0, z = 0;
+
+        if (target != null) {
+            x = target.getX();
+            y = target.getY();
+            z = target.getZ();
+        }
+
+        dw.addObject(20, x);
+        dw.addObject(21, y);
+        dw.addObject(22, z);
     }
+
 
     @Override
     protected void readEntityFromNBT(NBTTagCompound tagCompund) {
         int x = tagCompund.getInteger("targetX");
         int y = tagCompund.getInteger("targetY");
         int z = tagCompund.getInteger("targetZ");
-        
+
         target = new BlockPos(x, y, z);
     }
 
@@ -120,13 +138,15 @@ public class EntityRopewayBasket extends Entity {
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
-        
-        if (worldObj.isRemote)
-        {
-            return;
+
+        if (worldObj.isRemote) {
+            int x = dataWatcher.getWatchableObjectInt(20);
+            int y = dataWatcher.getWatchableObjectInt(21);
+            int z = dataWatcher.getWatchableObjectInt(22);
+
+            target = new BlockPos(x, y, z);
         }
-        
-        System.out.println("asdf");
+
         if (target != null) {
             if (worldObj.getBlockState(target).getBlock() != RopewayBlocks.engine) {
                 // The engine the basket is moving towards has been destroyed
@@ -134,23 +154,22 @@ public class EntityRopewayBasket extends Entity {
                 kill();
                 return;
             }
-            
+
             double xDiff = target.getX() + .5f - posX;
             double yDiff = target.getY() - 1.1f - posY;
             double zDiff = target.getZ() + .5f - posZ;
 
             if (Math.abs(xDiff) + Math.abs(yDiff) + Math.abs(zDiff) < .3) {
                 // The basket has (almost) reached its target
+                posX = target.getX() + .5f;
+                posY = target.getY() - 1.1f;
+                posZ = target.getZ() + .5f;
                 findNewTarget();
                 return;
             }
 
             Vec3 diff = new Vec3(xDiff, yDiff, zDiff);
             diff = diff.normalize();
-            
-            lastTickPosX = posX;
-            lastTickPosY = posY;
-            lastTickPosZ = posZ;
 
             posX += diff.xCoord * SPEED;
             posY += diff.yCoord * SPEED;
@@ -161,14 +180,11 @@ public class EntityRopewayBasket extends Entity {
     private void findNewTarget() {
         TileEntityRopewayEngine targetEntity = (TileEntityRopewayEngine) worldObj.getTileEntity(target);
         List<BlockPos> connectedRopes = targetEntity.getConnectedRopes();
-        target = connectedRopes.get(r.nextInt(connectedRopes.size()));
+        setTarget(connectedRopes.get(r.nextInt(connectedRopes.size())));
     }
 
     public EntityRopewayBasket(World world, double x, double y, double z) {
         super(world);
-        //this.setSize(0.98F, 5F);
-        //noClip = true;
-        //yOffset = 2.2f;
         this.preventEntitySpawning = true;
         this.motionX = 0.0D;
         this.motionY = 0.0D;
