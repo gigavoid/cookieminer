@@ -8,12 +8,17 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.gen.structure.StructureComponent;
 
+import java.util.List;
+import java.util.Random;
+
 public abstract class NorthrendStructureComponent extends StructureComponent {
     public NorthrendStructureComponent(){super();}
 
     protected NorthrendStructureComponent(int p_i2091_1_){
         super(p_i2091_1_);
     }
+
+    public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {}
 
     @Override
     protected int getMetadataWithOffset(Block block, int meta)
