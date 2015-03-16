@@ -19,20 +19,18 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
-import net.minecraft.world.gen.structure.StructureComponent;
 
 public class NorthrendStructureFortressPieces
 {
+    public static Block mainBlock = NorthrendBlocks.northCobble;
+    public static Block fenceBlock = NorthrendBlocks.northFence;
+    public static Block stairsBlock = NorthrendBlocks.northCobbleStairs;
+    public static Block dirtBlock = NorthrendBlocks.northDirt;
+    public static Block plantBlock = NorthrendBlocks.northLeaves;
+    
     private static final NorthrendStructureFortressPieces.PieceWeight[] primaryComponents = new NorthrendStructureFortressPieces.PieceWeight[] {new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Straight.class, 30, 0, true), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Crossing3.class, 10, 4), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Crossing.class, 10, 4), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Stairs.class, 10, 3), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Throne.class, 5, 2), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Entrance.class, 5, 1)};
     private static final NorthrendStructureFortressPieces.PieceWeight[] secondaryComponents = new NorthrendStructureFortressPieces.PieceWeight[] {new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Corridor5.class, 25, 0, true), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Crossing2.class, 15, 5), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Corridor2.class, 5, 10), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Corridor.class, 5, 10), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Corridor3.class, 10, 3, true), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.Corridor4.class, 7, 2), new NorthrendStructureFortressPieces.PieceWeight(NorthrendStructureFortressPieces.NetherStalkRoom.class, 5, 2)};
     private static final String __OBFID = "CL_00000453";
-
-    public static Block mainBlock = NorthrendBlocks.northCobble;
-    public static Block fenceBlock = NorthrendBlocks.northFence;
-    public static Block stairBlock = NorthrendBlocks.northCobbleStairs;
-    public static Block plantBlock = NorthrendBlocks.northLeaves;
-    public static Block farmBlock = NorthrendBlocks.northDirt;
-    public static String spawnerType = "Blaze";
 
     public static void registerNetherFortressPieces()
     {
@@ -150,7 +148,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentX((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 0, 1, true);
         }
@@ -161,7 +159,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175879_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor(p_175879_6_, p_175879_1_, structureboundingbox, p_175879_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175879_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor(p_175879_6_, p_175879_1_, structureboundingbox, p_175879_5_) : null;
         }
 
         /**
@@ -236,7 +234,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentZ((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 0, 1, true);
         }
@@ -247,7 +245,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175876_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor2(p_175876_6_, p_175876_1_, structureboundingbox, p_175876_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175876_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor2(p_175876_6_, p_175876_1_, structureboundingbox, p_175876_5_) : null;
         }
 
         /**
@@ -302,7 +300,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start) p_74861_1_, p_74861_2_, p_74861_3_, 1, 0, true);
         }
@@ -313,7 +311,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175883_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor3(p_175883_6_, p_175883_1_, structureboundingbox, p_175883_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175883_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor3(p_175883_6_, p_175883_1_, structureboundingbox, p_175883_5_) : null;
         }
 
         /**
@@ -322,7 +320,7 @@ public class NorthrendStructureFortressPieces
          */
         public boolean addComponentParts(World worldIn, Random p_74875_2_, StructureBoundingBox p_74875_3_)
         {
-            int i = this.getMetadataWithOffset(stairBlock, 2);
+            int i = this.getMetadataWithOffset(stairsBlock, 2);
 
             for (int j = 0; j <= 9; ++j)
             {
@@ -334,9 +332,9 @@ public class NorthrendStructureFortressPieces
 
                 if (j <= 6)
                 {
-                    this.func_175811_a(worldIn, stairBlock.getStateFromMeta(i), 1, k + 1, j, p_74875_3_);
-                    this.func_175811_a(worldIn, stairBlock.getStateFromMeta(i), 2, k + 1, j, p_74875_3_);
-                    this.func_175811_a(worldIn, stairBlock.getStateFromMeta(i), 3, k + 1, j, p_74875_3_);
+                    this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(i), 1, k + 1, j, p_74875_3_);
+                    this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(i), 2, k + 1, j, p_74875_3_);
+                    this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(i), 3, k + 1, j, p_74875_3_);
                 }
 
                 this.func_175804_a(worldIn, p_74875_3_, 0, l, j, 4, l, j, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
@@ -375,7 +373,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             byte b0 = 1;
 
@@ -394,7 +392,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175880_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor4(p_175880_6_, p_175880_1_, structureboundingbox, p_175880_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175880_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor4(p_175880_6_, p_175880_1_, structureboundingbox, p_175880_5_) : null;
         }
 
         /**
@@ -451,7 +449,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 1, 0, true);
         }
@@ -462,7 +460,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175877_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor5(p_175877_6_, p_175877_1_, structureboundingbox, p_175877_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175877_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Corridor5(p_175877_6_, p_175877_1_, structureboundingbox, p_175877_5_) : null;
         }
 
         /**
@@ -509,7 +507,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 2, 0, false);
             this.getNextComponentX((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 0, 2, false);
@@ -522,7 +520,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175873_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing(p_175873_6_, p_175873_1_, structureboundingbox, p_175873_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175873_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing(p_175873_6_, p_175873_1_, structureboundingbox, p_175873_5_) : null;
         }
 
         /**
@@ -578,7 +576,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 1, 0, true);
             this.getNextComponentX((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 0, 1, true);
@@ -591,7 +589,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175878_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing2(p_175878_6_, p_175878_1_, structureboundingbox, p_175878_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175878_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing2(p_175878_6_, p_175878_1_, structureboundingbox, p_175878_5_) : null;
         }
 
         /**
@@ -652,7 +650,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 8, 3, false);
             this.getNextComponentX((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 3, 8, false);
@@ -665,7 +663,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175885_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing3(p_175885_6_, p_175885_1_, structureboundingbox, p_175885_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175885_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Crossing3(p_175885_6_, p_175885_1_, structureboundingbox, p_175885_5_) : null;
         }
 
         /**
@@ -741,7 +739,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175884_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.End(p_175884_6_, p_175884_1_, structureboundingbox, p_175884_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175884_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.End(p_175884_6_, p_175884_1_, structureboundingbox, p_175884_5_) : null;
         }
 
         /**
@@ -822,7 +820,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 5, 3, true);
         }
@@ -833,7 +831,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175881_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Entrance(p_175881_6_, p_175881_1_, structureboundingbox, p_175881_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175881_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Entrance(p_175881_6_, p_175881_1_, structureboundingbox, p_175881_5_) : null;
         }
 
         /**
@@ -940,7 +938,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start) p_74861_1_, p_74861_2_, p_74861_3_, 5, 3, true);
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start) p_74861_1_, p_74861_2_, p_74861_3_, 5, 11, true);
@@ -952,7 +950,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175875_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.NetherStalkRoom(p_175875_6_, p_175875_1_, structureboundingbox, p_175875_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175875_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.NetherStalkRoom(p_175875_6_, p_175875_1_, structureboundingbox, p_175875_5_) : null;
         }
 
         /**
@@ -1001,7 +999,7 @@ public class NorthrendStructureFortressPieces
                 this.func_175804_a(worldIn, p_74875_3_, 11, 7, i, 11, 8, i, fenceBlock.getDefaultState(), fenceBlock.getDefaultState(), false);
             }
 
-            i = this.getMetadataWithOffset(stairBlock, 3);
+            i = this.getMetadataWithOffset(stairsBlock, 3);
             int j;
             int k;
             int l;
@@ -1012,7 +1010,7 @@ public class NorthrendStructureFortressPieces
 
                 for (l = 5; l <= 7; ++l)
                 {
-                    this.func_175811_a(worldIn, stairBlock.getStateFromMeta(i), l, 5 + j, k, p_74875_3_);
+                    this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(i), l, 5 + j, k, p_74875_3_);
                 }
 
                 if (k >= 5 && k <= 8)
@@ -1032,7 +1030,7 @@ public class NorthrendStructureFortressPieces
 
             for (j = 5; j <= 7; ++j)
             {
-                this.func_175811_a(worldIn, stairBlock.getStateFromMeta(i), j, 12, 11, p_74875_3_);
+                this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(i), j, 12, 11, p_74875_3_);
             }
 
             this.func_175804_a(worldIn, p_74875_3_, 5, 6, 7, 5, 7, 7, fenceBlock.getDefaultState(), fenceBlock.getDefaultState(), false);
@@ -1044,18 +1042,18 @@ public class NorthrendStructureFortressPieces
             this.func_175804_a(worldIn, p_74875_3_, 9, 5, 2, 10, 5, 3, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 9, 5, 9, 10, 5, 10, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 10, 5, 4, 10, 5, 8, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
-            j = this.getMetadataWithOffset(stairBlock, 0);
-            k = this.getMetadataWithOffset(stairBlock, 1);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(k), 4, 5, 2, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(k), 4, 5, 3, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(k), 4, 5, 9, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(k), 4, 5, 10, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 2, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 3, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 9, p_74875_3_);
-            this.func_175811_a(worldIn, stairBlock.getStateFromMeta(j), 8, 5, 10, p_74875_3_);
-            this.func_175804_a(worldIn, p_74875_3_, 3, 4, 4, 4, 4, 8, farmBlock.getDefaultState(), farmBlock.getDefaultState(), false);
-            this.func_175804_a(worldIn, p_74875_3_, 8, 4, 4, 9, 4, 8, farmBlock.getDefaultState(), farmBlock.getDefaultState(), false);
+            j = this.getMetadataWithOffset(stairsBlock, 0);
+            k = this.getMetadataWithOffset(stairsBlock, 1);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(k), 4, 5, 2, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(k), 4, 5, 3, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(k), 4, 5, 9, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(k), 4, 5, 10, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(j), 8, 5, 2, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(j), 8, 5, 3, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(j), 8, 5, 9, p_74875_3_);
+            this.func_175811_a(worldIn, stairsBlock.getStateFromMeta(j), 8, 5, 10, p_74875_3_);
+            this.func_175804_a(worldIn, p_74875_3_, 3, 4, 4, 4, 4, 8, dirtBlock.getDefaultState(), dirtBlock.getDefaultState(), false);
+            this.func_175804_a(worldIn, p_74875_3_, 8, 4, 4, 9, 4, 8, dirtBlock.getDefaultState(), dirtBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 3, 5, 4, 4, 5, 8, plantBlock.getDefaultState(), plantBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 8, 5, 4, 9, 5, 8, plantBlock.getDefaultState(), plantBlock.getDefaultState(), false);
             this.func_175804_a(worldIn, p_74875_3_, 4, 2, 0, 8, 2, 12, mainBlock.getDefaultState(), mainBlock.getDefaultState(), false);
@@ -1088,7 +1086,7 @@ public class NorthrendStructureFortressPieces
         }
     }
 
-    abstract static class Piece extends StructureComponent
+    abstract static class Piece extends NorthrendStructureComponent
     {
         protected static final List field_111019_a = Lists.newArrayList(new WeightedRandomChestContent[] {new WeightedRandomChestContent(Items.diamond, 0, 1, 3, 5), new WeightedRandomChestContent(Items.iron_ingot, 0, 1, 5, 5), new WeightedRandomChestContent(Items.gold_ingot, 0, 1, 3, 15), new WeightedRandomChestContent(Items.golden_sword, 0, 1, 1, 5), new WeightedRandomChestContent(Items.golden_chestplate, 0, 1, 1, 5), new WeightedRandomChestContent(Items.flint_and_steel, 0, 1, 1, 5), new WeightedRandomChestContent(Items.nether_wart, 0, 3, 7, 5), new WeightedRandomChestContent(Items.saddle, 0, 1, 1, 10), new WeightedRandomChestContent(Items.golden_horse_armor, 0, 1, 1, 8), new WeightedRandomChestContent(Items.iron_horse_armor, 0, 1, 1, 5), new WeightedRandomChestContent(Items.diamond_horse_armor, 0, 1, 1, 3), new WeightedRandomChestContent(Item.getItemFromBlock(Blocks.obsidian), 0, 2, 4, 2)});
         private static final String __OBFID = "CL_00000466";
@@ -1174,7 +1172,7 @@ public class NorthrendStructureFortressPieces
             return NorthrendStructureFortressPieces.End.func_175884_a(p_175871_3_, p_175871_4_, p_175871_5_, p_175871_6_, p_175871_7_, p_175871_8_, p_175871_9_);
         }
 
-        private StructureComponent func_175870_a(NorthrendStructureFortressPieces.Start p_175870_1_, List p_175870_2_, Random p_175870_3_, int p_175870_4_, int p_175870_5_, int p_175870_6_, EnumFacing p_175870_7_, int p_175870_8_, boolean p_175870_9_)
+        private NorthrendStructureComponent func_175870_a(NorthrendStructureFortressPieces.Start p_175870_1_, List p_175870_2_, Random p_175870_3_, int p_175870_4_, int p_175870_5_, int p_175870_6_, EnumFacing p_175870_7_, int p_175870_8_, boolean p_175870_9_)
         {
             if (Math.abs(p_175870_4_ - p_175870_1_.getBoundingBox().minX) <= 112 && Math.abs(p_175870_6_ - p_175870_1_.getBoundingBox().minZ) <= 112)
             {
@@ -1204,7 +1202,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Gets the next component in any cardinal direction
          */
-        protected StructureComponent getNextComponentNormal(NorthrendStructureFortressPieces.Start p_74963_1_, List p_74963_2_, Random p_74963_3_, int p_74963_4_, int p_74963_5_, boolean p_74963_6_)
+        protected NorthrendStructureComponent getNextComponentNormal(NorthrendStructureFortressPieces.Start p_74963_1_, List p_74963_2_, Random p_74963_3_, int p_74963_4_, int p_74963_5_, boolean p_74963_6_)
         {
             if (this.coordBaseMode != null)
             {
@@ -1227,7 +1225,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Gets the next component in the +/- X direction
          */
-        protected StructureComponent getNextComponentX(NorthrendStructureFortressPieces.Start p_74961_1_, List p_74961_2_, Random p_74961_3_, int p_74961_4_, int p_74961_5_, boolean p_74961_6_)
+        protected NorthrendStructureComponent getNextComponentX(NorthrendStructureFortressPieces.Start p_74961_1_, List p_74961_2_, Random p_74961_3_, int p_74961_4_, int p_74961_5_, boolean p_74961_6_)
         {
             if (this.coordBaseMode != null)
             {
@@ -1250,7 +1248,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Gets the next component in the +/- Z direction
          */
-        protected StructureComponent getNextComponentZ(NorthrendStructureFortressPieces.Start p_74965_1_, List p_74965_2_, Random p_74965_3_, int p_74965_4_, int p_74965_5_, boolean p_74965_6_)
+        protected NorthrendStructureComponent getNextComponentZ(NorthrendStructureFortressPieces.Start p_74965_1_, List p_74965_2_, Random p_74965_3_, int p_74965_4_, int p_74965_5_, boolean p_74965_6_)
         {
             if (this.coordBaseMode != null)
             {
@@ -1329,7 +1327,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentZ((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 6, 2, false);
         }
@@ -1340,7 +1338,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175872_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Stairs(p_175872_5_, p_175872_1_, structureboundingbox, p_175872_6_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175872_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Stairs(p_175872_5_, p_175872_1_, structureboundingbox, p_175872_6_) : null;
         }
 
         /**
@@ -1455,7 +1453,7 @@ public class NorthrendStructureFortressPieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             this.getNextComponentNormal((NorthrendStructureFortressPieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, 1, 3, false);
         }
@@ -1466,7 +1464,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175882_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Straight(p_175882_6_, p_175882_1_, structureboundingbox, p_175882_5_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175882_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Straight(p_175882_6_, p_175882_1_, structureboundingbox, p_175882_5_) : null;
         }
 
         /**
@@ -1588,7 +1586,7 @@ public class NorthrendStructureFortressPieces
             /**
              * Checks if the bounding box's minY is > 10
              */
-            return isAboveGround(structureboundingbox) && StructureComponent.findIntersecting(p_175874_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Throne(p_175874_5_, p_175874_1_, structureboundingbox, p_175874_6_) : null;
+            return isAboveGround(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175874_0_, structureboundingbox) == null ? new NorthrendStructureFortressPieces.Throne(p_175874_5_, p_175874_1_, structureboundingbox, p_175874_6_) : null;
         }
 
         /**

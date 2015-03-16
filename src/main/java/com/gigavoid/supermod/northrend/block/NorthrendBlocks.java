@@ -22,6 +22,7 @@ public class NorthrendBlocks {
     public static BlockNorthFenceGate northFenceGate;
     public static BlockNorthGlaciemPlant northGlaciemPlant;
     public static BlockBlight blight;
+    public static BlockSnowModded snowLayerMod;
     //public static BlockFluidClassic poison;
     public static BlockCoalOre coalOre;
     public static BlockDiamondOre diamondOre;
@@ -52,6 +53,7 @@ public class NorthrendBlocks {
         northFenceGate = new BlockNorthFenceGate();
         northGlaciemPlant = new BlockNorthGlaciemPlant();
         blight = new BlockBlight();
+        snowLayerMod = new BlockSnowModded();
         //poison = new BlockPoisonFluid(baseFluid, Material.water);
         coalOre = new BlockCoalOre();
         diamondOre = new BlockDiamondOre();
@@ -80,6 +82,7 @@ public class NorthrendBlocks {
         register.registerBlock(northFenceGate, "north_fence_gate");
         register.registerBlock(northGlaciemPlant, "glaciem_plant");
         register.registerBlock(blight, "north_blight");
+        register.registerBlock(snowLayerMod, "snow_layer_mod");
         //register.registerBlock(poison, "poisonFluid");
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");

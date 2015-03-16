@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
-    public static final DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor().setDamageIsAbsolute();
+    public static final DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor();
 
     @Override
     public void preInit(FMLPreInitializationEvent e){

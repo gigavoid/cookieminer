@@ -1,6 +1,8 @@
 package com.gigavoid.supermod.northrend.worldgen.gen;
 
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureComponent;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureFortressPieces;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureStart;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -24,7 +26,7 @@ public class NorthrendMapGenFortress extends MapGenNetherBridge {
         return new NorthrendMapGenFortress.Start(this.worldObj, this.rand, p_75049_1_, p_75049_2_);
     }
 
-    public static class Start extends StructureStart
+    public static class Start extends NorthrendStructureStart
     {
         public Start() {}
 
@@ -39,7 +41,7 @@ public class NorthrendMapGenFortress extends MapGenNetherBridge {
             while (!list.isEmpty())
             {
                 int k = p_i2040_2_.nextInt(list.size());
-                StructureComponent structurecomponent = (StructureComponent)list.remove(k);
+                NorthrendStructureComponent structurecomponent = (NorthrendStructureComponent)list.remove(k);
                 structurecomponent.buildComponent(start, this.components, p_i2040_2_);
             }
 

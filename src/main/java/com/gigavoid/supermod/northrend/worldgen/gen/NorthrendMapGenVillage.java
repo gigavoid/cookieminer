@@ -5,11 +5,9 @@ import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVil
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
-import net.minecraft.world.gen.structure.StructureVillagePieces;
 
 import java.util.*;
 
@@ -33,9 +31,9 @@ public class NorthrendMapGenVillage extends MapGenVillage {
         while (iterator.hasNext()) {
             Map.Entry entry = (Map.Entry) iterator.next();
 
-            if (((String) entry.getKey()).equals("size")) {
+            if (entry.getKey().equals("size")) {
                 this.terrainType = MathHelper.parseIntWithDefaultAndMax((String) entry.getValue(), this.terrainType, 0);
-            } else if (((String) entry.getKey()).equals("distance")) {
+            } else if (entry.getKey().equals("distance")) {
                 this.field_82665_g = MathHelper.parseIntWithDefaultAndMax((String) entry.getValue(), this.field_82665_g, this.field_82666_h + 1);
             }
         }
