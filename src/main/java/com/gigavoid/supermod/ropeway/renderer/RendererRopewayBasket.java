@@ -21,18 +21,18 @@ public class RendererRopewayBasket extends Render {
         GL11.glPushMatrix();
         //GL11.glTranslatef((float) x + 0.5f, (float) y +.5f, (float) z + 0.5f);
 
-        x += (entity.posX - entity.lastTickPosX) * (double)tickProgress;
-        y += (entity.posY - entity.lastTickPosY) * (double)tickProgress;
-        z += (entity.posZ - entity.lastTickPosZ) * (double)tickProgress;
+        x += (entity.posX - entity.lastTickPosX) * tickProgress;
+        y += (entity.posY - entity.lastTickPosY) * tickProgress;
+        z += (entity.posZ - entity.lastTickPosZ) * tickProgress;
 
-        GL11.glTranslatef((float)x, (float)y, (float)z);
+        GL11.glTranslated((float)x, (float)y, (float)z);
 
         ResourceLocation textures = (new ResourceLocation("supermod:textures/blocks/ropeway_engine.png"));
         Minecraft.getMinecraft().renderEngine.bindTexture(textures);
 
 
         GL11.glPushMatrix();
-        GL11.glRotatef(180, 1, 0,0);
+        GL11.glRotated(180, 1, 0,0);
         model.render();
         GL11.glPopMatrix();
         GL11.glPopMatrix();
