@@ -4,20 +4,26 @@ import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureCom
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureFortressPieces;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureStart;
 import net.minecraft.world.World;
+
 import net.minecraft.world.gen.structure.MapGenNetherBridge;
-import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
 
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Rasmus on 3/12/2015.
- */
 public class NorthrendMapGenFortress extends MapGenNetherBridge {
 
     public NorthrendMapGenFortress() {
         super();
+    }
+
+    @Override
+    protected boolean canSpawnStructureAtCoords(int p_75047_1_, int p_75047_2_) {
+        int k = p_75047_1_ >> 4;
+        int l = p_75047_2_ >> 4;
+        this.rand.setSeed((long) (k ^ l << 4) ^ this.worldObj.getSeed());
+        this.rand.nextInt();
+        return this.rand.nextInt(7) == 0 && (p_75047_1_ == (k << 4) + 4 + this.rand.nextInt(8) && p_75047_2_ == (l << 4) + 4 + this.rand.nextInt(8));
     }
 
     @Override

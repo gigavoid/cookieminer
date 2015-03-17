@@ -1,12 +1,12 @@
 package com.gigavoid.supermod.northrend.worldgen.gen;
 
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
+import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureComponent;
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVillagePieces;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenVillage;
-import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
 
 import java.util.*;
@@ -94,15 +94,15 @@ public class NorthrendMapGenVillage extends MapGenVillage {
             int l;
 
             while (!list1.isEmpty() || !list2.isEmpty()) {
-                StructureComponent structurecomponent;
+                NorthrendStructureComponent structurecomponent;
 
                 if (list1.isEmpty()) {
                     l = p_i2092_2_.nextInt(list2.size());
-                    structurecomponent = (StructureComponent) list2.remove(l);
+                    structurecomponent = (NorthrendStructureComponent) list2.remove(l);
                     structurecomponent.buildComponent(start, this.components, p_i2092_2_);
                 } else {
                     l = p_i2092_2_.nextInt(list1.size());
-                    structurecomponent = (StructureComponent) list1.remove(l);
+                    structurecomponent = (NorthrendStructureComponent) list1.remove(l);
                     structurecomponent.buildComponent(start, this.components, p_i2092_2_);
                 }
             }
@@ -112,7 +112,7 @@ public class NorthrendMapGenVillage extends MapGenVillage {
             Iterator iterator = this.components.iterator();
 
             while (iterator.hasNext()) {
-                StructureComponent structurecomponent1 = (StructureComponent) iterator.next();
+                NorthrendStructureComponent structurecomponent1 = (NorthrendStructureComponent) iterator.next();
 
                 if (!(structurecomponent1 instanceof NorthrendStructureVillagePieces.Road)) {
                     ++l;

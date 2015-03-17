@@ -13,7 +13,7 @@ public class BiomeGenNorthFirForest extends NorthrendBiomeGenBase {
     public BiomeGenNorthFirForest(int id, int weight){
         super(id, weight);
         setBiomeName("Northrend Fir Forest");
-        setHeight(new Height(0.1f, 0.1f));
+        setHeight(new Height(0.15f, 0.1f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
         theBiomeDecorator.treesPerChunk = 14;

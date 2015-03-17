@@ -13,7 +13,7 @@ public class BiomeGenNorthPineForest extends NorthrendBiomeGenBase {
     public BiomeGenNorthPineForest(int id, int weight){
         super(id, weight);
         setBiomeName("Northrend Pine Forest");
-        setHeight(new Height(0.1f, 0.1f));
+        setHeight(new Height(0.2f, 0.15f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = NorthrendBlocks.northDirt.getDefaultState();
         theBiomeDecorator.treesPerChunk = 14;

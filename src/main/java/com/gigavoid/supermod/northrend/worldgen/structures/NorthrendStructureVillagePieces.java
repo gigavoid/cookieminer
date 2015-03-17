@@ -47,7 +47,7 @@ public class NorthrendStructureVillagePieces
     public static Block log = NorthrendBlocks.northLog;
     public static Block path = NorthrendBlocks.northDirt;
     public static Block farm = NorthrendBlocks.northDirt;
-    public static Block plant = NorthrendBlocks.northLeaves;
+    public static Block plant = NorthrendBlocks.northGlaciemPlant;
 
     public static void registerVillagePieces()
     {
@@ -222,7 +222,7 @@ public class NorthrendStructureVillagePieces
         }
     }
 
-    private static StructureComponent func_176066_d(NorthrendStructureVillagePieces.Start p_176066_0_, List p_176066_1_, Random p_176066_2_, int p_176066_3_, int p_176066_4_, int p_176066_5_, EnumFacing p_176066_6_, int p_176066_7_)
+    private static NorthrendStructureComponent func_176066_d(NorthrendStructureVillagePieces.Start p_176066_0_, List p_176066_1_, Random p_176066_2_, int p_176066_3_, int p_176066_4_, int p_176066_5_, EnumFacing p_176066_6_, int p_176066_7_)
     {
         if (p_176066_7_ > 50)
         {
@@ -256,7 +256,7 @@ public class NorthrendStructureVillagePieces
         }
     }
 
-    private static StructureComponent func_176069_e(NorthrendStructureVillagePieces.Start p_176069_0_, List p_176069_1_, Random p_176069_2_, int p_176069_3_, int p_176069_4_, int p_176069_5_, EnumFacing p_176069_6_, int p_176069_7_)
+    private static NorthrendStructureComponent func_176069_e(NorthrendStructureVillagePieces.Start p_176069_0_, List p_176069_1_, Random p_176069_2_, int p_176069_3_, int p_176069_4_, int p_176069_5_, EnumFacing p_176069_6_, int p_176069_7_)
     {
         if (p_176069_7_ > 3 + p_176069_0_.terrainType)
         {
@@ -307,7 +307,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.Church func_175854_a(NorthrendStructureVillagePieces.Start p_175854_0_, List p_175854_1_, Random p_175854_2_, int p_175854_3_, int p_175854_4_, int p_175854_5_, EnumFacing p_175854_6_, int p_175854_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175854_3_, p_175854_4_, p_175854_5_, 0, 0, 0, 5, 12, 9, p_175854_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175854_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Church(p_175854_0_, p_175854_7_, p_175854_2_, structureboundingbox, p_175854_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175854_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Church(p_175854_0_, p_175854_7_, p_175854_2_, structureboundingbox, p_175854_6_) : null;
         }
 
         /**
@@ -467,7 +467,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.Field1 func_175851_a(NorthrendStructureVillagePieces.Start p_175851_0_, List p_175851_1_, Random p_175851_2_, int p_175851_3_, int p_175851_4_, int p_175851_5_, EnumFacing p_175851_6_, int p_175851_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175851_3_, p_175851_4_, p_175851_5_, 0, 0, 0, 13, 4, 9, p_175851_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175851_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Field1(p_175851_0_, p_175851_7_, p_175851_2_, structureboundingbox, p_175851_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175851_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Field1(p_175851_0_, p_175851_7_, p_175851_2_, structureboundingbox, p_175851_6_) : null;
         }
 
         /**
@@ -504,14 +504,14 @@ public class NorthrendStructureVillagePieces
 
             for (i = 1; i <= 7; ++i)
             {
-                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 1, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 2, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 4, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 5, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 7, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 8, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 10, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 11, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 1, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 2, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 4, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 5, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 7, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 8, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 10, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 11, 1, i, p_74875_3_);
             }
 
             for (i = 0; i < 9; ++i)
@@ -574,7 +574,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.Field2 func_175852_a(NorthrendStructureVillagePieces.Start p_175852_0_, List p_175852_1_, Random p_175852_2_, int p_175852_3_, int p_175852_4_, int p_175852_5_, EnumFacing p_175852_6_, int p_175852_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175852_3_, p_175852_4_, p_175852_5_, 0, 0, 0, 7, 4, 9, p_175852_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175852_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Field2(p_175852_0_, p_175852_7_, p_175852_2_, structureboundingbox, p_175852_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175852_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Field2(p_175852_0_, p_175852_7_, p_175852_2_, structureboundingbox, p_175852_6_) : null;
         }
 
         /**
@@ -607,10 +607,10 @@ public class NorthrendStructureVillagePieces
 
             for (i = 1; i <= 7; ++i)
             {
-                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 1, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 2, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 4, 1, i, p_74875_3_);
-                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 7)), 5, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 1, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 2, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 4, 1, i, p_74875_3_);
+                this.func_175811_a(worldIn, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(p_74875_2_, 2, 6)), 5, 1, i, p_74875_3_);
             }
 
             for (i = 0; i < 9; ++i)
@@ -642,7 +642,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.Hall func_175857_a(NorthrendStructureVillagePieces.Start p_175857_0_, List p_175857_1_, Random p_175857_2_, int p_175857_3_, int p_175857_4_, int p_175857_5_, EnumFacing p_175857_6_, int p_175857_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175857_3_, p_175857_4_, p_175857_5_, 0, 0, 0, 9, 7, 11, p_175857_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175857_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Hall(p_175857_0_, p_175857_7_, p_175857_2_, structureboundingbox, p_175857_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175857_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.Hall(p_175857_0_, p_175857_7_, p_175857_2_, structureboundingbox, p_175857_6_) : null;
         }
 
         /**
@@ -768,7 +768,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.House1 func_175850_a(NorthrendStructureVillagePieces.Start p_175850_0_, List p_175850_1_, Random p_175850_2_, int p_175850_3_, int p_175850_4_, int p_175850_5_, EnumFacing p_175850_6_, int p_175850_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175850_3_, p_175850_4_, p_175850_5_, 0, 0, 0, 9, 9, 6, p_175850_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175850_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House1(p_175850_0_, p_175850_7_, p_175850_2_, structureboundingbox, p_175850_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175850_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House1(p_175850_0_, p_175850_7_, p_175850_2_, structureboundingbox, p_175850_6_) : null;
         }
 
         /**
@@ -905,7 +905,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.House2 func_175855_a(NorthrendStructureVillagePieces.Start p_175855_0_, List p_175855_1_, Random p_175855_2_, int p_175855_3_, int p_175855_4_, int p_175855_5_, EnumFacing p_175855_6_, int p_175855_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175855_3_, p_175855_4_, p_175855_5_, 0, 0, 0, 10, 6, 7, p_175855_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175855_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House2(p_175855_0_, p_175855_7_, p_175855_2_, structureboundingbox, p_175855_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175855_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House2(p_175855_0_, p_175855_7_, p_175855_2_, structureboundingbox, p_175855_6_) : null;
         }
 
         /**
@@ -1031,7 +1031,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.House3 func_175849_a(NorthrendStructureVillagePieces.Start p_175849_0_, List p_175849_1_, Random p_175849_2_, int p_175849_3_, int p_175849_4_, int p_175849_5_, EnumFacing p_175849_6_, int p_175849_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175849_3_, p_175849_4_, p_175849_5_, 0, 0, 0, 9, 7, 12, p_175849_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175849_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House3(p_175849_0_, p_175849_7_, p_175849_2_, structureboundingbox, p_175849_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175849_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.House3(p_175849_0_, p_175849_7_, p_175849_2_, structureboundingbox, p_175849_6_) : null;
         }
 
         /**
@@ -1216,7 +1216,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.House4Garden func_175858_a(NorthrendStructureVillagePieces.Start p_175858_0_, List p_175858_1_, Random p_175858_2_, int p_175858_3_, int p_175858_4_, int p_175858_5_, EnumFacing p_175858_6_, int p_175858_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175858_3_, p_175858_4_, p_175858_5_, 0, 0, 0, 5, 6, 5, p_175858_6_);
-            return StructureComponent.findIntersecting(p_175858_1_, structureboundingbox) != null ? null : new NorthrendStructureVillagePieces.House4Garden(p_175858_0_, p_175858_7_, p_175858_2_, structureboundingbox, p_175858_6_);
+            return NorthrendStructureComponent.findIntersecting(p_175858_1_, structureboundingbox) != null ? null : new NorthrendStructureVillagePieces.House4Garden(p_175858_0_, p_175858_7_, p_175858_2_, structureboundingbox, p_175858_6_);
         }
 
         /**
@@ -1356,11 +1356,11 @@ public class NorthrendStructureVillagePieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             boolean flag = false;
             int i;
-            StructureComponent structurecomponent1;
+            NorthrendStructureComponent structurecomponent1;
 
             for (i = p_74861_3_.nextInt(5); i < this.averageGroundLevel - 8; i += 2 + p_74861_3_.nextInt(5))
             {
@@ -1427,7 +1427,7 @@ public class NorthrendStructureVillagePieces
             {
                 StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175848_3_, p_175848_4_, p_175848_5_, 0, 0, 0, 3, 3, l, p_175848_6_);
 
-                if (StructureComponent.findIntersecting(p_175848_1_, structureboundingbox) == null)
+                if (NorthrendStructureComponent.findIntersecting(p_175848_1_, structureboundingbox) == null)
                 {
                     return structureboundingbox;
                 }
@@ -1585,7 +1585,7 @@ public class NorthrendStructureVillagePieces
         public static StructureBoundingBox func_175856_a(NorthrendStructureVillagePieces.Start p_175856_0_, List p_175856_1_, Random p_175856_2_, int p_175856_3_, int p_175856_4_, int p_175856_5_, EnumFacing p_175856_6_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175856_3_, p_175856_4_, p_175856_5_, 0, 0, 0, 3, 4, 2, p_175856_6_);
-            return StructureComponent.findIntersecting(p_175856_1_, structureboundingbox) != null ? null : structureboundingbox;
+            return NorthrendStructureComponent.findIntersecting(p_175856_1_, structureboundingbox) != null ? null : structureboundingbox;
         }
 
         /**
@@ -1620,7 +1620,7 @@ public class NorthrendStructureVillagePieces
         }
     }
 
-    public abstract static class Village extends StructureComponent
+    public abstract static class Village extends NorthrendStructureComponent
     {
         protected int field_143015_k = -1;
         /** The number of villagers that have been spawned in this component. */
@@ -1665,7 +1665,7 @@ public class NorthrendStructureVillagePieces
         /**
          * Gets the next village component, with the bounding box shifted -1 in the X and Z direction.
          */
-        protected StructureComponent getNextComponentNN(NorthrendStructureVillagePieces.Start p_74891_1_, List p_74891_2_, Random p_74891_3_, int p_74891_4_, int p_74891_5_)
+        protected NorthrendStructureComponent getNextComponentNN(NorthrendStructureVillagePieces.Start p_74891_1_, List p_74891_2_, Random p_74891_3_, int p_74891_4_, int p_74891_5_)
         {
             if (this.coordBaseMode != null)
             {
@@ -1688,7 +1688,7 @@ public class NorthrendStructureVillagePieces
         /**
          * Gets the next village component, with the bounding box shifted +1 in the X and Z direction.
          */
-        protected StructureComponent getNextComponentPP(NorthrendStructureVillagePieces.Start p_74894_1_, List p_74894_2_, Random p_74894_3_, int p_74894_4_, int p_74894_5_)
+        protected NorthrendStructureComponent getNextComponentPP(NorthrendStructureVillagePieces.Start p_74894_1_, List p_74894_2_, Random p_74894_3_, int p_74894_4_, int p_74894_5_)
         {
             if (this.coordBaseMode != null)
             {
@@ -1826,7 +1826,7 @@ public class NorthrendStructureVillagePieces
         /**
          * Initiates construction of the Structure Component picked, at the current Location of StructGen
          */
-        public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
+        public void buildComponent(NorthrendStructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_)
         {
             NorthrendStructureVillagePieces.func_176069_e((NorthrendStructureVillagePieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.minX - 1, this.boundingBox.maxY - 4, this.boundingBox.minZ + 1, EnumFacing.WEST, this.getComponentType());
             NorthrendStructureVillagePieces.func_176069_e((NorthrendStructureVillagePieces.Start)p_74861_1_, p_74861_2_, p_74861_3_, this.boundingBox.maxX + 1, this.boundingBox.maxY - 4, this.boundingBox.minZ + 1, EnumFacing.EAST, this.getComponentType());
@@ -1923,7 +1923,7 @@ public class NorthrendStructureVillagePieces
         public static NorthrendStructureVillagePieces.WoodHut func_175853_a(NorthrendStructureVillagePieces.Start p_175853_0_, List p_175853_1_, Random p_175853_2_, int p_175853_3_, int p_175853_4_, int p_175853_5_, EnumFacing p_175853_6_, int p_175853_7_)
         {
             StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(p_175853_3_, p_175853_4_, p_175853_5_, 0, 0, 0, 4, 6, 5, p_175853_6_);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175853_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.WoodHut(p_175853_0_, p_175853_7_, p_175853_2_, structureboundingbox, p_175853_6_) : null;
+            return canVillageGoDeeper(structureboundingbox) && NorthrendStructureComponent.findIntersecting(p_175853_1_, structureboundingbox) == null ? new NorthrendStructureVillagePieces.WoodHut(p_175853_0_, p_175853_7_, p_175853_2_, structureboundingbox, p_175853_6_) : null;
         }
 
         /**
