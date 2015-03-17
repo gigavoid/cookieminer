@@ -16,22 +16,21 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IExtendedEntityProperties;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
 
 public class EntityRopewayBasket extends Entity{
 
-    public static final double SPEED = .03;
+    public static final double SPEED = .1;
     /**
      * The block that the basket is moving towards.
      */
     private BlockPos target;
+    private BlockPos prevTarget;
     private Random r = new Random();
-
+    
+    
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
@@ -71,15 +70,27 @@ public class EntityRopewayBasket extends Entity{
         int x = tagCompund.getInteger("targetX");
         int y = tagCompund.getInteger("targetY");
         int z = tagCompund.getInteger("targetZ");
-
         target = new BlockPos(x, y, z);
+
+        x = tagCompund.getInteger("prevTargetX");
+        y = tagCompund.getInteger("prevTargetY");
+        z = tagCompund.getInteger("prevTargetZ");
+        prevTarget = new BlockPos(x, y, z);
     }
 
     @Override
     protected void writeEntityToNBT(NBTTagCompound tagCompound) {
-        tagCompound.setInteger("targetX", target.getX());
-        tagCompound.setInteger("targetY", target.getY());
-        tagCompound.setInteger("targetZ", target.getZ());
+        if (target != null) {
+            tagCompound.setInteger("targetX", target.getX());
+            tagCompound.setInteger("targetY", target.getY());
+            tagCompound.setInteger("targetZ", target.getZ());
+        }
+
+        if (prevTarget != null) {
+            tagCompound.setInteger("prevTargetX", prevTarget.getX());
+            tagCompound.setInteger("prevTargetY", prevTarget.getY());
+            tagCompound.setInteger("prevTargetZ", prevTarget.getZ());
+        }
     }
 
     @Override
@@ -180,7 +191,20 @@ public class EntityRopewayBasket extends Entity{
     private void findNewTarget() {
         TileEntityRopewayEngine targetEntity = (TileEntityRopewayEngine) worldObj.getTileEntity(target);
         List<BlockPos> connectedRopes = targetEntity.getConnectedRopes();
-        setTarget(connectedRopes.get(r.nextInt(connectedRopes.size())));
+
+        if (connectedRopes.size() == 0) {
+            setTarget(null);
+            return;
+        }
+
+        BlockPos foundRope;
+
+        do {
+            foundRope = connectedRopes.get(r.nextInt(connectedRopes.size()));
+        } while (connectedRopes.size() != 1 && prevTarget != null && foundRope.equals(prevTarget));
+
+        prevTarget = target;
+        setTarget(foundRope);
     }
 
     public EntityRopewayBasket(World world, double x, double y, double z) {
