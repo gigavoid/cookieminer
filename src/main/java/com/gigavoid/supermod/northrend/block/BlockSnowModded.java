@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
@@ -8,7 +9,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockSnowModded extends BlockSnow {
-    public BlockSnowModded(){super();}
+    public BlockSnowModded(){super();
+    setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
+    }
 
     @Override
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {

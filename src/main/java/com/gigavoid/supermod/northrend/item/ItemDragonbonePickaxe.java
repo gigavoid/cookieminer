@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.item;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,6 +15,7 @@ public class ItemDragonbonePickaxe extends ItemTool{
 
     public ItemDragonbonePickaxe() {
         super(2.0F, ToolMaterial.EMERALD, effectiveBlocks);
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
 
     public boolean canHarvestBlock(Block blockIn)

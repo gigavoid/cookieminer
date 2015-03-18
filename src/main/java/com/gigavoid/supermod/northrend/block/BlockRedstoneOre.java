@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +25,7 @@ public class BlockRedstoneOre extends Block{
     public BlockRedstoneOre(boolean p_i45420_1_)
     {
         super(Material.rock);
-        setCreativeTab(CreativeTabs.tabBlock);
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setHardness(3.0f);
         this.setHarvestLevel("pickaxe", 2);
 

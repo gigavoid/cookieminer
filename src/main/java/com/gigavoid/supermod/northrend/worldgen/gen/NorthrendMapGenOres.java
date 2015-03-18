@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.gigavoid.supermod.bonus.block.BonusBlocks;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
+import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendWorldGenMinable;
 import net.minecraft.util.BlockPos;
@@ -44,6 +45,14 @@ public class NorthrendMapGenOres implements IWorldGenerator
             BlockPos pos = new BlockPos(x, y, z);
             (new NorthrendWorldGenMinable(NorthrendBlocks.goldOre.getDefaultState(), 2 + random.nextInt(7), NorthrendBlocks.northStone)).generate(world, random, pos);
         }
+        rn = 8 + random.nextInt(4);
+        for(int k = 0; k < rn; k++) {
+            int x = chunkX + random.nextInt(16);
+            int y = random.nextInt(35);
+            int z = chunkZ + random.nextInt(16);
+            BlockPos pos = new BlockPos(x, y, z);
+            (new NorthrendWorldGenMinable(NorthrendBlocks.mithrilOre.getDefaultState(), 2 + random.nextInt(2), NorthrendBlocks.northStone)).generate(world, random, pos);
+        }
         rn = 4 + random.nextInt(4);
         for(int k = 0; k < rn; k++) {
             int x = chunkX + random.nextInt(16);
@@ -82,6 +91,13 @@ public class NorthrendMapGenOres implements IWorldGenerator
             int z = chunkZ + random.nextInt(16);
             BlockPos pos = new BlockPos(x, y, z);
             (new NorthrendWorldGenMinable(NorthrendBlocks.dragonBone.getDefaultState(), 6 + random.nextInt(5), NorthrendBlocks.glacialIce)).generate(world, random, pos);
+        }
+        int x = chunkX + random.nextInt(16);
+        int y = 5 + random.nextInt(50);
+        int z = chunkZ + random.nextInt(16);
+        BlockPos pos = new BlockPos(x, y, z);
+        if (world.getBiomeGenForCoords(pos) == NorthrendBiomes.northHugeMountains) {
+            (new NorthrendWorldGenMinable(NorthrendBlocks.frostGemOre.getDefaultState(), 1, NorthrendBlocks.northStone)).generate(world, random, pos);
         }
     }
 }

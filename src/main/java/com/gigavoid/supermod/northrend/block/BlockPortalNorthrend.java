@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.common.util.Reflection;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import com.gigavoid.supermod.northrend.teleporter.Teleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
@@ -27,7 +28,7 @@ import java.util.Random;
 public class BlockPortalNorthrend extends BlockPortal {
     public BlockPortalNorthrend() {
         super();
-        setCreativeTab(CreativeTabs.tabBlock);
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         setHardness(-1);
     }
 

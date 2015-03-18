@@ -4,6 +4,7 @@ import com.gigavoid.supermod.common.Register;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import scala.reflect.internal.Trees;
 
 public class NorthrendBlocks {
     //public static Fluid baseFluid;
@@ -27,9 +28,11 @@ public class NorthrendBlocks {
     public static BlockCoalOre coalOre;
     public static BlockDiamondOre diamondOre;
     public static BlockEmeraldOre emeraldOre;
+    public static BlockFrostGemOre frostGemOre;
     public static BlockGoldOre goldOre;
     public static BlockIronOre ironOre;
     public static BlockLapisOre lapisOre;
+    public static BlockMithrilOre mithrilOre;
     public static BlockRedstoneOre redstoneOre;
     public static BlockRedstoneOre lit_redstoneOre;
     public static BlockDragonBone dragonBone;
@@ -58,9 +61,11 @@ public class NorthrendBlocks {
         coalOre = new BlockCoalOre();
         diamondOre = new BlockDiamondOre();
         emeraldOre = new BlockEmeraldOre();
+        frostGemOre = new BlockFrostGemOre();
         goldOre = new BlockGoldOre();
         ironOre = new BlockIronOre();
         lapisOre = new BlockLapisOre();
+        mithrilOre = new BlockMithrilOre();
         redstoneOre = new BlockRedstoneOre(false);
         lit_redstoneOre = new BlockRedstoneOre(true);
         dragonBone = new BlockDragonBone();
@@ -87,9 +92,11 @@ public class NorthrendBlocks {
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");
         register.registerBlock(emeraldOre, "north_emerald_ore");
+        register.registerBlock(frostGemOre, "north_frost_gem_ore");
         register.registerBlock(goldOre, "north_gold_ore");
         register.registerBlock(ironOre, "north_iron_ore");
         register.registerBlock(lapisOre, "north_lapis_ore");
+        register.registerBlock(mithrilOre, "north_mithril_ore");
         register.registerBlock(redstoneOre, "north_red_stone_ore");
         register.registerBlock(lit_redstoneOre, "north_lit_red_stone_ore", "north_red_stone_ore");
         register.registerBlock(dragonBone, "north_dragon_bone");
