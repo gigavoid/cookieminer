@@ -51,19 +51,19 @@ public class NorthrendStructureVillagePieces
 
     public static void registerVillagePieces()
     {
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House1.class, "ViBH");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Field1.class, "ViDF");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Field2.class, "ViF");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Torch.class, "ViL");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Hall.class, "ViPH");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House4Garden.class, "ViSH");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.WoodHut.class, "ViSmH");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Church.class, "ViST");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House2.class, "ViS");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Start.class, "ViStart");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Path.class, "ViSR");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House3.class, "ViTRH");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Well.class, "ViW");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House1.class, "NViBH");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Field1.class, "NViDF");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Field2.class, "NViF");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Torch.class, "NViL");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Hall.class, "NViPH");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House4Garden.class, "NViSH");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.WoodHut.class, "NViSmH");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Church.class, "NViST");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House2.class, "NViS");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Start.class, "NViStart");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Path.class, "NViSR");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.House3.class, "NViTRH");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureVillagePieces.Well.class, "NViW");
     }
 
     public static List getStructureVillageWeightedPieceList(Random p_75084_0_, int p_75084_1_)

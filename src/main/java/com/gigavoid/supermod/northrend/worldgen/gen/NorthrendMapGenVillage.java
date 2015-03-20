@@ -67,7 +67,7 @@ public class NorthrendMapGenVillage extends MapGenVillage {
             }
         }
 
-        return false;
+        return true;
     }
 
     protected StructureStart getStructureStart(int p_75049_1_, int p_75049_2_) {
