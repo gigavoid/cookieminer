@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -11,8 +12,10 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.RegistryDefaulted;
@@ -31,6 +34,13 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
     }
 
     @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+        if (!worldIn.isRemote) {
+            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+        }
+    }
+
+    @Override
     public int tickRate(World worldIn) {
         return 20;
     }
@@ -40,15 +50,16 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
         if (!worldIn.isRemote)
         {
             System.out.println("Kasta kaka!");
-           // throwCookie();
+            throwCookie(worldIn, pos);
+            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
         }
     }
 
-    private void throwCookie() {
-       // getDispensBehaviour(stack).dispense(blocksourceimpl, stack);
+    private void throwCookie(World worldIn, BlockPos blockPos) {
+        ItemStack cookie = new ItemStack(Items.cookie);
+        BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
 
-       // return;
-
+        getDispensBehaviour(cookie).dispense(blockSource, cookie);
     }
 
     protected IBehaviorDispenseItem getDispensBehaviour(ItemStack itemStack)
