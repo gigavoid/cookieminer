@@ -33,7 +33,7 @@ public class ModuleNorthrend extends Module {
     @Override
     public void preInit(FMLPreInitializationEvent e){
         NorthrendBlocks.initializeBlocks(getRegister());
-        NorthrendBiomes.registerBiomes();
+        NorthrendBiomes.registerBiomes(getRegister());
 
         dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
         getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
