@@ -5,7 +5,9 @@ import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -57,5 +59,16 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityCookieCrafter();
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing)state.getValue(FACING)).getIndex();
+    }
+
+    @Override
+    protected BlockState createBlockState() {
+        return new BlockState(this, FACING);
     }
 }
