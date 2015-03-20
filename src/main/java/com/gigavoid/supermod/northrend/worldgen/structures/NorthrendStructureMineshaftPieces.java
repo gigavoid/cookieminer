@@ -39,10 +39,10 @@ public class NorthrendStructureMineshaftPieces
 
     public static void registerStructurePieces()
     {
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Corridor.class, "MSCorridor");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Cross.class, "MSCrossing");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Room.class, "MSRoom");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Stairs.class, "MSStairs");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Corridor.class, "NMSCorridor");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Cross.class, "NMSCrossing");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Room.class, "NMSRoom");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureMineshaftPieces.Stairs.class, "NMSStairs");
     }
 
     static

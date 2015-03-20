@@ -34,21 +34,21 @@ public class NorthrendStructureFortressPieces
 
     public static void registerNetherFortressPieces()
     {
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing3.class, "NeBCr");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.End.class, "NeBEF");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Straight.class, "NeBS");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor3.class, "NeCCS");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor4.class, "NeCTB");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Entrance.class, "NeCE");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing2.class, "NeSCSC");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor.class, "NeSCLT");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor5.class, "NeSC");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor2.class, "NeSCRT");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.NetherStalkRoom.class, "NeCSR");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Throne.class, "NeMT");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing.class, "NeRC");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Stairs.class, "NeSR");
-        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Start.class, "NeStart");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing3.class, "NBCr");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.End.class, "NBEF");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Straight.class, "NBS");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor3.class, "NCCS");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor4.class, "NCTB");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Entrance.class, "NCE");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing2.class, "NSCSC");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor.class, "NSCLT");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor5.class, "NSC");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Corridor2.class, "NSCRT");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.NetherStalkRoom.class, "NCSR");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Throne.class, "NMT");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Crossing.class, "NRC");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Stairs.class, "NSR");
+        MapGenStructureIO.registerStructureComponent(NorthrendStructureFortressPieces.Start.class, "NStart");
     }
 
     private static NorthrendStructureFortressPieces.Piece func_175887_b(NorthrendStructureFortressPieces.PieceWeight p_175887_0_, List p_175887_1_, Random p_175887_2_, int p_175887_3_, int p_175887_4_, int p_175887_5_, EnumFacing p_175887_6_, int p_175887_7_)
