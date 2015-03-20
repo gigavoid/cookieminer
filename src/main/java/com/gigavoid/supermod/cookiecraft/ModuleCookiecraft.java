@@ -13,6 +13,6 @@ public class ModuleCookiecraft extends Module{
 
     @Override
     public void init(FMLInitializationEvent e) {
-        
+
     }
 }
