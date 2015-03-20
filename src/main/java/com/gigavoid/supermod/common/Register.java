@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class Register {
     private int nextDimensionId = 2;
+    private int nextBiomeId = 40;
 
     public void registerBlock(Block block, String name) {
         registerBlock(block, name, name);
@@ -44,6 +45,10 @@ public class Register {
         DimensionManager.registerProviderType(nextDimensionId, provider, keepLoaded);
         DimensionManager.registerDimension(nextDimensionId, nextDimensionId);
         return nextDimensionId++;
+    }
+
+    public int getNextBiomeID(){
+        return nextBiomeId++;
     }
 
     public void registerWorldGenerator(IWorldGenerator generator, int id){
