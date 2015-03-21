@@ -2,7 +2,6 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
@@ -100,11 +99,18 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
 
     private void throwCookies(World worldIn, BlockPos blockPos) {
         TileEntityCookieCrafter tileEntity = getTileEntity(worldIn, blockPos);
-        int cps = (int) tileEntity.getCPS();
-        ItemStack cookie = new ItemStack(Items.cookie, cps);
-        BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+        double cps = tileEntity.getCPS();
 
-        dispenseStack(blockSource, cookie);
+        double cookiesToCreate = cps + tileEntity.getLeftover();
+        int wholeCookies = (int) cookiesToCreate;
+        tileEntity.setLeftover(cookiesToCreate - wholeCookies);
+
+        if (wholeCookies != 0) {
+            ItemStack cookieStack = new ItemStack(Items.cookie, wholeCookies);
+            BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+
+            dispenseStack(blockSource, cookieStack);
+        }
     }
 
     private void dispenseStack(IBlockSource source, ItemStack stack)

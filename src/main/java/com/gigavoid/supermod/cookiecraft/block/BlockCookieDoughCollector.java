@@ -11,6 +11,6 @@ public class BlockCookieDoughCollector extends BlockCookieUpgradeBase implements
 
     @Override
     public double getCPS() {
-        return 2;
+        return 1/60d;
     }
 }
