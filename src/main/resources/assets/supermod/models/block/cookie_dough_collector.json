@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_all",
+    "parent": "block/cube_column",
     "textures": {
-        "top": "supermod:blocks/cookie_dough_collector_top",
-        "side": "supermod:block/cookie_dough_collector_side"
+        "end": "supermod:blocks/cookie_dough_collector_top",
+        "side": "supermod:blocks/cookie_dough_collector_side"
     }
 }
