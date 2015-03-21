@@ -39,3 +39,16 @@ item.mithril_shovel.name=Mithril Shovel
 item.dragonbone.name=Dragonbone
 item.frost_gem.name=Frost Gem
 item.mithril_ingot.name=Mithril Ingot
+
+< Bonus >
+tile.bonus_block.name=Bonus Block
+
+< Cookiecraft Blocks >
+tile.cookie_crafter.name=Cookie Crafter
+tile.cookie_portal.name=Cookie Portal
+tile.cookie_block.name=Cookie Block
+tile.cookie_dough_collector.name=Dough Collector
+tile.burnt_cookie_block.name=Burnt Cookie Block
+
+< Cookiecraft Items >
+
