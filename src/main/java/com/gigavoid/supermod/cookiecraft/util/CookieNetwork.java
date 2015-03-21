@@ -82,7 +82,7 @@ public class CookieNetwork {
                     return true;
                 }
                 hasCrafter = true;
-            }2
+            }
         }
         return false;
     }
