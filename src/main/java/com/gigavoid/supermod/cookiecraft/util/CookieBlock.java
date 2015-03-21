@@ -26,6 +26,6 @@ public class CookieBlock {
     }
 
     public double getCPS() {
-        return ((ICookieUpgrade)world.getBlockState(pos).getBlock()).getCPS();
+        return ((ICookieUpgrade)world.getBlockState(pos).getBlock()).getCPS(world, pos);
     }
 }
