@@ -2,22 +2,24 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPistonBase;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
+import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.RegistryDefaulted;
@@ -25,9 +27,8 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieCrafter extends Block implements ITileEntityProvider {
+public class BlockCookieCrafter extends Block implements ITileEntityProvider, ICookieBlock{
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
-    public static final RegistryDefaulted dispenseBehaviorRegistry = new RegistryDefaulted(new BehaviorDefaultDispenseItem());
 
 
     public BlockCookieCrafter() {
@@ -39,6 +40,12 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
     @Override
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        if (!worldIn.isRemote)
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
     }
 
     /**
@@ -96,21 +103,51 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (!worldIn.isRemote)
         {
-            throwCookie(worldIn, pos);
+            throwCookies(worldIn, pos);
             worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
         }
     }
 
-    private void throwCookie(World worldIn, BlockPos blockPos) {
-        ItemStack cookie = new ItemStack(Items.cookie);
+    private void throwCookies(World worldIn, BlockPos blockPos) {
+        TileEntityCookieCrafter tileEntity = getTileEntity(worldIn, blockPos);
+        int cps = (int) tileEntity.getCPS();
+        ItemStack cookie = new ItemStack(Items.cookie, cps);
         BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
 
-        getDispensBehaviour(cookie).dispense(blockSource, cookie);
+        dispenseStack(blockSource, cookie);
     }
 
-    protected IBehaviorDispenseItem getDispensBehaviour(ItemStack itemStack)
+    private void dispenseStack(IBlockSource source, ItemStack stack)
     {
-        return (IBehaviorDispenseItem)dispenseBehaviorRegistry.getObject(itemStack == null ? null : itemStack.getItem());
+        EnumFacing enumfacing = BlockDispenser.getFacing(source.getBlockMetadata());
+        IPosition iposition = BlockDispenser.getDispensePosition(source);
+        doDispense(source.getWorld(), stack, 6, enumfacing, iposition);
+    }
+
+    private static void doDispense(World worldIn, ItemStack stack, int speed, EnumFacing p_82486_3_, IPosition position)
+    {
+        double d0 = position.getX();
+        double d1 = position.getY();
+        double d2 = position.getZ();
+
+        if (p_82486_3_.getAxis() == EnumFacing.Axis.Y)
+        {
+            d1 -= 0.125D;
+        }
+        else
+        {
+            d1 -= 0.15625D;
+        }
+
+        EntityItem entityitem = new EntityItem(worldIn, d0, d1, d2, stack);
+        double d3 = worldIn.rand.nextDouble() * 0.1D + 0.2D;
+        entityitem.motionX = (double)p_82486_3_.getFrontOffsetX() * d3;
+        entityitem.motionY = 0.20000000298023224D;
+        entityitem.motionZ = (double)p_82486_3_.getFrontOffsetZ() * d3;
+        entityitem.motionX += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
+        entityitem.motionY += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
+        entityitem.motionZ += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
+        worldIn.spawnEntityInWorld(entityitem);
     }
 
     @Override
@@ -127,5 +164,14 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider {
     @Override
     protected BlockState createBlockState() {
         return new BlockState(this, FACING);
+    }
+
+    @Override
+    public double getCPS() {
+        return 1/60;
+    }
+
+    public TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
+        return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
 }
