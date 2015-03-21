@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.recipe;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.item.NorthrendItems;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -21,6 +22,7 @@ public class NorthrendRecipies {
     }
 
     private static void mithrilTools(){
+
         ItemStack mithrilIngot = new ItemStack(NorthrendItems.mithrilIngot);
         ItemStack stick = new ItemStack(Items.stick);
 
