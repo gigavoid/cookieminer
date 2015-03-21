@@ -26,4 +26,13 @@ public class BlockBlight extends Block {
     {
         return Item.getItemFromBlock(this);
     }
+
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        if (worldIn.provider.getDimensionId() > 0 || !NorthrendBlocks.portalNorthrend.func_176548_d(worldIn, pos))
+        {
+            worldIn.setBlockToAir(pos);
+        }
+    }
 }
