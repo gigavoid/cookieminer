@@ -78,14 +78,11 @@ public class CookieNetwork {
                 crafter = cookieBlock;
                 if (hasCrafter) {
                     // Multiple crafters, not a good idea.
-                    if (cookieBlock.getPos().equals(pos)) {
-                        // This block pos is the newly placed crafter, pop it!
-                        worldIn.destroyBlock(pos, true);
-                        return true;
-                    }
+                    worldIn.destroyBlock(pos, true);
+                    return true;
                 }
                 hasCrafter = true;
-            }
+            }2
         }
         return false;
     }
