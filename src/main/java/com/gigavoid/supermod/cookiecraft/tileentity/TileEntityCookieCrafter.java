@@ -31,6 +31,7 @@ public class TileEntityCookieCrafter extends TileEntity {
 
     public void setCPS(double cps) {
         this.cps = cps;
+        worldObj.markBlockForUpdate(pos);
     }
 
     public double getCPS() {
@@ -43,5 +44,18 @@ public class TileEntityCookieCrafter extends TileEntity {
 
     public void setLeftover(double leftover) {
         this.leftover = leftover;
+    }
+
+    @Override
+    public Packet getDescriptionPacket() {
+        NBTTagCompound compound = new NBTTagCompound();
+        compound.setDouble("CPS", cps);
+        return new S35PacketUpdateTileEntity(pos, 1, compound);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        NBTTagCompound compound = pkt.getNbtCompound();
+        cps = compound.getDouble("CPS");
     }
 }

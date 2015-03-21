@@ -8,6 +8,7 @@ import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModuleRopeway extends Module {
