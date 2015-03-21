@@ -1,6 +1,9 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCookieCrafter extends TileEntity {
@@ -8,7 +11,7 @@ public class TileEntityCookieCrafter extends TileEntity {
     private double cps;
 
     /**
-     * Leftover from last tick
+     * Leftover cookies from last tick
      */
     private double leftover;
 
@@ -27,12 +30,10 @@ public class TileEntityCookieCrafter extends TileEntity {
     }
 
     public void setCPS(double cps) {
-        System.out.println("Set " + cps + " @ " + this);
         this.cps = cps;
     }
 
     public double getCPS() {
-        System.out.println("Get " + cps + " @ " + this);
         return cps;
     }
 

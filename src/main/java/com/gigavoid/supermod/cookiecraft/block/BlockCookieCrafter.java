@@ -1,6 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
@@ -13,6 +15,7 @@ import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -95,6 +98,17 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
             throwCookies(worldIn, pos);
             worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
         }
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        if (tileEntity == null || playerIn.isSneaking()) {
+            return false;
+        }
+
+        playerIn.openGui(SuperMod.instance, GuiCookieCrafter.GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        return true;
     }
 
     private void throwCookies(World worldIn, BlockPos blockPos) {
