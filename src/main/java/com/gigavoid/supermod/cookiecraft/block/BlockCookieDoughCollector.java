@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCookiePortal extends Block implements ICookieBlock {
-    protected BlockCookiePortal() {
+public class BlockCookieDoughCollector extends Block implements ICookieBlock {
+    protected BlockCookieDoughCollector() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
