@@ -12,6 +12,6 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
         register.registerBlock(cookieBlock, "cookie_block");
-        register.registerBlock(cookiePortal, "cookie_portal");
+        register.registerBlock(cookiePortal, "cookie_portal_");
     }
 }
