@@ -1,8 +1,8 @@
 {
   "variants": {
-    "facing=north": { "model": "supremod:cookie_crafter" },
-    "facing=south": { "model": "supremod:cookie_crafter", "y": 180 },
-    "facing=west":  { "model": "supremod:cookie_crafter", "y": 270 },
-    "facing=east":  { "model": "supremod:cookie_crafter", "y": 90 }
+    "facing=north": { "model": "supermod:cookie_crafter" },
+    "facing=south": { "model": "supermod:cookie_crafter", "y": 180 },
+    "facing=west":  { "model": "supermod:cookie_crafter", "y": 270 },
+    "facing=east":  { "model": "supermod:cookie_crafter", "y": 90 }
   }
 }
