@@ -1,8 +1,10 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -23,10 +25,14 @@ public class BlockRedstoneOre extends Block{
     public BlockRedstoneOre(boolean p_i45420_1_)
     {
         super(Material.rock);
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 2);
 
         if (p_i45420_1_)
         {
             this.setTickRandomly(true);
+            setLightLevel(.5f);
         }
 
         this.isOn = p_i45420_1_;

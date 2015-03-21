@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.BlockState;
@@ -21,7 +22,7 @@ public class BlockNorthLeaves extends BlockLeaves {
     public BlockNorthLeaves(){
         super();
         this.setHardness(1.0f);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setStepSound(soundTypeGrass);
     }
 

@@ -1,7 +1,7 @@
 {
     "textures": {
         "particle": "blocks/snowshovel",
-        "portal": "blocks/water_still"
+        "portal": "supermod:blocks/north_portal"
     },
     "elements": [
         {   "from": [ 0, 0, 6 ],

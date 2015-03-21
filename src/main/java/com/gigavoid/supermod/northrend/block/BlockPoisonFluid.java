@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockPos;
@@ -11,7 +12,7 @@ import net.minecraftforge.fluids.Fluid;
 public class BlockPoisonFluid extends BlockFluidClassic {
     public BlockPoisonFluid(Fluid fluid, Material material) {
         super(fluid, material);
-        setCreativeTab(CreativeTabs.tabMisc);
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
 
     @Override

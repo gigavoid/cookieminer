@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +25,7 @@ public class BlockNorthStoneStairs extends BlockStairs {
         this.setResistance(2.0f);
         this.setStepSound(NorthrendBlocks.northCobble.stepSound);
         this.setLightOpacity(255);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
 
     @Override

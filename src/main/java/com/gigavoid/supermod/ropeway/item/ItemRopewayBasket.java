@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 
 public class ItemRopewayBasket extends Item {
     public ItemRopewayBasket() {
-        maxStackSize = 1;
         setCreativeTab(RopewayCreativeTabs.tabBlock);
     }
 
@@ -25,6 +24,7 @@ public class ItemRopewayBasket extends Item {
 
         if (!world.isRemote) {
             EntityRopewayBasket basket = new EntityRopewayBasket(world, pos.getX() + .5f, pos.getY() - 1.1f, pos.getZ() + .5f);
+            basket.setTarget(pos);
             player.worldObj.spawnEntityInWorld(basket);
         }
         return true;

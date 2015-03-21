@@ -1,0 +1,9 @@
+package com.gigavoid.supermod.cookiecraft.tileentity;
+
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+public class CookiecraftTileEntities {
+    public static void registerTileEntities() {
+        GameRegistry.registerTileEntity(TileEntityCookieCrafter.class, "cookie_crafter");
+    }
+}

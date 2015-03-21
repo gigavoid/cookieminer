@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,7 +17,7 @@ public class BlockBlight extends Block {
         super(Material.ground);
         this.setHardness(2.0f);
         this.setHarvestLevel("pickaxe", 0);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setStepSound(soundTypeCloth);
     }
 

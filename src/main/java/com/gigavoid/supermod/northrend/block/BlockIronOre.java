@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,7 +14,9 @@ import java.util.Random;
 public class BlockIronOre extends Block {
     public BlockIronOre() {
         super(Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
+        this.setHardness(3.0f);
+        this.setHarvestLevel("pickaxe", 1);
     }
 
     @Override

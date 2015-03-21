@@ -16,11 +16,10 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class Register {
     private int nextDimensionId = 2;
+    private int nextBiomeId = 40;
 
     public void registerBlock(Block block, String name) {
-        block.setUnlocalizedName(name);
-        GameRegistry.registerBlock(block, name);
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + name, "inventory"));
+        registerBlock(block, name, name);
     }
 
     public void registerBlock(Block block, String name, String resourceName) {
@@ -46,6 +45,10 @@ public class Register {
         DimensionManager.registerProviderType(nextDimensionId, provider, keepLoaded);
         DimensionManager.registerDimension(nextDimensionId, nextDimensionId);
         return nextDimensionId++;
+    }
+
+    public int getNextBiomeID(){
+        return nextBiomeId++;
     }
 
     public void registerWorldGenerator(IWorldGenerator generator, int id){
