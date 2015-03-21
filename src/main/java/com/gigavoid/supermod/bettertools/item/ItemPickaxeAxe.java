@@ -17,6 +17,7 @@ public class ItemPickaxeAxe extends ItemTool {
 
     protected ItemPickaxeAxe() {
         super(8, ToolMaterial.EMERALD, effectiveBlocks);
+        this.efficiencyOnProperMaterial=12.0f;
     }
 
     public boolean canHarvestBlock(Block blockIn)
