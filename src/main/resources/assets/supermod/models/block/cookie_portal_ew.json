@@ -1,7 +1,7 @@
 {
     "textures": {
         "particle": "blocks/snowshovel",
-        "portal": "supermod:blocks/north_portal"
+        "portal": "supermod:blocks/cookie_portal"
     },
     "elements": [
         {   "from": [ 6, 0, 0 ],

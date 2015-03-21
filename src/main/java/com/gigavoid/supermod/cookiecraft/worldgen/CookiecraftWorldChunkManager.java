@@ -1,13 +1,8 @@
-package com.gigavoid.supermod.northrend.worldgen.custom;
+package com.gigavoid.supermod.cookiecraft.worldgen;
 
-import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftGenLayerBiome;
-import com.gigavoid.supermod.northrend.biome.NorthrendBiomeGenBase;
-import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
+import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendGenLayerBiome;
 import com.google.common.collect.Lists;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.BlockPos;
@@ -19,20 +14,18 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-public class NorthrendWorldChunkManager extends WorldChunkManager
+public class CookiecraftWorldChunkManager extends WorldChunkManager
 {
-    public static ArrayList<NorthrendBiomeGenBase> allowedBiomes = Lists.newArrayList(
-            (NorthrendBiomeGenBase)NorthrendBiomes.northForest, (NorthrendBiomeGenBase)NorthrendBiomes.northFirForest,
-            (NorthrendBiomeGenBase)NorthrendBiomes.northGlacier, (NorthrendBiomeGenBase)NorthrendBiomes.northMountains,
-            (NorthrendBiomeGenBase)NorthrendBiomes.northPlains, (NorthrendBiomeGenBase)NorthrendBiomes.northHighlands,
-            (NorthrendBiomeGenBase)NorthrendBiomes.northHugeMountains, (NorthrendBiomeGenBase)NorthrendBiomes.northBirchForest,
-            (NorthrendBiomeGenBase)NorthrendBiomes.northHills, (NorthrendBiomeGenBase)NorthrendBiomes.northSpikes);
+    public static ArrayList<BiomeGenBase> allowedBiomes = Lists.newArrayList((BiomeGenBase)ModuleCookiecraft.cookieBiome);
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;
@@ -43,7 +36,7 @@ public class NorthrendWorldChunkManager extends WorldChunkManager
     private String field_180301_f;
     private static final String __OBFID = "CL_00000166";
 
-    protected NorthrendWorldChunkManager()
+    protected CookiecraftWorldChunkManager()
     {
         this.biomeCache = new BiomeCache(this);
         this.field_180301_f = "";
@@ -51,16 +44,16 @@ public class NorthrendWorldChunkManager extends WorldChunkManager
         this.biomesToSpawnIn.addAll(allowedBiomes);
     }
 
-    public NorthrendWorldChunkManager(long p_i45744_1_, WorldType p_i45744_3_, String p_i45744_4_)
+    public CookiecraftWorldChunkManager(long p_i45744_1_, WorldType p_i45744_3_, String p_i45744_4_)
     {
         this();
         this.field_180301_f = p_i45744_4_;
-        GenLayer[] agenlayer = NorthrendGenLayerBiome.func_180781_a(p_i45744_1_);
+        GenLayer[] agenlayer = CookiecraftGenLayerBiome.func_180781_a(p_i45744_1_);
         this.genBiomes = agenlayer[0];
         this.biomeIndexLayer = agenlayer[1];
     }
 
-    public NorthrendWorldChunkManager(World worldIn)
+    public CookiecraftWorldChunkManager(World worldIn)
     {
         this(worldIn.getSeed(), worldIn.getWorldInfo().getTerrainType(), worldIn.getWorldInfo().getGeneratorOptions());
     }
