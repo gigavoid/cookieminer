@@ -366,39 +366,6 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         int l1;
         int i2;
 
-        if (biomegenbase != BiomeGenBase.desert && biomegenbase != BiomeGenBase.desertHills && this.chunkProviderSettings.field_177781_A && !flag && this.rand.nextInt(this.chunkProviderSettings.field_177782_B) == 0
-                && TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAKE))
-        {
-            k1 = this.rand.nextInt(16) + 8;
-            l1 = this.rand.nextInt(256);
-            i2 = this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Blocks.ice)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
-        }
-
-        if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && this.rand.nextInt(this.chunkProviderSettings.field_177777_D / 10) == 0 && this.chunkProviderSettings.field_177783_C)
-        {
-            k1 = this.rand.nextInt(16) + 8;
-            l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
-            i2 = this.rand.nextInt(16) + 8;
-
-            if (l1 < 63 || this.rand.nextInt(this.chunkProviderSettings.field_177777_D / 8) == 0)
-            {
-                (new WorldGenLakes(Blocks.obsidian)).generate(this.worldObj, this.rand, blockpos.add(k1, l1, i2));
-            }
-        }
-
-        if (this.chunkProviderSettings.field_177837_s)
-        {
-            boolean doGen = TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, DUNGEON);
-            for (k1 = 0; doGen && k1 < this.chunkProviderSettings.field_177835_t; ++k1)
-            {
-                l1 = this.rand.nextInt(16) + 8;
-                i2 = this.rand.nextInt(256);
-                int j2 = this.rand.nextInt(16) + 8;
-                (new WorldGenDungeons()).generate(this.worldObj, this.rand, blockpos.add(l1, i2, j2));
-            }
-        }
-
         biomegenbase.func_180624_a(this.worldObj, this.rand, new BlockPos(k, 0, l));
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
         {

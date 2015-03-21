@@ -17,7 +17,7 @@ public class ModuleCookiecraft extends Module{
 
     @Override
     public void preInit(FMLPreInitializationEvent e) {
-        cookieBiome = new CookieBiome(getRegister().getNextBiomeID());
+        cookieBiome = new CookieBiome(getRegister().getNextBiomeID(), 10);
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
 
         dimensionId = getRegister().registerDimension(CookiecraftWorldProvider.class, false);

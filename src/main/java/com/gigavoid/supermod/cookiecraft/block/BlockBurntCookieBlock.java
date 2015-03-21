@@ -8,11 +8,10 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class BlockCookieBlock extends Block {
-    public BlockCookieBlock() {
+public class BlockBurntCookieBlock extends Block {
+    public BlockBurntCookieBlock() {
         super(Material.ground);
-        this.setHardness(2.0f);
-        this.setHarvestLevel("pickaxe", 0);
+        this.setHardness(-1.0f);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setStepSound(soundTypeGravel);
     }

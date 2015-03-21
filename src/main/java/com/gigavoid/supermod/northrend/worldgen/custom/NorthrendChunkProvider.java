@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.northrend.worldgen.custom;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
+import com.gigavoid.supermod.northrend.worldgen.feature.NorthrendWorldGenDungeons;
 import com.gigavoid.supermod.northrend.worldgen.gen.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -483,7 +484,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
                 l1 = this.rand.nextInt(16) + 8;
                 i2 = this.rand.nextInt(256);
                 int j2 = this.rand.nextInt(16) + 8;
-                (new WorldGenDungeons()).generate(this.worldObj, this.rand, blockpos.add(l1, i2, j2));
+                (new NorthrendWorldGenDungeons()).generate(this.worldObj, this.rand, blockpos.add(l1, i2, j2));
             }
         }
 
