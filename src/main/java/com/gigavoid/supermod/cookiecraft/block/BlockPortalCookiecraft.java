@@ -272,13 +272,13 @@ public class BlockPortalCookiecraft extends BlockPortal {
             for (i = 0; i < 22; ++i) {
                 BlockPos blockpos1 = p_180120_1_.offset(p_180120_2_, i);
 
-                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != Blocks.packed_ice) {
+                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != CookiecraftBlocks.cookieBlock) {
                     break;
                 }
             }
 
             Block block = this.field_150867_a.getBlockState(p_180120_1_.offset(p_180120_2_, i)).getBlock();
-            return block == Blocks.packed_ice ? i : 0;
+            return block == CookiecraftBlocks.cookieBlock ? i : 0;
         }
 
         protected int func_150858_a() {
@@ -301,13 +301,13 @@ public class BlockPortalCookiecraft extends BlockPortal {
                     if (i == 0) {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150863_d)).getBlock();
 
-                        if (block != Blocks.packed_ice) {
+                        if (block != CookiecraftBlocks.cookieBlock) {
                             break label56;
                         }
                     } else if (i == this.field_150868_h - 1) {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150866_c)).getBlock();
 
-                        if (block != Blocks.packed_ice) {
+                        if (block != CookiecraftBlocks.cookieBlock) {
                             break label56;
                         }
                     }
@@ -315,7 +315,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
             }
 
             for (i = 0; i < this.field_150868_h; ++i) {
-                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != Blocks.packed_ice) {
+                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != CookiecraftBlocks.cookieBlock) {
                     this.field_150862_g = 0;
                     break;
                 }
