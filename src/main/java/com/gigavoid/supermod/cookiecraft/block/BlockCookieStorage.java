@@ -5,6 +5,7 @@ import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -16,7 +17,7 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
     }
 
     @Override
-    public double getCPS() {
+    public double getCPS(World world, BlockPos pos, IBlockState state) {
         return 0;
     }
 
