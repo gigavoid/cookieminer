@@ -93,9 +93,9 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
 
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        throwCookies(worldIn, pos);
         if (!worldIn.isRemote)
         {
-            throwCookies(worldIn, pos);
             worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
         }
     }
@@ -132,6 +132,12 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         EnumFacing enumfacing = BlockDispenser.getFacing(source.getBlockMetadata());
         IPosition iposition = BlockDispenser.getDispensePosition(source);
         doDispense(source.getWorld(), stack, 6, enumfacing, iposition);
+
+        // Smoke
+        source.getWorld().playAuxSFX(2000, source.getBlockPos(), enumfacing.getFrontOffsetX() + 1 + (enumfacing.getFrontOffsetZ() + 1) * 3);
+
+        // Sound
+        source.getWorld().playAuxSFX(1000, source.getBlockPos(), 0);
     }
 
     private static void doDispense(World worldIn, ItemStack stack, int speed, EnumFacing p_82486_3_, IPosition position)
