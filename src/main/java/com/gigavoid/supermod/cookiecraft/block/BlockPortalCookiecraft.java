@@ -204,7 +204,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
                 d2 = (double) pos.getZ() + 0.5D + 0.25D * (double) j;
             }
 
-            worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5);
+            //worldIn.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, d0, d1, d2, d3, d4, d5);
         }
     }
 

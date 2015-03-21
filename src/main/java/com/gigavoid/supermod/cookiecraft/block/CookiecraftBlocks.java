@@ -8,6 +8,7 @@ public class CookiecraftBlocks {
     public static final BlockCookieBlock cookieBlock = new BlockCookieBlock();
     public static final BlockCookieDoughCollector cookieDoughCollector = new BlockCookieDoughCollector();
     public static final BlockBurntCookieBlock burntCookieBlock = new BlockBurntCookieBlock();
+    public static final BlockPortalConnector portalConnector = new BlockPortalConnector();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -15,5 +16,6 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieBlock, "cookie_block");
         register.registerBlock(cookieDoughCollector, "cookie_dough_collector");
         register.registerBlock(burntCookieBlock, "burnt_cookie_block");
+        register.registerBlock(portalConnector, "portal_connector");
     }
 }
