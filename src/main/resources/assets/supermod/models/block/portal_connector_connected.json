@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "supermod:blocks/cookie_dough_collector_side_connected",
+        "side": "supermod:blocks/portal_connector_connected"
+    }
+}

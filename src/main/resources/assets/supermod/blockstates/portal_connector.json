@@ -1,8 +1,6 @@
 {
     "variants": {
-        "axis=y": { "model": "supermod:portal_connector" },
-        "axis=z": { "model": "supermod:portal_connector" },
-        "axis=x": { "model": "supermod:portal_connector"},
-        "axis=none": { "model": "supermod:portal_connector" }
+        "active=true": { "model": "supermod:portal_connector_connected" },
+        "active=false": { "model": "supermod:portal_connector" }
     }
 }

@@ -183,7 +183,7 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
     }
 
     @Override
-    public double getCPS(World world, BlockPos pos) {
+    public double getCPS(World world, BlockPos pos, IBlockState state) {
         return 1/60;
     }
 
