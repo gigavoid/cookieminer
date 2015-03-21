@@ -1,8 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.util;
 
-import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
+import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
-import net.minecraft.block.Block;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
@@ -26,7 +25,7 @@ public class CookieNetwork {
 
         while (!toSearch.empty()) {
             BlockPos blockPos = toSearch.pop();
-            if (world.getBlockState(blockPos).getBlock() instanceof ICookieBlock) {
+            if (world.getBlockState(blockPos).getBlock() instanceof ICookieUpgrade) {
                 network.addBlock(world, blockPos);
 
                 searchNext(searched, toSearch, blockPos.offsetNorth());
