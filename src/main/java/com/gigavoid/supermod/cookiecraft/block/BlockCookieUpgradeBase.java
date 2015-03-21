@@ -1,6 +1,5 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,10 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCookiePortal extends Block implements ICookieBlock {
-    protected BlockCookiePortal() {
-        super(Material.rock);
-        setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+public class BlockCookieUpgradeBase extends Block {
+    public BlockCookieUpgradeBase(Material material) {
+        super(material);
     }
 
     @Override
@@ -23,7 +21,8 @@ public class BlockCookiePortal extends Block implements ICookieBlock {
     }
 
     @Override
-    public double getCPS() {
-        return 2;
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
+        if (!worldIn.isRemote)
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
     }
 }

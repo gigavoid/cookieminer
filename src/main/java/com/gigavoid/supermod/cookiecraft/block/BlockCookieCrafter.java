@@ -2,8 +2,6 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
-import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
@@ -11,8 +9,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
-import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,12 +18,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.RegistryDefaulted;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieCrafter extends Block implements ITileEntityProvider, ICookieBlock{
+public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieUpgrade {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
 
@@ -40,12 +35,6 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider, IC
     @Override
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());
-    }
-
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        if (!worldIn.isRemote)
-            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
     }
 
     /**
@@ -110,11 +99,18 @@ public class BlockCookieCrafter extends Block implements ITileEntityProvider, IC
 
     private void throwCookies(World worldIn, BlockPos blockPos) {
         TileEntityCookieCrafter tileEntity = getTileEntity(worldIn, blockPos);
-        int cps = (int) tileEntity.getCPS();
-        ItemStack cookie = new ItemStack(Items.cookie, cps);
-        BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+        double cps = tileEntity.getCPS();
 
-        dispenseStack(blockSource, cookie);
+        double cookiesToCreate = cps + tileEntity.getLeftover();
+        int wholeCookies = (int) cookiesToCreate;
+        tileEntity.setLeftover(cookiesToCreate - wholeCookies);
+
+        if (wholeCookies != 0) {
+            ItemStack cookieStack = new ItemStack(Items.cookie, wholeCookies);
+            BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+
+            dispenseStack(blockSource, cookieStack);
+        }
     }
 
     private void dispenseStack(IBlockSource source, ItemStack stack)
