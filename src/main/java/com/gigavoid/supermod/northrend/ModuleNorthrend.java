@@ -37,10 +37,6 @@ public class ModuleNorthrend extends Module {
 
         dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
         getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
-
-        List villageSpawnBiomes = new ArrayList(MapGenVillage.villageSpawnBiomes);
-        villageSpawnBiomes.addAll(Arrays.asList(NorthrendBiomes.northHighlands, NorthrendBiomes.northPlains));
-        MapGenVillage.villageSpawnBiomes = villageSpawnBiomes;
     }
 
     @Override
@@ -59,6 +55,5 @@ public class ModuleNorthrend extends Module {
         NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
         FMLCommonHandler.instance().bus().register(northendEventHandler);
         MinecraftForge.EVENT_BUS.register(northendEventHandler);
-        //MinecraftForge.TERRAIN_GEN_BUS.register(northendEventHandler);
     }
 }

@@ -5,9 +5,11 @@ import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import com.gigavoid.supermod.northrend.teleporter.Teleporter;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,9 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockPortalNorthrend extends BlockPortal {
+public class BlockPortalNorthrend extends BlockBreakable {
+    public static final PropertyEnum field_176550_a = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
+
     public BlockPortalNorthrend() {
-        super();
+        super(Material.portal, false);
         setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         setHardness(-1);
     }
@@ -335,7 +339,7 @@ public class BlockPortalNorthrend extends BlockPortal {
 
         protected boolean func_150857_a(Block p_150857_1_) {
             Material material = (Material) Reflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
-            return material == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == NorthrendBlocks.portalNorthrend;
+            return material == Material.air || p_150857_1_ == Blocks.flowing_water || p_150857_1_ == NorthrendBlocks.portalNorthrend;
         }
 
         public boolean func_150860_b() {
