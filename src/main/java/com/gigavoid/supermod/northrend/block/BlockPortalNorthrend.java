@@ -339,7 +339,7 @@ public class BlockPortalNorthrend extends BlockBreakable {
 
         protected boolean func_150857_a(Block p_150857_1_) {
             Material material = (Material) Reflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
-            return material == Material.air || p_150857_1_ == Blocks.flowing_water || p_150857_1_ == NorthrendBlocks.portalNorthrend;
+            return material == Material.air || p_150857_1_ == NorthrendBlocks.activator || p_150857_1_ == NorthrendBlocks.portalNorthrend;
         }
 
         public boolean func_150860_b() {

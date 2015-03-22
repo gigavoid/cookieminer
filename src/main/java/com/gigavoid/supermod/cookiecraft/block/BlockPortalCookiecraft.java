@@ -333,7 +333,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
 
         protected boolean func_150857_a(Block p_150857_1_) {
             Material material = (Material) Reflection.getFieldValue("blockMaterial", Block.class, p_150857_1_);
-            return material == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == CookiecraftBlocks.portalCookiecraft;
+            return material == Material.air || p_150857_1_ == CookiecraftBlocks.activator || p_150857_1_ == CookiecraftBlocks.portalCookiecraft;
         }
 
         public boolean func_150860_b() {
