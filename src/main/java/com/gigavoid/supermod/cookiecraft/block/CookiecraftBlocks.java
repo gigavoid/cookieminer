@@ -11,7 +11,6 @@ public class CookiecraftBlocks {
     public static final BlockPortalConnector portalConnector = new BlockPortalConnector();
     public static final BlockCookieStorage cookieStorage = new BlockCookieStorage();
     public static final BlockCoockiePortalActivator activator = new BlockCoockiePortalActivator();
-    public static final CheatBlock cb = new CheatBlock();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -22,6 +21,5 @@ public class CookiecraftBlocks {
         register.registerBlock(portalConnector, "portal_connector");
         register.registerBlock(cookieStorage, "cookie_storage");
         register.registerBlock(activator, "cp_activator");
-        register.registerBlock(cb, "cb");
     }
 }

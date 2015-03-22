@@ -9,8 +9,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockSnowModded extends BlockSnow {
-    public BlockSnowModded(){super();
-    setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
+    public BlockSnowModded(){
+        super();
+        setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
 
     @Override
