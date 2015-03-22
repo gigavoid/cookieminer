@@ -5,6 +5,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public interface ICookieUpgrade {
+public interface ICookieUpgrade extends ICookieBlock {
     public double getCPS(World world, BlockPos pos, IBlockState state);
 }

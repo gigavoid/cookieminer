@@ -21,17 +21,18 @@ public class TileEntityCookieStorage extends TileEntity {
         super.writeToNBT(compound);
     }
 
-    public void addCookies(int cookies) {
-        this.cookies += cookies;
+    public void addCookies(long cookies) {
+        setCookies(this.cookies + cookies);
         worldObj.markBlockForUpdate(pos);
+        System.out.println(this.cookies);
     }
 
-    public void setCookies(int cookies) {
+    public void setCookies(long cookies) {
         this.cookies = cookies;
         worldObj.markBlockForUpdate(pos);
     }
 
-    public double getCookies() {
+    public long getCookies() {
         return cookies;
     }
 

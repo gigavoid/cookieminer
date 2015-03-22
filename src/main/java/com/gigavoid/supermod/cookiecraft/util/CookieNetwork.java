@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.util;
 
-import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -11,8 +11,6 @@ import java.util.Stack;
 
 public class CookieNetwork {
     private List<CookieBlock> cookieBlocks = new ArrayList<CookieBlock>();
-    private CookieBlock crafter;
-    private double cps;
 
     public static CookieNetwork getNetwork(World world, BlockPos pos) {
         CookieNetwork network = new CookieNetwork();
@@ -25,7 +23,7 @@ public class CookieNetwork {
 
         while (!toSearch.empty()) {
             BlockPos blockPos = toSearch.pop();
-            if (world.getBlockState(blockPos).getBlock() instanceof ICookieUpgrade) {
+            if (world.getBlockState(blockPos).getBlock() instanceof ICookieBlock) {
                 network.addBlock(world, blockPos);
 
                 searchNext(searched, toSearch, blockPos.offsetNorth());
@@ -61,26 +59,70 @@ public class CookieNetwork {
     }
 
     public void updateNetwork(World worldIn, BlockPos pos) {
-        if (!checkDuplicateCrafter(worldIn, pos)) {
+        if (hasMultipleCrafters()) {
+            // Destroy the newly placed block, preventing multiple crafters
+            worldIn.destroyBlock(pos, true);
+        }
+        else {
             // There was no duplicate crafter, continue storing it
+            CookieBlock crafter = findCrafter();
             if (crafter != null) {
-                ((TileEntityCookieCrafter)worldIn.getTileEntity(crafter.getPos())).setCPS(cps);
+                ((TileEntityCookieCrafter)worldIn.getTileEntity(crafter.getPos())).setCPS(calculateCps());
             }
         }
     }
 
-    private Boolean checkDuplicateCrafter(World worldIn, BlockPos pos) {
-        Boolean hasCrafter = false;
+    /**
+     * @return Leftover cookies that could not be stored
+     */
+    public long storeCookies(long numCookies) {
+        while (true) {
+            CookieBlock block = findNextStorageBlock();
+            if (block == null)
+                return numCookies;
+
+            numCookies = block.storeAsManyCookiesAsPossible(numCookies);
+
+            if (numCookies == 0)
+                return 0;
+        }
+    }
+
+    private CookieBlock findNextStorageBlock() {
+        for (CookieBlock block : cookieBlocks) {
+            if (block.isStorage() && !block.isFullStorage()) {
+                return block;
+            }
+        }
+        return null;
+    }
+
+    private double calculateCps() {
+        double cps = 0;
+        for (CookieBlock block : cookieBlocks) {
+            if (block.isCpsUpgrade())
+                cps += block.getCPS();
+        }
+
+        return cps;
+    }
+
+    private CookieBlock findCrafter() {
+        for (CookieBlock block : cookieBlocks) {
+            if (block.isCrafter())
+                return block;
+        }
+        return null;
+    }
+
+    private boolean hasMultipleCrafters() {
+        Boolean foundOneCrafter = false;
         for (CookieBlock cookieBlock : cookieBlocks) {
-            cps += cookieBlock.getCPS();
             if (cookieBlock.isCrafter()) {
-                crafter = cookieBlock;
-                if (hasCrafter) {
-                    // Multiple crafters, not a good idea.
-                    worldIn.destroyBlock(pos, true);
+                if (foundOneCrafter) {
                     return true;
                 }
-                hasCrafter = true;
+                foundOneCrafter = true;
             }
         }
         return false;

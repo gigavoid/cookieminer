@@ -4,6 +4,7 @@ import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
@@ -116,14 +117,21 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         double cps = tileEntity.getCPS();
 
         double cookiesToCreate = cps + tileEntity.getLeftover();
-        int wholeCookies = (int) cookiesToCreate;
+        long wholeCookies = (long) cookiesToCreate;
         tileEntity.setLeftover(cookiesToCreate - wholeCookies);
 
         if (wholeCookies != 0) {
-            ItemStack cookieStack = new ItemStack(Items.cookie, wholeCookies);
-            BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
 
-            dispenseStack(blockSource, cookieStack);
+            // Store as many cookies as possible in storage units
+            wholeCookies = CookieNetwork.getNetwork(worldIn, blockPos).storeCookies(wholeCookies);
+
+            // Dispense the cookies that did not fit into the storage
+            if (wholeCookies != 0) {
+                ItemStack cookieStack = new ItemStack(Items.cookie, (int) wholeCookies);
+                BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+
+                dispenseStack(blockSource, cookieStack);
+            }
         }
     }
 
