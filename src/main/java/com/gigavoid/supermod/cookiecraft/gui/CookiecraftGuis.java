@@ -2,6 +2,7 @@ package com.gigavoid.supermod.cookiecraft.gui;
 
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
@@ -21,8 +22,10 @@ public class CookiecraftGuis implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
-        if (ID == GuiCookieCrafter.GUI_ID && tileEntity instanceof TileEntityCookieCrafter)
-            return new GuiCookieCrafter((TileEntityCookieCrafter) tileEntity);
+		if (ID == GuiCookieCrafter.GUI_ID && tileEntity instanceof TileEntityCookieCrafter)
+			return new GuiCookieCrafter((TileEntityCookieCrafter) tileEntity);
+		if (ID == GuiCookieStorage.GUI_ID && tileEntity instanceof TileEntityCookieStorage)
+			return new GuiCookieStorage((TileEntityCookieStorage) tileEntity);
         return null;
     }
 

@@ -24,7 +24,6 @@ public class TileEntityCookieStorage extends TileEntity {
     public void addCookies(long cookies) {
         setCookies(this.cookies + cookies);
         worldObj.markBlockForUpdate(pos);
-        System.out.println(this.cookies);
     }
 
     public void setCookies(long cookies) {
