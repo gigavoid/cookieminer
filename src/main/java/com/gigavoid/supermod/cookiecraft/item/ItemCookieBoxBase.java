@@ -23,7 +23,6 @@ public abstract class ItemCookieBoxBase extends Item implements ICookieStorageIt
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		CookieStorageItem storage = new CookieStorageItem(stack);
-		storage.setCookies(storage.getCookies() + 1);
 		tooltip.add("Stored Cookies: " + storage.getCookies() + "/" + getMaxStorage());
 	}
 }

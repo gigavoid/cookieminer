@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
+import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -29,8 +31,8 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 
     @Override
     public void writeToNBT(NBTTagCompound compound) {
-        compound.setDouble("Cookies", cookies);
-		saveInventoryCompount(compound);
+        compound.setLong("Cookies", cookies);
+		saveInventoryCompound(compound);
         super.writeToNBT(compound);
     }
 
@@ -96,6 +98,8 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
+		worldObj.scheduleUpdate(pos, getBlockType(), 2);
+
 		inv[slot] = stack;
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
@@ -173,7 +177,7 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 		}
 	}
 
-	private void saveInventoryCompount(NBTTagCompound tagCompound) {
+	private void saveInventoryCompound(NBTTagCompound tagCompound) {
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inv.length; i++) {
 			ItemStack stack = inv[i];
@@ -185,5 +189,80 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			}
 		}
 		tagCompound.setTag("Inventory", itemList);
+	}
+
+	public boolean tick() {
+		return updateUpperSlot() || updateLowerSlot();
+	}
+
+	/**
+	 * Place cookies into the item in the slot
+	 */
+	private boolean updateUpperSlot() {
+		ItemStack stackInSlot = getStackInSlot(0);
+		if (stackInSlot == null) {
+			// No item to put cookies in
+			return false;
+		}
+
+		CookieStorageItem storageItem = new CookieStorageItem(stackInSlot);
+
+		if (storageItem.isFull()) {
+			// The item is already filled with cookies
+			return false;
+		}
+
+		ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
+		long blocksInStorage = storageBlock.getCurrentStorage(worldObj, pos);
+
+		if (blocksInStorage <= 0) {
+			// There are no cookies left in the block
+			return false;
+		}
+
+		long wantToTake = storageItem.getTransferSpeed();
+		long availiableInBlock = getCookies();
+		long placeAvailiable = storageItem.getStorageCap() - storageItem.getCookies();
+
+		long toTake = Math.min(wantToTake, Math.min(availiableInBlock, placeAvailiable));
+		if (toTake == 0) {
+			return false;
+		}
+
+		removeCookies(toTake);
+		storageItem.addCookies(toTake);
+
+		return true;
+
+	}
+
+	private void removeCookies(long toTake) {
+		setCookies(getCookies() - toTake);
+	}
+
+	/**
+	 * Suck items out of the item in the slot
+	 */
+	private boolean updateLowerSlot() {
+		ItemStack stackInSlot = getStackInSlot(1);
+		if (stackInSlot == null)
+			// No item to draw cookies out of
+			return false;
+
+		CookieStorageItem storageItem = new CookieStorageItem(stackInSlot);
+
+		if (storageItem.getCookies() <= 0)
+			// No more cookies to empty from the item
+			return false;
+
+		ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
+		long spaceLeft = storageBlock.getStorageCap() - getCookies();
+
+		if (spaceLeft <= 0)
+			// No more space to add the new cookies to
+			return false;
+
+		addCookies(storageItem.takeCookies(storageItem.getTransferSpeed()));
+		return true;
 	}
 }

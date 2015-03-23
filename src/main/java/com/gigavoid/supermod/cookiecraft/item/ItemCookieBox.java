@@ -17,4 +17,9 @@ public class ItemCookieBox extends ItemCookieBoxBase {
 	public long getMaxStorage() {
 		return 1000;
 	}
+
+	@Override
+	public long getTransferSpeed() {
+		return 1;
+	}
 }

@@ -1,13 +1,10 @@
 package com.gigavoid.supermod.cookiecraft.gui;
 
-import com.gigavoid.supermod.cookiecraft.block.ICookieStorage;
+import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
 import com.gigavoid.supermod.cookiecraft.container.ContainerCookieStorage;
-import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -23,7 +20,7 @@ public class GuiCookieStorage extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		ICookieStorage storage = (ICookieStorage) tileEntity.getBlockType();
+		ICookieStorageBlock storage = (ICookieStorageBlock) tileEntity.getBlockType();
 		fontRendererObj.drawString("Cookies: " + tileEntity.getCookies() + " out of " + storage.getStorageCap(), 5, 5, 0x222222);
 	}
 

@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
-import com.gigavoid.supermod.cookiecraft.block.ICookieStorage;
+import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
 import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -36,7 +36,7 @@ public class CookieBlock {
     }
 
     public boolean isStorage() {
-        return world.getBlockState(pos).getBlock() instanceof ICookieStorage;
+        return world.getBlockState(pos).getBlock() instanceof ICookieStorageBlock;
     }
 
     public boolean isCpsUpgrade() {
@@ -46,20 +46,20 @@ public class CookieBlock {
     public long getCurrentStorage() {
         IBlockState blockState = world.getBlockState(pos);
 
-        if (!(blockState.getBlock() instanceof ICookieStorage)) {
+        if (!(blockState.getBlock() instanceof ICookieStorageBlock)) {
             return 0;
         }
 
-        return ((ICookieStorage) blockState.getBlock()).getCurrentStorage(world, pos);
+        return ((ICookieStorageBlock) blockState.getBlock()).getCurrentStorage(world, pos);
     }
 
     public long getStorageCap() {
         IBlockState blockState = world.getBlockState(pos);
-        if (!(blockState.getBlock() instanceof ICookieStorage)) {
+        if (!(blockState.getBlock() instanceof ICookieStorageBlock)) {
             return 0;
         }
 
-        return ((ICookieStorage) blockState.getBlock()).getStorageCap();
+        return ((ICookieStorageBlock) blockState.getBlock()).getStorageCap();
     }
 
     public boolean isFullStorage() {
@@ -70,7 +70,7 @@ public class CookieBlock {
      * @return Leftover cookies that could not be stored
      */
     public long storeAsManyCookiesAsPossible(long numCookies) {
-        ICookieStorage cookieStorage = (ICookieStorage) world.getBlockState(pos).getBlock();
+        ICookieStorageBlock cookieStorage = (ICookieStorageBlock) world.getBlockState(pos).getBlock();
 
         long storageLeft = getStorageCap() - getCurrentStorage();
 

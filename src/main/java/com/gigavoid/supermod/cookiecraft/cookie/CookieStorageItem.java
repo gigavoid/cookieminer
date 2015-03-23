@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
+import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -31,5 +32,27 @@ public class CookieStorageItem {
 
 	private long getLong(String key, long def) {
 		return stack.getTagCompound() != null && stack.getTagCompound().hasKey(key) ? stack.getTagCompound().getLong(key) : def;
+	}
+
+	public long getTransferSpeed() {
+		return ((ICookieStorageItem)stack.getItem()).getTransferSpeed();
+	}
+
+	public long getStorageCap() {
+		return ((ICookieStorageItem)stack.getItem()).getMaxStorage();
+	}
+
+	public long takeCookies(long transferSpeed) {
+		long cookiesToTake = Math.min(transferSpeed, getCookies());
+		setCookies(getCookies() - cookiesToTake);
+		return cookiesToTake;
+	}
+
+	public boolean isFull() {
+		return getStorageCap() <= getCookies();
+	}
+
+	public void addCookies(long toTake) {
+		setCookies(getCookies() + toTake);
 	}
 }
