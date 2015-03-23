@@ -101,18 +101,12 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         }
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
-        if (tileEntity == null || playerIn.isSneaking()) {
-            return false;
-        }
+	@Override
+	public int getGuiId() {
+		return GuiCookieCrafter.GUI_ID;
+	}
 
-        playerIn.openGui(SuperMod.instance, GuiCookieCrafter.GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
-        return true;
-    }
-
-    private void throwCookies(World worldIn, BlockPos blockPos) {
+	private void throwCookies(World worldIn, BlockPos blockPos) {
         TileEntityCookieCrafter tileEntity = getTileEntity(worldIn, blockPos);
         double cps = tileEntity.getCPS();
 

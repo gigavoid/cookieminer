@@ -22,11 +22,14 @@ public class CookiecraftGuis implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
+		BlockPos pos = new BlockPos(x, y, z);
+		TileEntity tileEntity = world.getTileEntity(pos);
 		if (ID == GuiCookieCrafter.GUI_ID && tileEntity instanceof TileEntityCookieCrafter)
 			return new GuiCookieCrafter((TileEntityCookieCrafter) tileEntity);
 		if (ID == GuiCookieStorage.GUI_ID && tileEntity instanceof TileEntityCookieStorage)
 			return new GuiCookieStorage(player.inventory, (TileEntityCookieStorage) tileEntity);
+		if (ID == GuiCookieUpgrade.GUI_ID)
+			return new GuiCookieUpgrade(world, pos);
         return null;
     }
 

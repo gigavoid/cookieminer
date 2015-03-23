@@ -45,13 +45,7 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
     }
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		if (tileEntity == null || playerIn.isSneaking()) {
-			return false;
-		}
-
-		playerIn.openGui(SuperMod.instance, GuiCookieStorage.GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());
-		return true;
+	public int getGuiId() {
+		return GuiCookieStorage.GUI_ID;
 	}
 }

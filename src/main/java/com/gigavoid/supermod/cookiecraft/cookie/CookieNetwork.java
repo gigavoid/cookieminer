@@ -107,7 +107,7 @@ public class CookieNetwork {
         return cps;
     }
 
-    private CookieBlock findCrafter() {
+    public CookieBlock findCrafter() {
         for (CookieBlock block : cookieBlocks) {
             if (block.isCrafter())
                 return block;
