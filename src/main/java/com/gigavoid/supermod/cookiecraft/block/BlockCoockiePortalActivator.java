@@ -17,7 +17,7 @@ public class BlockCoockiePortalActivator extends Block {
     public BlockCoockiePortalActivator(){
         super(Material.glass);
         this.setHardness(1.0f);
-        this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+        this.setCreativeTab(null);
         this.setStepSound(soundTypeGrass);
     }
 
@@ -34,15 +34,6 @@ public class BlockCoockiePortalActivator extends Block {
 
     @Override
     public boolean isVisuallyOpaque() { return false; }
-
-    @Override
-    public int getMetaFromState(IBlockState state) { return 0; }
-
-    @Override
-    protected BlockState createBlockState()
-    {
-        return new BlockState(this, BlockLeaves.field_176236_b);
-    }
 
     @Override
     public boolean isOpaqueCube() { return false; }

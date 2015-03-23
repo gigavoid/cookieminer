@@ -452,7 +452,7 @@ public class NorthrendTeleporter extends net.minecraft.world.Teleporter
             }
         }
 
-        IBlockState iblockstate = NorthrendBlocks.portalNorthrend.getDefaultState().withProperty(BlockNorthPortal.field_176550_a, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
+        IBlockState iblockstate = NorthrendBlocks.portalNorthrend.getDefaultState().withProperty(BlockNorthPortal.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
 
         for (j3 = 0; j3 < 4; ++j3)
         {

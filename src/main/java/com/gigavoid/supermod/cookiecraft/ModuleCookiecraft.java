@@ -4,6 +4,7 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.gui.CookiecraftGuis;
+import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -27,6 +28,7 @@ public class ModuleCookiecraft extends Module{
     @Override
     public void init(FMLInitializationEvent e) {
         CookiecraftBlocks.initializeBlocks(getRegister());
+        CookiecraftItems.registerItems(getRegister(), e);
         CookiecraftTileEntities.registerTileEntities();
         CookiecraftGuis.initializeGuis();
     }

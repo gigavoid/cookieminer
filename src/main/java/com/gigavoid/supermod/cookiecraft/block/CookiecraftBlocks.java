@@ -20,6 +20,6 @@ public class CookiecraftBlocks {
         register.registerBlock(burntCookieBlock, "cookie_burnt_block");
         register.registerBlock(portalConnector, "cookie_portal_connector");
         register.registerBlock(cookieStorage, "cookie_storage");
-        register.registerBlock(activator, "cp_activator");
+        register.registerBlock(activator, "cookie_portal_activator");
     }
 }

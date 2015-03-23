@@ -452,7 +452,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
             }
         }
 
-        IBlockState iblockstate = CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.field_176550_a, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
+        IBlockState iblockstate = CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
 
         for (j3 = 0; j3 < 4; ++j3)
         {
