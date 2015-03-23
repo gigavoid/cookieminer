@@ -135,7 +135,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
     protected Item getSeed()
     {
-        return Items.wheat_seeds;
+        return Item.getItemFromBlock(NorthrendBlocks.northGlaciemPlant);
     }
 
     protected Item getCrop()
