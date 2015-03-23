@@ -162,6 +162,7 @@ public class RoewayChunkProvider implements IChunkProvider {
                                 else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q)
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
+                                    p_180518_3_.setBlockState(k * 4 + i3, 61 + (64 - (k2 * 8 + l2)), j1 * 4 + j3, this.oceanFiller.getDefaultState());
                                 }
                             }
 
