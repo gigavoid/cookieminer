@@ -5,8 +5,10 @@ import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.teleporter.Teleporter;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -23,11 +25,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockPortalCookiecraft extends BlockPortal {
+public class BlockPortalCookiecraft extends BlockBreakable {
+    public static final PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
+
     public BlockPortalCookiecraft() {
-        super();
-        setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
-        setHardness(-1);
+        super(Material.portal, false);
+        this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+        this.setLightLevel(.75f);
+        this.setHardness(-1);
+        this.setTickRandomly(true);
     }
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
@@ -57,7 +63,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
     }
 
     public void setBlockBoundsBasedOnState(IBlockAccess access, BlockPos pos) {
-        EnumFacing.Axis axis = (EnumFacing.Axis) access.getBlockState(pos).getValue(field_176550_a);
+        EnumFacing.Axis axis = (EnumFacing.Axis) access.getBlockState(pos).getValue(AXIS);
         float f = 0.125F;
         float f1 = 0.125F;
 
@@ -99,7 +105,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
     }
 
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
-        EnumFacing.Axis axis = (EnumFacing.Axis) state.getValue(field_176550_a);
+        EnumFacing.Axis axis = (EnumFacing.Axis) state.getValue(AXIS);
         Size size;
 
         if (axis == EnumFacing.Axis.X) {
@@ -123,7 +129,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
         IBlockState iblockstate = worldIn.getBlockState(pos);
 
         if (worldIn.getBlockState(pos).getBlock() == this) {
-            axis = (EnumFacing.Axis) iblockstate.getValue(field_176550_a);
+            axis = (EnumFacing.Axis) iblockstate.getValue(AXIS);
 
             if (axis == null) {
                 return false;
@@ -175,7 +181,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
 
     //Convert the given metadata into a BlockState for this Block
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(field_176550_a, (meta & 3) == 2 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
+        return this.getDefaultState().withProperty(AXIS, (meta & 3) == 2 ? EnumFacing.Axis.Z : EnumFacing.Axis.X);
     }
 
     @SideOnly(Side.CLIENT)
@@ -210,7 +216,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
 
     //Convert the BlockState into the correct metadata value
     public int getMetaFromState(IBlockState state) {
-        return func_176549_a((EnumFacing.Axis) state.getValue(field_176550_a));
+        return func_176549_a((EnumFacing.Axis) state.getValue(AXIS));
     }
 
     @SideOnly(Side.CLIENT)
@@ -219,7 +225,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
     }
 
     protected BlockState createBlockState() {
-        return new BlockState(this, field_176550_a);
+        return new BlockState(this, AXIS);
     }
 
     public static class Size {
@@ -345,7 +351,7 @@ public class BlockPortalCookiecraft extends BlockPortal {
                 BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
                 for (int j = 0; j < this.field_150862_g; ++j) {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.field_176550_a, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.AXIS, this.field_150865_b), 2);
                 }
             }
         }
