@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "supermod:blocks/north_stone"
+        "all": "supermod:blocks/transparent"
     }
 }
