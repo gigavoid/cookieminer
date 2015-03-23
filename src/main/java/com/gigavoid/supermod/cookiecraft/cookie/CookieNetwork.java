@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.cookiecraft.util;
+package com.gigavoid.supermod.cookiecraft.cookie;
 
 import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;

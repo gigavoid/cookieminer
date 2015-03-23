@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

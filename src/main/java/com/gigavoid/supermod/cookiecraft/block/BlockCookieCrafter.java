@@ -4,7 +4,7 @@ import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
-import com.gigavoid.supermod.cookiecraft.util.CookieNetwork;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
