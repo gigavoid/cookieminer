@@ -22,4 +22,9 @@ public class RopewayWorldProvider extends WorldProvider {
     public String getInternalNameSuffix() {
         return "Skylands";
     }
+
+    @Override
+    public float getCloudHeight() {
+        return 48;
+    }
 }
