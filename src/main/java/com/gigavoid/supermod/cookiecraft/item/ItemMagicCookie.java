@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 public class ItemMagicCookie extends Item {
     public ItemMagicCookie(){
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+        this.setMaxDamage(16);
     }
 
     @Override
