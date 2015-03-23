@@ -1,0 +1,6 @@
+{
+    "parent": "supermod:block/pipe_trio_curve_down",
+    "textures": {
+        "texture": "supermod:blocks/north_planks"
+    }
+}

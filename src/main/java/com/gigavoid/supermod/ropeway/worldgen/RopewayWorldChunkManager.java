@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class RopewayWorldChunkManager extends WorldChunkManager
 {
-    public static ArrayList<RopewayBiomeGenBase> allowedBiomes = Lists.newArrayList((RopewayBiomeGenBase)RopewayBiomes.skylands, (RopewayBiomeGenBase)RopewayBiomes.skylands2);
+    public static ArrayList<RopewayBiomeGenBase> allowedBiomes = Lists.newArrayList((RopewayBiomeGenBase)RopewayBiomes.skylands, (RopewayBiomeGenBase)RopewayBiomes.abyss, (RopewayBiomeGenBase)RopewayBiomes.forest);
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;

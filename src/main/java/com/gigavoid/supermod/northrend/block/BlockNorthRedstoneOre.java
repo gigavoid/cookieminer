@@ -39,7 +39,7 @@ public class BlockNorthRedstoneOre extends Block{
     }
 
     /**
-     * How many world ticks before ticking
+     * How many worldgen ticks before ticking
      */
     public int tickRate(World worldIn)
     {

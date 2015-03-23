@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class CookiecraftGuis implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        /*TileEntity tileEntity = world.getTileEntity(x, y, z);
+        /*TileEntity tileEntity = worldgen.getTileEntity(x, y, z);
         if(ID == GuiCookieCrafter.GUI_ID && tileEntity instanceof TileEntityCookieCrafter)
             return new PickBenchContainer(player.inventory, (TileEntityCookieCrafter) tileEntity);*/
         return null;

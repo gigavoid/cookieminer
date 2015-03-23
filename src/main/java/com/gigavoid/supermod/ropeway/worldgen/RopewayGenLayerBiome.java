@@ -1,7 +1,6 @@
 package com.gigavoid.supermod.ropeway.worldgen;
 
 import com.gigavoid.supermod.ropeway.biome.RopewayBiomeGenBase;
-import com.gigavoid.supermod.ropeway.biome.RopewayBiomes;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;

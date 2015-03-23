@@ -1,0 +1,76 @@
+{
+    "variants": {
+        "down=false,east=false,north=false,south=false,up=false,west=false": { "model": "supermod:cookie_pipe" },
+
+        "down=false,east=false,north=true,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_single", "uvlock": true },
+        "down=true,east=false,north=false,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_single", "x": 90, "uvlock": true },
+        "down=false,east=false,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_single", "x": 270, "uvlock": true },
+        "down=false,east=true,north=false,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_single", "y": 90, "uvlock": true },
+        "down=false,east=false,north=false,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_single", "y": 180, "uvlock": true },
+        "down=false,east=false,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_single", "y": 270, "uvlock": true },
+
+        "down=false,east=false,north=true,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_duo", "uvlock": true },
+        "down=true,east=false,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_duo", "x": 90, "uvlock": true },
+        "down=false,east=true,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_duo", "y": 90, "uvlock": true },
+
+        "down=true,east=false,north=true,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve", "uvlock": true },
+        "down=true,east=false,north=false,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve", "x": 90, "uvlock": true },
+        "down=false,east=false,north=false,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_duo_curve", "x": 180, "uvlock": true },
+        "down=true,east=true,north=false,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve", "y": 90, "uvlock": true },
+        "down=true,east=false,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_duo_curve", "y": 270, "uvlock": true },
+        "down=false,east=false,north=false,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_duo_curve", "x": 180, "y": 90, "uvlock": true },
+        "down=false,east=false,north=true,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_duo_curve", "x": 180, "y": 180, "uvlock": true },
+        "down=false,east=true,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_duo_curve", "x": 180, "y": 270, "uvlock": true },
+
+        "down=false,east=false,north=true,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_duo_curve_flat", "uvlock": true },
+        "down=false,east=true,north=true,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve_flat", "y": 90, "uvlock": true },
+        "down=false,east=true,north=false,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve_flat", "y": 180, "uvlock": true },
+        "down=false,east=false,north=false,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_duo_curve_flat", "y": 270, "uvlock": true },
+
+        "down=true,east=false,north=true,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_trio", "uvlock": true },
+        "down=true,east=false,north=false,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_trio", "x": 90, "uvlock": true },
+        "down=false,east=false,north=true,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_trio", "x": 180, "uvlock": true },
+        "down=true,east=false,north=true,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_trio", "x": 270, "uvlock": true },
+        "down=true,east=true,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_trio", "y": 90, "uvlock": true },
+        "down=true,east=true,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_trio", "x": 90, "y": 270, "uvlock": true },
+        "down=false,east=true,north=false,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_trio", "x": 180, "y": 90, "uvlock": true },
+        "down=true,east=false,north=false,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_trio", "x": 270, "y": 270, "uvlock": true },
+
+        "down=false,east=false,north=true,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_trio_flat", "uvlock": true },
+        "down=false,east=true,north=true,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_trio_flat", "y": 90, "uvlock": true },
+        "down=false,east=true,north=true,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_trio_flat", "y": 180, "uvlock": true },
+        "down=false,east=true,north=false,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_trio_flat", "y": 270, "uvlock": true },
+
+        "down=false,east=false,north=true,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_trio_curve_up", "uvlock": true },
+        "down=false,east=true,north=true,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_trio_curve_up", "y": 90, "uvlock": true },
+        "down=false,east=true,north=false,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_trio_curve_up", "y": 180, "uvlock": true },
+        "down=false,east=false,north=false,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_trio_curve_up", "y": 270, "uvlock": true },
+
+        "down=true,east=false,north=true,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_trio_curve_down", "uvlock": true },
+        "down=true,east=true,north=true,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_trio_curve_down", "y": 90, "uvlock": true },
+        "down=true,east=true,north=false,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_trio_curve_down", "y": 180, "uvlock": true },
+        "down=true,east=false,north=false,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_trio_curve_down", "y": 270, "uvlock": true },
+      
+        "down=true,east=false,north=false,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_quad", "uvlock": true },
+        "down=true,east=false,north=true,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_quad", "y": 90, "uvlock": true },
+        "down=true,east=false,north=true,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_quad", "z": 180, "uvlock": true },
+        "down=false,east=false,north=true,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_quad", "z": 270, "uvlock": true },
+        "down=true,east=true,north=false,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_quad", "y": 90, "uvlock": true },
+        "down=true,east=true,north=false,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_quad", "z": 180, "uvlock": true },
+        "down=false,east=true,north=false,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_quad", "z": 270, "uvlock": true },
+        "down=true,east=true,north=true,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_quad", "y": 90, "uvlock": true },
+        "down=true,east=true,north=true,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_quad", "z": 180, "uvlock": true },
+        "down=false,east=true,north=true,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_quad", "z": 270, "uvlock": true },
+        "down=true,east=true,north=true,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_quad", "z": 180, "uvlock": true },
+        "down=false,east=true,north=true,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_quad", "z": 270, "uvlock": true },
+
+        "down=false,east=true,north=true,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_penta", "uvlock": true },
+        "down=true,east=false,north=true,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_penta", "y": 90, "uvlock": true },
+        "down=true,east=true,north=false,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_penta", "z": 180, "uvlock": true },
+        "down=true,east=true,north=true,south=false,up=true,west=true": { "model": "supermod:cookie_pipe_penta", "z": 270, "uvlock": true },
+        "down=true,east=true,north=true,south=true,up=false,west=true": { "model": "supermod:cookie_pipe_penta", "y": 90, "uvlock": true },
+        "down=true,east=true,north=true,south=true,up=true,west=false": { "model": "supermod:cookie_pipe_penta", "z": 180, "uvlock": true },
+
+        "down=true,east=true,north=true,south=true,up=true,west=true": { "model": "supermod:cookie_pipe_hexa", "uvlock": true }
+    }
+}

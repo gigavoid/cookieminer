@@ -2,12 +2,12 @@ package com.gigavoid.supermod.ropeway.biome;
 
 import net.minecraft.init.Blocks;
 
-public class BiomeGenRopewaySkylands2 extends RopewayBiomeGenBase {
+public class BiomeGenRopewayAbyss extends RopewayBiomeGenBase {
 
-    public BiomeGenRopewaySkylands2(int id, int weight){
+    public BiomeGenRopewayAbyss(int id, int weight){
         super(id, weight);
 
-        setBiomeName("Skyworld");
+        setBiomeName("Abyss");
         setHeight(new Height(1.0f, 0.3f));
         topBlock = Blocks.grass.getDefaultState();
         fillerBlock = Blocks.dirt.getDefaultState();

@@ -162,7 +162,7 @@ public class RoewayChunkProvider implements IChunkProvider {
                                 else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q)
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
-                                    p_180518_3_.setBlockState(k * 4 + i3, 61 + (64 - (k2 * 8 + l2)), j1 * 4 + j3, this.oceanFiller.getDefaultState());
+                                    p_180518_3_.setBlockState(k * 4 + i3, 60 + (64 - (k2 * 8 + l2)), j1 * 4 + j3, this.oceanFiller.getDefaultState());
                                 }
                             }
 
@@ -458,7 +458,7 @@ public class RoewayChunkProvider implements IChunkProvider {
     }
 
     /**
-     * Save extra data not associated with any Chunk.  Not saved during autosave, only during world unload.  Currently
+     * Save extra data not associated with any Chunk.  Not saved during autosave, only during worldgen unload.  Currently
      * unimplemented.
      */
     public void saveExtraData() {}
@@ -503,7 +503,8 @@ public class RoewayChunkProvider implements IChunkProvider {
         return 0;
     }
 
-    public void func_180514_a(Chunk p_180514_1_, int p_180514_2_, int p_180514_3_) {}
+    public void func_180514_a(Chunk p_180514_1_, int p_180514_2_, int p_180514_3_) {
+    }
 
     public Chunk func_177459_a(BlockPos p_177459_1_)
     {
