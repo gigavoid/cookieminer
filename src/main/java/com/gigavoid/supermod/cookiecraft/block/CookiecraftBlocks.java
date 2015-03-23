@@ -17,8 +17,8 @@ public class CookiecraftBlocks {
         register.registerBlock(portalCookiecraft, "cookie_portal");
         register.registerBlock(cookieBlock, "cookie_block");
         register.registerBlock(cookieDoughCollector, "cookie_dough_collector");
-        register.registerBlock(burntCookieBlock, "burnt_cookie_block");
-        register.registerBlock(portalConnector, "portal_connector");
+        register.registerBlock(burntCookieBlock, "cookie_burnt_block");
+        register.registerBlock(portalConnector, "cookie_portal_connector");
         register.registerBlock(cookieStorage, "cookie_storage");
         register.registerBlock(activator, "cp_activator");
     }

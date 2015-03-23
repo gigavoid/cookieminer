@@ -1,5 +1,5 @@
 {
-    "parent": "supermod:block/portal_connector",
+    "parent": "supermod:block/cookie_portal_connector",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

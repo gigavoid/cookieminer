@@ -2,6 +2,6 @@
     "parent": "block/cube_column",
     "textures": {
         "end": "supermod:blocks/cookie_dough_collector_side",
-        "side": "supermod:blocks/portal_connector"
+        "side": "supermod:blocks/cookie_portal_connector"
     }
 }

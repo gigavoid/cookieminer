@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "supermod:items/cocoa_stick"
+    "layer0": "supermod:items/cookie_magic"
   },
   "display": {
     "thirdperson": {

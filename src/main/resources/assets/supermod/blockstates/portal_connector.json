@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "active=true": { "model": "supermod:portal_connector_connected" },
-        "active=false": { "model": "supermod:portal_connector" }
-    }
-}
