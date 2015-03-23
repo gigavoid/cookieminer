@@ -1,4 +1,4 @@
-package com.gigavoid.supermod.cookiecraft.util;
+package com.gigavoid.supermod.cookiecraft.cookie;
 
 import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
@@ -107,7 +107,7 @@ public class CookieNetwork {
         return cps;
     }
 
-    private CookieBlock findCrafter() {
+    public CookieBlock findCrafter() {
         for (CookieBlock block : cookieBlocks) {
             if (block.isCrafter())
                 return block;

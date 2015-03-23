@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -55,4 +56,9 @@ public class BlockPortalConnector extends BlockCookieUpgradeBase implements ICoo
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {
         return world.getBlockState(blockPos).getBlock() == CookiecraftBlocks.portalCookiecraft;
     }
+
+	@Override
+	public int getGuiId() {
+		return GuiCookieUpgrade.GUI_ID;
+	}
 }

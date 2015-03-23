@@ -1,11 +1,17 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieStorage;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieStorage {
@@ -37,4 +43,9 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
     public void addCookies(World world, BlockPos pos, long numCookies) {
         getTileEntity(world, pos).addCookies(numCookies);
     }
+
+	@Override
+	public int getGuiId() {
+		return GuiCookieStorage.GUI_ID;
+	}
 }
