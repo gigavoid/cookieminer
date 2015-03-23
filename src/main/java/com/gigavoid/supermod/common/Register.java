@@ -17,15 +17,17 @@ import net.minecraftforge.fml.relauncher.Side;
 public class Register {
     private int nextDimensionId = 2;
     private int nextBiomeId = 40;
+	private Side side;
 
-    public void registerBlock(Block block, String name) {
+	public void registerBlock(Block block, String name) {
         registerBlock(block, name, name);
     }
 
     public void registerBlock(Block block, String name, String resourceName) {
         block.setUnlocalizedName(name);
         GameRegistry.registerBlock(block, name);
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + resourceName, "inventory"));
+		if (side== Side.CLIENT)
+        	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + resourceName, "inventory"));
     }
 
     public void registerFluid(Fluid fluid, String name) {
@@ -54,4 +56,8 @@ public class Register {
     public void registerWorldGenerator(IWorldGenerator generator, int id){
         GameRegistry.registerWorldGenerator(generator, id);
     }
+
+	public void setSide(Side side) {
+		this.side = side;
+	}
 }

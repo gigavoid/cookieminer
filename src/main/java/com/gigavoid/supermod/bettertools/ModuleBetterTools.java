@@ -10,9 +10,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 public class ModuleBetterTools extends Module {
     @Override
     public void init(FMLInitializationEvent e) {
-        BetterToolsWorldGens.initializeWorldGens(getRegister());
-        BetterToolsItems.initializeItems(e, getRegister());
-        BetterToolsBlocks.initializeBlocks(getRegister());
+        BetterToolsWorldGens.initializeWorldGens(getRegister(e.getSide()));
+        BetterToolsItems.initializeItems(e, getRegister(e.getSide()));
+        BetterToolsBlocks.initializeBlocks(getRegister(e.getSide()));
         BetterToolsRecipes.initializeRecipes();
     }
 }

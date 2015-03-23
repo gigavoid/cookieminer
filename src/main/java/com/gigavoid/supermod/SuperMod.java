@@ -22,7 +22,7 @@ public class SuperMod
     private ModuleLoader moduleLoader = new ModuleLoader();
     
     public SuperMod() {
-        moduleLoader.registerModule(new ModuleRopeway());
+        //moduleLoader.registerModule(new ModuleRopeway());
         moduleLoader.registerModule(new ModuleNorthrend());
         moduleLoader.registerModule(new ModuleBonus());
         moduleLoader.registerModule(new ModuleBetterTools());

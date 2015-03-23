@@ -16,15 +16,10 @@ import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureMin
 import com.gigavoid.supermod.northrend.worldgen.structures.NorthrendStructureVillagePieces;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
@@ -32,17 +27,17 @@ public class ModuleNorthrend extends Module {
 
     @Override
     public void preInit(FMLPreInitializationEvent e){
-        NorthrendBlocks.initializeBlocks(getRegister());
-        NorthrendBiomes.registerBiomes(getRegister());
+        NorthrendBlocks.initializeBlocks(getRegister(e.getSide()));
+        NorthrendBiomes.registerBiomes(getRegister(e.getSide()));
 
-        dimensionId = getRegister().registerDimension(NorthrendWorldProvider.class, false);
-        getRegister().registerWorldGenerator(new NorthrendMapGenOres(), 20);
+        dimensionId = getRegister(e.getSide()).registerDimension(NorthrendWorldProvider.class, false);
+        getRegister(e.getSide()).registerWorldGenerator(new NorthrendMapGenOres(), 20);
     }
 
     @Override
     public void init(FMLInitializationEvent e){
-        NorthrendBlocks.registerBlocks(getRegister());
-        NorthrendItems.registerItems(e, getRegister());
+        NorthrendBlocks.registerBlocks(getRegister(e.getSide()));
+        NorthrendItems.registerItems(e, getRegister(e.getSide()));
         NorthrendRecipies.registerRecipies();
 
         MapGenStructureIO.registerStructure(NorthrendMapGenFortress.Start.class, "Northrend Fortress");
