@@ -1,6 +1,6 @@
 {
     "parent": "supermod:block/pipe_trio_flat",
     "textures": {
-        "texture": "supermod:blocks/north_planks"
+        "texture": "supermod:blocks/cookie_pipe"
     }
 }

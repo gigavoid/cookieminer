@@ -43,25 +43,6 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         float yMin = 0.3125F;
         float yMax = 0.6875F;
 
-        if (down)
-        {
-            yMin = 0.0F;
-        }
-
-        if (up)
-        {
-            yMax = 1.0F;
-        }
-
-        if (down || up)
-        {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
-        }
-
-        yMin = 0.3125F;
-        yMax = 0.6875F;
-
         if (north)
         {
             zMin = 0.0F;
@@ -71,50 +52,21 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         {
             zMax = 1.0F;
         }
-
-        if (north || south || !down && !up)
+        if (down)
         {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+            yMin = 0.0F;
         }
-
-        yMin = 0.3125F;
-        yMax = 0.6875F;
-        zMin = 0.3125F;
-        zMax = 0.6875F;
-
+        if (up)
+        {
+            yMax = 1.0F;
+        }
         if (west)
         {
             xMin = 0.0F;
         }
-
         if (east)
         {
             xMax = 1.0F;
-        }
-
-        if (west || east || !north && !south || !down && !up)
-        {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
-        }
-
-        if (north)
-        {
-            zMin = 0.0F;
-        }
-
-        if (south)
-        {
-            zMax = 1.0F;
-        }
-        if (down)
-        {
-            yMin = 0.0F;
-        }
-        if (up)
-        {
-            yMax = 1.0F;
         }
 
         this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
@@ -153,7 +105,7 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
 
         if (east)
         {
-            xMin = 1.0F;
+            xMax = 1.0F;
         }
         if (down)
         {
