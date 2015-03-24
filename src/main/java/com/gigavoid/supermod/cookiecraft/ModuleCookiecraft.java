@@ -4,6 +4,7 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.gui.CookiecraftGuis;
+import com.gigavoid.supermod.cookiecraft.recipe.CookiecraftRecipes;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -29,5 +30,6 @@ public class ModuleCookiecraft extends Module{
         CookiecraftBlocks.initializeBlocks(getRegister());
         CookiecraftTileEntities.registerTileEntities();
         CookiecraftGuis.initializeGuis();
+        CookiecraftRecipes.initializeRecipes();
     }
 }
