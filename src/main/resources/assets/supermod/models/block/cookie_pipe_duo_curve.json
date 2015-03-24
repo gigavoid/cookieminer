@@ -1,0 +1,6 @@
+{
+    "parent": "supermod:block/pipe_duo_curve",
+    "textures": {
+        "texture": "supermod:blocks/cookie_pipe"
+    }
+}

@@ -13,9 +13,9 @@ tile.north_cobblestone.name=Northrend Cobblestone
 tile.north_cobble_stairs.name=Northrend Stone Stairs
 tile.north_fence.name=Northrend Fence
 tile.north_fence_gate.name=Northrend Fence Gate
-tile.glaciem_plant.name=Glaciem Plant
+tile.north_glaciem_plant.name=Glaciem Seeds
 tile.north_blight.name=Northrend Blight
-tile.snow_layer_mod.name=Snow Layer
+tile.north_snow_layer_mod.name=Snow Layer
 tile.north_coal_ore.name=Coal Ore
 tile.north_diamond_ore.name=Diamond Ore
 tile.north_emerald_ore.name=Emerald Ore
@@ -30,15 +30,16 @@ tile.north_dragon_bone.name=Dragon Fossil
 tile.north_dragonhead.name=Dragonhead
 
 < Northrend Items >
-item.dragonbone_pickaxe.name=Dragonbone Pickaxe
-item.mithril_pickaxe.name=Mithril Pickaxe
-item.mithril_sword.name=Mithril Sword
-item.mithril_axe.name=Mithril Axe
-item.mithril_hoe.name=Mithril Hoe
-item.mithril_shovel.name=Mithril Shovel
-item.dragonbone.name=Dragonbone
-item.frost_gem.name=Frost Gem
-item.mithril_ingot.name=Mithril Ingot
+item.north_dragonbone_pickaxe.name=Dragonbone Pickaxe
+item.north_mithril_pickaxe.name=Mithril Pickaxe
+item.north_mithril_sword.name=Mithril Sword
+item.north_mithril_axe.name=Mithril Axe
+item.north_mithril_hoe.name=Mithril Hoe
+item.north_mithril_shovel.name=Mithril Shovel
+item.north_dragonbone.name=Dragonbone
+item.north_frost_gem.name=Frost Gem
+item.north_mithril_ingot.name=Mithril Ingot
+item.north_pearl.name=Northrend Pearl
 
 < Bonus >
 tile.bonus_block.name=Bonus Block

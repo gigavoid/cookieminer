@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "active=true": { "model": "supermod:cookie_portal_connector_connected" },
+        "active=false": { "model": "supermod:cookie_portal_connector" }
+    }
+}

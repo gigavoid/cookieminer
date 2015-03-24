@@ -20,7 +20,7 @@ public class NorthrendWorldProvider extends WorldProvider {
 
     @Override
     public void updateWeather() {
-        worldObj.setRainStrength(1.0f);
+        //worldObj.setRainStrength(1.0f);
         worldObj.getWorldInfo().setRaining(true);
     }
 

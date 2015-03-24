@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.recipe;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.item.NorthrendItems;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -11,6 +12,7 @@ public class NorthrendRecipies {
         dragonbonePickaxe();
         mithrilTools();
         mithrilIngot();
+        northPearl();
     }
 
     private static void dragonbonePickaxe(){
@@ -21,6 +23,7 @@ public class NorthrendRecipies {
     }
 
     private static void mithrilTools(){
+
         ItemStack mithrilIngot = new ItemStack(NorthrendItems.mithrilIngot);
         ItemStack stick = new ItemStack(Items.stick);
 
@@ -43,5 +46,12 @@ public class NorthrendRecipies {
 
     private static void mithrilIngot(){
         GameRegistry.addSmelting(NorthrendBlocks.mithrilOre, new ItemStack(NorthrendItems.mithrilIngot), 1);
+    }
+
+    private static void northPearl(){
+        ItemStack enerPearl = new ItemStack(Items.ender_pearl);
+        ItemStack ice = new ItemStack(Blocks.ice);
+
+        GameRegistry.addShapelessRecipe(new ItemStack(NorthrendItems.northPearl), enerPearl, ice);
     }
 }

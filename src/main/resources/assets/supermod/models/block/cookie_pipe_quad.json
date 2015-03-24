@@ -1,0 +1,6 @@
+{
+    "parent": "supermod:block/pipe_quad",
+    "textures": {
+        "texture": "supermod:blocks/cookie_pipe"
+    }
+}

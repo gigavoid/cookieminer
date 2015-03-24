@@ -542,7 +542,7 @@ public class NorthrendChunkProvider implements IChunkProvider {
     }
 
     /**
-     * Save extra data not associated with any Chunk.  Not saved during autosave, only during world unload.  Currently
+     * Save extra data not associated with any Chunk.  Not saved during autosave, only during worldgen unload.  Currently
      * unimplemented.
      */
     public void saveExtraData() {}

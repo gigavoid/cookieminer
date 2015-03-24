@@ -4,6 +4,7 @@ import com.gigavoid.supermod.common.Register;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * Created by Henrik on 2015-02-13.
@@ -15,7 +16,8 @@ public abstract class Module {
         this.register = register;
     }
 
-    public Register getRegister() {
+    public Register getRegister(Side side) {
+		register.setSide(side);
         return register;
     }
 

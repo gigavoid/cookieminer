@@ -10,19 +10,21 @@ public class NorthrendItems {
     public static ItemNorthAxe mithrilAxe = new ItemNorthAxe();
     public static ItemNorthHoe mithrilHoe = new ItemNorthHoe();
     public static ItemNorthShovel mithrilShovel = new ItemNorthShovel();
-    public static ItemDragonbone dragonbone = new ItemDragonbone();
-    public static ItemFrostGem frostGem = new ItemFrostGem();
-    public static ItemMithrilIngot mithrilIngot = new ItemMithrilIngot();
+    public static ItemNorthDragonbone dragonbone = new ItemNorthDragonbone();
+    public static ItemNorthFrostGem frostGem = new ItemNorthFrostGem();
+    public static ItemNorthMithrilIngot mithrilIngot = new ItemNorthMithrilIngot();
+    public static ItemNorthPearl northPearl = new ItemNorthPearl();
 
     public static void registerItems(FMLInitializationEvent e, Register register){
-        register.registerItem(dragonbonePickaxe, "dragonbone_pickaxe", e);
-        register.registerItem(mithrilPickaxe, "mithril_pickaxe", e);
-        register.registerItem(mithrilSword, "mithril_sword", e);
-        register.registerItem(mithrilAxe, "mithril_axe", e);
-        register.registerItem(mithrilHoe, "mithril_hoe", e);
-        register.registerItem(mithrilShovel, "mithril_shovel", e);
-        register.registerItem(dragonbone, "dragonbone", e);
-        register.registerItem(frostGem, "frost_gem", e);
-        register.registerItem(mithrilIngot, "mithril_ingot", e);
+        register.registerItem(dragonbonePickaxe, "north_dragonbone_pickaxe", e);
+        register.registerItem(mithrilPickaxe, "north_mithril_pickaxe", e);
+        register.registerItem(mithrilSword, "north_mithril_sword", e);
+        register.registerItem(mithrilAxe, "north_mithril_axe", e);
+        register.registerItem(mithrilHoe, "north_mithril_hoe", e);
+        register.registerItem(mithrilShovel, "north_mithril_shovel", e);
+        register.registerItem(dragonbone, "north_dragonbone", e);
+        register.registerItem(frostGem, "north_frost_gem", e);
+        register.registerItem(mithrilIngot, "north_mithril_ingot", e);
+        register.registerItem(northPearl, "north_pearl", e);
     }
 }

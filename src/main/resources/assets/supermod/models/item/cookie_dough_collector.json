@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "parent": "supermod:block/cookie_dough_collector",
     "display": {
         "thirdperson": {
@@ -8,3 +9,14 @@
         }
     }
 }
+=======
+  "parent": "supermod:block/cookie_dough_collector",
+  "display": {
+    "thirdperson": {
+      "rotation": [ 10, -45, 170 ],
+      "translation": [ 0, 1.5, -2.75 ],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  }
+}
+>>>>>>> 7f50f7fb734cbdb440c69db52cf364dc0b19afa3

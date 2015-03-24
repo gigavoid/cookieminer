@@ -1747,7 +1747,7 @@ public class NorthrendStructureVillagePieces
         }
 
         /**
-         * Spawns a number of villagers in this component. Parameters: world, component bounding box, x offset, y
+         * Spawns a number of villagers in this component. Parameters: worldgen, component bounding box, x offset, y
          * offset, z offset, number of villagers
          */
         protected void spawnVillagers(World worldIn, StructureBoundingBox p_74893_2_, int p_74893_3_, int p_74893_4_, int p_74893_5_, int p_74893_6_)

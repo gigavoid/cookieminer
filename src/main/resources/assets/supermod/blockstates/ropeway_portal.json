@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "axis=z": {"model": "supermod:ropeway_portal_ew"},
+        "axis=x": {"model": "supermod:ropeway_portal_ns"}
+    }
+}

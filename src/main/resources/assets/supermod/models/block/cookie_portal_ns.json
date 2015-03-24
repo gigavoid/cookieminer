@@ -1,6 +1,6 @@
 {
     "textures": {
-        "particle": "blocks/snowshovel",
+        "particle": "supermod:particle/test",
         "portal": "supermod:blocks/cookie_portal"
     },
     "elements": [

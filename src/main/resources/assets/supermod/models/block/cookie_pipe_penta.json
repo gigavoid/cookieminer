@@ -1,0 +1,6 @@
+{
+    "parent": "supermod:block/pipe_penta",
+    "textures": {
+        "texture": "supermod:blocks/cookie_pipe"
+    }
+}
