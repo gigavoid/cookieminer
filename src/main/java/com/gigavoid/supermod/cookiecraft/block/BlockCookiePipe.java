@@ -43,6 +43,58 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         float yMin = 0.3125F;
         float yMax = 0.6875F;
 
+        if (down)
+        {
+            yMin = 0.0F;
+        }
+
+        if (up)
+        {
+            yMax = 1.0F;
+        }
+
+        if (down || up)
+        {
+            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
+            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+        }
+
+        yMin = 0.3125F;
+        yMax = 0.6875F;
+
+        if (north)
+        {
+            zMin = 0.0F;
+        }
+        if (south)
+        {
+            zMax = 1.0F;
+        }
+
+        if (west || east || !down && !up)
+        {
+            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
+            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+        }
+
+        zMin = 0.3125F;
+        zMax = 0.6875F;
+
+        if (west)
+        {
+            xMin = 0.0F;
+        }
+        if (east)
+        {
+            xMax = 1.0F;
+        }
+
+        if (west || east || !down && !up || !north && !south)
+        {
+            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
+            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+        }
+
         if (north)
         {
             zMin = 0.0F;
@@ -60,17 +112,8 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         {
             yMax = 1.0F;
         }
-        if (west)
-        {
-            xMin = 0.0F;
-        }
-        if (east)
-        {
-            xMax = 1.0F;
-        }
 
         this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-        super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
     }
 
     public void setBlockBoundsBasedOnState(IBlockAccess access, BlockPos pos)
