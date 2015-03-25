@@ -24,7 +24,7 @@ public class ItemMagicCookie extends Item {
         }
         else
         {
-            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && worldIn.getBlockState(pos).getBlock().isSolidFullCube()){
+            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && CookiecraftBlocks.burntCookieBlock != worldIn.getBlockState(pos).getBlock() && Blocks.bedrock != worldIn.getBlockState(pos).getBlock() &&worldIn.getBlockState(pos).getBlock().isSolidFullCube()){
                 worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
                 return true;
             }
