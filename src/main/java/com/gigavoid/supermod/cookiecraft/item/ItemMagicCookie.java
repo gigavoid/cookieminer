@@ -2,6 +2,7 @@ package com.gigavoid.supermod.cookiecraft.item;
 
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ public class ItemMagicCookie extends Item {
         }
         else
         {
-            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && CookiecraftBlocks.burntCookieBlock != worldIn.getBlockState(pos).getBlock() && Blocks.bedrock != worldIn.getBlockState(pos).getBlock() &&worldIn.getBlockState(pos).getBlock().isSolidFullCube()){
+            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && worldIn.getBlockState(pos).getBlock().getBlockHardness(worldIn, pos) >= 0 && worldIn.getBlockState(pos).getBlock().isSolidFullCube()){
                 worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
                 return true;
             }
