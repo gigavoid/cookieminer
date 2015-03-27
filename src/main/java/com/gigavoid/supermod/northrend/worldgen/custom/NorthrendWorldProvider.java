@@ -3,6 +3,8 @@ package com.gigavoid.supermod.northrend.worldgen.custom;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NorthrendWorldProvider extends WorldProvider {
     public void registerWorldChunkManager() {
@@ -20,7 +22,6 @@ public class NorthrendWorldProvider extends WorldProvider {
 
     @Override
     public void updateWeather() {
-        //worldObj.setRainStrength(1.0f);
         worldObj.getWorldInfo().setRaining(true);
     }
 

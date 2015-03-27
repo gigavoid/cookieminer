@@ -28,6 +28,8 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
         spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
+        enableRain = true;
+        setTemperatureRainfall(.0f, 1.0f);
         waterColorMultiplier = 0xFFFFFF;
     }
 
