@@ -33,6 +33,9 @@ public class NorthrendBlocks {
     public static BlockNorthRedstoneOre lit_redstoneOre;
     public static BlockNorthDragonBone dragonBone;
     public static BlockNorthDragonHead dragonHead;
+    public static BlockNorthSapling northPineSapling;
+    public static BlockNorthSapling northFirSapling;
+    public static BlockNorthSapling northBirchSapling;
 
     public static void initializeBlocks(Register register) {
         //baseFluid = new Fluid("baseFluid");
@@ -66,6 +69,9 @@ public class NorthrendBlocks {
         lit_redstoneOre = new BlockNorthRedstoneOre(true);
         dragonBone = new BlockNorthDragonBone();
         dragonHead = new BlockNorthDragonHead();
+        northPineSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.PINE);
+        northFirSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.FIR);
+        northBirchSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.BIRCH);
     }
 
     public static void registerBlocks(Register register){
@@ -97,5 +103,8 @@ public class NorthrendBlocks {
         register.registerBlock(lit_redstoneOre, "north_lit_red_stone_ore", "north_red_stone_ore");
         register.registerBlock(dragonBone, "north_dragon_bone");
         register.registerBlock(dragonHead, "north_dragonhead");
+        register.registerBlock(northPineSapling, "north_pine_sapling");
+        register.registerBlock(northFirSapling, "north_fir_sapling");
+        register.registerBlock(northBirchSapling, "north_birch_sapling");
     }
 }

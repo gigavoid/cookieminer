@@ -28,32 +28,32 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     }
 
     @Override
-    public boolean generate(World p_76484_1_, Random p_76484_2_, BlockPos pos) {
+    public boolean generate(World world, Random random, BlockPos pos) {
         boolean ret = false, noTreesNear = true;
         for (int i = 0; i < 2; i++){
             for (int j = -1; j < 2; j++){
                 for (int k = -1; k < 2; k++){
                     int i1 = i == 0 ? 0 : 4;
-                    noTreesNear = p_76484_1_.getBlockState(pos.add(j, i1, k)).getBlock() != NorthrendBlocks.northLog;
+                    noTreesNear = world.getBlockState(pos.add(j, i1, k)).getBlock() != NorthrendBlocks.northLog;
                 }
             }
         }
-        if (noTreesNear && p_76484_1_.getBlockState(pos.add(0, -2, 0)) == NorthrendBlocks.northDirt.getDefaultState()) {
+        if (noTreesNear && world.getBlockState(pos.offsetDown(2)) == NorthrendBlocks.northDirt.getDefaultState()) {
             if (type == TreeType.PINE)
-                genPineTree(p_76484_1_, p_76484_2_, pos);
+                genPineTree(world, random, pos);
             else if (type == TreeType.FIR)
-                genTreeFir(p_76484_1_, p_76484_2_, pos);
+                genTreeFir(world, random, pos);
             else if (type == TreeType.BIRCH)
-                genTreeBirch(p_76484_1_, p_76484_2_, pos);
+                genTreeBirch(world, random, pos);
             else
-                genPineTree(p_76484_1_, p_76484_2_, pos);
+                genPineTree(world, random, pos);
             ret = true;
         }
         return ret;
     }
 
     private void genPineTree(World world, Random random, BlockPos pos) {
-        if (world.getBlockState(pos.add(0, -1, 0)).getBlock() == Block.getBlockFromName("snow") && pos.getY() < 80) {
+        if (pos.getY() < 80) {
             int height = 4 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {
                 world.setBlockState(pos.add(0, k, 0), NorthrendBlocks.northLog.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)));
@@ -89,7 +89,7 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     }
 
     private void genTreeFir(World world, Random random, BlockPos pos) {
-        if (world.getBlockState(pos.add(0, -1, 0)).getBlock() == Block.getBlockFromName("snow") && pos.getY() < 80) {
+        if (pos.getY() < 80) {
             int height = 5 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {
                 world.setBlockState(pos.add(0, k, 0), NorthrendBlocks.northLog.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)));
@@ -146,7 +146,7 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     }
 
     private void genTreeBirch(World world, Random random, BlockPos pos) {
-        if (world.getBlockState(pos.add(0, -1, 0)).getBlock() == Block.getBlockFromName("snow") && pos.getY() < 80) {
+        if (pos.getY() < 80) {
             int height = 4 + random.nextInt(3);
             for (int k = - 1; k < height; k++) {
                 this.func_175905_a(world, pos.offsetUp(k), Blocks.log, 2);

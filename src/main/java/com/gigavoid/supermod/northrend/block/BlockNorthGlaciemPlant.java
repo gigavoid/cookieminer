@@ -36,6 +36,12 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
         this.disableStats();
     }
 
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
+    {
+        return worldIn.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() == NorthrendBlocks.northDirt;
+    }
+
     protected boolean canPlaceBlockOn(Block ground)
     {
         return ground == NorthrendBlocks.northDirt;

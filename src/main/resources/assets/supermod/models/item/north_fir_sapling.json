@@ -1,7 +1,7 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "blocks/sapling_north_fir"
+    "layer0": "supermod:blocks/north_fir_sapling"
   },
   "display": {
     "thirdperson": {
