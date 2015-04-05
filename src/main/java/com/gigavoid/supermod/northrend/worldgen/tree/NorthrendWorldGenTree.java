@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.northrend.worldgen.tree;
 
+import com.gigavoid.supermod.northrend.block.BlockNorthLeaves;
+import com.gigavoid.supermod.northrend.block.BlockNorthSapling;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
@@ -58,20 +60,22 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
             for (int k = - 1; k < height; k++) {
                 world.setBlockState(pos.add(0, k, 0), NorthrendBlocks.northLog.getDefaultState().withProperty(AXIS_PROP, BlockLog.EnumAxis.func_176870_a(EnumFacing.Axis.Y)));
             }
-            world.setBlockState(pos.add(0, height, 0), NorthrendBlocks.northLeaves.getDefaultState());
             genTreeHead(world, random, pos.add(0, height - 1, 0));
         }
     }
 
     private void genTreeHead(World world, Random r, BlockPos pos) {
+        BlockNorthLeaves leaves = NorthrendBlocks.northLeaves;
+        leaves.setDropType(BlockNorthSapling.EnumType.PINE);
         IBlockState block;
+        world.setBlockState(pos.offsetUp(), leaves.getDefaultState());
         for (int i = -2; i < 3; i++) {
             for (int j = -2; j < 3; j++) {
                 if ((world.getBlockState(pos.add(i, 0, j)).getBlock() == Blocks.air || world.getBlockState(pos.add(i, 0, j)).getBlock() == Blocks.snow_layer) && northTreeHead[(i + 2) + 5 * (j + 2)]) {
                     if (((i == -2 || i == 2) && (j == -1 || j == 1)) || ((i == -1 || i == 1) && (j == -2 || j == 2)))
-                        block = .85f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                        block = .85f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                     else
-                        block = NorthrendBlocks.northLeaves.getDefaultState();
+                        block = leaves.getDefaultState();
                     world.setBlockState(pos.add(i, 0, j), block);
                 }
             }
@@ -99,6 +103,8 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     }
 
     private void genTreeHeadFir(World world, Random r, BlockPos pos, int height) {
+        BlockNorthLeaves leaves = NorthrendBlocks.northLeaves;
+        leaves.setDropType(BlockNorthSapling.EnumType.FIR);
         IBlockState block;
         for (int i = -2; i < 3; i++) {
             for (int j = -2; j < 3; j++) {
@@ -110,32 +116,32 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
                             case -4:
                                 if ((i == -2 || i == 2) && (j != -2 && j != 2) || (i > -2 && i < 2))
                                     if (((i == -2 || i == 2) && (j == -1 || j == 1)) || ((i == -1 || i == 1) && (j == -2 || j == 2)))
-                                        block = .95f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                        block = .95f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                                     else
-                                        block = NorthrendBlocks.northLeaves.getDefaultState();
+                                        block = leaves.getDefaultState();
                                 break;
                             case -3:
                                 if (((i == -2 || i == 2) && j == 0) || (i == -1 || i == 1) && (j != -2 && j != 2) || i == 0)
-                                    block = NorthrendBlocks.northLeaves.getDefaultState();
+                                    block = leaves.getDefaultState();
                                 break;
                             case -2:
                                 if (i != -2 && i != 2 && j != -2 && j != 2)
                                     if (i == -1 && j == -1 || i == -1 && j == 1 || i == 1 && j == -1 || i == 1 && j == 1)
-                                        block = .9f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                        block = .9f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                                     else
-                                        block = NorthrendBlocks.northLeaves.getDefaultState();
+                                        block = leaves.getDefaultState();
                                 break;
                             case -1:
                                 if (i > -2 && i < 2 && j > -2 && j < 2 && (i == 0 || j == 0))
-                                    block = .95f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                    block = .95f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                                 break;
                             case 0:
                                 if (i == 0 && j == 0)
-                                    block = NorthrendBlocks.northLeaves.getDefaultState();
+                                    block = leaves.getDefaultState();
                                 break;
                             case 1:
                                 if (i == 0 && j == 0)
-                                    block = .75f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                    block = .75f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                                 break;
                         }
                     }
@@ -156,6 +162,8 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
     }
 
     private void genTreeHeadBirch(World world, Random r, BlockPos pos, int height){
+        BlockNorthLeaves leaves = NorthrendBlocks.northLeaves;
+        leaves.setDropType(BlockNorthSapling.EnumType.BIRCH);
         IBlockState block;
         for (int i = -2; i < 3; i++){
             for (int j = -2; j < 3; j++){
@@ -165,25 +173,25 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
                         block = Blocks.air.getDefaultState();
                         if (k == 0) {
                             if (i > -2 && i < 2 && j > -2 && j < 2) {
-                                block = NorthrendBlocks.northLeaves.getDefaultState();
+                                block = leaves.getDefaultState();
                             }
                         } else if (k != -3) {
                             if (j != -2 && j != 2) {
                                 if (i == -2 || i == 2) {
-                                    block = NorthrendBlocks.northLeaves.getDefaultState();
+                                    block = leaves.getDefaultState();
                                 }
                             }
                             else if (i != -2 && i != 2) {
-                                block = NorthrendBlocks.northLeaves.getDefaultState();
+                                block = leaves.getDefaultState();
                             }
                         } else {
                             if (j != -2 && j != 2) {
                                 if (i == -2 || i == 2) {
-                                    block = .5f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                    block = .5f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                                 }
                             }
                             else if (i != -2 && i != 2) {
-                                block = .5f > r.nextFloat() ? NorthrendBlocks.northLeaves.getDefaultState() : Blocks.air.getDefaultState();
+                                block = .5f > r.nextFloat() ? leaves.getDefaultState() : Blocks.air.getDefaultState();
                             }
                         }
                     }
