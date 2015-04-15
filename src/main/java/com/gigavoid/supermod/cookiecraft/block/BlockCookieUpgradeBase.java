@@ -19,6 +19,7 @@ public abstract class BlockCookieUpgradeBase extends Block {
         super(material);
     }
 
+
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         if (!worldIn.isRemote)
@@ -33,14 +34,23 @@ public abstract class BlockCookieUpgradeBase extends Block {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!playerIn.isSneaking())
-			return false;
+		if (hasImportantUI()) {
+			if (playerIn.isSneaking()) {
+				return false;
+			}
+		} else {
+			if (!playerIn.isSneaking()) {
+				return false;
+			}
+		}
+
 
 		playerIn.openGui(SuperMod.instance, getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 
 	public abstract int getGuiId();
+	public abstract boolean hasImportantUI();
 
 
 }

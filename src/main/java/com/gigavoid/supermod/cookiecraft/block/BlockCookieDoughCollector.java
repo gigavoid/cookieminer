@@ -22,4 +22,9 @@ public class BlockCookieDoughCollector extends BlockCookieUpgradeBase implements
 	public int getGuiId() {
 		return GuiCookieUpgrade.GUI_ID;
 	}
+
+	@Override
+	public boolean hasImportantUI() {
+		return false;
+	}
 }

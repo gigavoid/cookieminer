@@ -192,4 +192,9 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
     public TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
+
+	@Override
+	public boolean hasImportantUI() {
+		return true;
+	}
 }

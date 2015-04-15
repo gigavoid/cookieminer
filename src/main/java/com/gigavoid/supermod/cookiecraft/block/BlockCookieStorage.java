@@ -69,4 +69,9 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
 			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 		}
 	}
+
+	@Override
+	public boolean hasImportantUI() {
+		return true;
+	}
 }

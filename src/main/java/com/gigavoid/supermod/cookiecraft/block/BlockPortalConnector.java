@@ -61,4 +61,9 @@ public class BlockPortalConnector extends BlockCookieUpgradeBase implements ICoo
 	public int getGuiId() {
 		return GuiCookieUpgrade.GUI_ID;
 	}
+
+	@Override
+	public boolean hasImportantUI() {
+		return false;
+	}
 }
