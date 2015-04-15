@@ -193,6 +193,7 @@ public class EntityRopewayBasket extends Entity{
 			posX += diff.xCoord * SPEED;
 			posY += diff.yCoord * SPEED;
 			posZ += diff.zCoord * SPEED;
+
         }
 
 		if (worldObj.isRemote) {
@@ -200,9 +201,13 @@ public class EntityRopewayBasket extends Entity{
 			lastSmoothY = smoothY;
 			lastSmoothZ = smoothZ;
 
-			/*smoothX += (posX - smoothX) * 1d;
-			smoothY += (posY - smoothY) * 1d;
-			smoothZ += (posZ - smoothZ) * 1d;*/
+			if (1 == 1) {
+				smoothX += (posX - smoothX) * 1d;
+				smoothY += (posY - smoothY) * 1d;
+				smoothZ += (posZ - smoothZ) * 1d;
+			}
+
+			this.motionX = this.motionY = this.motionZ = 0;
 
 			smoothX += 0;
 		}

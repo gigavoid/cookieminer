@@ -33,7 +33,7 @@ public abstract class BlockCookieUpgradeBase extends Block {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (playerIn.isSneaking())
+		if (!playerIn.isSneaking())
 			return false;
 
 		playerIn.openGui(SuperMod.instance, getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
