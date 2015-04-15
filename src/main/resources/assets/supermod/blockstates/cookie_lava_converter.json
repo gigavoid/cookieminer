@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "active=true": { "model": "supermod:cookie_lava_converter_activated" },
+        "active=false": { "model": "supermod:cookie_lava_converter" }
+    }
+}
