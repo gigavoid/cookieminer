@@ -78,7 +78,7 @@ public class CookiecraftRecipes {
 
 			@Override
 			public ItemStack getCraftingResult(InventoryCrafting ic) {
-				return new ItemStack(Items.arrow);
+				return new ItemStack(CookiecraftBlocks.lavaConverter );
 			}
 
 			@Override

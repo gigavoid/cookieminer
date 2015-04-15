@@ -46,6 +46,11 @@ public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements 
         return 0;
     }
 
+    @Override
+    public boolean hasImportantUI() {
+        return false;
+    }
+
     private int nrOfLavaBlocks(IBlockAccess world, BlockPos pos) {
         int lavaBlocks = 0;
 
