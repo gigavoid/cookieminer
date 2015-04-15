@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraft.world.WorldProvider;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -47,6 +48,11 @@ public class Register {
         DimensionManager.registerProviderType(nextDimensionId, provider, keepLoaded);
         DimensionManager.registerDimension(nextDimensionId, nextDimensionId);
         return nextDimensionId++;
+    }
+
+    public void registerEntity(Class<? extends net.minecraft.entity.Entity> entity, String name, int color, int spotColor){
+        int id = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entity, name, id, color, spotColor);
     }
 
     public int getNextBiomeID(){

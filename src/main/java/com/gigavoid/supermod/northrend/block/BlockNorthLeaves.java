@@ -37,7 +37,7 @@ public class BlockNorthLeaves extends BlockLeaves {
     @Override
     public int quantityDropped(Random random)
     {
-        return random.nextInt(10) == 0 ? 1 : 0;
+        return 1;
     }
 
     @Override

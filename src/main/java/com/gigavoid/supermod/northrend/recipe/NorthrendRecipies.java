@@ -12,6 +12,7 @@ public class NorthrendRecipies {
         dragonbonePickaxe();
         mithrilTools();
         mithrilIngot();
+        boiledGlaciemStem();
         northPearl();
     }
 
@@ -46,6 +47,10 @@ public class NorthrendRecipies {
 
     private static void mithrilIngot(){
         GameRegistry.addSmelting(NorthrendBlocks.mithrilOre, new ItemStack(NorthrendItems.mithrilIngot), 1);
+    }
+
+    private static void boiledGlaciemStem(){
+        GameRegistry.addSmelting(NorthrendItems.glaciemStem, new ItemStack(NorthrendItems.boiledGlaciemStem), 1);
     }
 
     private static void northPearl(){
