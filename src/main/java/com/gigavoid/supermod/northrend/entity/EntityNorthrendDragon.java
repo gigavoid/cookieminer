@@ -4,8 +4,6 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockTorch;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,16 +15,12 @@ import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayData, IEntityMultiPart, IMob
@@ -59,9 +53,6 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
     public boolean slowed;
     private Entity target;
     public int deathTicks;
-    /** The current endercrystal that is healing this dragon */
-    public EntityEnderCrystal healingEnderCrystal;
-    private static final String __OBFID = "CL_00001659";
 
     public EntityNorthrendDragon(World worldIn)
     {
@@ -69,7 +60,7 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
         this.dragonPartArray = new EntityDragonPart[] {this.dragonPartHead = new EntityDragonPart(this, "head", 6.0F, 6.0F), this.dragonPartBody = new EntityDragonPart(this, "body", 8.0F, 8.0F), this.dragonPartTail1 = new EntityDragonPart(this, "tail", 4.0F, 4.0F), this.dragonPartTail2 = new EntityDragonPart(this, "tail", 4.0F, 4.0F), this.dragonPartTail3 = new EntityDragonPart(this, "tail", 4.0F, 4.0F), this.dragonPartWing1 = new EntityDragonPart(this, "wing", 4.0F, 4.0F), this.dragonPartWing2 = new EntityDragonPart(this, "wing", 4.0F, 4.0F)};
         this.setHealth(this.getMaxHealth());
         this.setSize(16.0F, 8.0F);
-        this.noClip = true;
+        this.noClip = false;
         this.isImmuneToFire = true;
         this.targetY = 100.0D;
         this.ignoreFrustumCheck = true;
@@ -143,7 +134,6 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
         }
         else
         {
-            this.updateDragonEnderCrystal();
             f = 0.2F / (MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ) * 10.0F + 1.0F);
             f *= (float)Math.pow(2.0D, this.motionY);
 
@@ -356,57 +346,6 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
                 entitydragonpart.onUpdate();
                 entitydragonpart.setLocationAndAngles(this.posX - (double)((f11 * f17 + f15 * f18) * f2), this.posY + (adouble2[1] - adouble1[1]) * 1.0D - (double)((f18 + f17) * f10) + 1.5D, this.posZ + (double)((f4 * f17 + f16 * f18) * f2), 0.0F, 0.0F);
             }
-
-            if (!this.worldObj.isRemote)
-            {
-                this.slowed = this.destroyBlocksInAABB(this.dragonPartHead.getEntityBoundingBox()) | this.destroyBlocksInAABB(this.dragonPartBody.getEntityBoundingBox());
-            }
-        }
-    }
-
-    /**
-     * Updates the state of the enderdragon's current endercrystal.
-     */
-    private void updateDragonEnderCrystal()
-    {
-        if (this.healingEnderCrystal != null)
-        {
-            if (this.healingEnderCrystal.isDead)
-            {
-                if (!this.worldObj.isRemote)
-                {
-                    this.attackEntityFromPart(this.dragonPartHead, DamageSource.setExplosionSource((Explosion)null), 10.0F);
-                }
-
-                this.healingEnderCrystal = null;
-            }
-            else if (this.ticksExisted % 10 == 0 && this.getHealth() < this.getMaxHealth())
-            {
-                this.setHealth(this.getHealth() + 1.0F);
-            }
-        }
-
-        if (this.rand.nextInt(10) == 0)
-        {
-            float f = 32.0F;
-            List list = this.worldObj.getEntitiesWithinAABB(EntityEnderCrystal.class, this.getEntityBoundingBox().expand((double)f, (double)f, (double)f));
-            EntityEnderCrystal entityendercrystal = null;
-            double d0 = Double.MAX_VALUE;
-            Iterator iterator = list.iterator();
-
-            while (iterator.hasNext())
-            {
-                EntityEnderCrystal entityendercrystal1 = (EntityEnderCrystal)iterator.next();
-                double d1 = entityendercrystal1.getDistanceSqToEntity(this);
-
-                if (d1 < d0)
-                {
-                    d0 = d1;
-                    entityendercrystal = entityendercrystal1;
-                }
-            }
-
-            this.healingEnderCrystal = entityendercrystal;
         }
     }
 
@@ -504,50 +443,6 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
     /**
      * Destroys all blocks that aren't associated with 'The End' inside the given bounding box.
      */
-    private boolean destroyBlocksInAABB(AxisAlignedBB p_70972_1_)
-    {
-        int i = MathHelper.floor_double(p_70972_1_.minX);
-        int j = MathHelper.floor_double(p_70972_1_.minY);
-        int k = MathHelper.floor_double(p_70972_1_.minZ);
-        int l = MathHelper.floor_double(p_70972_1_.maxX);
-        int i1 = MathHelper.floor_double(p_70972_1_.maxY);
-        int j1 = MathHelper.floor_double(p_70972_1_.maxZ);
-        boolean flag = false;
-        boolean flag1 = false;
-
-        for (int k1 = i; k1 <= l; ++k1)
-        {
-            for (int l1 = j; l1 <= i1; ++l1)
-            {
-                for (int i2 = k; i2 <= j1; ++i2)
-                {
-                    Block block = this.worldObj.getBlockState(new BlockPos(k1, l1, i2)).getBlock();
-
-                    if (!block.isAir(worldObj, new BlockPos(k1, l1, i2)))
-                    {
-                        if (block.canEntityDestroy(worldObj, new BlockPos(k1, l1, i2), this) && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
-                        {
-                            flag1 = this.worldObj.setBlockToAir(new BlockPos(k1, l1, i2)) || flag1;
-                        }
-                        else
-                        {
-                            flag = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (flag1)
-        {
-            double d1 = p_70972_1_.minX + (p_70972_1_.maxX - p_70972_1_.minX) * (double)this.rand.nextFloat();
-            double d2 = p_70972_1_.minY + (p_70972_1_.maxY - p_70972_1_.minY) * (double)this.rand.nextFloat();
-            double d0 = p_70972_1_.minZ + (p_70972_1_.maxZ - p_70972_1_.minZ) * (double)this.rand.nextFloat();
-            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, d1, d2, d0, 0.0D, 0.0D, 0.0D, new int[0]);
-        }
-
-        return flag;
-    }
 
     public boolean attackEntityFromPart(EntityDragonPart p_70965_1_, DamageSource p_70965_2_, float p_70965_3_)
     {
@@ -650,63 +545,8 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
                 this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY, this.posZ, j));
             }
 
-            this.func_175499_a(new BlockPos(this.posX, 64.0D, this.posZ));
             this.setDead();
         }
-    }
-
-    private void func_175499_a(BlockPos p_175499_1_)
-    {
-        boolean flag = true;
-        double d0 = 12.25D;
-        double d1 = 6.25D;
-
-        for (int i = -1; i <= 32; ++i)
-        {
-            for (int j = -4; j <= 4; ++j)
-            {
-                for (int k = -4; k <= 4; ++k)
-                {
-                    double d2 = (double)(j * j + k * k);
-
-                    if (d2 <= 12.25D)
-                    {
-                        BlockPos blockpos1 = p_175499_1_.add(j, i, k);
-
-                        if (i < 0)
-                        {
-                            if (d2 <= 6.25D)
-                            {
-                                this.worldObj.setBlockState(blockpos1, Blocks.bedrock.getDefaultState());
-                            }
-                        }
-                        else if (i > 0)
-                        {
-                            this.worldObj.setBlockState(blockpos1, Blocks.air.getDefaultState());
-                        }
-                        else if (d2 > 6.25D)
-                        {
-                            this.worldObj.setBlockState(blockpos1, Blocks.bedrock.getDefaultState());
-                        }
-                        else
-                        {
-                            this.worldObj.setBlockState(blockpos1, Blocks.end_portal.getDefaultState());
-                        }
-                    }
-                }
-            }
-        }
-
-        this.worldObj.setBlockState(p_175499_1_, Blocks.bedrock.getDefaultState());
-        this.worldObj.setBlockState(p_175499_1_.offsetUp(), Blocks.bedrock.getDefaultState());
-        BlockPos blockpos2 = p_175499_1_.offsetUp(2);
-        this.worldObj.setBlockState(blockpos2, Blocks.bedrock.getDefaultState());
-        this.worldObj.setBlockState(blockpos2.offsetWest(), Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING_PROP, EnumFacing.EAST));
-        this.worldObj.setBlockState(blockpos2.offsetEast(), Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING_PROP, EnumFacing.WEST));
-        this.worldObj.setBlockState(blockpos2.offsetNorth(), Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING_PROP, EnumFacing.SOUTH));
-        this.worldObj.setBlockState(blockpos2.offsetSouth(), Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING_PROP, EnumFacing.NORTH));
-        this.worldObj.setBlockState(p_175499_1_.offsetUp(3), Blocks.bedrock.getDefaultState());
-        this.worldObj.setBlockState(p_175499_1_.offsetUp(4), Blocks.dragon_egg.getDefaultState());
     }
 
     /**
