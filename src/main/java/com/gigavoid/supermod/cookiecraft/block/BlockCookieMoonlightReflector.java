@@ -17,22 +17,10 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        if (!world.isDaytime() && isTopBlock(world, pos)){
+        if (!world.isDaytime()){
             return 1/15d;
         }
         return 0;
-    }
-
-    private boolean isTopBlock(World world, BlockPos pos){
-        boolean result = true;
-        int height = pos.getY();
-        while(result && height <= 255){
-            if (world.getBlockState(new BlockPos(pos.getX(), height, pos.getZ())).getBlock() == Blocks.air){
-                result = false;
-            }
-            height++;
-        }
-        return result;
     }
 
 	@Override

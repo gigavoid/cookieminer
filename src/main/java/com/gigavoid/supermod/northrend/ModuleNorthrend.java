@@ -7,6 +7,7 @@ import com.gigavoid.supermod.northrend.entity.NorthrendEntities;
 import com.gigavoid.supermod.northrend.event.NorthrendEventHandler;
 import com.gigavoid.supermod.northrend.item.NorthrendItems;
 import com.gigavoid.supermod.northrend.recipe.NorthrendRecipies;
+import com.gigavoid.supermod.northrend.renderer.NorthrendRenderers;
 import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendWorldProvider;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenFortress;
 import com.gigavoid.supermod.northrend.worldgen.gen.NorthrendMapGenOres;
@@ -29,6 +30,7 @@ public class ModuleNorthrend extends Module {
     @Override
     public void preInit(FMLPreInitializationEvent e){
         NorthrendBlocks.initializeBlocks(getRegister(e.getSide()));
+        NorthrendRenderers.registerRenderers();
         NorthrendEntities.registerEntities(getRegister(e.getSide()));
         NorthrendBiomes.registerBiomes(getRegister(e.getSide()));
 

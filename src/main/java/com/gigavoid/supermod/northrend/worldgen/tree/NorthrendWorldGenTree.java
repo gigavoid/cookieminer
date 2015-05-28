@@ -165,6 +165,7 @@ public class NorthrendWorldGenTree extends WorldGenAbstractTree {
         BlockNorthLeaves leaves = NorthrendBlocks.northLeaves;
         leaves.setDropType(BlockNorthSapling.EnumType.BIRCH);
         IBlockState block;
+        //i = x, k = y, j = z
         for (int i = -2; i < 3; i++){
             for (int j = -2; j < 3; j++){
                 for (int k = -3; k < 1; k++){
