@@ -385,7 +385,7 @@ public class EntityNorthrendDragon extends EntityLiving implements IEntityMultiP
         {
             Entity entity = (Entity)p_70971_1_.get(i);
 
-            if (entity instanceof EntityLivingBase && !(entity instanceof EntityNorthrendDragon)) // isFacingEntity
+            if (entity instanceof EntityLivingBase && !(entity instanceof EntityNorthrendDragon) && canSeeEnity(entity, 15.0F))
             {
                 this.attackEntityWithRangedAttack((EntityLivingBase)entity, 10);
                 this.func_174815_a(this, entity);
@@ -393,7 +393,29 @@ public class EntityNorthrendDragon extends EntityLiving implements IEntityMultiP
         }
     }
 
-    // Implement boolean isFacingEntity
+    /**
+     * Determines if this entity can see other entity.
+     */
+    private boolean canSeeEnity(Entity entity, float fieldOfView){
+        double dX = this.posX - entity.posX;
+        double dZ = this.posZ - entity.posZ;
+
+        double dA = Math.sqrt(Math.pow(dX, 2) + Math.pow(dZ, 2));
+
+        double v1 = Math.cos(dX / dA);
+
+        if (v1 - this.rotationYaw < -fieldOfView || v1 - this.rotationYaw > fieldOfView){
+            return false;
+        }
+
+        double dY = this.posY - entity.posY;
+
+        double dB = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
+
+        double v2 = Math.cos(dX / dB);
+
+        return v2 - this.rotationPitch > -fieldOfView && v2 - this.rotationPitch < fieldOfView;
+    }
 
     /**
      * Sets a new target for the flight AI. It can be a random coordinate or a nearby player.
