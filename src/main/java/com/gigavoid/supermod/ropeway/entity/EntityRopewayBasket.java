@@ -4,7 +4,6 @@ package com.gigavoid.supermod.ropeway.entity;
 import com.gigavoid.supermod.ropeway.block.RopewayBlocks;
 import com.gigavoid.supermod.ropeway.item.RopewayItems;
 import com.gigavoid.supermod.ropeway.tileentity.TileEntityRopewayEngine;
-import net.minecraft.block.Block;
 import net.minecraft.entity.DataWatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -20,7 +19,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-public class EntityRopewayBasket extends Entity{
+public class EntityRopewayBasket extends Entity {
 
     public static final double SPEED = .1;
     /**
@@ -29,12 +28,28 @@ public class EntityRopewayBasket extends Entity{
     private BlockPos target;
     private BlockPos prevTarget;
     private Random r = new Random();
-    
-    
+
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
         this.preventEntitySpawning = true;
+    }
+
+    public EntityRopewayBasket(World world, double x, double y, double z) {
+        super(world);
+        this.preventEntitySpawning = true;
+        this.motionX = 0.0D;
+        this.motionY = 0.0D;
+        this.motionZ = 0.0D;
+        noClip = true;
+        setSize(1, .7f);
+
+        if (!(x == 0 && y == 0 && z == 0)) {
+            this.setPosition(x, y, z);
+            this.prevPosX = x;
+            this.prevPosY = y;
+            this.prevPosZ = z;
+        }
     }
 
     public void setTarget(BlockPos target) {
@@ -63,7 +78,6 @@ public class EntityRopewayBasket extends Entity{
         dw.addObject(21, y);
         dw.addObject(22, z);
     }
-
 
     @Override
     protected void readEntityFromNBT(NBTTagCompound tagCompund) {
@@ -109,22 +123,14 @@ public class EntityRopewayBasket extends Entity{
         return true;
     }
 
-
     @Override
-    public boolean interactFirst(EntityPlayer playerIn)
-    {
-        if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && this.riddenByEntity != playerIn)
-        {
+    public boolean interactFirst(EntityPlayer playerIn) {
+        if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && this.riddenByEntity != playerIn) {
             return true;
-        }
-        else if (this.riddenByEntity != null && this.riddenByEntity != playerIn)
-        {
+        } else if (this.riddenByEntity != null && this.riddenByEntity != playerIn) {
             return false;
-        }
-        else
-        {
-            if (!this.worldObj.isRemote)
-            {
+        } else {
+            if (!this.worldObj.isRemote) {
                 playerIn.mountEntity(this);
                 addVelocity(5, 5, 5);
             }
@@ -140,11 +146,9 @@ public class EntityRopewayBasket extends Entity{
     }
 
     @Override
-    public AxisAlignedBB getCollisionBox(Entity entityIn)
-    {
+    public AxisAlignedBB getCollisionBox(Entity entityIn) {
         return entityIn.getEntityBoundingBox();
     }
-
 
     @Override
     public void onEntityUpdate() {
@@ -206,22 +210,5 @@ public class EntityRopewayBasket extends Entity{
 
         prevTarget = target;
         setTarget(foundRope);
-    }
-
-    public EntityRopewayBasket(World world, double x, double y, double z) {
-        super(world);
-        this.preventEntitySpawning = true;
-        this.motionX = 0.0D;
-        this.motionY = 0.0D;
-        this.motionZ = 0.0D;
-        noClip = true;
-        setSize(1, .7f);
-
-        if(!(x == 0 && y == 0 && z == 0)) {
-            this.setPosition(x, y, z);
-            this.prevPosX = x;
-            this.prevPosY = y;
-            this.prevPosZ = z;
-        }
     }
 }
