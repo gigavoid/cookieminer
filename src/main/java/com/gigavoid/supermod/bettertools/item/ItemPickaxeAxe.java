@@ -17,37 +17,14 @@ public class ItemPickaxeAxe extends ItemTool {
 
     protected ItemPickaxeAxe() {
         super(8, ToolMaterial.EMERALD, effectiveBlocks);
+        this.efficiencyOnProperMaterial=12.0f;
     }
 
     public boolean canHarvestBlock(Block blockIn)
     {
-        if (blockIn != Blocks.redstone_ore && blockIn != Blocks.lit_redstone_ore)
-            if (blockIn != Blocks.diamond_block && blockIn != Blocks.diamond_ore)
-                if (blockIn == Blocks.obsidian) return this.toolMaterial.getHarvestLevel() == 3;
-                else if (blockIn != Blocks.emerald_ore && blockIn != Blocks.emerald_block)
-                    if (blockIn != Blocks.gold_block && blockIn != Blocks.gold_ore)
-                        if (blockIn != Blocks.iron_block && blockIn != Blocks.iron_ore)
-                            if (blockIn != Blocks.lapis_block && blockIn != Blocks.lapis_ore)
-                                return (blockIn.getMaterial() == Material.rock || (blockIn.getMaterial() == Material.iron || blockIn.getMaterial() == Material.anvil));
-                            else return this.toolMaterial.getHarvestLevel() >= 1;
-                        else return this.toolMaterial.getHarvestLevel() >= 1;
-                    else return this.toolMaterial.getHarvestLevel() >= 2;
-                else return this.toolMaterial.getHarvestLevel() >= 2;
-            else if (blockIn == Blocks.obsidian) return this.toolMaterial.getHarvestLevel() == 3;
-            else return this.toolMaterial.getHarvestLevel() >= 2;
-        else if (blockIn != Blocks.diamond_block && blockIn != Blocks.diamond_ore)
-            if (blockIn == Blocks.obsidian) return this.toolMaterial.getHarvestLevel() == 3;
-            else if (blockIn != Blocks.emerald_ore && blockIn != Blocks.emerald_block)
-                if (blockIn != Blocks.gold_block && blockIn != Blocks.gold_ore)
-                    if (blockIn != Blocks.iron_block && blockIn != Blocks.iron_ore)
-                        if (blockIn != Blocks.lapis_block && blockIn != Blocks.lapis_ore)
-                            return this.toolMaterial.getHarvestLevel() >= 2;
-                        else return this.toolMaterial.getHarvestLevel() >= 1;
-                    else return this.toolMaterial.getHarvestLevel() >= 1;
-                else return this.toolMaterial.getHarvestLevel() >= 2;
-            else return this.toolMaterial.getHarvestLevel() >= 2;
-        else if (blockIn == Blocks.obsidian) return this.toolMaterial.getHarvestLevel() == 3;
-        else return this.toolMaterial.getHarvestLevel() >= 2;
+        boolean canHarvestWithPick = blockIn == Blocks.obsidian ? this.toolMaterial.getHarvestLevel() == 3 : (blockIn != Blocks.diamond_block && blockIn != Blocks.diamond_ore ? (blockIn != Blocks.emerald_ore && blockIn != Blocks.emerald_block ? (blockIn != Blocks.gold_block && blockIn != Blocks.gold_ore ? (blockIn != Blocks.iron_block && blockIn != Blocks.iron_ore ? (blockIn != Blocks.lapis_block && blockIn != Blocks.lapis_ore ? (blockIn != Blocks.redstone_ore && blockIn != Blocks.lit_redstone_ore ? (blockIn.getMaterial() == Material.rock ? true : (blockIn.getMaterial() == Material.iron ? true : blockIn.getMaterial() == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2);
+        boolean canHarvestWithAxe = effectiveBlocks.contains(blockIn);
+        return canHarvestWithAxe || canHarvestWithPick;
     }
 
     public float getStrVsBlock(ItemStack stack, Block p_150893_2_)

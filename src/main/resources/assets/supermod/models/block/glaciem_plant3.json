@@ -1,6 +1,0 @@
-{
-    "parent": "block/crop",
-    "textures": {
-        "crop": "supermod:blocks/glaciem_plant_3"
-    }
-}

@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +15,7 @@ public class BlockNorthPlanks extends Block {
         super(Material.wood);
         this.setHardness(1.0f);
         this.setHarvestLevel("axe", 0);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setStepSound(soundTypeWood);
     }
 

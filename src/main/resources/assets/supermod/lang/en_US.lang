@@ -1,0 +1,55 @@
+< en_US.lang - English localization file for the mod Tutorial >
+
+< Northrend Blocks >
+tile.north_ice.name=Northrend Ice
+tile.north_dirt.name=Northrend Dirt
+tile.north_stone.name=Northrend Stone
+tile.north_log.name=Northrend Log
+tile.north_leaves.name=Northrend Leaves
+tile.north_portal.name=Northrend Portal
+tile.north_planks.name=Northrend Planks
+tile.north_stairs.name=Northrend Wood Stairs
+tile.north_cobblestone.name=Northrend Cobblestone
+tile.north_cobble_stairs.name=Northrend Stone Stairs
+tile.north_fence.name=Northrend Fence
+tile.north_fence_gate.name=Northrend Fence Gate
+tile.north_glaciem_plant.name=Glaciem Seeds
+tile.north_blight.name=Northrend Blight
+tile.north_snow_layer_mod.name=Snow Layer
+tile.north_coal_ore.name=Coal Ore
+tile.north_diamond_ore.name=Diamond Ore
+tile.north_emerald_ore.name=Emerald Ore
+tile.north_frost_gem_ore.name=Frost Gem Ore
+tile.north_gold_ore.name=Gold Ore
+tile.north_iron_ore.name=Iron Ore
+tile.north_lapis_ore.name=Lapis Lazuli Ore
+tile.north_mithril_ore.name=Mithril Ore
+tile.north_red_stone_ore.name=Redstone Ore
+tile.north_lit_red_stone_ore.name=Redstone Ore
+tile.north_dragon_bone.name=Dragon Fossil
+tile.north_dragonhead.name=Dragonhead
+
+< Northrend Items >
+item.north_dragonbone_pickaxe.name=Dragonbone Pickaxe
+item.north_mithril_pickaxe.name=Mithril Pickaxe
+item.north_mithril_sword.name=Mithril Sword
+item.north_mithril_axe.name=Mithril Axe
+item.north_mithril_hoe.name=Mithril Hoe
+item.north_mithril_shovel.name=Mithril Shovel
+item.north_dragonbone.name=Dragonbone
+item.north_frost_gem.name=Frost Gem
+item.north_mithril_ingot.name=Mithril Ingot
+item.north_pearl.name=Northrend Pearl
+
+< Bonus >
+tile.bonus_block.name=Bonus Block
+
+< Cookiecraft Blocks >
+tile.cookie_crafter.name=Cookie Crafter
+tile.cookie_portal.name=Cookie Portal
+tile.cookie_block.name=Cookie Block
+tile.cookie_dough_collector.name=Dough Collector
+tile.burnt_cookie_block.name=Burnt Cookie Block
+
+< Cookiecraft Items >
+

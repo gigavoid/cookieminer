@@ -1,14 +1,15 @@
 package com.gigavoid.supermod.northrend.biome;
 
+import com.gigavoid.supermod.northrend.entity.EntityNorthrendDragon;
 import net.minecraft.block.Block;
 
 public class BiomeGenNorthHugeMountains extends NorthrendBiomeGenBase {
-
     public BiomeGenNorthHugeMountains(int id, int weight){
         super(id, weight);
 
         setBiomeName("Northrend Huge Mountains");
-        setHeight(new Height(3f, .75f));
+        setHeight(new Height(2.5f, 1.25f));
+        spawnableMonsterList.add(new SpawnListEntry(EntityNorthrendDragon.class, 20, 1, 1));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }

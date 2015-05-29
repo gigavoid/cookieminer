@@ -1,19 +1,16 @@
 package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.common.Register;
-import net.minecraft.block.material.Material;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
 
 public class NorthrendBlocks {
-    public static Fluid baseFluid;
+    //public static Fluid baseFluid;
 
-    public static BlockGlacialIce glacialIce;
+    public static BlockNorthGlacialIce glacialIce;
     public static BlockNorthDirt northDirt;
     public static BlockNorthStone northStone;
     public static BlockNorthLog northLog;
     public static BlockNorthLeaves northLeaves;
-    public static BlockPortalNorthrend portalNorthrend;
+    public static BlockNorthPortal portalNorthrend;
     public static BlockNorthPlanks northPlanks;
     public static BlockNorthStairs northStairs;
     public static BlockNorthCobblestone northCobble;
@@ -21,29 +18,35 @@ public class NorthrendBlocks {
     public static BlockNorthFence northFence;
     public static BlockNorthFenceGate northFenceGate;
     public static BlockNorthGlaciemPlant northGlaciemPlant;
-    public static BlockBlight blight;
-    public static BlockFluidClassic poison;
-    public static BlockCoalOre coalOre;
-    public static BlockDiamondOre diamondOre;
-    public static BlockEmeraldOre emeraldOre;
-    public static BlockGoldOre goldOre;
-    public static BlockIronOre ironOre;
-    public static BlockLapisOre lapisOre;
-    public static BlockRedstoneOre redstoneOre;
-    public static BlockRedstoneOre lit_redstoneOre;
-    public static BlockDragonBone dragonBone;
-    public static BlockDragonHead dragonHead;
+    public static BlockNorthBlight blight;
+    public static BlockNorthSnowModded snowLayerMod;
+    //public static BlockFluidClassic poison;
+    public static BlockNorthCoalOre coalOre;
+    public static BlockNorthDiamondOre diamondOre;
+    public static BlockNorthEmeraldOre emeraldOre;
+    public static BlockNorthFrostGemOre frostGemOre;
+    public static BlockNorthGoldOre goldOre;
+    public static BlockNorthIronOre ironOre;
+    public static BlockNorthLapisOre lapisOre;
+    public static BlockNorthMithrilOre mithrilOre;
+    public static BlockNorthRedstoneOre redstoneOre;
+    public static BlockNorthRedstoneOre lit_redstoneOre;
+    public static BlockNorthDragonBone dragonBone;
+    public static BlockNorthDragonHead dragonHead;
+    public static BlockNorthSapling northPineSapling;
+    public static BlockNorthSapling northFirSapling;
+    public static BlockNorthSapling northBirchSapling;
 
     public static void initializeBlocks(Register register) {
-        baseFluid = new Fluid("baseFluid");
-        register.registerFluid(baseFluid, "baseFluid");
+        //baseFluid = new Fluid("baseFluid");
+        //register.registerFluid(baseFluid, "baseFluid");
 
-        glacialIce = new BlockGlacialIce();
+        glacialIce = new BlockNorthGlacialIce();
         northDirt = new BlockNorthDirt();
         northStone = new BlockNorthStone();
         northLog = new BlockNorthLog();
         northLeaves = new BlockNorthLeaves();
-        portalNorthrend = new BlockPortalNorthrend();
+        portalNorthrend = new BlockNorthPortal();
         northPlanks = new BlockNorthPlanks();
         northStairs = new BlockNorthStairs(0);
         northCobble = new BlockNorthCobblestone();
@@ -51,18 +54,24 @@ public class NorthrendBlocks {
         northFence = new BlockNorthFence();
         northFenceGate = new BlockNorthFenceGate();
         northGlaciemPlant = new BlockNorthGlaciemPlant();
-        blight = new BlockBlight();
-        poison = new BlockPoisonFluid(baseFluid, Material.water);
-        coalOre = new BlockCoalOre();
-        diamondOre = new BlockDiamondOre();
-        emeraldOre = new BlockEmeraldOre();
-        goldOre = new BlockGoldOre();
-        ironOre = new BlockIronOre();
-        lapisOre = new BlockLapisOre();
-        redstoneOre = new BlockRedstoneOre(false);
-        lit_redstoneOre = new BlockRedstoneOre(true);
-        dragonBone = new BlockDragonBone();
-        dragonHead = new BlockDragonHead();
+        blight = new BlockNorthBlight();
+        snowLayerMod = new BlockNorthSnowModded();
+        //poison = new BlockPoisonFluid(baseFluid, Material.water);
+        coalOre = new BlockNorthCoalOre();
+        diamondOre = new BlockNorthDiamondOre();
+        emeraldOre = new BlockNorthEmeraldOre();
+        frostGemOre = new BlockNorthFrostGemOre();
+        goldOre = new BlockNorthGoldOre();
+        ironOre = new BlockNorthIronOre();
+        lapisOre = new BlockNorthLapisOre();
+        mithrilOre = new BlockNorthMithrilOre();
+        redstoneOre = new BlockNorthRedstoneOre(false);
+        lit_redstoneOre = new BlockNorthRedstoneOre(true);
+        dragonBone = new BlockNorthDragonBone();
+        dragonHead = new BlockNorthDragonHead();
+        northPineSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.PINE);
+        northFirSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.FIR);
+        northBirchSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.BIRCH);
     }
 
     public static void registerBlocks(Register register){
@@ -78,18 +87,24 @@ public class NorthrendBlocks {
         register.registerBlock(northCobbleStairs, "north_cobble_stairs");
         register.registerBlock(northFence, "north_fence");
         register.registerBlock(northFenceGate, "north_fence_gate");
-        //register.registerBlock(northGlaciemPlant, "glaciem_plant");
+        register.registerBlock(northGlaciemPlant, "north_glaciem_plant");
         register.registerBlock(blight, "north_blight");
-        register.registerBlock(poison, "poisonFluid");
+        register.registerBlock(snowLayerMod, "north_snow_layer_mod");
+        //register.registerBlock(poison, "poisonFluid");
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");
         register.registerBlock(emeraldOre, "north_emerald_ore");
+        register.registerBlock(frostGemOre, "north_frost_gem_ore");
         register.registerBlock(goldOre, "north_gold_ore");
         register.registerBlock(ironOre, "north_iron_ore");
         register.registerBlock(lapisOre, "north_lapis_ore");
+        register.registerBlock(mithrilOre, "north_mithril_ore");
         register.registerBlock(redstoneOre, "north_red_stone_ore");
         register.registerBlock(lit_redstoneOre, "north_lit_red_stone_ore", "north_red_stone_ore");
         register.registerBlock(dragonBone, "north_dragon_bone");
         register.registerBlock(dragonHead, "north_dragonhead");
+        register.registerBlock(northPineSapling, "north_pine_sapling");
+        register.registerBlock(northFirSapling, "north_fir_sapling");
+        register.registerBlock(northBirchSapling, "north_birch_sapling");
     }
 }

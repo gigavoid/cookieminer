@@ -3,9 +3,8 @@ package com.gigavoid.supermod;
 import com.gigavoid.supermod.bettertools.ModuleBetterTools;
 import com.gigavoid.supermod.bonus.ModuleBonus;
 import com.gigavoid.supermod.common.module.ModuleLoader;
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
-import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
-import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.ropeway.ModuleRopeway;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +26,7 @@ public class SuperMod
         moduleLoader.registerModule(new ModuleNorthrend());
         moduleLoader.registerModule(new ModuleBonus());
         moduleLoader.registerModule(new ModuleBetterTools());
+        moduleLoader.registerModule(new ModuleCookiecraft());
     }
 
     @Mod.EventHandler

@@ -1,0 +1,6 @@
+{
+    "parent": "supermod:block/pipe_trio_curve_up",
+    "textures": {
+        "texture": "supermod:blocks/cookie_pipe"
+    }
+}

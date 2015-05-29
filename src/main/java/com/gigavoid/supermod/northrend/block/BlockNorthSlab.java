@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -20,7 +21,7 @@ public class BlockNorthSlab extends BlockSlab {
         this.setResistance(2.0f);
         this.setStepSound(NorthrendBlocks.northPlanks.stepSound);
         this.setLightOpacity(255);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
 
     @Override

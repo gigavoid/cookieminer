@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -29,10 +30,16 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
         this.setTickRandomly(true);
         float f = 0.5F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setHardness(0.0F);
         this.setStepSound(soundTypeGrass);
         this.disableStats();
+    }
+
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
+    {
+        return worldIn.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() == NorthrendBlocks.northDirt;
     }
 
     protected boolean canPlaceBlockOn(Block ground)
@@ -134,7 +141,7 @@ public class BlockNorthGlaciemPlant extends BlockBush implements IGrowable {
 
     protected Item getSeed()
     {
-        return Items.wheat_seeds;
+        return Item.getItemFromBlock(NorthrendBlocks.northGlaciemPlant);
     }
 
     protected Item getCrop()

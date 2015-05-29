@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "supermod:blocks/north_pine_sapling"
+  }
+}

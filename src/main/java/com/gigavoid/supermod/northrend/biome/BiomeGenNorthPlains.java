@@ -9,7 +9,7 @@ public class BiomeGenNorthPlains extends NorthrendBiomeGenBase {
         super(id, weight);
 
         setBiomeName("Northrend Plains");
-        setHeight(new BiomeGenBase.Height(.1f, .05f));
+        setHeight(new BiomeGenBase.Height(.25f, .05f));
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
     }

@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import java.awt.*;
 
 public class BlockRopewayEngine extends Block implements ITileEntityProvider {
-
-
     public static final PropertyDirection rotation = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
     protected BlockRopewayEngine() {
@@ -41,7 +39,6 @@ public class BlockRopewayEngine extends Block implements ITileEntityProvider {
 
     @Override
     public boolean canReplace(World worldIn, BlockPos pos, EnumFacing side, ItemStack stack) {
-        //TODO
         return canPlaceBlockOnSide(worldIn, pos, side);
     }
 

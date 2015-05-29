@@ -28,6 +28,8 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
         spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
+        enableRain = true;
+        setTemperatureRainfall(.0f, 1.0f);
         waterColorMultiplier = 0xFFFFFF;
     }
 
@@ -101,20 +103,16 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
                             p_180628_3_.setBlockState(j1, k1, i1, iblockstate1);
                         }
                     }
-                    else if (k > 0)
-                    {
+                    else if (k > 0){
                         --k;
                         p_180628_3_.setBlockState(j1, k1, i1, iblockstate1);
-
-                        if (k == 0 && iblockstate1.getBlock() == Blocks.sand)
-                        {
-                            k = p_180628_2_.nextInt(4) + Math.max(0, k1 - 63);
-                            iblockstate1 = iblockstate1.getValue(BlockSand.VARIANT_PROP) == BlockSand.EnumType.RED_SAND ? Blocks.red_sandstone.getDefaultState() : Blocks.sandstone.getDefaultState();
-                        }
                     }
                 }
             }
-            if (k1 < 63 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow){
+            if (k1 < 62 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow){
+                p_180628_3_.setBlockState(j1, k1, i1, NorthrendBlocks.glacialIce.getDefaultState());
+            }
+            else if (k1 == 62 && p_180628_3_.getBlockState(j1, k1, i1).getBlock() == Blocks.snow && .5f < p_180628_2_.nextFloat()) {
                 p_180628_3_.setBlockState(j1, k1, i1, NorthrendBlocks.glacialIce.getDefaultState());
             }
         }

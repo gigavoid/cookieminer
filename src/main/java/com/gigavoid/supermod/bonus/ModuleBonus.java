@@ -7,6 +7,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 public class ModuleBonus extends Module {
     @Override
     public void init(FMLInitializationEvent e) {
-        BonusBlocks.initializeBlocks(getRegister());
+        BonusBlocks.initializeBlocks(getRegister(e.getSide()));
     }
 }

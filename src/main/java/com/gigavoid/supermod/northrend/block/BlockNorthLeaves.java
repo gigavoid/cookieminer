@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.northrend.block;
 
+import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.BlockState;
@@ -11,18 +12,57 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class BlockNorthLeaves extends BlockLeaves {
+    private BlockNorthSapling.EnumType type = BlockNorthSapling.EnumType.PINE;
+
     public BlockNorthLeaves(){
         super();
         this.setHardness(1.0f);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
         this.setStepSound(soundTypeGrass);
+    }
+
+    public void setDropType(BlockNorthSapling.EnumType type){
+        this.type = type;
+    }
+
+    @Override
+    public int quantityDropped(Random random)
+    {
+        return 1;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        Item item = Item.getItemFromBlock(NorthrendBlocks.northPineSapling);
+
+        if (this.type == BlockNorthSapling.EnumType.FIR){
+            item = Item.getItemFromBlock(NorthrendBlocks.northFirSapling);
+        }
+        else if (this.type == BlockNorthSapling.EnumType.BIRCH){
+            item = Item.getItemFromBlock(NorthrendBlocks.northBirchSapling);
+        }
+
+        return item;
+    }
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        super.breakBlock(worldIn, pos, state);
+    }
+
+    @Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(worldIn, pos, state, rand);
     }
 
     @Override
