@@ -41,6 +41,9 @@ item.north_frost_gem.name=Frost Gem
 item.north_mithril_ingot.name=Mithril Ingot
 item.north_pearl.name=Northrend Pearl
 
+< Northrend Entities >
+entity.north_dragon.name=Northrend Dragon
+
 < Bonus >
 tile.bonus_block.name=Bonus Block
 

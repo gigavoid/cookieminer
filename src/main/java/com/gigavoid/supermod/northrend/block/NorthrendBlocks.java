@@ -2,8 +2,12 @@ package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.common.Register;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import scala.Console;
+
+import java.lang.reflect.Constructor;
 
 public class NorthrendBlocks {
     public static Fluid baseFluid;
@@ -40,7 +44,13 @@ public class NorthrendBlocks {
     public static BlockNorthSapling northFirSapling;
     public static BlockNorthSapling northBirchSapling;
 
-    public static void initializeBlocks(Register register) {
+    public static void initializeBlocks(Register register){ // throws Exception
+        /**Constructor<TextureAtlasSprite> TASConstructor = TextureAtlasSprite.class.getDeclaredConstructor();
+        TASConstructor.setAccessible(true);
+
+        TextureAtlasSprite still = TASConstructor.newInstance("supermod:blocks/poison_fluid_sill");
+        TextureAtlasSprite flowing = TASConstructor.newInstance("supermod:blocks/poison_fluid_flowing");
+*/
         baseFluid = new Fluid("base_fluid");
         register.registerFluid(baseFluid, "base_fluid");
 

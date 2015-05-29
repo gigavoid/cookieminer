@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.renderer.entity;
 
 import com.gigavoid.supermod.northrend.entity.EntityNorthrendDragon;
 import com.gigavoid.supermod.northrend.model.ModelNorthrendDragon;
+import com.gigavoid.supermod.northrend.renderer.entity.layers.LayerNorthrendDragonDeath;
 import com.gigavoid.supermod.northrend.renderer.entity.layers.LayerNorthrendDragonEyes;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -29,7 +30,7 @@ public class RenderNorthrendDragon extends RenderLiving
         super(p_i46183_1_, new ModelNorthrendDragon(0.0F), 0.5F);
         this.modelDragon = (ModelNorthrendDragon)this.mainModel;
         this.addLayer(new LayerNorthrendDragonEyes(this));
-        this.addLayer(new LayerEnderDragonDeath());
+        this.addLayer(new LayerNorthrendDragonDeath());
     }
 
     protected void func_180575_a(EntityNorthrendDragon p_180575_1_, float p_180575_2_, float p_180575_3_, float p_180575_4_)
