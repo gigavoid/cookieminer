@@ -29,15 +29,8 @@ public class EntityRopewayBasket extends Entity{
     private BlockPos target;
     private BlockPos prevTarget;
     private Random r = new Random();
-	public double smoothX = 0;
-	public double smoothY = 0;
-	public double smoothZ = 0;
-
-	public double lastSmoothX = 0;
-	public double lastSmoothY = 0;
-	public double lastSmoothZ = 0;
-
-
+    
+    
 
     public EntityRopewayBasket(World world) {
         this(world, 0, 0, 0);
@@ -47,7 +40,7 @@ public class EntityRopewayBasket extends Entity{
     public void setTarget(BlockPos target) {
         this.target = target;
 
-        if (!worldObj.isRemote && target != null) {
+        if (!worldObj.isRemote) {
             dataWatcher.updateObject(20, target.getX());
             dataWatcher.updateObject(21, target.getY());
             dataWatcher.updateObject(22, target.getZ());
@@ -190,27 +183,10 @@ public class EntityRopewayBasket extends Entity{
             diff = diff.normalize();
 
 
-			posX += diff.xCoord * SPEED;
-			posY += diff.yCoord * SPEED;
-			posZ += diff.zCoord * SPEED;
-
+            posX += diff.xCoord * SPEED;
+            posY += diff.yCoord * SPEED;
+            posZ += diff.zCoord * SPEED;
         }
-
-		if (worldObj.isRemote) {
-			lastSmoothX = smoothX;
-			lastSmoothY = smoothY;
-			lastSmoothZ = smoothZ;
-
-			if (1 == 1) {
-				smoothX += (posX - smoothX) * 1d;
-				smoothY += (posY - smoothY) * 1d;
-				smoothZ += (posZ - smoothZ) * 1d;
-			}
-
-			this.motionX = this.motionY = this.motionZ = 0;
-
-			smoothX += 0;
-		}
     }
 
     private void findNewTarget() {
