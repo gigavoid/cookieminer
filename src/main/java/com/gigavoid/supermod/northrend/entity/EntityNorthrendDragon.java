@@ -4,6 +4,9 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,6 +18,7 @@ import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
@@ -23,7 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayData, IEntityMultiPart, IMob
+public class EntityNorthrendDragon extends EntityLiving implements IEntityMultiPart, IMob
 {
     public double targetX;
     public double targetY;
@@ -308,7 +312,7 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
             {
                 this.collideWithEntities(this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.dragonPartWing1.getEntityBoundingBox().expand(4.0D, 2.0D, 4.0D).offset(0.0D, -2.0D, 0.0D)));
                 this.collideWithEntities(this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.dragonPartWing2.getEntityBoundingBox().expand(4.0D, 2.0D, 4.0D).offset(0.0D, -2.0D, 0.0D)));
-                this.attackEntitiesInList(this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.dragonPartHead.getEntityBoundingBox().expand(1.0D, 1.0D, 1.0D)));
+                this.attackEntitiesInList(this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.dragonPartHead.getEntityBoundingBox().expand(25.0D, 25.0D, 25.0D)));
             }
 
             double[] adouble1 = this.getMovementOffsets(5, 1.0F);
@@ -381,13 +385,15 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
         {
             Entity entity = (Entity)p_70971_1_.get(i);
 
-            if (entity instanceof EntityLivingBase)
+            if (entity instanceof EntityLivingBase && !(entity instanceof EntityNorthrendDragon)) // isFacingEntity
             {
-                entity.attackEntityFrom(DamageSource.causeMobDamage(this), 10.0F);
+                this.attackEntityWithRangedAttack((EntityLivingBase)entity, 10);
                 this.func_174815_a(this, entity);
             }
         }
     }
+
+    // Implement boolean isFacingEntity
 
     /**
      * Sets a new target for the flight AI. It can be a random coordinate or a nearby player.
@@ -430,6 +436,16 @@ public class EntityNorthrendDragon extends EntityLiving implements IBossDisplayD
 
             this.target = null;
         }
+    }
+
+    public void attackEntityWithRangedAttack(EntityLivingBase p_82196_1_, float p_82196_2_)
+    {
+        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, p_82196_1_, 1.6F, (float)(14 - this.worldObj.getDifficulty().getDifficultyId() * 4));
+        entityarrow.setDamage(p_82196_2_);
+        entityarrow.setKnockbackStrength(10);
+
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.worldObj.spawnEntityInWorld(entityarrow);
     }
 
     /**

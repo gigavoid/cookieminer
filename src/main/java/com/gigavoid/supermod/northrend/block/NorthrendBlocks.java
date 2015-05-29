@@ -1,9 +1,12 @@
 package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.common.Register;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 
 public class NorthrendBlocks {
-    //public static Fluid baseFluid;
+    public static Fluid baseFluid;
 
     public static BlockNorthGlacialIce glacialIce;
     public static BlockNorthDirt northDirt;
@@ -20,7 +23,7 @@ public class NorthrendBlocks {
     public static BlockNorthGlaciemPlant northGlaciemPlant;
     public static BlockNorthBlight blight;
     public static BlockNorthSnowModded snowLayerMod;
-    //public static BlockFluidClassic poison;
+    public static BlockFluidClassic poison;
     public static BlockNorthCoalOre coalOre;
     public static BlockNorthDiamondOre diamondOre;
     public static BlockNorthEmeraldOre emeraldOre;
@@ -38,8 +41,8 @@ public class NorthrendBlocks {
     public static BlockNorthSapling northBirchSapling;
 
     public static void initializeBlocks(Register register) {
-        //baseFluid = new Fluid("baseFluid");
-        //register.registerFluid(baseFluid, "baseFluid");
+        baseFluid = new Fluid("base_fluid");
+        register.registerFluid(baseFluid, "base_fluid");
 
         glacialIce = new BlockNorthGlacialIce();
         northDirt = new BlockNorthDirt();
@@ -56,7 +59,7 @@ public class NorthrendBlocks {
         northGlaciemPlant = new BlockNorthGlaciemPlant();
         blight = new BlockNorthBlight();
         snowLayerMod = new BlockNorthSnowModded();
-        //poison = new BlockPoisonFluid(baseFluid, Material.water);
+        poison = new BlockNorthPoisonFluid(baseFluid, Material.water);
         coalOre = new BlockNorthCoalOre();
         diamondOre = new BlockNorthDiamondOre();
         emeraldOre = new BlockNorthEmeraldOre();
@@ -90,7 +93,7 @@ public class NorthrendBlocks {
         register.registerBlock(northGlaciemPlant, "north_glaciem_plant");
         register.registerBlock(blight, "north_blight");
         register.registerBlock(snowLayerMod, "north_snow_layer_mod");
-        //register.registerBlock(poison, "poisonFluid");
+        register.registerBlock(poison, "poison_fluid");
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");
         register.registerBlock(emeraldOre, "north_emerald_ore");

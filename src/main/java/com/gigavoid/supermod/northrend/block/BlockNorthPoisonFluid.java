@@ -2,6 +2,7 @@ package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.northrend.creativetab.NorthrendCreativeTabs;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -17,13 +18,11 @@ public class BlockNorthPoisonFluid extends BlockFluidClassic {
 
     @Override
     public boolean canDisplace(IBlockAccess world, BlockPos pos) {
-        if (world.getBlockState(pos).getBlock().getMaterial().isLiquid()) return false;
-        return super.canDisplace(world, pos);
+        return !world.getBlockState(pos).getBlock().getMaterial().isLiquid() && super.canDisplace(world, pos);
     }
 
     @Override
     public boolean displaceIfPossible(World world, BlockPos pos) {
-        if (world.getBlockState(pos).getBlock().getMaterial().isLiquid()) return false;
-        return super.displaceIfPossible(world, pos);
+        return !world.getBlockState(pos).getBlock().getMaterial().isLiquid() && super.displaceIfPossible(world, pos);
     }
 }
