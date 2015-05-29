@@ -30,7 +30,6 @@ public class ModuleNorthrend extends Module {
     @Override
     public void preInit(FMLPreInitializationEvent e){
         NorthrendBlocks.initializeBlocks(getRegister(e.getSide()));
-        NorthrendRenderers.registerRenderers();
         NorthrendEntities.registerEntities(getRegister(e.getSide()));
         NorthrendBiomes.registerBiomes(getRegister(e.getSide()));
 
@@ -43,6 +42,7 @@ public class ModuleNorthrend extends Module {
         NorthrendBlocks.registerBlocks(getRegister(e.getSide()));
         NorthrendItems.registerItems(e, getRegister(e.getSide()));
         NorthrendRecipies.registerRecipies();
+        NorthrendRenderers.registerRenderers();
 
         MapGenStructureIO.registerStructure(NorthrendMapGenFortress.Start.class, "Northrend Fortress");
         MapGenStructureIO.registerStructure(NorthrendMapGenVillage.Start.class, "Northrend Village");

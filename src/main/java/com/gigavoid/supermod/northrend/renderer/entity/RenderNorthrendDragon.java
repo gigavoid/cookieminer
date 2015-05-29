@@ -1,8 +1,8 @@
 package com.gigavoid.supermod.northrend.renderer.entity;
 
 import com.gigavoid.supermod.northrend.entity.EntityNorthrendDragon;
+import com.gigavoid.supermod.northrend.model.ModelNorthrendDragon;
 import com.gigavoid.supermod.northrend.renderer.entity.layers.LayerNorthrendDragonEyes;
-import net.minecraft.client.model.ModelDragon;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -20,14 +20,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RenderNorthrendDragon extends RenderLiving
 {
     private static final ResourceLocation northDragonExplodingTextures = new ResourceLocation("textures/entity/enderdragon/dragon_exploding.png");
-    private static final ResourceLocation northDragonTextures = new ResourceLocation("textures/entity/enderdragon/dragon.png");
+    private static final ResourceLocation northDragonTextures = new ResourceLocation("supermod:textures/entity/northdragon/north_dragon.png");
     /** An instance of the dragon model in RenderDragon */
-    protected ModelDragon modelDragon;
+    protected ModelNorthrendDragon modelDragon;
 
     public RenderNorthrendDragon(RenderManager p_i46183_1_)
     {
-        super(p_i46183_1_, new ModelDragon(0.0F), 0.5F);
-        this.modelDragon = (ModelDragon)this.mainModel;
+        super(p_i46183_1_, new ModelNorthrendDragon(0.0F), 0.5F);
+        this.modelDragon = (ModelNorthrendDragon)this.mainModel;
         this.addLayer(new LayerNorthrendDragonEyes(this));
         this.addLayer(new LayerEnderDragonDeath());
     }
