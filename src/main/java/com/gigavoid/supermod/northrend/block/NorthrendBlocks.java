@@ -43,6 +43,8 @@ public class NorthrendBlocks {
     public static BlockNorthSapling northPineSapling;
     public static BlockNorthSapling northFirSapling;
     public static BlockNorthSapling northBirchSapling;
+    public static BlockNorthBloodBeechLog northBloodBeechLog;
+    public static BlockNorthBloodBeechLeaves northBloodBeechLeaves;
 
     public static void initializeBlocks(Register register){ // throws Exception
         /**Constructor<TextureAtlasSprite> TASConstructor = TextureAtlasSprite.class.getDeclaredConstructor();
@@ -85,6 +87,8 @@ public class NorthrendBlocks {
         northPineSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.PINE);
         northFirSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.FIR);
         northBirchSapling = new BlockNorthSapling(BlockNorthSapling.EnumType.BIRCH);
+        northBloodBeechLog = new BlockNorthBloodBeechLog();
+        northBloodBeechLeaves = new BlockNorthBloodBeechLeaves();
     }
 
     public static void registerBlocks(Register register){
@@ -119,5 +123,7 @@ public class NorthrendBlocks {
         register.registerBlock(northPineSapling, "north_pine_sapling");
         register.registerBlock(northFirSapling, "north_fir_sapling");
         register.registerBlock(northBirchSapling, "north_birch_sapling");
+        register.registerBlock(northBloodBeechLog, "north_blood_beech_log");
+        register.registerBlock(northBloodBeechLeaves, "north_blood_beech_leaves");
     }
 }

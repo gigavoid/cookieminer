@@ -11,7 +11,8 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
 public class BlockNorthPoisonFluid extends BlockFluidClassic {
-    public BlockNorthPoisonFluid(Fluid fluid, Material material) {
+
+    public BlockNorthPoisonFluid(Fluid fluid, Material material){
         super(fluid, material);
         setCreativeTab(NorthrendCreativeTabs.tabNorthrend);
     }
