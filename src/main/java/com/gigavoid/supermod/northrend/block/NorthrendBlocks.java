@@ -123,7 +123,7 @@ public class NorthrendBlocks {
         register.registerBlock(northPineSapling, "north_pine_sapling");
         register.registerBlock(northFirSapling, "north_fir_sapling");
         register.registerBlock(northBirchSapling, "north_birch_sapling");
-        register.registerBlock(northBloodBeechLog, "north_blood_beech_log");
-        register.registerBlock(northBloodBeechLeaves, "north_blood_beech_leaves");
+        //register.registerBlock(northBloodBeechLog, "north_blood_beech_log");
+        //register.registerBlock(northBloodBeechLeaves, "north_blood_beech_leaves");
     }
 }

@@ -385,7 +385,7 @@ public class EntityNorthrendDragon extends EntityLiving implements IEntityMultiP
         {
             Entity entity = (Entity)p_70971_1_.get(i);
 
-            if (entity instanceof EntityLivingBase && !(entity instanceof EntityNorthrendDragon) && canSeeEnity(entity, 15.0F))
+            if (entity instanceof EntityLivingBase && !(entity instanceof EntityNorthrendDragon) && canSeeEnity(entity, 0.261799388F))
             {
                 this.attackEntityWithRangedAttack((EntityLivingBase)entity, 10);
                 this.func_174815_a(this, entity);

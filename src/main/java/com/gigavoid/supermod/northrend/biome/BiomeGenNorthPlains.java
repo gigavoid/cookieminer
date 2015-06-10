@@ -8,8 +8,6 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import java.util.Random;
 
 public class BiomeGenNorthPlains extends NorthrendBiomeGenBase {
-    private NorthrendWorldGenBloodBeech treeGen = new NorthrendWorldGenBloodBeech(true, 4);
-
     public BiomeGenNorthPlains(int id, int weight){
         super(id, weight);
 
@@ -18,10 +16,5 @@ public class BiomeGenNorthPlains extends NorthrendBiomeGenBase {
         topBlock = Block.getBlockFromName("snow").getDefaultState();
         fillerBlock = Block.getBlockFromName("snow").getDefaultState();
         theBiomeDecorator.treesPerChunk = 6;
-    }
-
-    @Override
-    public WorldGenAbstractTree genBigTreeChance(Random r) {
-        return treeGen;
     }
 }
