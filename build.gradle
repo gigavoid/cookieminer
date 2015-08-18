@@ -22,7 +22,7 @@ group= "com.gigavoid.supermod" // http://maven.apache.org/guides/mini/guide-nami
 archivesBaseName = "SuperMod"
 
 minecraft {
-    version = "1.8-11.14.1.1418"
+    version = "1.8-11.14.2.1444"
     runDir = "eclipse"
 }
 

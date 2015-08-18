@@ -1,16 +1,8 @@
-package com.gigavoid.supermod.northrend.event;
+package com.gigavoid.supermod.northrend.handler;
 
 import com.gigavoid.supermod.northrend.ModuleNorthrend;
-import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
-import net.minecraft.block.BlockSandStone;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.terraingen.BiomeEvent;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
