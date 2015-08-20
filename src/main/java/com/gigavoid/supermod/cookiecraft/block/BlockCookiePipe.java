@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -7,6 +8,8 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -195,5 +198,17 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
 
     private boolean isNeighborACookieBlock(IBlockAccess world, BlockPos pos, EnumFacing facing){
         return world.getBlockState(pos.offset(facing)).getBlock() instanceof ICookieBlock;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        if (!worldIn.isRemote)
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
+    }
+
+    @Override
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
+        if (!worldIn.isRemote)
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
     }
 }
