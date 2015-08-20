@@ -41,7 +41,7 @@ public class BlockCoockiePortalActivator extends Block {
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
-        if (worldIn.provider.getDimensionId() > 0 || !CookiecraftBlocks.portalCookiecraft.func_176548_d(worldIn, pos))
+        if (worldIn.provider.getDimensionId() < 0 || !CookiecraftBlocks.portalCookiecraft.func_176548_d(worldIn, pos))
         {
             worldIn.setBlockToAir(pos);
         }

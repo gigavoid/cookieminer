@@ -1626,7 +1626,7 @@ public class NorthrendStructureFortressPieces
 
                     if (tileentity instanceof TileEntityMobSpawner)
                     {
-                        ((TileEntityMobSpawner)tileentity).getSpawnerBaseLogic().setEntityName("Blaze");
+                        ((TileEntityMobSpawner)tileentity).getSpawnerBaseLogic().setEntityName("izrr");
                     }
                 }
             }

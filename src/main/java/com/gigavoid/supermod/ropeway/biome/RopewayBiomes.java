@@ -7,14 +7,17 @@ public class RopewayBiomes {
     public static BiomeGenRopewaySkylands skylands;
     public static BiomeGenRopewayForest forest;
     public static BiomeGenRopewayAbyss abyss;
+    public static BiomeGenRopewayDesert desert;
 
     public static void registerBiomes(Register register){
         skylands = new BiomeGenRopewaySkylands(register.getNextBiomeID(), 10);
         forest = new BiomeGenRopewayForest(register.getNextBiomeID(), 10);
-        abyss = new BiomeGenRopewayAbyss(register.getNextBiomeID(), 30);
+        desert = new BiomeGenRopewayDesert(register.getNextBiomeID(), 5);
+        abyss = new BiomeGenRopewayAbyss(register.getNextBiomeID(), 40);
 
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(skylands, 0));
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(forest, 0));
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(abyss, 0));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(desert, 0));
     }
 }

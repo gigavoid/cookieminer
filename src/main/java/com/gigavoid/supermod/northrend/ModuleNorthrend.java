@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
     public static final DamageSource freeze = (new DamageSource("freeze")).setDamageBypassesArmor();
+    public static final DamageSource frostattack = (new DamageSource("frostattack")).setDamageBypassesArmor();
 
     @Override
     public void preInit(FMLPreInitializationEvent e){

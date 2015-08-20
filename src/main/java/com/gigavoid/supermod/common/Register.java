@@ -50,6 +50,12 @@ public class Register {
         EntityRegistry.registerGlobalEntityID(entity, name, id, color, spotColor);
     }
 
+    // If entity shall have no egg.
+    public void registerEntity(Class<? extends net.minecraft.entity.Entity> entity, String name){
+        int id = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(entity, name, id);
+    }
+
     public int getNextBiomeID(){
         return nextBiomeId++;
     }

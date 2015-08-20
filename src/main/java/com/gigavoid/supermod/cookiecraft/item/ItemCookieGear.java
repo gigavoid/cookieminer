@@ -11,9 +11,7 @@ public class ItemCookieGear extends Item {
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 
-    public int getTier(){
-        return tier;
-    }
+    public int getTier(){return tier;}
 
     public void setTier(int tier){
         this.tier = tier;

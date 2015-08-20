@@ -27,7 +27,7 @@ public class BlockNorthSnowModded extends BlockSnow {
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
-        if (worldIn.provider.getDimensionId() > 0 || !NorthrendBlocks.portalNorthrend.func_176548_d(worldIn, pos)) {
+        if (worldIn.provider.getDimensionId() < 0 || !NorthrendBlocks.portalNorthrend.func_176548_d(worldIn, pos)) {
             if(!canPlaceBlockAt(worldIn, pos)){
                 worldIn.setBlockToAir(pos);
             }

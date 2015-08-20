@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.northrend.biome;
 
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
+import com.gigavoid.supermod.northrend.entity.EntityIzrr;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +27,7 @@ public class NorthrendBiomeGenBase extends BiomeGenBase {
         spawnableWaterCreatureList.clear();
         //spawnableMonsterList.add(new SpawnListEntry(EntityYeti.class, 2, 1, 1));
         spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 2, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntityIzrr.class, 2, 1, 1));
         temperature = 0.0f;
         rainfall = 1.0f;
         enableRain = true;
