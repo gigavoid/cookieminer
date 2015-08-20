@@ -40,7 +40,7 @@ public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements 
         int cps = nrOfLavaBlocks(world, pos);
         if (cps != 0) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 1/45d * cps;
+            return 4 * cps;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false), 2);
         return 0;

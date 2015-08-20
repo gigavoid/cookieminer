@@ -7,15 +7,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCookieDoughCollector extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    protected BlockCookieDoughCollector() {
+public class BlockCookieFarm extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    protected BlockCookieFarm() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return 1/64d;
+        return 1/32d;
     }
 
 	@Override
