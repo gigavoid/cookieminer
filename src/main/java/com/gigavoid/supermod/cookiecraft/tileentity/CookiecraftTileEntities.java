@@ -6,5 +6,6 @@ public class CookiecraftTileEntities {
     public static void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityCookieCrafter.class, "cookie_crafter");
         GameRegistry.registerTileEntity(TileEntityCookieStorage.class, "cookie_storage");
+        GameRegistry.registerTileEntity(TileEntityMoonlightReflector.class, "moonlight_reflector");
     }
 }
