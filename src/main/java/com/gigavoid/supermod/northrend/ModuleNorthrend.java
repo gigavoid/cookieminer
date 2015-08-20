@@ -4,7 +4,8 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.northrend.biome.NorthrendBiomes;
 import com.gigavoid.supermod.northrend.block.NorthrendBlocks;
 import com.gigavoid.supermod.northrend.entity.NorthrendEntities;
-import com.gigavoid.supermod.northrend.event.NorthrendEventHandler;
+import com.gigavoid.supermod.northrend.handler.ModelBakeHandler;
+import com.gigavoid.supermod.northrend.handler.NorthrendEventHandler;
 import com.gigavoid.supermod.northrend.item.NorthrendItems;
 import com.gigavoid.supermod.northrend.recipe.NorthrendRecipies;
 import com.gigavoid.supermod.northrend.renderer.NorthrendRenderers;
@@ -22,7 +23,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import scala.Console;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ModuleNorthrend extends Module {
     public static int dimensionId;
@@ -30,7 +31,15 @@ public class ModuleNorthrend extends Module {
 
     @Override
     public void preInit(FMLPreInitializationEvent e){
-        NorthrendBlocks.initializeBlocks(getRegister(e.getSide()));
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT){
+            MinecraftForge.EVENT_BUS.register(new ModelBakeHandler());
+        }
+
+        NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
+        FMLCommonHandler.instance().bus().register(northendEventHandler);
+        MinecraftForge.EVENT_BUS.register(northendEventHandler);
+
+        NorthrendBlocks.initializeBlocks();
         NorthrendEntities.registerEntities(getRegister(e.getSide()));
         NorthrendBiomes.registerBiomes(getRegister(e.getSide()));
 
@@ -51,9 +60,5 @@ public class ModuleNorthrend extends Module {
         NorthrendStructureFortressPieces.registerNetherFortressPieces();
         NorthrendStructureVillagePieces.registerVillagePieces();
         NorthrendStructureMineshaftPieces.registerStructurePieces();
-
-        NorthrendEventHandler northendEventHandler = new NorthrendEventHandler();
-        FMLCommonHandler.instance().bus().register(northendEventHandler);
-        MinecraftForge.EVENT_BUS.register(northendEventHandler);
     }
 }

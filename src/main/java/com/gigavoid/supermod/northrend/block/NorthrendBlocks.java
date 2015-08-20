@@ -1,13 +1,10 @@
 package com.gigavoid.supermod.northrend.block;
 
 import com.gigavoid.supermod.common.Register;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraftforge.fluids.BlockFluidClassic;
+import com.gigavoid.supermod.northrend.handler.ModelBakeHandler;
+import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
-import scala.Console;
-
-import java.lang.reflect.Constructor;
+import net.minecraftforge.fluids.FluidRegistry;
 
 public class NorthrendBlocks {
     public static Fluid baseFluid;
@@ -27,7 +24,7 @@ public class NorthrendBlocks {
     public static BlockNorthGlaciemPlant northGlaciemPlant;
     public static BlockNorthBlight blight;
     public static BlockNorthSnowModded snowLayerMod;
-    public static BlockFluidClassic poison;
+    public static BlockFluidFinite poison;
     public static BlockNorthCoalOre coalOre;
     public static BlockNorthDiamondOre diamondOre;
     public static BlockNorthEmeraldOre emeraldOre;
@@ -46,15 +43,9 @@ public class NorthrendBlocks {
     public static BlockNorthBloodBeechLog northBloodBeechLog;
     public static BlockNorthBloodBeechLeaves northBloodBeechLeaves;
 
-    public static void initializeBlocks(Register register){ // throws Exception
-        /**Constructor<TextureAtlasSprite> TASConstructor = TextureAtlasSprite.class.getDeclaredConstructor();
-        TASConstructor.setAccessible(true);
-
-        TextureAtlasSprite still = TASConstructor.newInstance("supermod:blocks/poison_fluid_sill");
-        TextureAtlasSprite flowing = TASConstructor.newInstance("supermod:blocks/poison_fluid_flowing");
-*/
-        baseFluid = new Fluid("base_fluid");
-        register.registerFluid(baseFluid, "base_fluid");
+    public static void initializeBlocks(){
+        baseFluid = new Fluid("poison_fluid");
+        FluidRegistry.registerFluid(baseFluid);
 
         glacialIce = new BlockNorthGlacialIce();
         northDirt = new BlockNorthDirt();
@@ -71,7 +62,7 @@ public class NorthrendBlocks {
         northGlaciemPlant = new BlockNorthGlaciemPlant();
         blight = new BlockNorthBlight();
         snowLayerMod = new BlockNorthSnowModded();
-        poison = new BlockNorthPoisonFluid(baseFluid, Material.water);
+        poison = new BlockNorthPoisonFluid(baseFluid);
         coalOre = new BlockNorthCoalOre();
         diamondOre = new BlockNorthDiamondOre();
         emeraldOre = new BlockNorthEmeraldOre();
@@ -107,7 +98,7 @@ public class NorthrendBlocks {
         register.registerBlock(northGlaciemPlant, "north_glaciem_plant");
         register.registerBlock(blight, "north_blight");
         register.registerBlock(snowLayerMod, "north_snow_layer_mod");
-        register.registerBlock(poison, "poison_fluid");
+        register.registerBlock(poison, "poison");
         register.registerBlock(coalOre, "north_coal_ore");
         register.registerBlock(diamondOre, "north_diamond_ore");
         register.registerBlock(emeraldOre, "north_emerald_ore");
@@ -125,5 +116,8 @@ public class NorthrendBlocks {
         register.registerBlock(northBirchSapling, "north_birch_sapling");
         //register.registerBlock(northBloodBeechLog, "north_blood_beech_log");
         //register.registerBlock(northBloodBeechLeaves, "north_blood_beech_leaves");
+
+        baseFluid.setBlock(poison);
+        ModelBakeHandler.fluidsToTextureStitch.add("poison_fluid");
     }
 }

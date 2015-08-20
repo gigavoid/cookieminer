@@ -27,13 +27,8 @@ public class Register {
     public void registerBlock(Block block, String name, String resourceName) {
         block.setUnlocalizedName(name);
         GameRegistry.registerBlock(block, name);
-		if (side== Side.CLIENT)
+		if (side == Side.CLIENT)
         	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + resourceName, "inventory"));
-    }
-
-    public void registerFluid(Fluid fluid, String name) {
-        fluid.setUnlocalizedName(name);
-        FluidRegistry.registerFluid(fluid);
     }
 
     public void registerItem(Item item, String name, FMLInitializationEvent event) {
