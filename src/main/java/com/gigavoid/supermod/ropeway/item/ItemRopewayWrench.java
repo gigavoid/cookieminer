@@ -9,33 +9,50 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class ItemRopewayWrench extends Item{
+public class ItemRopewayWrench extends Item {
     public ItemRopewayWrench() {
         setCreativeTab(RopewayCreativeTabs.tabBlock);
+    }
+
+    private void message(World world, EntityPlayer player, String message) {
+        if (!world.isRemote) {
+            player.addChatMessage(new ChatComponentText(message));
+        }
     }
 
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
         IBlockState blockState = world.getBlockState(pos);
-        if(blockState.getBlock() != RopewayBlocks.engine)
+        if (blockState.getBlock() != RopewayBlocks.engine)
             return false;
 
-        if(ItemRopewayWrench.isPathingInProgress(stack)) {
+        if (ItemRopewayWrench.isPathingInProgress(stack)) {
             BlockPos pointB = ItemRopewayWrench.getPathStart(stack);
-            if(pos.getX() - pointB.getX() != 0 && pos.getZ() - pointB.getZ() != 0)
+            if (pos.getX() - pointB.getX() != 0 && pos.getZ() - pointB.getZ() != 0) {
+                message(world, playerIn, "The rope has to be in a straight line");
+                ItemRopewayWrench.clearPathStart(stack);
                 return false;
+            }
 
+            if (pos.distanceSq(pointB) < .001) {
+                message(world, playerIn, "Rope point cleared");
+                ItemRopewayWrench.clearPathStart(stack);
+                return false;
+            }
+
+            message(world, playerIn, "Rope added");
             TileEntityRopewayEngine.addRopeFromTo(world, pos, pointB);
             ItemRopewayWrench.clearPathStart(stack);
         } else {
             ItemRopewayWrench.setPathStart(stack, pos);
+            message(world, playerIn, "First point set");
         }
         return true;
     }
-
 
 
     private static BlockPos getPathStart(ItemStack item) {
@@ -51,7 +68,7 @@ public class ItemRopewayWrench extends Item{
         tagCompound.removeTag("startBlock");
     }
 
-    private static void setPathStart(ItemStack item,BlockPos pos) {
+    private static void setPathStart(ItemStack item, BlockPos pos) {
         if (!item.hasTagCompound())
             item.setTagCompound(new NBTTagCompound());
 

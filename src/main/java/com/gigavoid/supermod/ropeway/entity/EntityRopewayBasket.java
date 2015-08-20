@@ -55,6 +55,11 @@ public class EntityRopewayBasket extends Entity {
     public void setTarget(BlockPos target) {
         this.target = target;
 
+        if (target == null) {
+            // Unset the target
+            return;
+        }
+
         if (!worldObj.isRemote) {
             dataWatcher.updateObject(20, target.getX());
             dataWatcher.updateObject(21, target.getY());
