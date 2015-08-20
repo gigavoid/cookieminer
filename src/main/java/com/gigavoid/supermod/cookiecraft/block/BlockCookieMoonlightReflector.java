@@ -20,7 +20,6 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     protected BlockCookieMoonlightReflector() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
-        setTickRandomly(true);
     }
 
     @Override
@@ -36,7 +35,14 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 		return GuiCookieUpgrade.GUI_ID;
 	}
 
-	@Override
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+        if (!worldIn.isRemote) {
+            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+        }
+    }
+
+    @Override
 	public boolean hasImportantUI() {
 		return false;
 	}
@@ -53,8 +59,8 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
         boolean isActive = isTopBlock(worldIn, pos) && !worldIn.isDaytime();
 
         if (isActive != tileEntity.isActive()) {
-            // State has changed since last check
             if (!worldIn.isRemote) {
+                worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
                 CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
             }
         }
