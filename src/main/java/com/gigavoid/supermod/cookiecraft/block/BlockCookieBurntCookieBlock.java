@@ -8,8 +8,8 @@ import net.minecraft.item.Item;
 
 import java.util.Random;
 
-public class BlockBurntCookieBlock extends Block {
-    public BlockBurntCookieBlock() {
+public class BlockCookieBurntCookieBlock extends Block {
+    public BlockCookieBurntCookieBlock() {
         super(Material.ground);
         this.setHardness(-1.0f);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);

@@ -10,12 +10,12 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
 
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
 
-    public BlockPortalConnector(){
+    public BlockCookiePortalConnector(){
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));

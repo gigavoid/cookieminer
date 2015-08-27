@@ -6,7 +6,6 @@ import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.teleporter.Teleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
-import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -25,10 +24,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockPortalCookiecraft extends BlockBreakable {
+public class BlockCookiePortalCookiecraft extends BlockBreakable {
     public static final PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
 
-    public BlockPortalCookiecraft() {
+    public BlockCookiePortalCookiecraft() {
         super(Material.portal, false);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setLightLevel(.75f);
@@ -351,7 +350,7 @@ public class BlockPortalCookiecraft extends BlockBreakable {
                 BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
                 for (int j = 0; j < this.field_150862_g; ++j) {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.AXIS, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, this.field_150865_b), 2);
                 }
             }
         }

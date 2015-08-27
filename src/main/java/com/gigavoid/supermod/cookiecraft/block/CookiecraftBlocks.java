@@ -4,18 +4,18 @@ import com.gigavoid.supermod.common.Register;
 
 public class CookiecraftBlocks {
     public static final BlockCookieCrafter cookieCrafter = new BlockCookieCrafter();
-    public static final BlockPortalCookiecraft portalCookiecraft = new BlockPortalCookiecraft();
+    public static final BlockCookiePortalCookiecraft portalCookiecraft = new BlockCookiePortalCookiecraft();
     public static final BlockCookieBlock cookieBlock = new BlockCookieBlock();
     public static final BlockCookieDoughCollector cookieDoughCollector = new BlockCookieDoughCollector();
-    public static final BlockBurntCookieBlock burntCookieBlock = new BlockBurntCookieBlock();
-    public static final BlockPortalConnector portalConnector = new BlockPortalConnector();
+    public static final BlockCookieBurntCookieBlock burntCookieBlock = new BlockCookieBurntCookieBlock();
+    public static final BlockCookiePortalConnector portalConnector = new BlockCookiePortalConnector();
     public static final BlockCookieLavaConverter lavaConverter = new BlockCookieLavaConverter();
     public static final BlockCookieMoonlightReflector monlightReflector = new BlockCookieMoonlightReflector();
     public static final BlockCookieStorage cookieStorage = new BlockCookieStorage();
     public static final BlockCookiePortalActivator activator = new BlockCookiePortalActivator();
     public static final BlockCookiePipe pipe = new BlockCookiePipe();
-    public static final BlockCactusMasher cactusMasher = new BlockCactusMasher();
-    public static final BlockCocoaCircuit cocoaCircuit = new BlockCocoaCircuit();
+    public static final BlockCookieCactusMasher cactusMasher = new BlockCookieCactusMasher();
+    public static final BlockCookieCocoaCircuit cocoaCircuit = new BlockCookieCocoaCircuit();
     public static final BlockCookieFarm cookieFarm = new BlockCookieFarm();
     public static final BlockCookieSteamer cookieSteamer = new BlockCookieSteamer();
 

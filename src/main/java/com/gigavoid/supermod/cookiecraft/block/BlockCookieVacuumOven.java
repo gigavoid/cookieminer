@@ -7,8 +7,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCocoaCircuit extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    protected BlockCocoaCircuit() {
+public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    protected BlockCookieVacuumOven() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

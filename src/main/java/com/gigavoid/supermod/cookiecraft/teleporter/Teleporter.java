@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.teleporter;
 
-import com.gigavoid.supermod.cookiecraft.block.BlockPortalCookiecraft;
+import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -452,7 +452,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
             }
         }
 
-        IBlockState iblockstate = CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockPortalCookiecraft.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
+        IBlockState iblockstate = CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
 
         for (j3 = 0; j3 < 4; ++j3)
         {
