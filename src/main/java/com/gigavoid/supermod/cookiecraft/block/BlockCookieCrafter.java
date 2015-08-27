@@ -189,7 +189,7 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         return 1/60;
     }
 
-    public TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
+    public static TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
 
