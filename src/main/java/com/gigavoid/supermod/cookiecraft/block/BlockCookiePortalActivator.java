@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCoockiePortalActivator extends Block {
-    public BlockCoockiePortalActivator(){
+public class BlockCookiePortalActivator extends Block {
+    public BlockCookiePortalActivator(){
         super(Material.glass);
         this.setHardness(1.0f);
         this.setCreativeTab(null);

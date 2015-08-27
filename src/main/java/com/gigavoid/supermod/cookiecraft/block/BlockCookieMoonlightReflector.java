@@ -8,23 +8,48 @@ import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityMoonlightReflector
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
+    public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
     protected BlockCookieMoonlightReflector() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
+
+    @Override
+    protected BlockState createBlockState() {
+        return new BlockState(this, ACTIVE);
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return state.withProperty(ACTIVE, isActive((World)worldIn, pos));
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return 0;
+    }
+
+    private boolean isActive(World world, BlockPos pos){
+        return !world.isDaytime() && isTopBlock(world, pos);
     }
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        if (!world.isDaytime() && isTopBlock(world, pos)){
+        if (isActive(world, pos)){
             return 4d;
         }
         return 0;
@@ -60,12 +85,15 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
         if (isActive != tileEntity.isActive()) {
             if (!worldIn.isRemote) {
-                worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
                 CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
             }
         }
 
         tileEntity.setIsActive(isActive);
+
+        if (!worldIn.isRemote){
+            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+        }
     }
 
     private boolean isTopBlock(World world, BlockPos pos){

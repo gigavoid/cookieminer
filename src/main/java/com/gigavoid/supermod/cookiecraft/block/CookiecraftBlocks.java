@@ -12,8 +12,12 @@ public class CookiecraftBlocks {
     public static final BlockCookieLavaConverter lavaConverter = new BlockCookieLavaConverter();
     public static final BlockCookieMoonlightReflector monlightReflector = new BlockCookieMoonlightReflector();
     public static final BlockCookieStorage cookieStorage = new BlockCookieStorage();
-    public static final BlockCoockiePortalActivator activator = new BlockCoockiePortalActivator();
+    public static final BlockCookiePortalActivator activator = new BlockCookiePortalActivator();
     public static final BlockCookiePipe pipe = new BlockCookiePipe();
+    public static final BlockCactusMasher cactusMasher = new BlockCactusMasher();
+    public static final BlockCocoaCircuit cocoaCircuit = new BlockCocoaCircuit();
+    public static final BlockCookieFarm cookieFarm = new BlockCookieFarm();
+    public static final BlockCookieSteamer cookieSteamer = new BlockCookieSteamer();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -27,5 +31,9 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieStorage, "cookie_storage");
         register.registerBlock(activator, "cookie_portal_activator");
         register.registerBlock(pipe, "cookie_pipe");
+        register.registerBlock(cactusMasher, "cactus_masher");
+        register.registerBlock(cocoaCircuit, "cocoa_circuit");
+        register.registerBlock(cookieFarm, "cookie_farm");
+        register.registerBlock(cookieSteamer, "cookie_steamer");
     }
 }
