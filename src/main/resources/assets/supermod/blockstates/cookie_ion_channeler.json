@@ -1,12 +1,12 @@
 {
     "variants": {
-        "active=true,top=false,bottom=false": { "model": "supermod:cookie_ion_channeler_active" },
-        "active=true,top=true,bottom=false": { "model": "supermod:cookie_ion_channeler_active_top" },
-        "active=true,top=false,bottom=true": { "model": "supermod:cookie_ion_channeler_active_bottom" },
-        "active=true,top=true,bottom=true": { "model": "supermod:cookie_ion_channeler_active_single" },
-        "active=false,top=false,bottom=false": { "model": "supermod:cookie_ion_channeler" },
-        "active=false,top=true,bottom=false": { "model": "supermod:cookie_ion_channeler_top" },
-        "active=false,top=false,bottom=true": { "model": "supermod:cookie_ion_channeler_bottom" },
-        "active=false,top=true,bottom=true": { "model": "supermod:cookie_ion_channeler_single" }
+        "active=true,bottom=false,top=false": { "model": "supermod:cookie_ion_channeler_active" },
+        "active=true,bottom=false,top=true": { "model": "supermod:cookie_ion_channeler_active_top" },
+        "active=true,bottom=true,top=false": { "model": "supermod:cookie_ion_channeler_active_bottom" },
+        "active=true,bottom=true,top=true": { "model": "supermod:cookie_ion_channeler_active_single" },
+        "active=false,bottom=false,top=false": { "model": "supermod:cookie_ion_channeler" },
+        "active=false,bottom=false,top=true": { "model": "supermod:cookie_ion_channeler_top" },
+        "active=false,bottom=true,top=false": { "model": "supermod:cookie_ion_channeler_bottom" },
+        "active=false,bottom=true,4top=true": { "model": "supermod:cookie_ion_channeler_single" }
     }
 }
