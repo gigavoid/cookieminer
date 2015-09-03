@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 
 public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICookieUpgrade {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+    private final int heightLimit = 250;
 
     protected BlockCookieVacuumOven() {
         super(Material.rock);
@@ -26,7 +27,7 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, pos.getY() >= 254);
+        return state.withProperty(ACTIVE, pos.getY() >= heightLimit);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return pos.getY() >= 254 ? 8192 : 0;
+        return pos.getY() >= heightLimit ? 8192 : 0;
     }
 
 	@Override

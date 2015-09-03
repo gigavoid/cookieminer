@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "active=true": { "model": "supermod:cookie_vacuum_oven_active" },
+        "active=false": { "model": "supermod:cookie_vacuum_oven" }
+    }
+}

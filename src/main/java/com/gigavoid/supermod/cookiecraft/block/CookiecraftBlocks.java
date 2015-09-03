@@ -37,7 +37,7 @@ public class CookiecraftBlocks {
         register.registerBlock(cocoaCircuit, "cocoa_circuit");
         register.registerBlock(cookieFarm, "cookie_farm");
         register.registerBlock(cookieSteamer, "cookie_steamer");
-        register.registerBlock(vacuumOven, "vacuum_oven");
+        register.registerBlock(vacuumOven, "cookie_vacuum_oven");
         register.registerBlock(ionChanneler, "cookie_ion_channeler");
     }
 }
