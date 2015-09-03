@@ -14,6 +14,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -35,7 +36,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, isActive((World)worldIn, pos));
+        return state.withProperty(ACTIVE, ((TileEntityMoonlightReflector)worldIn.getTileEntity(pos)).isActive());
     }
 
     @Override
@@ -43,13 +44,10 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
         return 0;
     }
 
-    private boolean isActive(World world, BlockPos pos){
-        return !world.isDaytime() && isTopBlock(world, pos);
-    }
-
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        if (isActive(world, pos)){
+        System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
+        if (getTileEntity(world, pos).isActive()) {
             return 4d;
         }
         return 0;
@@ -83,17 +81,13 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
         boolean isActive = isTopBlock(worldIn, pos) && !worldIn.isDaytime();
 
+
         if (isActive != tileEntity.isActive()) {
-            if (!worldIn.isRemote) {
-                CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
-            }
+            tileEntity.setIsActive(isActive);
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
         }
 
-        tileEntity.setIsActive(isActive);
-
-        if (!worldIn.isRemote){
-            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-        }
+        worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
     }
 
     private boolean isTopBlock(World world, BlockPos pos){
