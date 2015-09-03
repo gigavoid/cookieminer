@@ -46,7 +46,7 @@ public class CookiecraftRecipes {
 	private static void cookieFarm() {
 		ItemStack iron = new ItemStack(Items.iron_ingot);
 		ItemStack seed = new ItemStack(Items.wheat_seeds);
-		ItemStack cookieBox = new ItemStack(CookiecraftItems.cookieBox);
+		ItemStack cookieBox = new ItemStack(CookiecraftItems.emeraldCookiePouch);
 		ItemStack dirt = new ItemStack(Item.getItemFromBlock(Blocks.dirt));
 
 

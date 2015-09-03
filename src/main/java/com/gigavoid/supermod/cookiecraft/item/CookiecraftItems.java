@@ -5,7 +5,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 public class CookiecraftItems {
     public static final ItemMagicCookie magicCookie = new ItemMagicCookie();
-    public static final ItemCookieBox cookieBox = new ItemCookieBox();
     public static final ItemCookieDough cookieDough = new ItemCookieDough();
 
     public static final ItemCookieGear cookieGear0 = new ItemCookieGear(0);
@@ -14,9 +13,17 @@ public class CookiecraftItems {
     public static final ItemCookieGear cookieGear3 = new ItemCookieGear(3);
     public static final ItemCookieGear cookieGear4 = new ItemCookieGear(4);
 
+    public static final ItemCookiePouch woodenCookiePouch = new ItemCookiePouch(64);
+    public static final ItemCookiePouch stoneCookiePouch = new ItemCookiePouch(2048);
+    public static final ItemCookiePouch ironCookiePouch = new ItemCookiePouch(131072);
+    public static final ItemCookiePouch goldenCookiePouch = new ItemCookiePouch(33554432);
+    public static final ItemCookiePouch diamondCookiePouch = new ItemCookiePouch(536870912);
+    public static final ItemCookiePouch emeraldCookiePouch = new ItemCookiePouch(68719476736L);
+
+
+
     public static void registerItems(Register register, FMLInitializationEvent event){
         register.registerItem(magicCookie, "cookie_magic", event);
-        register.registerItem(cookieBox, "cookie_box", event);
         register.registerItem(cookieDough, "cookie_dough", event);
 
         register.registerItem(cookieGear0, "cookie_gear_0", event);
@@ -24,5 +31,12 @@ public class CookiecraftItems {
         register.registerItem(cookieGear2, "cookie_gear_2", event);
         register.registerItem(cookieGear3, "cookie_gear_3", event);
         register.registerItem(cookieGear4, "cookie_gear_4", event);
+
+        register.registerItem(woodenCookiePouch, "cookie_pouch_wood", event);
+        register.registerItem(stoneCookiePouch, "cookie_pouch_stone", event);
+        register.registerItem(ironCookiePouch, "cookie_pouch_iron", event);
+        register.registerItem(goldenCookiePouch, "cookie_pouch_gold", event);
+        register.registerItem(diamondCookiePouch, "cookie_pouch_diamond", event);
+        register.registerItem(emeraldCookiePouch, "cookie_pouch_emerald", event);
     }
 }

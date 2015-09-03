@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.List;
 
-public abstract class ItemCookieBoxBase extends Item implements ICookieStorageItem {
+public abstract class ItemCookiePouchBase extends Item implements ICookieStorageItem {
 
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {

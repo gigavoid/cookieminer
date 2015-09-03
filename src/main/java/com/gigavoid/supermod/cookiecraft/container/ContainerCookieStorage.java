@@ -8,6 +8,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.tileentity.TileEntityFurnace;
 
 public class ContainerCookieStorage extends Container {
 private TileEntityCookieStorage tileEntity;
@@ -39,4 +41,38 @@ private TileEntityCookieStorage tileEntity;
 		}
 	}
 
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+		ItemStack itemstack = null;
+		Slot slot = (Slot)this.inventorySlots.get(index);
+
+		if (slot != null && slot.getHasStack())
+		{
+			ItemStack stack = slot.getStack();
+			itemstack = stack.copy();
+
+			if (!this.mergeItemStack(stack, 2, 38, true))
+			{
+				return null;
+			}
+
+			if (stack.stackSize == 0)
+			{
+				slot.putStack(null);
+			}
+			else
+			{
+				slot.onSlotChanged();
+			}
+
+			if (stack.stackSize == itemstack.stackSize)
+			{
+				return null;
+			}
+
+			slot.onPickupFromSlot(playerIn, stack);
+		}
+
+		return itemstack;
+	}
 }

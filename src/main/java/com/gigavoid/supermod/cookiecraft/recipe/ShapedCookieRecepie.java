@@ -3,8 +3,7 @@ package com.gigavoid.supermod.cookiecraft.recipe;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
 import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
-import com.gigavoid.supermod.cookiecraft.item.ItemCookieBoxBase;
-import net.minecraft.init.Blocks;
+import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,7 +61,7 @@ public class ShapedCookieRecepie implements IRecipe{
                     return false;
                 }
             }
-            else if (itemStack.getItem() instanceof ItemCookieBoxBase) {
+            else if (itemStack.getItem() instanceof ItemCookiePouchBase) {
                 if (!isCookieStorage(cookiesRequired, ic.getStackInSlot(i))) {
                     // Not enough cookies!
                     return false;

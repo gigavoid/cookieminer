@@ -148,7 +148,9 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 
 	@Override
 	public void clear() {
-
+		for (int i = 0; i < inv.length; i++) {
+			inv[i] = null;
+		}
 	}
 
 	@Override
