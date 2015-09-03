@@ -87,6 +87,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
             CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
         }
 
+        worldIn.setBlockState(pos, state.withProperty(ACTIVE, isActive), 2);
         worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
     }
 
