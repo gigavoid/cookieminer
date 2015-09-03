@@ -13,7 +13,8 @@ public class CookiecraftItems {
     public static final ItemCookieGear cookieGear3 = new ItemCookieGear(3);
     public static final ItemCookieGear cookieGear4 = new ItemCookieGear(4);
 
-    public static final ItemCookiePouch woodenCookiePouch = new ItemCookiePouch(64);
+    public static final ItemCookiePouch leatherCookiePouch = new ItemCookiePouch(64);
+    public static final ItemCookiePouch woodenCookiePouch = new ItemCookiePouch(256);
     public static final ItemCookiePouch stoneCookiePouch = new ItemCookiePouch(2048);
     public static final ItemCookiePouch ironCookiePouch = new ItemCookiePouch(131072);
     public static final ItemCookiePouch goldenCookiePouch = new ItemCookiePouch(33554432);
@@ -32,6 +33,7 @@ public class CookiecraftItems {
         register.registerItem(cookieGear3, "cookie_gear_3", event);
         register.registerItem(cookieGear4, "cookie_gear_4", event);
 
+        register.registerItem(leatherCookiePouch, "cookie_pouch_leather", event);
         register.registerItem(woodenCookiePouch, "cookie_pouch_wood", event);
         register.registerItem(stoneCookiePouch, "cookie_pouch_stone", event);
         register.registerItem(ironCookiePouch, "cookie_pouch_iron", event);

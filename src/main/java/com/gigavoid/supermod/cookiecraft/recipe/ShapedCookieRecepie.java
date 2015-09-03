@@ -16,11 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 public class ShapedCookieRecepie implements IRecipe{
-    private final int cookiesRequired;
+    private final long cookiesRequired;
     private List<ItemStack> recipe;
+    private ItemStack result;
+    private boolean consumeCookieItem;
 
-    public ShapedCookieRecepie(int cookiesRequired, String shape1, String shape2, String shape3, Object ... args) {
+    public ShapedCookieRecepie(ItemStack result, long cookiesRequired, boolean consumeCookieItem, String shape1, String shape2, String shape3, Object ... args) {
         this.cookiesRequired = cookiesRequired;
+        this.result = result;
+        this.consumeCookieItem = consumeCookieItem;
 
         Map<String, ItemStack> letterMap = new HashMap<String, ItemStack>();
 
@@ -62,6 +66,16 @@ public class ShapedCookieRecepie implements IRecipe{
                 }
             }
             else if (itemStack.getItem() instanceof ItemCookiePouchBase) {
+                if (consumeCookieItem) {
+                    // It has to be the exact correct item
+
+                    if (!isItem(i, ic, itemStack.getItem())) {
+                        // Wrong item was in the slot
+                        return false;
+                    }
+                }
+
+
                 if (!isCookieStorage(cookiesRequired, ic.getStackInSlot(i))) {
                     // Not enough cookies!
                     return false;
@@ -79,7 +93,7 @@ public class ShapedCookieRecepie implements IRecipe{
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting ic) {
-        return new ItemStack(CookiecraftBlocks.lavaConverter );
+        return result;
     }
 
     @Override
@@ -102,7 +116,8 @@ public class ShapedCookieRecepie implements IRecipe{
         {
             ret[i] = null;
         }
-        ret[4] = stackInSlot;
+        if (!consumeCookieItem)
+            ret[4] = stackInSlot;
         return ret;
     }
 
@@ -110,7 +125,7 @@ public class ShapedCookieRecepie implements IRecipe{
         return ic.getStackInSlot(slot) != null && ic.getStackInSlot(slot).getItem() == item;
     }
 
-    private boolean isCookieStorage(int numCookies, ItemStack stackInSlot) {
+    private boolean isCookieStorage(long numCookies, ItemStack stackInSlot) {
         if (stackInSlot != null && stackInSlot.getItem() instanceof ICookieStorageItem) {
             CookieStorageItem storage = new CookieStorageItem(stackInSlot);
             return storage.getCookies() >= numCookies;
