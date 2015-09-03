@@ -7,6 +7,6 @@
         "active=false,bottom=false,top=false": { "model": "supermod:cookie_ion_channeler" },
         "active=false,bottom=false,top=true": { "model": "supermod:cookie_ion_channeler_top" },
         "active=false,bottom=true,top=false": { "model": "supermod:cookie_ion_channeler_bottom" },
-        "active=false,bottom=true,4top=true": { "model": "supermod:cookie_ion_channeler_single" }
+        "active=false,bottom=true,top=true": { "model": "supermod:cookie_ion_channeler_single" }
     }
 }

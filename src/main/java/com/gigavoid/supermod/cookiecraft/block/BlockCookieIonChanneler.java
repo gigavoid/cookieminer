@@ -18,7 +18,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
     protected BlockCookieIonChanneler() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(TOP, true).withProperty(BOTTOM, true));
     }
 
     @Override
@@ -28,9 +28,9 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, isTowerBuilt((World)worldIn, pos))
-                .withProperty(TOP, isTop((World)worldIn, pos))
-                .withProperty(BOTTOM, isBottom((World)worldIn, pos));
+        return state.withProperty(ACTIVE, isTowerBuilt(worldIn, pos))
+                .withProperty(TOP, isTop(worldIn, pos))
+                .withProperty(BOTTOM, isBottom(worldIn, pos));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
         return false;
     }
 
-    private boolean isTowerBuilt(World world, BlockPos pos){
+    private boolean isTowerBuilt(IBlockAccess world, BlockPos pos){
         int nrOfParts = 1;
         for (int i = 1; i < 5; i++){
             if (world.getBlockState(pos.offsetUp(i)).getBlock() == CookiecraftBlocks.ionChanneler){
@@ -74,11 +74,11 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
         return nrOfParts == 4;
     }
 
-    private boolean isTop(World world, BlockPos pos){
+    private boolean isTop(IBlockAccess world, BlockPos pos){
         return world.getBlockState(pos.offsetUp()).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 
-    private boolean isBottom(World world, BlockPos pos){
+    private boolean isBottom(IBlockAccess world, BlockPos pos){
         return world.getBlockState(pos.offsetDown()).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 }
