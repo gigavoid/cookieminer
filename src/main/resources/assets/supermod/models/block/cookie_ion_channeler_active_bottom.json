@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "supermod:blocks/cookie_ion_channeler_top",
+        "side": "supermod:blocks/cookie_ion_channeler_side_active_bottom"
+    }
+}

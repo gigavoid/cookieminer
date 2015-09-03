@@ -18,6 +18,8 @@ public class CookiecraftBlocks {
     public static final BlockCookieCocoaCircuit cocoaCircuit = new BlockCookieCocoaCircuit();
     public static final BlockCookieFarm cookieFarm = new BlockCookieFarm();
     public static final BlockCookieSteamer cookieSteamer = new BlockCookieSteamer();
+    public static final BlockCookieVacuumOven vacuumOven = new BlockCookieVacuumOven();
+    public static final BlockCookieIonChanneler ionChanneler = new BlockCookieIonChanneler();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -35,5 +37,7 @@ public class CookiecraftBlocks {
         register.registerBlock(cocoaCircuit, "cocoa_circuit");
         register.registerBlock(cookieFarm, "cookie_farm");
         register.registerBlock(cookieSteamer, "cookie_steamer");
+        register.registerBlock(vacuumOven, "vacuum_oven");
+        register.registerBlock(ionChanneler, "cookie_ion_channeler");
     }
 }

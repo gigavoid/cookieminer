@@ -41,9 +41,7 @@ public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICooki
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        if (isAboveWater(world, pos))
-            return 1 / 2d;
-        return 0;
+        return isAboveWater(world, pos) ? 1/2d : 0;
     }
 
 	@Override
