@@ -1,0 +1,6 @@
+{
+    "variants": {
+      "active=true": { "model": "supermod:cookie_cocoa_circuit_activated" },
+      "active=false": { "model": "supermod:cookie_cocoa_circuit" }
+    }
+}

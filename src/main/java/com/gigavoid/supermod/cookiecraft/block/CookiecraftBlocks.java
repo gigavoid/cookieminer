@@ -33,8 +33,8 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieStorage, "cookie_storage");
         register.registerBlock(activator, "cookie_portal_activator");
         register.registerBlock(pipe, "cookie_pipe");
-        register.registerBlock(cactusMasher, "cactus_masher");
-        register.registerBlock(cocoaCircuit, "cocoa_circuit");
+        register.registerBlock(cactusMasher, "cookie_cactus_masher");
+        register.registerBlock(cocoaCircuit, "cookie_cocoa_circuit");
         register.registerBlock(cookieFarm, "cookie_farm");
         register.registerBlock(cookieSteamer, "cookie_steamer");
         register.registerBlock(vacuumOven, "cookie_vacuum_oven");
