@@ -1,5 +1,5 @@
 {
-    "parent": "supermod:block/cookie_ion_channeler_active_single",
+    "parent": "supermod:block/cookie_ion_channeler_single",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

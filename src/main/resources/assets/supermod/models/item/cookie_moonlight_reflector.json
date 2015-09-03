@@ -1,5 +1,5 @@
 {
-    "parent": "supermod:block/cookie_lava_converter",
+    "parent": "supermod:block/cookie_moonlight_reflector",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
