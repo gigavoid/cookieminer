@@ -2,7 +2,7 @@
   "parent": "block/cube_bottom_top",
   "textures": {
     "bottom": "supermod:blocks/cookie_dough_collector_side",
-    "top": "supermod:blocks/cookie_dough_collector_top",
+    "top": "supermod:blocks/cookie_moonlight_reflector_active",
     "side": "supermod:blocks/cookie_dough_collector_side"
   }
 }
