@@ -148,7 +148,9 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
 
     private void saveInventoryCompound(NBTTagCompound tagCompound) {
         NBTTagCompound invCompound = new NBTTagCompound();
-        inv.writeToNBT(invCompound);
+        if (inv != null) {
+            inv.writeToNBT(invCompound);
+        }
         tagCompound.setTag("inv", invCompound);
     }
 
