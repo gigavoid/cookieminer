@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "supermod:blocks/north_birch_sapling"
-  }
-}
