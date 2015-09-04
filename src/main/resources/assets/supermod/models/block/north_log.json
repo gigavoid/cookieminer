@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "supermod:blocks/north_log_top",
-        "side": "supermod:blocks/north_log_side"
-    }
-}

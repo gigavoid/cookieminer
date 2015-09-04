@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "supermod:blocks/north_planks",
-        "top": "supermod:blocks/north_planks",
-        "side": "supermod:blocks/north_planks"
-    }
-}
