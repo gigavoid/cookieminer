@@ -13,10 +13,16 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieStorageBlock {
-    public BlockCookieStorage(){
-        super(Material.rock);
-        setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
-    }
+
+	private final int transferSpeed;
+	private long storageCap;
+
+    public BlockCookieStorage(long storageCap, int transferSpeed) {
+		super(Material.rock);
+		this.storageCap = storageCap;
+		this.transferSpeed = transferSpeed;
+		setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+	}
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
@@ -29,7 +35,7 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
 
     @Override
     public long getStorageCap() {
-        return 1000;
+        return storageCap;
     }
 
     @Override
@@ -41,6 +47,11 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
     public void addCookies(World world, BlockPos pos, long numCookies) {
         getTileEntity(world, pos).addCookies(numCookies);
 		world.scheduleUpdate(pos, this, this.tickRate(world));
+	}
+
+	@Override
+	public long getTransferSpeed() {
+		return transferSpeed;
 	}
 
 	@Override

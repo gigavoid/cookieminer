@@ -17,8 +17,4 @@ public class ItemCookiePouch extends ItemCookiePouchBase {
 		return storage;
 	}
 
-	@Override
-	public long getTransferSpeed() {
-		return 1;
-	}
 }

@@ -11,7 +11,6 @@ public class CookiecraftBlocks {
     public static final BlockCookiePortalConnector portalConnector = new BlockCookiePortalConnector();
     public static final BlockCookieLavaConverter lavaConverter = new BlockCookieLavaConverter();
     public static final BlockCookieMoonlightReflector monlightReflector = new BlockCookieMoonlightReflector();
-    public static final BlockCookieStorage cookieStorage = new BlockCookieStorage();
     public static final BlockCookiePortalActivator activator = new BlockCookiePortalActivator();
     public static final BlockCookiePipe pipe = new BlockCookiePipe();
     public static final BlockCookieCactusMasher cactusMasher = new BlockCookieCactusMasher();
@@ -22,6 +21,12 @@ public class CookiecraftBlocks {
     public static final BlockCookieIonChanneler ionChanneler = new BlockCookieIonChanneler();
     public static final BlockCookieTrashBaker trashBaker = new BlockCookieTrashBaker();
 
+    public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(200, 1);
+    public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(20000, 100);
+    public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(2000000, 10000);
+    public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(200000000, 1000000);
+    public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(68719476736L * 2, 100000000);
+
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
@@ -31,7 +36,6 @@ public class CookiecraftBlocks {
         register.registerBlock(portalConnector, "cookie_portal_connector");
         register.registerBlock(lavaConverter, "cookie_lava_converter");
         register.registerBlock(monlightReflector, "cookie_moonlight_reflector");
-        register.registerBlock(cookieStorage, "cookie_storage");
         register.registerBlock(activator, "cookie_portal_activator");
         register.registerBlock(pipe, "cookie_pipe");
         register.registerBlock(cactusMasher, "cookie_cactus_masher");
@@ -41,5 +45,11 @@ public class CookiecraftBlocks {
         register.registerBlock(vacuumOven, "cookie_vacuum_oven");
         register.registerBlock(ionChanneler, "cookie_ion_channeler");
         register.registerBlock(trashBaker, "cookie_trash_baker");
+
+        register.registerBlock(cookieStorageWood, "cookie_storage_wood");
+        register.registerBlock(cookieStorageIron, "cookie_storage_iron");
+        register.registerBlock(cookieStorageGold, "cookie_storage_gold");
+        register.registerBlock(cookieStorageDiamond, "cookie_storage_diamond");
+        register.registerBlock(cookieStorageEnder, "cookie_storage_ender");
     }
 }

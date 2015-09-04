@@ -34,10 +34,6 @@ public class CookieStorageItem {
 		return stack.getTagCompound() != null && stack.getTagCompound().hasKey(key) ? stack.getTagCompound().getLong(key) : def;
 	}
 
-	public long getTransferSpeed() {
-		return ((ICookieStorageItem)stack.getItem()).getTransferSpeed();
-	}
-
 	public long getStorageCap() {
 		return ((ICookieStorageItem)stack.getItem()).getMaxStorage();
 	}

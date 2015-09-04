@@ -222,7 +222,7 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			return false;
 		}
 
-		long wantToTake = storageItem.getTransferSpeed();
+		long wantToTake = getTransferSpeed();
 		long availiableInBlock = getCookies();
 		long placeAvailiable = storageItem.getStorageCap() - storageItem.getCookies();
 
@@ -264,7 +264,12 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			// No more space to add the new cookies to
 			return false;
 
-		addCookies(storageItem.takeCookies(storageItem.getTransferSpeed()));
+		addCookies(storageItem.takeCookies(getTransferSpeed()));
 		return true;
+	}
+
+	private long getTransferSpeed() {
+		ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
+		return storageBlock.getTransferSpeed();
 	}
 }
