@@ -20,6 +20,7 @@ public class CookiecraftBlocks {
     public static final BlockCookieSteamer cookieSteamer = new BlockCookieSteamer();
     public static final BlockCookieVacuumOven vacuumOven = new BlockCookieVacuumOven();
     public static final BlockCookieIonChanneler ionChanneler = new BlockCookieIonChanneler();
+    public static final BlockCookieTrashBaker trashBaker = new BlockCookieTrashBaker();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -39,5 +40,6 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieSteamer, "cookie_steamer");
         register.registerBlock(vacuumOven, "cookie_vacuum_oven");
         register.registerBlock(ionChanneler, "cookie_ion_channeler");
+        register.registerBlock(trashBaker, "cookie_trash_baker");
     }
 }

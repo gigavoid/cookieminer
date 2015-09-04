@@ -3,16 +3,41 @@ package com.gigavoid.supermod.cookiecraft.tileentity;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.Block;
+import net.minecraft.command.IEntitySelector;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityHopper;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.world.World;
 
-public class TileEntityCactusMasher extends TileEntity implements IInventory {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpdatePlayerListBox {
     private ItemStack inv;
+
+    private static Map<Item, Integer> trashToCookies;
+
+    static {
+        trashToCookies = new HashMap<Item, Integer>();
+        trashToCookies.put(Item.getItemFromBlock(Blocks.cobblestone), 1);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.stone), 1);
+        trashToCookies.put(Items.rotten_flesh, 2);
+    }
+
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -26,14 +51,12 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
         super.writeToNBT(compound);
     }
 
-    /**
-     * Convert 1 cactus into 1 cookie
-     */
     public boolean tick() {
         if (inv != null && inv.stackSize >= 1) {
+            int reward = trashToCookies.get(inv.getItem());
             decrStackSize(0, 1);
             TileEntityCookieCrafter tileEntity = BlockCookieCrafter.getTileEntity(getWorld(), CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter().getPos());
-            tileEntity.setLeftover(tileEntity.getLeftover() + 1);
+            tileEntity.setLeftover(tileEntity.getLeftover() + reward);
             return true;
         }
         return false;
@@ -104,7 +127,7 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        return Block.getBlockFromItem(stack.getItem()) == Blocks.cactus;
+        return trashToCookies.containsKey(stack.getItem());
     }
 
     @Override
@@ -148,8 +171,85 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
 
     private void saveInventoryCompound(NBTTagCompound tagCompound) {
         NBTTagCompound invCompound = new NBTTagCompound();
-        inv.writeToNBT(invCompound);
+        if (inv != null)
+            inv.writeToNBT(invCompound);
         tagCompound.setTag("inv", invCompound);
     }
 
+    /***
+     * Stuff copied from TileEntityHopper
+     */
+
+    public void update()
+    {
+        if (this.worldObj != null && !this.worldObj.isRemote)
+        {
+            grabFloatingItems();
+
+            tick();
+        }
+    }
+
+    private void grabFloatingItems() {
+        EntityItem entityitem = func_145897_a(getWorld(), getPos());
+
+        if (entityitem != null)
+        {
+            func_145898_a(entityitem);
+        }
+    }
+
+    private EntityItem func_145897_a(World worldIn, BlockPos pos)
+    {
+        List list = worldIn.func_175647_a(EntityItem.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 2.0D, pos.getY() + 2.0D, pos.getZ() + 2.0D), IEntitySelector.selectAnything);
+        return list.size() > 0 ? (EntityItem)list.get(0) : null;
+    }
+
+    private boolean func_145898_a(EntityItem p_145898_1_)
+    {
+        boolean flag = false;
+
+        if (p_145898_1_ == null)
+        {
+            return false;
+        }
+        else
+        {
+            ItemStack itemstack = p_145898_1_.getEntityItem().copy();
+            ItemStack itemstack1 = transferToInventory(itemstack);
+
+            if (itemstack1 != null && itemstack1.stackSize != 0)
+            {
+                p_145898_1_.setEntityItemStack(itemstack1);
+            }
+            else
+            {
+                flag = true;
+                p_145898_1_.setDead();
+            }
+
+            return flag;
+        }
+    }
+
+    private ItemStack transferToInventory(ItemStack itemstack) {
+
+        int toTake = 0;
+
+        if (inv == null) {
+            toTake = Math.min(itemstack.stackSize, itemstack.getMaxStackSize());
+        } else if (inv.getItem() == itemstack.getItem() && inv.stackSize < inv.getMaxStackSize()) {
+           toTake =  Math.min(itemstack.stackSize, inv.getMaxStackSize() - inv.stackSize);
+        }
+
+
+        if (inv == null) {
+            inv = new ItemStack(itemstack.getItem(), toTake);
+        } else {
+            inv.stackSize += toTake;
+        }
+        itemstack.stackSize -= toTake;
+
+        return itemstack;
+    }
 }
