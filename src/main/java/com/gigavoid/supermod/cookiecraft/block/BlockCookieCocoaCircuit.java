@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.Block;
@@ -60,6 +61,9 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
     @Override
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
+        if (worldIn.isBlockPowered(pos) && worldIn.isRemote){
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
+        }
         state.withProperty(ACTIVE, worldIn.isBlockPowered(pos));
     }
 }
