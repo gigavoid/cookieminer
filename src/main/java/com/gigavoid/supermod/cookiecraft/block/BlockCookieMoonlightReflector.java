@@ -11,13 +11,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.List;
 import java.util.Random;
 
 public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
@@ -37,6 +41,12 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return state.withProperty(ACTIVE, ((TileEntityMoonlightReflector)worldIn.getTileEntity(pos)).isActive());
+    }
+
+    @Override
+    public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List list, Entity collidingEntity) {
+        this.setBlockBounds(.0F, .0F, .0F, 1.0F, 0.75F, 1.0F);
+        super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
     }
 
     @Override
@@ -90,6 +100,17 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
         worldIn.setBlockState(pos, state.withProperty(ACTIVE, isActive), 2);
         worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
     }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return true;
+    }
+
+    @Override
+    public boolean isVisuallyOpaque() { return false; }
+
+    @Override
+    public boolean isOpaqueCube() { return false; }
 
     private boolean isTopBlock(World world, BlockPos pos){
         for (int i = pos.getY() + 1; i < 256; i++){

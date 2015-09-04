@@ -26,11 +26,7 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, gotRedstonePower());
-    }
-
-    private boolean gotRedstonePower(){
-        return false;
+        return state.withProperty(ACTIVE, true); // world.isBlockPowered(pos)
     }
 
     @Override
@@ -40,7 +36,7 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return gotRedstonePower() ? 1 : 0;
+        return world.isBlockPowered(pos) ? 1 : 0;
     }
 
 	@Override
