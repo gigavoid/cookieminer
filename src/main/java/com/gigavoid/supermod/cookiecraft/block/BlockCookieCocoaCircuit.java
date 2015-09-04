@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.common.util.Reflection;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
@@ -12,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -31,7 +33,7 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, true); // world.isBlockPowered(pos)
+        return state.withProperty(ACTIVE, isBlockPowered(worldIn, pos));
     }
 
     @Override
@@ -65,5 +67,20 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
             CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
         }
         state.withProperty(ACTIVE, worldIn.isBlockPowered(pos));
+    }
+
+    private boolean isBlockPowered(IBlockAccess blockAccess, BlockPos pos) {
+
+        if (!(blockAccess instanceof ChunkCache)) {
+            return false;
+        }
+
+
+        ChunkCache chunkCache = (ChunkCache) blockAccess;
+
+        World world = (World) Reflection.getFieldValue("worldObj", ChunkCache.class, chunkCache);
+
+        return world != null && world.isBlockPowered(pos);
+
     }
 }
