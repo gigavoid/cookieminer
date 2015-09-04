@@ -10,7 +10,7 @@
         "down=false,east=false,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_single", "y": 270, "uvlock": true },
 
         "down=false,east=false,north=true,south=true,up=false,west=false": { "model": "supermod:cookie_pipe_duo", "uvlock": true },
-        "down=true,east=false,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_duo", "x": 90, "uvlock": true },
+        "down=true,east=false,north=false,south=false,up=true,west=false": { "model": "supermod:cookie_pipe_duo_ud", "x": 90, "uvlock": true },
         "down=false,east=true,north=false,south=false,up=false,west=true": { "model": "supermod:cookie_pipe_duo", "y": 90, "uvlock": true },
 
         "down=true,east=false,north=true,south=false,up=false,west=false": { "model": "supermod:cookie_pipe_duo_curve", "uvlock": true },

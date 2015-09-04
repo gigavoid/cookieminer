@@ -1,5 +1,6 @@
 {
     "variants": {
-        "normal": { "model": "supermod:cookie_steamer" }
+      "active=true": { "model": "supermod:cookie_steamer" },
+      "active=false": { "model": "supermod:cookie_steamer" }
     }
 }

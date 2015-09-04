@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "supermod:blocks/cookie_dough_collector_side",
+    "top": "supermod:blocks/cookie_farm_top",
+    "side": "supermod:blocks/cookie_dough_collector_side"
+  }
+}
