@@ -1,7 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.worldgen;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
-import com.gigavoid.supermod.northrend.worldgen.custom.NorthrendGenLayerBiome;
 import com.google.common.collect.Lists;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
