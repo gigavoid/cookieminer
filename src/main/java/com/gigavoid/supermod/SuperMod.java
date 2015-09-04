@@ -1,11 +1,7 @@
 package com.gigavoid.supermod;
 
-import com.gigavoid.supermod.bettertools.ModuleBetterTools;
-import com.gigavoid.supermod.bonus.ModuleBonus;
 import com.gigavoid.supermod.common.module.ModuleLoader;
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
-import com.gigavoid.supermod.northrend.ModuleNorthrend;
-import com.gigavoid.supermod.ropeway.ModuleRopeway;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -22,10 +18,6 @@ public class SuperMod
     private ModuleLoader moduleLoader = new ModuleLoader();
     
     public SuperMod() {
-        moduleLoader.registerModule(new ModuleRopeway());
-        moduleLoader.registerModule(new ModuleNorthrend());
-        moduleLoader.registerModule(new ModuleBonus());
-        moduleLoader.registerModule(new ModuleBetterTools());
         moduleLoader.registerModule(new ModuleCookiecraft());
     }
 
