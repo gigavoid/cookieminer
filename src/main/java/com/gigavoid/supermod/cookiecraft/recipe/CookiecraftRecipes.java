@@ -43,16 +43,17 @@ public class CookiecraftRecipes {
         // Cookie network blocks
         ItemStack cookieCrafter = new ItemStack(CookiecraftBlocks.cookieCrafter);
         ItemStack doughCollector = new ItemStack(CookiecraftBlocks.cookieDoughCollector);
-        ItemStack trashBaker = new ItemStack(Blocks.stone); // TODO: Trash baker
+        ItemStack trashBaker = new ItemStack(CookiecraftBlocks.trashBaker);
         ItemStack cookieFarm = new ItemStack(CookiecraftBlocks.cookieFarm);
         ItemStack cactusMasher = new ItemStack(CookiecraftBlocks.cactusMasher);
         ItemStack cookieSteamer = new ItemStack(CookiecraftBlocks.cookieSteamer);
-        ItemStack cookieCircuit = new ItemStack(Blocks.stone); // TODO: Circuit
+        ItemStack cookieCircuit = new ItemStack(CookiecraftBlocks.cocoaCircuit);
         ItemStack moonlightReflector = new ItemStack(CookiecraftBlocks.monlightReflector);
         ItemStack lavaConverter = new ItemStack(CookiecraftBlocks.lavaConverter);
         ItemStack portalConnector = new ItemStack(CookiecraftBlocks.portalConnector);
         ItemStack vacuumOven = new ItemStack(CookiecraftBlocks.vacuumOven);
         ItemStack ionChanneler = new ItemStack(CookiecraftBlocks.ionChanneler);
+        ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe);
         ItemStack cookieAccelerator = new ItemStack(Blocks.stone); // TODO: Accelerator
 
         ItemStack cookieStorageWood = new ItemStack(CookiecraftBlocks.cookieStorageWood);
@@ -81,6 +82,9 @@ public class CookiecraftRecipes {
          */
 
         // Network blocks
+
+        GameRegistry.addRecipe(pipe, " i ", " c ", " i ",
+                'i', ironIngot, 'c', cookie);
 
         GameRegistry.addRecipe(cookieCrafter, "iii", "ici", "iii",
                 'i', ironIngot, 'c', cookie);
