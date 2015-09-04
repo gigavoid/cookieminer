@@ -1,5 +1,5 @@
 {
-  "parent": "supermod:block/cookie_storage",
+  "parent": "supermod:block/cookie_storage_wood",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],
