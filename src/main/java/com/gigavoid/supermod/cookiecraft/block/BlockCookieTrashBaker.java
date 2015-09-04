@@ -18,67 +18,10 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieTrashBaker extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
-    public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     protected BlockCookieTrashBaker() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state)
-    {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
-    }
-
-    @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, FACING);
-    }
-
-    @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());
-    }
-
-
-    /**
-     * Copied from BlockDispenser
-     */
-    private void setDefaultDirection(World worldIn, BlockPos pos, IBlockState state)
-    {
-        if (!worldIn.isRemote)
-        {
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            boolean flag = worldIn.getBlockState(pos.offsetNorth()).getBlock().isFullBlock();
-            boolean flag1 = worldIn.getBlockState(pos.offsetSouth()).getBlock().isFullBlock();
-
-            if (enumfacing == EnumFacing.NORTH && flag && !flag1)
-            {
-                enumfacing = EnumFacing.SOUTH;
-            }
-            else if (enumfacing == EnumFacing.SOUTH && flag1 && !flag)
-            {
-                enumfacing = EnumFacing.NORTH;
-            }
-            else
-            {
-                boolean flag2 = worldIn.getBlockState(pos.offsetWest()).getBlock().isFullBlock();
-                boolean flag3 = worldIn.getBlockState(pos.offsetEast()).getBlock().isFullBlock();
-
-                if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
-                {
-                    enumfacing = EnumFacing.EAST;
-                }
-                else if (enumfacing == EnumFacing.EAST && flag3 && !flag2)
-                {
-                    enumfacing = EnumFacing.WEST;
-                }
-            }
-
-            worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
-        }
     }
 
     @Override
@@ -102,10 +45,6 @@ public class BlockCookieTrashBaker extends BlockCookieUpgradeBase implements ICo
         return new TileEntityTrashBaker();
     }
 
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        this.setDefaultDirection(worldIn, pos, state);
-    }
 
     public TileEntityTrashBaker getTileEntity(World world, BlockPos pos) {
         return (TileEntityTrashBaker) world.getTileEntity(pos);
