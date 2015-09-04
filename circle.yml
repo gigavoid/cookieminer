@@ -1,0 +1,6 @@
+test:
+  post:
+    - ./gradlew build
+general:
+  artifacts:
+    - "build/libs"
