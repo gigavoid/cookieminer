@@ -1,6 +1,6 @@
-# Super Mod
+# Cookieminer
 
-This is the Super Mod!
+Wiki: http://cookiecraft.wikia.com/wiki/Getting_Started
 
 ## Nice to have commands
 
