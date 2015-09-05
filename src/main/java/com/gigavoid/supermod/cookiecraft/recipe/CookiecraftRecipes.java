@@ -18,10 +18,10 @@ public class CookiecraftRecipes {
 
         // Vanilla items
         ItemStack ironIngot = new ItemStack(Items.iron_ingot);
-        ItemStack goldIngot = new ItemStack(Items.iron_ingot);
+        ItemStack goldIngot = new ItemStack(Items.gold_ingot);
         ItemStack wood = new ItemStack(Blocks.planks);
-        ItemStack stone = new ItemStack(Items.iron_ingot);
-        ItemStack diamond = new ItemStack(Items.iron_ingot);
+        ItemStack stone = new ItemStack(Blocks.stone);
+        ItemStack diamond = new ItemStack(Items.diamond);
         ItemStack emerald = new ItemStack(Items.emerald);
         ItemStack cookie = new ItemStack(Items.cookie);
         ItemStack wheat = new ItemStack(Items.wheat);
@@ -98,7 +98,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(cookieStorageWood, "www", "wcw", "www",
                 'w', wood, 'c', cookie);
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageIron, 8, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageIron, 1024, false, "iii", "ici", "iii",
                 'i', ironIngot, 'c', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageGold, 800, false, "iii", "ici", "iii",
