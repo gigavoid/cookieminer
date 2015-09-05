@@ -23,7 +23,7 @@ public class CookiecraftBlocks {
 
     public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(256, 1);
     public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(16384, 64);
-    public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(2000000, 10000);
+    public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(262144, 4096);
     public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(200000000, 1000000);
     public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(68719476736L * 2, 100000000);
 

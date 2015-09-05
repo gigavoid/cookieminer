@@ -53,7 +53,7 @@ public class CookiecraftRecipes {
         ItemStack portalConnector = new ItemStack(CookiecraftBlocks.portalConnector);
         ItemStack vacuumOven = new ItemStack(CookiecraftBlocks.vacuumOven);
         ItemStack ionChanneler = new ItemStack(CookiecraftBlocks.ionChanneler);
-        ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe);
+        ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe, 8);
         ItemStack cookieAccelerator = new ItemStack(Blocks.stone); // TODO: Accelerator
 
         ItemStack cookieStorageWood = new ItemStack(CookiecraftBlocks.cookieStorageWood);
@@ -101,7 +101,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageIron, 1024, false, "iii", "ici", "iii",
                 'i', ironIngot, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageGold, 800, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageGold, 32768, false, "iii", "ici", "iii",
                 'i', goldIngot, 'c', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageDiamond, 80000, false, "iii", "ici", "iii",
