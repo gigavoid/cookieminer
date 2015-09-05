@@ -54,6 +54,7 @@ public class CookiecraftRecipes {
         ItemStack vacuumOven = new ItemStack(CookiecraftBlocks.vacuumOven);
         ItemStack ionChanneler = new ItemStack(CookiecraftBlocks.ionChanneler);
         ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe, 8);
+        ItemStack cookieBlock = new ItemStack(CookiecraftBlocks.cookieBlock);
         ItemStack cookieAccelerator = new ItemStack(Blocks.stone); // TODO: Accelerator
 
         ItemStack cookieStorageWood = new ItemStack(CookiecraftBlocks.cookieStorageWood);
@@ -85,6 +86,9 @@ public class CookiecraftRecipes {
 
         GameRegistry.addRecipe(pipe, " i ", " c ", " i ",
                 'i', ironIngot, 'c', cookie);
+
+        GameRegistry.addRecipe(cookieBlock, "ccc", "ccc", "ccc",
+                'c', cookie);
 
         GameRegistry.addRecipe(cookieCrafter, "iii", "ici", "iii",
                 'i', ironIngot, 'c', cookie);
