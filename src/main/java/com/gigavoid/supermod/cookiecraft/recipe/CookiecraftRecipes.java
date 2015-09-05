@@ -108,10 +108,10 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageGold, 32768, false, "iii", "ici", "iii",
                 'i', goldIngot, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageDiamond, 80000, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageDiamond, 1048576, false, "iii", "ici", "iii",
                 'i', diamond, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageEnder, 8000000, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageEnder, 1073741824, false, "iii", "ici", "iii",
                 'i', enderPearl, 'c', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieFarm, 8, false, "isi", "sps", "idi",
@@ -132,7 +132,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(lavaConverter, 131072, false, "ili", "gpg", "ili",
                 'l', lava, 'i', ironIngot, 'g', glass, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 1048576, false, "idi", "mpm", "ioi",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 2097152, false, "idi", "mpm", "ioi",
                 'i', ironIngot, 'd', diamond, 'm', magicCookie, 'o', obsidian, 'p', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecepie(vacuumOven, 33554432, false, "eoe", "opo", "eoe",

@@ -49,7 +49,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return isTowerBuilt(world, pos) ? 65536 : 0;
+        return isTowerBuilt(world, pos) ? 131072 : 0;
     }
 
 	@Override

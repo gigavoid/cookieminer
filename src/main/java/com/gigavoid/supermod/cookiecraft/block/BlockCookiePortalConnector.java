@@ -49,7 +49,7 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         if (isNextToPortal(world, pos)) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 128;
+            return 1024;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false),2);
         return 0;

@@ -65,7 +65,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
         if (getTileEntity(world, pos).isActive()) {
-            return 4d;
+            return 32d;
         }
         return 0;
     }
