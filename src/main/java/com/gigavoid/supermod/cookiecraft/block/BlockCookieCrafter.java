@@ -18,6 +18,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
@@ -34,6 +35,12 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     @Override

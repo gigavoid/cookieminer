@@ -6,9 +6,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
 
@@ -19,6 +22,12 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     @Override
