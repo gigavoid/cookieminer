@@ -16,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements ICookieUpgrade {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
@@ -78,7 +79,7 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
         ChunkCache chunkCache = (ChunkCache) blockAccess;
 
-        World world = (World) Reflection.getFieldValue("worldObj", ChunkCache.class, chunkCache);
+        World world = ReflectionHelper.getPrivateValue(ChunkCache.class, chunkCache, "worldObj");
 
         return world != null && world.isBlockPowered(pos);
 
