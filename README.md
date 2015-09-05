@@ -1,6 +1,6 @@
 # Cookieminer
 
-Wiki: http://cookiecraft.wikia.com/wiki/Getting_Started
+[Wiki](http://cookiecraft.wikia.com/wiki/Getting_Started), [Downloads](https://rawgit.com/gigavoid/cookieminer/master/get.html)
 
 ## Nice to have commands
 
