@@ -35,13 +35,13 @@ public class ItemMagicCookie extends Item {
                 || worldIn.getBlockState(pos).getBlock() == Blocks.sandstone || worldIn.getBlockState(pos).getBlock() == Blocks.dirt || worldIn.getBlockState(pos).getBlock() == Blocks.stone))
             {
                 worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
-                return true;
+                stack.damageItem(1, playerIn);
             }
             else if (CookiecraftBlocks.cookieBlock == worldIn.getBlockState(pos).getBlock() && Blocks.air != worldIn.getBlockState(pos).getBlock()){
                 worldIn.setBlockState(pos.offset(side), CookiecraftBlocks.activator.getDefaultState());
+                stack.damageItem(1, playerIn);
             }
-
-            stack.damageItem(1, playerIn);
+            
             return true;
         }
     }
