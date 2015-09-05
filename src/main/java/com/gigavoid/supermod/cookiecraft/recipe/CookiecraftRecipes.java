@@ -171,8 +171,8 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(cookieDough, "w w", "wcw", "wmw",
                 'w', wheat, 'c', cocoaBean, 'm', milk);
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 1048576, false, "bbb", "bcb", "bbb",
-                'b', enchantedBook, 'c', cookie));
+        GameRegistry.addRecipe(magicCookie, 1048576, "bbb", "bcb", "bbb",
+                'b', enchantedBook, 'c', cookie);
 
     }
 
