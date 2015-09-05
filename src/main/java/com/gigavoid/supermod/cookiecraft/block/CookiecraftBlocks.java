@@ -21,8 +21,8 @@ public class CookiecraftBlocks {
     public static final BlockCookieIonChanneler ionChanneler = new BlockCookieIonChanneler();
     public static final BlockCookieTrashBaker trashBaker = new BlockCookieTrashBaker();
 
-    public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(200, 1);
-    public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(20000, 100);
+    public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(256, 1);
+    public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(16384, 64);
     public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(2000000, 10000);
     public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(200000000, 1000000);
     public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(68719476736L * 2, 100000000);

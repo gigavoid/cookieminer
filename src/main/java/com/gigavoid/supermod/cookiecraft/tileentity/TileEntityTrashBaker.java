@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.command.IEntitySelector;
@@ -29,13 +30,21 @@ import java.util.Map;
 public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpdatePlayerListBox {
     private ItemStack inv;
 
-    private static Map<Item, Integer> trashToCookies;
+    private static Map<Item, Double> trashToCookies;
 
     static {
-        trashToCookies = new HashMap<Item, Integer>();
-        trashToCookies.put(Item.getItemFromBlock(Blocks.cobblestone), 1);
-        trashToCookies.put(Item.getItemFromBlock(Blocks.stone), 1);
-        trashToCookies.put(Items.rotten_flesh, 2);
+        trashToCookies = new HashMap<Item, Double>();
+        trashToCookies.put(Item.getItemFromBlock(Blocks.cobblestone), 1/64d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.netherrack), 1/64d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.dirt), 1/64d);
+
+        trashToCookies.put(Item.getItemFromBlock(Blocks.stone), 1/32d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.sand), 1/32d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.sandstone), 1/32d);
+
+        trashToCookies.put(Item.getItemFromBlock(Blocks.gravel), 1/16d);
+
+        trashToCookies.put(Items.rotten_flesh, 1/2d);
     }
 
 
@@ -53,9 +62,14 @@ public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpd
 
     public boolean tick() {
         if (inv != null && inv.stackSize >= 1) {
-            int reward = trashToCookies.get(inv.getItem());
+            double reward = trashToCookies.get(inv.getItem());
             decrStackSize(0, 1);
-            TileEntityCookieCrafter tileEntity = BlockCookieCrafter.getTileEntity(getWorld(), CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter().getPos());
+            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter();
+            if (crafter == null) {
+                return false;
+            }
+
+            TileEntityCookieCrafter tileEntity = BlockCookieCrafter.getTileEntity(getWorld(), crafter.getPos());
             tileEntity.setLeftover(tileEntity.getLeftover() + reward);
             return true;
         }
