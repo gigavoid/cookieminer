@@ -93,7 +93,7 @@ public class ShapedCookieRecepie implements IRecipe{
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting ic) {
-        return result;
+        return result.copy();
     }
 
     @Override
