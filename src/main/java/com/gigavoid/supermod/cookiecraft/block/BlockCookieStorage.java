@@ -73,7 +73,6 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		System.out.println(System.currentTimeMillis());
 		if (!worldIn.isRemote) {
 			if (getTileEntity(worldIn, pos).tick()) {
 				worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
