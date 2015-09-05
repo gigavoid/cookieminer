@@ -9,6 +9,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
@@ -17,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Random;
 
 public class BlockCookiePipe extends Block implements ICookieBlock {
     public static final PropertyBool NORTH = PropertyBool.create("north");
@@ -29,6 +31,13 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     public BlockCookiePipe(){
         super(Material.iron);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+        this.setHardness(3.5F);
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List list, Entity collidingEntity)

@@ -35,6 +35,12 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
         this.setTickRandomly(true);
     }
 
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
+    }
+
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
 

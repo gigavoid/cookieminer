@@ -6,9 +6,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICookieUpgrade {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
@@ -18,6 +21,12 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     @Override
@@ -37,7 +46,7 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return pos.getY() >= heightLimit ? 8192 : 0;
+        return pos.getY() >= heightLimit ? 32768 : 0;
     }
 
 	@Override

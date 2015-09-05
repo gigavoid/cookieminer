@@ -13,6 +13,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
@@ -31,6 +32,12 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     @Override
@@ -58,7 +65,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
         if (getTileEntity(world, pos).isActive()) {
-            return 4d;
+            return 32d;
         }
         return 0;
     }

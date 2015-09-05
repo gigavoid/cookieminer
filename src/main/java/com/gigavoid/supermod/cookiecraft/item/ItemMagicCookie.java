@@ -18,6 +18,11 @@ public class ItemMagicCookie extends Item {
     }
 
     @Override
+    public boolean hasEffect(ItemStack par1ItemStack){
+        return true;
+    }
+
+    @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!playerIn.func_175151_a(pos, side, stack))
         {
@@ -25,7 +30,10 @@ public class ItemMagicCookie extends Item {
         }
         else
         {
-            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && worldIn.getBlockState(pos).getBlock().getBlockHardness(worldIn, pos) >= 0 && worldIn.getBlockState(pos).getBlock().isSolidFullCube()){
+            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.sand || worldIn.getBlockState(pos).getBlock() == Blocks.gravel
+                || worldIn.getBlockState(pos).getBlock() == Blocks.cobblestone || worldIn.getBlockState(pos).getBlock() == Blocks.netherrack || worldIn.getBlockState(pos).getBlock() == Blocks.grass
+                || worldIn.getBlockState(pos).getBlock() == Blocks.sandstone || worldIn.getBlockState(pos).getBlock() == Blocks.dirt || worldIn.getBlockState(pos).getBlock() == Blocks.stone))
+            {
                 worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
                 return true;
             }

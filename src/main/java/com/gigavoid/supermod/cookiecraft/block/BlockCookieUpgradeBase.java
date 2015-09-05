@@ -17,8 +17,8 @@ import net.minecraft.world.World;
 public abstract class BlockCookieUpgradeBase extends Block {
     public BlockCookieUpgradeBase(Material material) {
         super(material);
+        this.setHardness(10.0F);
     }
-
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {

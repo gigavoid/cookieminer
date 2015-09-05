@@ -7,9 +7,12 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements ICookieUpgrade {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
@@ -18,6 +21,12 @@ public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements 
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
     }
 
     @Override
@@ -40,7 +49,7 @@ public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements 
         int cps = nrOfLavaBlocks(world, pos);
         if (cps != 0) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 4 * cps;
+            return 8 * cps;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false), 2);
         return 0;
