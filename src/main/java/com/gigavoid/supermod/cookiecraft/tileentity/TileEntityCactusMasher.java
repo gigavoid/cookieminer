@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,8 +32,13 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
      */
     public boolean tick() {
         if (inv != null && inv.stackSize >= 1) {
+            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter();
+            if (crafter == null) {
+                return false;
+            }
+
             decrStackSize(0, 1);
-            TileEntityCookieCrafter tileEntity = BlockCookieCrafter.getTileEntity(getWorld(), CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter().getPos());
+            TileEntityCookieCrafter tileEntity = BlockCookieCrafter.getTileEntity(getWorld(), crafter.getPos());
             tileEntity.setLeftover(tileEntity.getLeftover() + 1);
             return true;
         }
