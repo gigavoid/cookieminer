@@ -6,7 +6,11 @@
 <script>
     function dl(artifact) {
         $.getJSON('https://circleci.com/api/v1/project/gigavoid/cookieminer/' + artifact + '/artifacts?circle_token=d0b3a01d554012557a9bf36eedcc27608b016743', function (res) {
-            window.location = res[0].url;
+            if (res[0]) {
+                window.location = res[0].url;
+            } else {
+                alert('No artifacts for this build was found. It might be available in a few minutes');
+            }
         });
     }
 
