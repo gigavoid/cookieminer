@@ -41,7 +41,7 @@ public class ItemMagicCookie extends Item {
                 worldIn.setBlockState(pos.offset(side), CookiecraftBlocks.activator.getDefaultState());
                 stack.damageItem(1, playerIn);
             }
-            
+
             return true;
         }
     }

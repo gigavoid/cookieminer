@@ -53,7 +53,12 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return world.isBlockPowered(pos) ? 1 : 0;
+        if (world.isBlockPowered(pos)) {
+            world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
+            return 1;
+        }
+        world.setBlockState(pos, state.withProperty(ACTIVE, false), 2);
+        return 0;
     }
 
 	@Override
