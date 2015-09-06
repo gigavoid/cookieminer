@@ -35,6 +35,16 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     }
 
     @Override
+    public boolean isFullCube() {
+        return false;
+    }
+
+    @Override
+    public boolean isPassable(IBlockAccess blockAccess, BlockPos pos) {
+        return false;
+    }
+
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
