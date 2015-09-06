@@ -127,12 +127,16 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
             wholeCookies = CookieNetwork.getNetwork(worldIn, blockPos).storeCookies(wholeCookies);
 
             // Dispense the cookies that did not fit into the storage
-            if (wholeCookies != 0) {
-                ItemStack cookieStack = new ItemStack(Items.cookie, (int) wholeCookies);
-                BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+            BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
 
+            while (wholeCookies > 0) {
+                int cookiesToThrow = (int) Math.min(wholeCookies, 64);
+                ItemStack cookieStack = new ItemStack(Items.cookie, cookiesToThrow);
+
+                wholeCookies -= cookiesToThrow;
                 dispenseStack(blockSource, cookieStack);
             }
+
         }
     }
 
