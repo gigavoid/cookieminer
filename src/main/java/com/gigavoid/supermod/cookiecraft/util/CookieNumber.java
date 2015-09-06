@@ -9,7 +9,7 @@ public class CookieNumber {
 
     static {
         notations = new HashMap<Integer, String>();
-        notations.put(1, "");
+        notations.put(0, "");
         notations.put(3, "k");
         notations.put(6, "M");
         notations.put(9, "G");
