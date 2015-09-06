@@ -57,7 +57,8 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return worldIn.getBlockState(pos);
+        TileEntityMoonlightReflector te = (TileEntityMoonlightReflector)worldIn.getTileEntity(pos);
+        return state.withProperty(ACTIVE, te.isActive());
     }
 
     @Override
