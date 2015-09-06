@@ -35,6 +35,16 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     }
 
     @Override
+    public boolean isFullCube() {
+        return false;
+    }
+
+    @Override
+    public boolean isPassable(IBlockAccess blockAccess, BlockPos pos) {
+        return false;
+    }
+
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
@@ -47,7 +57,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        return state.withProperty(ACTIVE, ((TileEntityMoonlightReflector)worldIn.getTileEntity(pos)).isActive());
+        return worldIn.getBlockState(pos);
     }
 
     @Override
@@ -63,10 +73,12 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
+        //System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
         if (getTileEntity(world, pos).isActive()) {
+            world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
             return 32d;
         }
+        world.setBlockState(pos, state.withProperty(ACTIVE, false), 2);
         return 0;
     }
 
@@ -104,7 +116,6 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
             CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
         }
 
-        worldIn.setBlockState(pos, state.withProperty(ACTIVE, isActive), 2);
         worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
     }
 
