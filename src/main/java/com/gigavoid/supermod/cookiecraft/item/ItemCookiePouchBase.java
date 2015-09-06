@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.item;
 
 import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
+import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,6 +24,6 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
 		CookieStorageItem storage = new CookieStorageItem(stack);
-		tooltip.add("Stored Cookies: " + storage.getCookies() + "/" + getMaxStorage());
+		tooltip.add("Stored Cookies: " + CookieNumber.doubleToString(storage.getCookies()) + "/" + CookieNumber.doubleToString(getMaxStorage()));
 	}
 }

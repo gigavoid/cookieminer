@@ -21,7 +21,7 @@ public class CookieNumber {
     }
 
     public static String doubleToString(double number) {
-        int factor = Math.max(1, ((int) Math.log10(number) / 3) * 3);
-        return String.format("%.3f%s", (number / Math.pow(10, factor - 1)), notations.get(factor));
+        int factor = Math.max(0, ((int) Math.log10(number) / 3) * 3);
+        return String.format("%.3f%s", (number / Math.pow(10, factor)), notations.get(factor));
     }
 }
