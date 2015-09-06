@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.gui;
 import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.BlockPos;
@@ -42,7 +43,7 @@ public class GuiCookieUpgrade extends GuiScreen {
 			color = Color.RED.getRGB();
 			connected = " (Not Connected)";
 		}
-		fontRendererObj.drawString("Generating CPS: " + Math.round(cps * 1000d) / 1000d + connected, width / 2, height / 2, color);
+		fontRendererObj.drawString("Generating CPS: " + CookieNumber.doubleToString(cps) + connected, width / 2, height / 2, color);
 
 	}
 
