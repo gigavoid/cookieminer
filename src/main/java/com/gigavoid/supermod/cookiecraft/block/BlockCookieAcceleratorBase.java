@@ -7,6 +7,8 @@ import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieAccelerator;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -37,7 +39,7 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
         if (!worldIn.isRemote) {
             CookieBlock controlBlock = CookieNetwork.getNetwork(worldIn, pos).findAcceleratorControl();
             if (controlBlock != null) {
-                ((BlockCookieAcceleratorControl) worldIn.getBlockState(controlBlock.getPos()).getBlock()).updateAcceleratorBlocks(worldIn, pos);
+                ((BlockCookieAcceleratorControl) worldIn.getBlockState(controlBlock.getPos()).getBlock()).updateAcceleratorBlocks(worldIn, controlBlock.getPos());
             }
         }
     }
