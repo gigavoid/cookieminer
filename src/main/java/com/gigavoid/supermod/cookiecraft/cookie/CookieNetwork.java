@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieAcceleratorBase;
 import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.util.BlockPos;
@@ -113,6 +114,21 @@ public class CookieNetwork {
                 return block;
         }
         return null;
+    }
+
+    public CookieBlock findAcceleratorControl() {
+        for (CookieBlock block : cookieBlocks) {
+            if (block.isAcceleratorControl())
+                return block;
+        }
+        return null;
+    }
+
+    public void updateAcceleratorBlocks(boolean active) {
+        for (CookieBlock block : cookieBlocks) {
+            if (block.isAcceleratorBlock())
+                ((BlockCookieAcceleratorBase)block.getWorld().getBlockState(block.getPos()).getBlock()).setActive(block.getWorld(),block.getPos(), active);
+        }
     }
 
     private boolean hasMultipleCrafters() {

@@ -27,6 +27,10 @@ public class CookiecraftBlocks {
     public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(200000000, 1000000);
     public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(68719476736L * 2, 100000000);
 
+    // AcceleratorBlocks
+    public static final BlockCookieAcceleratorControl cookieAcceleratorControl = new BlockCookieAcceleratorControl();
+    public static final BlockCookieAcceleratorWall cookieAcceleratorWall = new BlockCookieAcceleratorWall();
+
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
@@ -51,5 +55,8 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieStorageGold, "cookie_storage_gold");
         register.registerBlock(cookieStorageDiamond, "cookie_storage_diamond");
         register.registerBlock(cookieStorageEnder, "cookie_storage_ender");
+
+        register.registerBlock(cookieAcceleratorControl, "cookie_accelerator_control");
+        register.registerBlock(cookieAcceleratorWall, "cookie_accelerator_wall");
     }
 }

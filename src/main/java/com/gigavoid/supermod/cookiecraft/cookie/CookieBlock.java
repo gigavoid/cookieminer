@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieAcceleratorBase;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
 import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
@@ -23,9 +24,18 @@ public class CookieBlock {
         return pos;
     }
 
+    public World getWorld() {
+        return world; }
+
     public boolean isCrafter() {
         return block == CookiecraftBlocks.cookieCrafter;
     }
+
+    public boolean isAcceleratorControl() {
+        return block == CookiecraftBlocks.cookieAcceleratorControl;
+    }
+
+    public boolean isAcceleratorBlock() {return block instanceof BlockCookieAcceleratorBase; }
 
     public double getCPS() {
         IBlockState blockState = world.getBlockState(pos);

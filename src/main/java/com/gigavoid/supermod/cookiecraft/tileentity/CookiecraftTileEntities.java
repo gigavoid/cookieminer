@@ -9,5 +9,6 @@ public class CookiecraftTileEntities {
         GameRegistry.registerTileEntity(TileEntityMoonlightReflector.class, "moonlight_reflector");
         GameRegistry.registerTileEntity(TileEntityCactusMasher.class, "cactus_masher");
         GameRegistry.registerTileEntity(TileEntityTrashBaker.class, "trash_baker");
+        GameRegistry.registerTileEntity(TileEntityCookieAccelerator.class, "cookie_accelerator");
     }
 }
