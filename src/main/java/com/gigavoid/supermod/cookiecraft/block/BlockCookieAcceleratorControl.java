@@ -34,7 +34,7 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         boolean north = world.getBlockState(pos.offsetNorth()).getBlock() instanceof BlockCookieAcceleratorBase;
         boolean east = world.getBlockState(pos.offsetEast()).getBlock() instanceof BlockCookieAcceleratorBase;
 
-        int length = 1;
+        int length = 0;
         while (length < 64){
             if (north){
                 if (world.getBlockState(pos.offsetNorth(length)).getBlock() instanceof BlockCookieAcceleratorBase) {
@@ -55,60 +55,60 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         }
 
         boolean outerConnected = true;
-        for (int i = 1; i < length && outerConnected; i++){
+        for (int i = 0; i < length && outerConnected; i++){
             if (north && east){
-                if (!(world.getBlockState(pos.offsetNorth(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetNorth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetEast(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetEast(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetNorth(i).offsetEast(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetNorth(i).offsetEast(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetEast(i).offsetNorth(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetEast(i).offsetNorth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
             }
             if (north && !east){
-                if (!(world.getBlockState(pos.offsetNorth(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetNorth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetWest(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetWest(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetNorth(i).offsetWest(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetNorth(i).offsetWest(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetWest(i).offsetNorth(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetWest(i).offsetNorth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
             }
             if (!north && east){
-                if (!(world.getBlockState(pos.offsetSouth(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetSouth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetEast(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetEast(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetSouth(i).offsetEast(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetSouth(i).offsetEast(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetEast(i).offsetSouth(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetEast(i).offsetSouth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
             }
             if (!north && !east){
-                if (!(world.getBlockState(pos.offsetSouth(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetSouth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetWest(i)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetWest(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetSouth(i).offsetWest(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetSouth(i).offsetWest(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
-                if (!(world.getBlockState(pos.offsetWest(i).offsetSouth(length)) instanceof BlockCookieAcceleratorBase)){
+                if (!(world.getBlockState(pos.offsetWest(i).offsetSouth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
                     outerConnected = false;
                 }
             }
