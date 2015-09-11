@@ -74,12 +74,9 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        //System.out.println("GET CPS" + getTileEntity(world, pos).isActive());
         if (getTileEntity(world, pos).isActive()) {
-            world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
             return 32d;
         }
-        world.setBlockState(pos, state.withProperty(ACTIVE, false), 2);
         return 0;
     }
 
@@ -89,36 +86,9 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 	}
 
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (!worldIn.isRemote) {
-            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-        }
-    }
-
-    @Override
 	public boolean hasImportantUI() {
 		return false;
 	}
-
-    @Override
-    public int tickRate(World worldIn) {
-        return 5 * 20;
-    }
-
-    @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        TileEntityMoonlightReflector tileEntity = getTileEntity(worldIn, pos);
-
-        boolean isActive = isTopBlock(worldIn, pos) && !worldIn.isDaytime();
-
-
-        if (isActive != tileEntity.isActive()) {
-            tileEntity.setIsActive(isActive);
-            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
-        }
-
-        worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-    }
 
     @Override
     public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
@@ -131,14 +101,6 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     @Override
     public boolean isOpaqueCube() { return false; }
 
-    private boolean isTopBlock(World world, BlockPos pos){
-        for (int i = pos.getY() + 1; i < 256; i++){
-            if (world.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).getBlock() != Blocks.air){
-                return false;
-            }
-        }
-        return true;
-    }
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
