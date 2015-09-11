@@ -6,7 +6,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
 
 public class TileEntityMoonlightReflector extends TileEntity implements IUpdatePlayerListBox{
     public static final String KEY_IS_ACTIVE = "isActive";

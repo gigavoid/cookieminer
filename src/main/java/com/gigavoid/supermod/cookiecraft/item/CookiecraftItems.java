@@ -6,6 +6,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 public class CookiecraftItems {
     public static final ItemMagicCookie magicCookie = new ItemMagicCookie();
     public static final ItemCookieDough cookieDough = new ItemCookieDough();
+    public static final ItemCookieGemMixture cookieGemMixture = new ItemCookieGemMixture();
+    public static final ItemCookieGemMixtureIngot cookieGemMixtureIngot = new ItemCookieGemMixtureIngot();
 
     public static final ItemCookieGear cookieGear0 = new ItemCookieGear(0);
     public static final ItemCookieGear cookieGear1 = new ItemCookieGear(1);
@@ -26,12 +28,14 @@ public class CookiecraftItems {
     public static void registerItems(Register register, FMLInitializationEvent event){
         register.registerItem(magicCookie, "cookie_magic", event);
         register.registerItem(cookieDough, "cookie_dough", event);
+        register.registerItem(cookieGemMixture, "cookie_gem_mixture", event);
+        register.registerItem(cookieGemMixtureIngot, "cookie_gem_mixture_ingot", event);
 
-        register.registerItem(cookieGear0, "cookie_gear_0", event);
+        /*register.registerItem(cookieGear0, "cookie_gear_0", event);
         register.registerItem(cookieGear1, "cookie_gear_1", event);
         register.registerItem(cookieGear2, "cookie_gear_2", event);
         register.registerItem(cookieGear3, "cookie_gear_3", event);
-        register.registerItem(cookieGear4, "cookie_gear_4", event);
+        register.registerItem(cookieGear4, "cookie_gear_4", event);*/
 
         register.registerItem(leatherCookiePouch, "cookie_pouch_leather", event);
         register.registerItem(woodenCookiePouch, "cookie_pouch_wood", event);

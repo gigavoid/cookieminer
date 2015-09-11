@@ -32,9 +32,10 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
 		return GuiCookieUpgrade.GUI_ID;
 	}
 
-    public void setActive(IBlockAccess world, BlockPos pos, boolean active){
+    public void setActive(World world, BlockPos pos, boolean active){
         TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
         tileEntity.setIsActive(active);
+        world.setBlockState(pos, this.getDefaultState().withProperty(ACTIVE, active));
     }
 
     @Override

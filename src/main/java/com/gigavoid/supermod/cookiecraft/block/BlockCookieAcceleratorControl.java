@@ -1,7 +1,9 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.util.CookieAcceleratorBlockPos;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -12,10 +14,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+    private ArrayList<BlockPos> acceleratorBlocks = new ArrayList<BlockPos>();
 
     public BlockCookieAcceleratorControl() {
         super();
@@ -93,7 +97,7 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         }
     }
 
-    private boolean isAcceleratorBuilt(IBlockAccess world, BlockPos pos){
+    private boolean isAcceleratorBuilt(World world, BlockPos pos){
         boolean north = world.getBlockState(pos.offsetNorth()).getBlock() instanceof BlockCookieAcceleratorBase;
         boolean east = world.getBlockState(pos.offsetEast()).getBlock() instanceof BlockCookieAcceleratorBase;
 
@@ -119,66 +123,39 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
 
         boolean outerConnected = true;
         for (int i = 0; i < length && outerConnected; i++){
-            if (north && east){
-                if (!(world.getBlockState(pos.offsetNorth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetEast(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetNorth(i).offsetEast(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetEast(i).offsetNorth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-            }
-            if (north && !east){
-                if (!(world.getBlockState(pos.offsetNorth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetWest(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetNorth(i).offsetWest(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetWest(i).offsetNorth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-            }
-            if (!north && east){
-                if (!(world.getBlockState(pos.offsetSouth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetEast(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetSouth(i).offsetEast(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetEast(i).offsetSouth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-            }
-            if (!north && !east){
-                if (!(world.getBlockState(pos.offsetSouth(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetWest(i)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetSouth(i).offsetWest(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
-                if (!(world.getBlockState(pos.offsetWest(i).offsetSouth(length - 1)).getBlock() instanceof BlockCookieAcceleratorBase)){
-                    outerConnected = false;
-                }
+            outerConnected = checkBlocksAtLength(world, new CookieAcceleratorBlockPos(pos), i, length, north, east);
+        }
+
+        if (outerConnected){
+            for (BlockPos p : acceleratorBlocks){
+                ((BlockCookieAcceleratorBase)world.getBlockState(p).getBlock()).setActive(world, p, true);
             }
         }
 
         return outerConnected;
     }
+
+    private boolean checkBlocksAtLength(IBlockAccess world, CookieAcceleratorBlockPos pos, int interval, int length, boolean north, boolean east){
+        if (world.getBlockState(pos.offsetNorthSouth(interval, north)).getBlock() instanceof BlockCookieAcceleratorBase){
+            acceleratorBlocks.add(pos.offsetNorthSouth(interval, north));
+        }
+        else
+            return false;
+        if (world.getBlockState(pos.offsetEastWest(interval, east)).getBlock() instanceof BlockCookieAcceleratorBase){
+            acceleratorBlocks.add(pos.offsetEastWest(interval, east));
+        }
+        else
+            return false;
+        if (world.getBlockState(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east)).getBlock() instanceof BlockCookieAcceleratorBase) {
+            acceleratorBlocks.add(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east));
+        }
+        else
+            return false;
+        if (world.getBlockState(pos.offsetEastWest(interval, east).offsetNorthSouth(length - 1, north)).getBlock() instanceof BlockCookieAcceleratorBase){
+            acceleratorBlocks.add(pos.offsetEastWest(interval, east).offsetNorthSouth(length - 1, north));
+        }
+        else
+            return false;
+        return true;
+    }
 }
-
-

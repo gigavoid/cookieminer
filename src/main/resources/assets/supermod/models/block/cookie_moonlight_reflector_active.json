@@ -1,8 +1,9 @@
 {
-  "parent": "block/cube_bottom_top",
+  "parent": "block/enchanting_table_base",
   "textures": {
+    "particle": "supermod:blocks/cookie_moonlight_reflector",
     "bottom": "supermod:blocks/cookie_dough_collector_side",
     "top": "supermod:blocks/cookie_moonlight_reflector_active",
-    "side": "supermod:blocks/cookie_dough_collector_side"
+    "side": "supermod:blocks/cookie_moonlight_reflector_side"
   }
 }

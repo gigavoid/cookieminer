@@ -21,6 +21,7 @@ public class CookiecraftRecipes {
         ItemStack goldIngot = new ItemStack(Items.gold_ingot);
         ItemStack wood = new ItemStack(Blocks.planks);
         ItemStack stone = new ItemStack(Blocks.stone);
+        ItemStack cstone = new ItemStack(Blocks.cobblestone);
         ItemStack diamond = new ItemStack(Items.diamond);
         ItemStack emerald = new ItemStack(Items.emerald);
         ItemStack cookie = new ItemStack(Items.cookie);
@@ -55,7 +56,7 @@ public class CookiecraftRecipes {
         ItemStack ionChanneler = new ItemStack(CookiecraftBlocks.ionChanneler);
         ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe, 8);
         ItemStack cookieBlock = new ItemStack(CookiecraftBlocks.cookieBlock);
-        ItemStack cookieAccelerator = new ItemStack(Blocks.stone); // TODO: Accelerator
+        ItemStack cookieAcceleratorPart = new ItemStack(CookiecraftBlocks.cookieAcceleratorWall);
 
         ItemStack cookieStorageWood = new ItemStack(CookiecraftBlocks.cookieStorageWood);
         ItemStack cookieStorageIron = new ItemStack(CookiecraftBlocks.cookieStorageIron);
@@ -73,9 +74,11 @@ public class CookiecraftRecipes {
         ItemStack diamondCookiePouch = new ItemStack(CookiecraftItems.diamondCookiePouch);
         ItemStack emeraldCookiePouch = new ItemStack(CookiecraftItems.emeraldCookiePouch);
 
-        // General Cookiecraft blocks
+        // General Cookiecraft items
         ItemStack cookieDough = new ItemStack(CookiecraftItems.cookieDough);
         ItemStack magicCookie = new ItemStack(CookiecraftItems.magicCookie);
+        ItemStack gemMixture = new ItemStack(CookiecraftItems.cookieGemMixture, 3);
+        ItemStack gemMixtureIngot = new ItemStack(CookiecraftItems.cookieGemMixtureIngot);
 
 
         /**
@@ -141,6 +144,9 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(ionChanneler, 536870912, false, "ded", "dpd", "ded",
                 'e', enderPearl, 'd', diamond, 'p', emeraldCookiePouch));
 
+        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieAcceleratorPart, 536870912, false, "mmm", " p ", "mmm",
+                'm', gemMixtureIngot, 'p', emeraldCookiePouch));
+
 
         // Cookiepouches
 
@@ -174,6 +180,8 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(magicCookie, "bbb", "bcb", "bbb",
                 'b', enchantedBook, 'c', cookie);
 
-    }
+        GameRegistry.addShapelessRecipe(gemMixture, diamond, emerald, cstone);
 
+        GameRegistry.addSmelting(gemMixture, gemMixtureIngot, 6.0F);
+    }
 }
