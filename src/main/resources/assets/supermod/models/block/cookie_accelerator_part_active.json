@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "supermod:blocks/cookie_accelerator_part_top",
+        "side": "supermod:blocks/cookie_accelerator_part_side_active"
+    }
+}

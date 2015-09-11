@@ -6,17 +6,20 @@ import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieAccelerator;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implements ICookieUpgrade,ITileEntityProvider {
+    public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
     protected BlockCookieAcceleratorBase() {
         super(Material.rock);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
 
     @Override
@@ -56,5 +59,20 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
 
     public TileEntityCookieAccelerator getTileEntity(IBlockAccess world, BlockPos pos) {
         return (TileEntityCookieAccelerator)world.getTileEntity(pos);
+    }
+
+    @Override
+    protected BlockState createBlockState() {
+        return new BlockState(this, ACTIVE);
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return state.withProperty(ACTIVE, ((TileEntityCookieAccelerator)worldIn.getTileEntity(pos)).isActive());
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return 0;
     }
 }

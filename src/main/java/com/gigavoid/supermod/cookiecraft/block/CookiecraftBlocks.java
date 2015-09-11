@@ -29,7 +29,7 @@ public class CookiecraftBlocks {
 
     // AcceleratorBlocks
     public static final BlockCookieAcceleratorControl cookieAcceleratorControl = new BlockCookieAcceleratorControl();
-    public static final BlockCookieAcceleratorWall cookieAcceleratorWall = new BlockCookieAcceleratorWall();
+    public static final BlockCookieAcceleratorPart cookieAcceleratorWall = new BlockCookieAcceleratorPart();
 
     public static void initializeBlocks(Register register) {
         register.registerBlock(cookieCrafter, "cookie_crafter");
@@ -57,6 +57,6 @@ public class CookiecraftBlocks {
         register.registerBlock(cookieStorageEnder, "cookie_storage_ender");
 
         register.registerBlock(cookieAcceleratorControl, "cookie_accelerator_control");
-        register.registerBlock(cookieAcceleratorWall, "cookie_accelerator_wall");
+        register.registerBlock(cookieAcceleratorWall, "cookie_accelerator_part");
     }
 }

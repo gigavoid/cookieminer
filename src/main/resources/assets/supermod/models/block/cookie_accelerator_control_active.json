@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "supermod:blocks/cookie_accelerator_part_top",
+        "front": "supermod:blocks/cookie_accelerator_control_front",
+        "side": "supermod:blocks/cookie_accelerator_part_side_active"
+    }
+}
