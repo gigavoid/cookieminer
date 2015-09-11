@@ -126,10 +126,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
             outerConnected = checkBlocksAtLength(world, new CookieAcceleratorBlockPos(pos), i, length, north, east);
         }
 
-        if (outerConnected){
-            for (BlockPos p : acceleratorBlocks){
-                ((BlockCookieAcceleratorBase)world.getBlockState(p).getBlock()).setActive(world, p, true);
-            }
+        for (BlockPos p : acceleratorBlocks){
+            ((BlockCookieAcceleratorBase)world.getBlockState(p).getBlock()).setActive(world, p, outerConnected);
         }
 
         return outerConnected;
