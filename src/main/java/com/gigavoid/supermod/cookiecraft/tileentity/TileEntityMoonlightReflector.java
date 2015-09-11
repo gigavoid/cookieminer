@@ -52,7 +52,7 @@ public class TileEntityMoonlightReflector extends TileEntity implements IUpdateP
      * Custom isDay method since the one provided by Minecraft only works on the server side
      */
     private boolean isDay() {
-        return worldObj.getWorldTime() > 0 && worldObj.getWorldTime() < 12000;
+        return worldObj.getWorldTime() % 24000 > 0 && worldObj.getWorldTime() % 24000 < 12000;
     }
 
     private boolean isTopBlock() {
