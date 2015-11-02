@@ -22,7 +22,7 @@ group= "com.gigavoid.supermod" // http://maven.apache.org/guides/mini/guide-nami
 archivesBaseName = "Cookieminer"
 
 minecraft {
-    version = "1.8-11.14.2.1444"
+    version = "1.8-11.14.3.1543"
     runDir = "eclipse"
 }
 
