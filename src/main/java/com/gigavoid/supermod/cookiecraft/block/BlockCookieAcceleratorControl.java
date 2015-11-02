@@ -90,11 +90,10 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     }
 
     public void updateAcceleratorBlocks(World world, BlockPos pos){
-        if (!world.isRemote) {
-            boolean built = isAcceleratorBuilt(world, pos);
-            CookieNetwork.getNetwork(world, pos).updateAcceleratorBlocks(built);
-            System.out.println(built);
-        }
+        boolean built = isAcceleratorBuilt(world, pos);
+        CookieNetwork.getNetwork(world, pos).updateAcceleratorBlocks(built);
+        CookieNetwork.getNetwork(world, pos).updateNetwork(world, pos);
+        System.out.println(built);
     }
 
     private boolean isAcceleratorBuilt(World world, BlockPos pos){

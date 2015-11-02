@@ -24,7 +24,8 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return 0;
+        TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
+        return tileEntity.isActive() ? 1 : 0;
     }
 
 	@Override
@@ -35,16 +36,14 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
     public void setActive(World world, BlockPos pos, boolean active){
         TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
         tileEntity.setIsActive(active);
-        world.setBlockState(pos, this.getDefaultState().withProperty(ACTIVE, active));
+        //world.setBlockState(pos, world.getBlockState(pos).withProperty(ACTIVE, active));
     }
 
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (!worldIn.isRemote) {
-            CookieBlock controlBlock = CookieNetwork.getNetwork(worldIn, pos).findAcceleratorControl();
-            if (controlBlock != null) {
-                ((BlockCookieAcceleratorControl) worldIn.getBlockState(controlBlock.getPos()).getBlock()).updateAcceleratorBlocks(worldIn, controlBlock.getPos());
-            }
+        CookieBlock controlBlock = CookieNetwork.getNetwork(worldIn, pos).findAcceleratorControl();
+        if (controlBlock != null) {
+            ((BlockCookieAcceleratorControl) worldIn.getBlockState(controlBlock.getPos()).getBlock()).updateAcceleratorBlocks(worldIn, controlBlock.getPos());
         }
     }
 

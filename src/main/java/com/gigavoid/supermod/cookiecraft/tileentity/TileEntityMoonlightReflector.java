@@ -7,7 +7,7 @@ import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 
-public class TileEntityMoonlightReflector extends TileEntity implements IUpdatePlayerListBox{
+public class  TileEntityMoonlightReflector extends TileEntity implements IUpdatePlayerListBox{
     public static final String KEY_IS_ACTIVE = "isActive";
 
     private boolean isActive;
