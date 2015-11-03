@@ -3,6 +3,8 @@
     "facing=north": { "model": "supermod:cookie_cactus_masher" },
     "facing=south": { "model": "supermod:cookie_cactus_masher", "y": 180 },
     "facing=west":  { "model": "supermod:cookie_cactus_masher", "y": 270 },
-    "facing=east":  { "model": "supermod:cookie_cactus_masher", "y": 90 }
+    "facing=east":  { "model": "supermod:cookie_cactus_masher", "y": 90 },
+    "facing=up":    { "model": "supermod:cookie_cactus_masher" },
+    "facing=down":  { "model": "supermod:cookie_cactus_masher" }
   }
 }

@@ -41,7 +41,7 @@ public class CookiecraftBlocks {
         FluidRegistry.registerFluid(fluid);
         BlockMeltChocolateFluid chocoFluid = new BlockMeltChocolateFluid(fluid, Material.water);
 
-        register.registerBlock(chocoFluid, "choco_fluid");
+        register.registerBlockWithoutResource(chocoFluid, "choco_fluid");
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
         register.registerBlock(cookieBlock, "cookie_block");

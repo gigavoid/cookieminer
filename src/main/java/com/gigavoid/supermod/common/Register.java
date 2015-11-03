@@ -31,6 +31,11 @@ public class Register {
         	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(SuperMod.MODID + ":" + resourceName, "inventory"));
     }
 
+    public void registerBlockWithoutResource(Block block, String name){
+        block.setUnlocalizedName(name);
+        GameRegistry.registerBlock(block, name);
+    }
+
     public void registerItem(Item item, String name, FMLInitializationEvent event) {
         item.setUnlocalizedName(name);
         GameRegistry.registerItem(item, name);
