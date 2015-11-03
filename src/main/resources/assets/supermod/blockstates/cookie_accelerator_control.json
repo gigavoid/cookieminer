@@ -1,9 +1,9 @@
 {
     "variants": {
-        "active=true,facing=north": { "model": "supermod:cookie_accelerator_control_activated" },
-        "active=true,facing=south": { "model": "supermod:cookie_accelerator_control_activated", "y": 180 },
-        "active=true,facing=west":  { "model": "supermod:cookie_accelerator_control_activated", "y": 270 },
-        "active=true,facing=east":  { "model": "supermod:cookie_accelerator_control_activated", "y": 90 },
+        "active=true,facing=north": { "model": "supermod:cookie_accelerator_control_active" },
+        "active=true,facing=south": { "model": "supermod:cookie_accelerator_control_active", "y": 180 },
+        "active=true,facing=west":  { "model": "supermod:cookie_accelerator_control_active", "y": 270 },
+        "active=true,facing=east":  { "model": "supermod:cookie_accelerator_control_active", "y": 90 },
         "active=false,facing=north": { "model": "supermod:cookie_accelerator_control" },
         "active=false,facing=south": { "model": "supermod:cookie_accelerator_control", "y": 180 },
         "active=false,facing=west":  { "model": "supermod:cookie_accelerator_control", "y": 270 },

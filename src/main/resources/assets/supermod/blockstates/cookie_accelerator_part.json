@@ -1,6 +1,6 @@
 {
     "variants": {
-        "active=true": { "model": "supermod:cookie_accelerator_part_activated" },
+        "active=true": { "model": "supermod:cookie_accelerator_part_active" },
         "active=false": { "model": "supermod:cookie_accelerator_part" }
     }
 }

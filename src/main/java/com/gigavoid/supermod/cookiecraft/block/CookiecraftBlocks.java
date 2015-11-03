@@ -1,8 +1,14 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.common.Register;
+import net.minecraft.block.material.Material;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 public class CookiecraftBlocks {
+    public static final Fluid fluid = new Fluid("fluid", new ResourceLocation("supermod:choco_fluid_flow"), new ResourceLocation("supermod:choco_fluid_still"));
+
     public static final BlockCookieCrafter cookieCrafter = new BlockCookieCrafter();
     public static final BlockCookiePortalCookiecraft portalCookiecraft = new BlockCookiePortalCookiecraft();
     public static final BlockCookieBlock cookieBlock = new BlockCookieBlock();
@@ -32,6 +38,10 @@ public class CookiecraftBlocks {
     public static final BlockCookieAcceleratorPart cookieAcceleratorWall = new BlockCookieAcceleratorPart();
 
     public static void initializeBlocks(Register register) {
+        FluidRegistry.registerFluid(fluid);
+        BlockMeltChocolateFluid chocoFluid = new BlockMeltChocolateFluid(fluid, Material.water);
+
+        register.registerBlock(chocoFluid, "choco_fluid");
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
         register.registerBlock(cookieBlock, "cookie_block");
