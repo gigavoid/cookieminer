@@ -63,7 +63,7 @@ public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpd
     public boolean tick() {
         if (inv != null && inv.stackSize >= 1) {
             double reward = trashToCookies.get(inv.getItem());
-            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter();
+            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCore();
             if (crafter == null) {
                 return false;
             }

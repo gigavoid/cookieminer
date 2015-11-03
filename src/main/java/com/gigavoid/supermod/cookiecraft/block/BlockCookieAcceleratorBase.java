@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
@@ -36,11 +37,7 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
 	}
 
     public void setActive(World world, BlockPos pos, boolean active){
-        TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
-        tileEntity.setIsActive(active);
-        world.getBlockState(pos);
-        System.out.println("Set active" + active);
-//        world.setBlockState(pos, world.getBlockState(pos).withProperty(ACTIVE, active));
+        getTileEntity(world, pos).setIsActive(active);
     }
 
     @Override
@@ -55,7 +52,7 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
     }
 
     private void checkAcceleratorMultiblock(World worldIn, BlockPos pos) {
-        CookieBlock controlBlock = CookieNetwork.getNetwork(worldIn, pos).findAcceleratorControl();
+        CookieBlock controlBlock = AcceleratorNetwork.getNetwork(worldIn, pos).findAcceleratorControl();
         if (controlBlock != null) {
             ((BlockCookieAcceleratorControl) worldIn.getBlockState(controlBlock.getPos()).getBlock()).updateAcceleratorBlocks(worldIn, controlBlock.getPos());
         }

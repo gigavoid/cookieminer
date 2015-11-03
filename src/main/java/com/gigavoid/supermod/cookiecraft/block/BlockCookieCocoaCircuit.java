@@ -80,7 +80,7 @@ public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements I
     @Override
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
         if (worldIn.isBlockPowered(pos) && worldIn.isRemote){
-            CookieNetwork.getNetwork(worldIn, pos).updateNetwork(worldIn, pos);
+            CookieNetwork.getNetwork(worldIn, pos).updateNetwork();
         }
         state.withProperty(ACTIVE, worldIn.isBlockPowered(pos));
     }

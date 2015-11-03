@@ -32,7 +32,7 @@ public class TileEntityCactusMasher extends TileEntity implements IInventory {
      */
     public boolean tick() {
         if (inv != null && inv.stackSize >= 1) {
-            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCrafter();
+            CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCore();
             if (crafter == null) {
                 return false;
             }

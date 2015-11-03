@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
@@ -10,6 +11,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
@@ -20,7 +22,6 @@ import java.util.Random;
 
 public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
-    private ArrayList<BlockPos> acceleratorBlocks = new ArrayList<BlockPos>();
 
     public BlockCookieAcceleratorControl() {
         super();
@@ -37,6 +38,11 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        AcceleratorNetwork.getNetwork(worldIn, pos).updateNetwork();
     }
 
     @Override
@@ -57,6 +63,7 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
         super.onBlockAdded(worldIn, pos, state);
+        AcceleratorNetwork.getNetwork(worldIn, pos).updateNetwork();
         this.setDefaultDirection(worldIn, pos, state);
     }
 
@@ -97,8 +104,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
 
     public void updateAcceleratorBlocks(World world, BlockPos pos){
         boolean built = isAcceleratorBuilt(world, pos);
-        CookieNetwork.getNetwork(world, pos).updateAcceleratorBlocks(built);
-        CookieNetwork.getNetwork(world, pos).updateNetwork(world, pos);
+        AcceleratorNetwork.getNetwork(world, pos).updateAcceleratorBlocks(built);
+        CookieNetwork.getNetwork(world, pos).updateNetwork();
         System.out.println(built);
     }
 
@@ -126,10 +133,13 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
             return false;
         }
 
+        ArrayList<BlockPos> acceleratorBlocks = new ArrayList<BlockPos>();
+
         boolean outerConnected = true;
         for (int i = 0; i < length && outerConnected; i++){
-            outerConnected = checkBlocksAtLength(world, new CookieAcceleratorBlockPos(pos), i, length, north, east);
+            outerConnected = checkBlocksAtLength(world, new CookieAcceleratorBlockPos(pos), i, length, north, east, acceleratorBlocks);
         }
+
 
         for (BlockPos p : acceleratorBlocks){
             ((BlockCookieAcceleratorBase)world.getBlockState(p).getBlock()).setActive(world, p, outerConnected);
@@ -138,17 +148,19 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         return outerConnected;
     }
 
-    private boolean checkBlocksAtLength(IBlockAccess world, CookieAcceleratorBlockPos pos, int interval, int length, boolean north, boolean east){
+    private boolean checkBlocksAtLength(IBlockAccess world, CookieAcceleratorBlockPos pos, int interval, int length, boolean north, boolean east, ArrayList<BlockPos> acceleratorBlocks){
         if (world.getBlockState(pos.offsetNorthSouth(interval, north)).getBlock() instanceof BlockCookieAcceleratorBase){
             acceleratorBlocks.add(pos.offsetNorthSouth(interval, north));
         }
         else
             return false;
+
         if (world.getBlockState(pos.offsetEastWest(interval, east)).getBlock() instanceof BlockCookieAcceleratorBase){
             acceleratorBlocks.add(pos.offsetEastWest(interval, east));
         }
         else
             return false;
+
         if (world.getBlockState(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east)).getBlock() instanceof BlockCookieAcceleratorBase) {
             acceleratorBlocks.add(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east));
         }

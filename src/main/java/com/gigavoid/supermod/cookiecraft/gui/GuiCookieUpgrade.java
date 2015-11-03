@@ -34,7 +34,7 @@ public class GuiCookieUpgrade extends GuiScreen {
 		double cps;
 		int color;
 		String connected;
-		if (CookieNetwork.getNetwork(world, pos).findCrafter() != null) {
+		if (CookieNetwork.getNetwork(world, pos).findCore() != null) {
 			cps = upg.getCPS(world, pos, world.getBlockState(pos));
 			color = Color.GREEN.getRGB();
 			connected = " (Connected)";
