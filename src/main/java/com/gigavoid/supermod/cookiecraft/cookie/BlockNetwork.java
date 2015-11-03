@@ -44,9 +44,7 @@ public abstract class BlockNetwork  {
         } else {
             // There was no duplicate core, continue storing it
             CookieBlock core = findCore();
-            if (core != null) {
-                postUpdateNetwork(core);
-            }
+            postUpdateNetwork(core);
         }
     }
 

@@ -41,16 +41,6 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        AcceleratorNetwork.getNetwork(worldIn, pos).updateNetwork();
-    }
-
-    @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-    }
-
-    @Override
     protected BlockState createBlockState() {
         return new BlockState(this, ACTIVE, FACING);
     }
@@ -63,114 +53,38 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
         super.onBlockAdded(worldIn, pos, state);
-        AcceleratorNetwork.getNetwork(worldIn, pos).updateNetwork();
         this.setDefaultDirection(worldIn, pos, state);
     }
 
     private void setDefaultDirection(World worldIn, BlockPos pos, IBlockState state)
     {
-        if (!worldIn.isRemote)
+        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock();
+        boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock();
+
+        if (enumfacing == EnumFacing.NORTH && flag && !flag1)
         {
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock();
-            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock();
+            enumfacing = EnumFacing.SOUTH;
+        }
+        else if (enumfacing == EnumFacing.SOUTH && flag1 && !flag)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+        else
+        {
+            boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock();
+            boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock();
 
-            if (enumfacing == EnumFacing.NORTH && flag && !flag1)
+            if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
             {
-                enumfacing = EnumFacing.SOUTH;
+                enumfacing = EnumFacing.EAST;
             }
-            else if (enumfacing == EnumFacing.SOUTH && flag1 && !flag)
+            else if (enumfacing == EnumFacing.EAST && flag3 && !flag2)
             {
-                enumfacing = EnumFacing.NORTH;
+                enumfacing = EnumFacing.WEST;
             }
-            else
-            {
-                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock();
-                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock();
-
-                if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
-                {
-                    enumfacing = EnumFacing.EAST;
-                }
-                else if (enumfacing == EnumFacing.EAST && flag3 && !flag2)
-                {
-                    enumfacing = EnumFacing.WEST;
-                }
-            }
-
-            worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
-        }
-    }
-
-    public void updateAcceleratorBlocks(World world, BlockPos pos){
-        boolean built = isAcceleratorBuilt(world, pos);
-        AcceleratorNetwork.getNetwork(world, pos).updateAcceleratorBlocks(built);
-        CookieNetwork.getNetwork(world, pos).updateNetwork();
-        System.out.println(built);
-    }
-
-    private boolean isAcceleratorBuilt(World world, BlockPos pos){
-        boolean north = world.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock() instanceof BlockCookieAcceleratorBase;
-        boolean east = world.getBlockState(pos.offset(EnumFacing.EAST)).getBlock() instanceof BlockCookieAcceleratorBase;
-
-        int length = 0;
-        while (length < 64){
-            if (north){
-                if (world.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock() instanceof BlockCookieAcceleratorBase) {
-                    length++;
-                }
-                else
-                    break;
-            }
-            else if (world.getBlockState(pos.offset(EnumFacing.SOUTH, length)).getBlock() instanceof BlockCookieAcceleratorBase) {
-                length++;
-            }
-            else
-                break;
         }
 
-        if (length < 8){
-            return false;
-        }
-
-        ArrayList<BlockPos> acceleratorBlocks = new ArrayList<BlockPos>();
-
-        boolean outerConnected = true;
-        for (int i = 0; i < length && outerConnected; i++){
-            outerConnected = checkBlocksAtLength(world, new CookieAcceleratorBlockPos(pos), i, length, north, east, acceleratorBlocks);
-        }
-
-
-        for (BlockPos p : acceleratorBlocks){
-            ((BlockCookieAcceleratorBase)world.getBlockState(p).getBlock()).setActive(world, p, outerConnected);
-        }
-
-        return outerConnected;
-    }
-
-    private boolean checkBlocksAtLength(IBlockAccess world, CookieAcceleratorBlockPos pos, int interval, int length, boolean north, boolean east, ArrayList<BlockPos> acceleratorBlocks){
-        if (world.getBlockState(pos.offsetNorthSouth(interval, north)).getBlock() instanceof BlockCookieAcceleratorBase){
-            acceleratorBlocks.add(pos.offsetNorthSouth(interval, north));
-        }
-        else
-            return false;
-
-        if (world.getBlockState(pos.offsetEastWest(interval, east)).getBlock() instanceof BlockCookieAcceleratorBase){
-            acceleratorBlocks.add(pos.offsetEastWest(interval, east));
-        }
-        else
-            return false;
-
-        if (world.getBlockState(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east)).getBlock() instanceof BlockCookieAcceleratorBase) {
-            acceleratorBlocks.add(pos.offsetNorthSouth(interval, north).offsetEastWest(length - 1, east));
-        }
-        else
-            return false;
-        if (world.getBlockState(pos.offsetEastWest(interval, east).offsetNorthSouth(length - 1, north)).getBlock() instanceof BlockCookieAcceleratorBase){
-            acceleratorBlocks.add(pos.offsetEastWest(interval, east).offsetNorthSouth(length - 1, north));
-        }
-        else
-            return false;
-        return true;
+        worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
     }
 }

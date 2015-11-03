@@ -35,6 +35,8 @@ public class CookieNetwork extends BlockNetwork {
 
     @Override
     protected void postUpdateNetwork(CookieBlock core) {
+        if (core == null) return;
+
         ((TileEntityCookieCrafter) world.getTileEntity(core.getPos())).setCPS(calculateCps());
     }
 
