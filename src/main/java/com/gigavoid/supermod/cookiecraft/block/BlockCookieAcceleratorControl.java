@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieAccelerator;
 import com.gigavoid.supermod.cookiecraft.util.CookieAcceleratorBlockPos;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
@@ -25,6 +26,11 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         super();
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(FACING, EnumFacing.NORTH));
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return super.getActualState(state, worldIn, pos).withProperty(FACING, worldIn.getBlockState(pos).getValue(FACING));
     }
 
     @Override

@@ -45,7 +45,6 @@ public class  TileEntityMoonlightReflector extends TileEntity implements IUpdate
                 CookieNetwork.getNetwork(worldObj, pos).updateNetwork(worldObj, pos);
             }
         }
-
     }
 
     /**
