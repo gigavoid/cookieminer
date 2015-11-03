@@ -215,7 +215,7 @@ public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpd
 
     private EntityItem func_145897_a(World worldIn, BlockPos pos)
     {
-        List list = worldIn.func_175647_a(EntityItem.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0D, pos.getY() + 1.1D, pos.getZ() + 1.0D), IEntitySelector.selectAnything);
+        List list = worldIn.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0D, pos.getY() + 1.1D, pos.getZ() + 1.0D), IEntitySelector.selectAnything);
         return list.size() > 0 ? (EntityItem)list.get(0) : null;
     }
 

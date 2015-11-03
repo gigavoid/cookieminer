@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -40,7 +41,7 @@ public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICooki
     }
 
     private boolean isAboveWater(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offsetDown()).getBlock() == Blocks.water;
+        return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() == Blocks.water;
     }
 
     @Override

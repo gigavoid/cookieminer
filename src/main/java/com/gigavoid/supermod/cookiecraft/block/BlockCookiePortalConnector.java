@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -56,10 +57,10 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
     }
 
     private boolean isNextToPortal(IBlockAccess world, BlockPos pos) {
-        return isNextToOnePortal(world, pos.offsetNorth()) ||
-                isNextToOnePortal(world, pos.offsetEast()) ||
-                isNextToOnePortal(world, pos.offsetSouth()) ||
-                isNextToOnePortal(world, pos.offsetWest());
+        return isNextToOnePortal(world, pos.offset(EnumFacing.NORTH)) ||
+                isNextToOnePortal(world, pos.offset(EnumFacing.EAST)) ||
+                isNextToOnePortal(world, pos.offset(EnumFacing.SOUTH)) ||
+                isNextToOnePortal(world, pos.offset(EnumFacing.WEST));
     }
 
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {

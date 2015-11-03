@@ -24,7 +24,7 @@ public class ItemMagicCookie extends Item {
 
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (!playerIn.func_175151_a(pos, side, stack))
+        if (!playerIn.canPlayerEdit(pos, side, stack))
         {
             return false;
         }

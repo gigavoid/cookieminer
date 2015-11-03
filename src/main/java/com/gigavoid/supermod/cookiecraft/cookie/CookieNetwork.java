@@ -4,6 +4,7 @@ import com.gigavoid.supermod.cookiecraft.block.BlockCookieAcceleratorBase;
 import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -27,12 +28,12 @@ public class CookieNetwork {
             if (world.getBlockState(blockPos).getBlock() instanceof ICookieBlock) {
                 network.addBlock(world, blockPos);
 
-                searchNext(searched, toSearch, blockPos.offsetNorth());
-                searchNext(searched, toSearch, blockPos.offsetEast());
-                searchNext(searched, toSearch, blockPos.offsetSouth());
-                searchNext(searched, toSearch, blockPos.offsetWest());
-                searchNext(searched, toSearch, blockPos.offsetUp());
-                searchNext(searched, toSearch, blockPos.offsetDown());
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.NORTH));
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.EAST));
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.SOUTH));
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.WEST));
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.UP));
+                searchNext(searched, toSearch, blockPos.offset(EnumFacing.DOWN));
             }
         }
 

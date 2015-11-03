@@ -33,7 +33,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
     }
 
     @Override
-    public void func_180266_a(Entity p_180266_1_, float p_180266_2_) {
+    public void placeInPortal(Entity p_180266_1_, float p_180266_2_) {
         if (this.worldServerInstance.provider.getDimensionId() != 1)
         {
             if (!this.func_180620_b(p_180266_1_, p_180266_2_))
@@ -100,11 +100,11 @@ public class Teleporter extends net.minecraft.world.Teleporter
                 {
                     for (BlockPos blockpos = blockpos4.add(l, this.worldServerInstance.getActualHeight() - 1 - blockpos4.getY(), i1); blockpos.getY() >= 0; blockpos = blockpos1)
                     {
-                        blockpos1 = blockpos.offsetDown();
+                        blockpos1 = blockpos.offset(EnumFacing.DOWN);
 
                         if (this.worldServerInstance.getBlockState(blockpos).getBlock() == CookiecraftBlocks.portalCookiecraft)
                         {
-                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offsetDown()).getBlock() == CookiecraftBlocks.portalCookiecraft)
+                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offset(EnumFacing.DOWN)).getBlock() == CookiecraftBlocks.portalCookiecraft)
                             {
                                 blockpos = blockpos1;
                             }
@@ -135,22 +135,22 @@ public class Teleporter extends net.minecraft.world.Teleporter
             double d6 = (double)((BlockPos)object).getZ() + 0.5D;
             EnumFacing enumfacing = null;
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetWest()).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.WEST)).getBlock() == CookiecraftBlocks.portalCookiecraft)
             {
                 enumfacing = EnumFacing.NORTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetEast()).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.EAST)).getBlock() == CookiecraftBlocks.portalCookiecraft)
             {
                 enumfacing = EnumFacing.SOUTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetNorth()).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.NORTH)).getBlock() == CookiecraftBlocks.portalCookiecraft)
             {
                 enumfacing = EnumFacing.EAST;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offsetSouth()).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.SOUTH)).getBlock() == CookiecraftBlocks.portalCookiecraft)
             {
                 enumfacing = EnumFacing.WEST;
             }
@@ -243,7 +243,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
 
     private boolean func_180265_a(BlockPos p_180265_1_)
     {
-        return !this.worldServerInstance.isAirBlock(p_180265_1_) || !this.worldServerInstance.isAirBlock(p_180265_1_.offsetUp());
+        return !this.worldServerInstance.isAirBlock(p_180265_1_) || !this.worldServerInstance.isAirBlock(p_180265_1_.offset(EnumFacing.UP));
     }
 
     @Override

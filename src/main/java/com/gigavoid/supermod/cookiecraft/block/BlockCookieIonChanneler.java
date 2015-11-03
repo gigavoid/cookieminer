@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -65,7 +66,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
     private boolean isTowerBuilt(IBlockAccess world, BlockPos pos){
         int nrOfParts = 1;
         for (int i = 1; i < 5; i++){
-            if (world.getBlockState(pos.offsetUp(i)).getBlock() == CookiecraftBlocks.ionChanneler){
+            if (world.getBlockState(pos.offset(EnumFacing.UP, i)).getBlock() == CookiecraftBlocks.ionChanneler){
                 nrOfParts++;
             }
             else
@@ -73,7 +74,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
         }
         if (nrOfParts < 5){
             for (int i = 1; i < 5; i++){
-                if (world.getBlockState(pos.offsetDown(i)).getBlock() == CookiecraftBlocks.ionChanneler){
+                if (world.getBlockState(pos.offset(EnumFacing.DOWN, i)).getBlock() == CookiecraftBlocks.ionChanneler){
                     nrOfParts++;
                 }
                 else
@@ -84,10 +85,10 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
     }
 
     private boolean isTop(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offsetUp()).getBlock() != CookiecraftBlocks.ionChanneler;
+        return world.getBlockState(pos.offset(EnumFacing.UP)).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 
     private boolean isBottom(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offsetDown()).getBlock() != CookiecraftBlocks.ionChanneler;
+        return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 }

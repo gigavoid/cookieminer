@@ -107,7 +107,7 @@ public class ShapedCookieRecepie implements IRecipe{
     }
 
     @Override
-    public ItemStack[] func_179532_b(InventoryCrafting inv) {
+    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
         ItemStack stackInSlot = inv.getStackInSlot(4);
         CookieStorageItem storage = new CookieStorageItem(stackInSlot);
         storage.takeCookies(cookiesRequired);

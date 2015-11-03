@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.util;
 
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 
 public class CookieAcceleratorBlockPos extends BlockPos {
     public CookieAcceleratorBlockPos(BlockPos pos) {
@@ -13,9 +14,9 @@ public class CookieAcceleratorBlockPos extends BlockPos {
 
     public CookieAcceleratorBlockPos offsetNorthSouth(int dist, boolean north){
         if (north)
-            return new CookieAcceleratorBlockPos(this.offsetNorth(dist));
+            return new CookieAcceleratorBlockPos(this.offset(EnumFacing.NORTH, dist));
         else
-            return new CookieAcceleratorBlockPos(this.offsetSouth(dist));
+            return new CookieAcceleratorBlockPos(this.offset(EnumFacing.SOUTH, dist));
     }
 
     public CookieAcceleratorBlockPos offsetEastWest(boolean north){
@@ -24,8 +25,8 @@ public class CookieAcceleratorBlockPos extends BlockPos {
 
     public CookieAcceleratorBlockPos offsetEastWest(int dist, boolean east){
         if (east)
-            return new CookieAcceleratorBlockPos(this.offsetEast(dist));
+            return new CookieAcceleratorBlockPos(this.offset(EnumFacing.EAST, dist));
         else
-            return new CookieAcceleratorBlockPos(this.offsetWest(dist));
+            return new CookieAcceleratorBlockPos(this.offset(EnumFacing.WEST, dist));
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -17,9 +18,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.*;
-import net.minecraft.world.gen.feature.WorldGenDungeons;
-import net.minecraft.world.gen.feature.WorldGenLakes;
-import net.minecraft.world.gen.structure.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -29,7 +27,6 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.util.List;
 import java.util.Random;
 
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.*;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
 
 public class CookiecraftChunkProvider implements IChunkProvider {
@@ -106,7 +103,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         this.mobSpawnerNoise = (NoiseGeneratorOctaves)noiseGens[6];
     }
 
-    public void func_180518_a(int p_180518_1_, int p_180518_2_, ChunkPrimer p_180518_3_)
+    public void setBlocksInChunk(int p_180518_1_, int p_180518_2_, ChunkPrimer p_180518_3_)
     {
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, p_180518_1_ * 4 - 2, p_180518_2_ * 4 - 2, 10, 10);
         this.func_147423_a(p_180518_1_ * 4, 0, p_180518_2_ * 4);
@@ -155,7 +152,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, CookiecraftBlocks.cookieBlock.getDefaultState());
                                 }
-                                else if (k2 * 8 + l2 < this.chunkProviderSettings.field_177841_q)
+                                else if (k2 * 8 + l2 < this.chunkProviderSettings.seaLevel)
                                 {
                                     p_180518_3_.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + j3, this.oceanFiller.getDefaultState());
                                 }
@@ -175,7 +172,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         }
     }
 
-    public void func_180517_a(int p_180517_1_, int p_180517_2_, ChunkPrimer p_180517_3_, BiomeGenBase[] p_180517_4_)
+    public void replaceBlocksForBiome(int p_180517_1_, int p_180517_2_, ChunkPrimer p_180517_3_, BiomeGenBase[] p_180517_4_)
     {
         ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, p_180517_1_, p_180517_2_, p_180517_3_, this.worldObj);
         MinecraftForge.EVENT_BUS.post(event);
@@ -202,9 +199,9 @@ public class CookiecraftChunkProvider implements IChunkProvider {
     {
         this.rand.setSeed((long)p_73154_1_ * 341873128712L + (long)p_73154_2_ * 132897987541L);
         ChunkPrimer chunkprimer = new ChunkPrimer();
-        this.func_180518_a(p_73154_1_, p_73154_2_, chunkprimer);
+        this.setBlocksInChunk(p_73154_1_, p_73154_2_, chunkprimer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, p_73154_1_ * 16, p_73154_2_ * 16, 16, 16);
-        this.func_180517_a(p_73154_1_, p_73154_2_, chunkprimer, this.biomesForGeneration);
+        this.replaceBlocksForBiome(p_73154_1_, p_73154_2_, chunkprimer, this.biomesForGeneration);
 
         Chunk chunk = new Chunk(this.worldObj, chunkprimer, p_73154_1_, p_73154_2_);
         byte[] abyte = chunk.getBiomeArray();
@@ -220,10 +217,10 @@ public class CookiecraftChunkProvider implements IChunkProvider {
 
     private void func_147423_a(int p_147423_1_, int p_147423_2_, int p_147423_3_)
     {
-        this.field_147426_g = this.noiseGen6.generateNoiseOctaves(this.field_147426_g, p_147423_1_, p_147423_3_, 5, 5, (double)this.chunkProviderSettings.field_177808_e, (double)this.chunkProviderSettings.field_177803_f, (double)this.chunkProviderSettings.field_177804_g);
-        float f = this.chunkProviderSettings.field_177811_a;
-        float f1 = this.chunkProviderSettings.field_177809_b;
-        this.field_147427_d = this.field_147429_l.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)(f / this.chunkProviderSettings.field_177825_h), (double)(f1 / this.chunkProviderSettings.field_177827_i), (double)(f / this.chunkProviderSettings.field_177821_j));
+        this.field_147426_g = this.noiseGen6.generateNoiseOctaves(this.field_147426_g, p_147423_1_, p_147423_3_, 5, 5, (double)this.chunkProviderSettings.depthNoiseScaleX, (double)this.chunkProviderSettings.depthNoiseScaleZ, (double)this.chunkProviderSettings.depthNoiseScaleExponent);
+        float f = this.chunkProviderSettings.coordinateScale;
+        float f1 = this.chunkProviderSettings.heightScale;
+        this.field_147427_d = this.field_147429_l.generateNoiseOctaves(this.field_147427_d, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)(f / this.chunkProviderSettings.mainNoiseScaleX), (double)(f1 / this.chunkProviderSettings.mainNoiseScaleY), (double)(f / this.chunkProviderSettings.mainNoiseScaleZ));
         this.field_147428_e = this.field_147431_j.generateNoiseOctaves(this.field_147428_e, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
         this.field_147425_f = this.field_147432_k.generateNoiseOctaves(this.field_147425_f, p_147423_1_, p_147423_2_, p_147423_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
         int l = 0;
@@ -244,8 +241,8 @@ public class CookiecraftChunkProvider implements IChunkProvider {
                     for (int i2 = -b0; i2 <= b0; ++i2)
                     {
                         BiomeGenBase biomegenbase1 = this.biomesForGeneration[j1 + l1 + 2 + (k1 + i2 + 2) * 10];
-                        float f5 = this.chunkProviderSettings.field_177813_n + biomegenbase1.minHeight * this.chunkProviderSettings.field_177819_m;
-                        float f6 = this.chunkProviderSettings.field_177843_p + biomegenbase1.maxHeight * this.chunkProviderSettings.field_177815_o;
+                        float f5 = this.chunkProviderSettings.biomeDepthOffSet + biomegenbase1.minHeight * this.chunkProviderSettings.biomeDepthWeight;
+                        float f6 = this.chunkProviderSettings.biomeScaleOffset + biomegenbase1.maxHeight * this.chunkProviderSettings.biomeScaleWeight;
 
                         if (this.worldType == WorldType.AMPLIFIED && f5 > 0.0F)
                         {
@@ -305,20 +302,20 @@ public class CookiecraftChunkProvider implements IChunkProvider {
                 double d8 = (double)f3;
                 double d9 = (double)f2;
                 d8 += d7 * 0.2D;
-                d8 = d8 * (double)this.chunkProviderSettings.field_177823_k / 8.0D;
-                double d0 = (double)this.chunkProviderSettings.field_177823_k + d8 * 4.0D;
+                d8 = d8 * (double)this.chunkProviderSettings.baseSize / 8.0D;
+                double d0 = (double)this.chunkProviderSettings.baseSize + d8 * 4.0D;
 
                 for (int j2 = 0; j2 < 33; ++j2)
                 {
-                    double d1 = ((double)j2 - d0) * (double)this.chunkProviderSettings.field_177817_l * 128.0D / 256.0D / d9;
+                    double d1 = ((double)j2 - d0) * (double)this.chunkProviderSettings.stretchY * 128.0D / 256.0D / d9;
 
                     if (d1 < 0.0D)
                     {
                         d1 *= 4.0D;
                     }
 
-                    double d2 = this.field_147428_e[l] / (double)this.chunkProviderSettings.field_177806_d;
-                    double d3 = this.field_147425_f[l] / (double)this.chunkProviderSettings.field_177810_c;
+                    double d2 = this.field_147428_e[l] / (double)this.chunkProviderSettings.lowerLimitScale;
+                    double d3 = this.field_147425_f[l] / (double)this.chunkProviderSettings.upperLimitScale;
                     double d4 = (this.field_147427_d[l] / 10.0D + 1.0D) / 2.0D;
                     double d5 = MathHelper.denormalizeClamp(d2, d3, d4) - d1;
 
@@ -366,7 +363,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         int l1;
         int i2;
 
-        biomegenbase.func_180624_a(this.worldObj, this.rand, new BlockPos(k, 0, l));
+        biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(k, 0, l));
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
         {
             SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
@@ -378,15 +375,15 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         {
             for (l1 = 0; l1 < 16; ++l1)
             {
-                BlockPos blockpos1 = this.worldObj.func_175725_q(blockpos.add(k1, 0, l1));
-                BlockPos blockpos2 = blockpos1.offsetDown();
+                BlockPos blockpos1 = this.worldObj.getPrecipitationHeight(blockpos.add(k1, 0, l1));
+                BlockPos blockpos2 = blockpos1.offset(EnumFacing.DOWN);
 
                 if (this.worldObj.func_175675_v(blockpos2))
                 {
                     this.worldObj.setBlockState(blockpos2, Blocks.ice.getDefaultState(), 2);
                 }
 
-                if (this.worldObj.func_175708_f(blockpos1, true))
+                if (this.worldObj.canSnowAt(blockpos1, true))
                 {
                     this.worldObj.setBlockState(blockpos1, Blocks.snow_layer.getDefaultState(), 2);
                 }
@@ -448,7 +445,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         return biomegenbase.getSpawnableList(p_177458_1_);
     }
 
-    public BlockPos func_180513_a(World worldIn, String p_180513_2_, BlockPos p_180513_3_)
+    public BlockPos getStrongholdGen(World worldIn, String p_180513_2_, BlockPos p_180513_3_)
     {
         return null;
     }
@@ -458,9 +455,9 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         return 0;
     }
 
-    public void func_180514_a(Chunk p_180514_1_, int p_180514_2_, int p_180514_3_) {}
+    public void recreateStructures(Chunk p_180514_1_, int p_180514_2_, int p_180514_3_) {}
 
-    public Chunk func_177459_a(BlockPos p_177459_1_)
+    public Chunk provideChunk(BlockPos p_177459_1_)
     {
         return this.provideChunk(p_177459_1_.getX() >> 4, p_177459_1_.getZ() >> 4);
     }

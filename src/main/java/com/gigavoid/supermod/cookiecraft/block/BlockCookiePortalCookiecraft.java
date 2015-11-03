@@ -48,11 +48,11 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             int i = pos.getY();
             BlockPos blockpos1;
 
-            for (blockpos1 = pos; !World.doesBlockHaveSolidTopSurface(worldIn, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.offsetDown()) {
+            for (blockpos1 = pos; !World.doesBlockHaveSolidTopSurface(worldIn, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.offset(EnumFacing.DOWN)) {
                 ;
             }
 
-            if (i > 0 && !worldIn.getBlockState(blockpos1.offsetUp()).getBlock().isNormalCube()) {
+            if (i > 0 && !worldIn.getBlockState(blockpos1.offset(EnumFacing.UP)).getBlock().isNormalCube()) {
                 Entity entity = ItemMonsterPlacer.spawnCreature(worldIn, 57, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.1D, (double) blockpos1.getZ() + 0.5D);
 
                 if (entity != null) {
@@ -149,10 +149,10 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             }
         }
 
-        boolean flag = worldIn.getBlockState(pos.offsetWest()).getBlock() == this && worldIn.getBlockState(pos.offsetWest(2)).getBlock() != this;
-        boolean flag1 = worldIn.getBlockState(pos.offsetEast()).getBlock() == this && worldIn.getBlockState(pos.offsetEast(2)).getBlock() != this;
-        boolean flag2 = worldIn.getBlockState(pos.offsetNorth()).getBlock() == this && worldIn.getBlockState(pos.offsetNorth(2)).getBlock() != this;
-        boolean flag3 = worldIn.getBlockState(pos.offsetSouth()).getBlock() == this && worldIn.getBlockState(pos.offsetSouth(2)).getBlock() != this;
+        boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock() == this && worldIn.getBlockState(pos.offset(EnumFacing.WEST, 2)).getBlock() != this;
+        boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock() == this && worldIn.getBlockState(pos.offset(EnumFacing.EAST, 2)).getBlock() != this;
+        boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock() == this && worldIn.getBlockState(pos.offset(EnumFacing.NORTH, 2)).getBlock() != this;
+        boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock() == this && worldIn.getBlockState(pos.offset(EnumFacing.SOUTH, 2)).getBlock() != this;
         boolean flag4 = flag || flag1 || axis == EnumFacing.Axis.X;
         boolean flag5 = flag2 || flag3 || axis == EnumFacing.Axis.Z;
         return flag4 && side == EnumFacing.WEST ? true : (flag4 && side == EnumFacing.EAST ? true : (flag5 && side == EnumFacing.NORTH ? true : flag5 && side == EnumFacing.SOUTH));
@@ -209,7 +209,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             double d5 = ((double) rand.nextFloat() - 0.5D) * 0.1D;
             int j = rand.nextInt(2) * 2 - 1;
 
-            if (worldIn.getBlockState(pos.offsetWest()).getBlock() != this && worldIn.getBlockState(pos.offsetEast()).getBlock() != this) {
+            if (worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock() != this && worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock() != this) {
                 d0 = (double) pos.getX() + 0.5D + 0.25D * (double) j;
             } else {
                 d2 = (double) pos.getZ() + 0.5D + 0.25D * (double) j;
@@ -256,7 +256,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
                 this.field_150866_c = EnumFacing.SOUTH;
             }
 
-            for (BlockPos blockpos1 = p_i45694_2_; p_i45694_2_.getY() > blockpos1.getY() - 21 && p_i45694_2_.getY() > 0 && this.func_150857_a(worldIn.getBlockState(p_i45694_2_.offsetDown()).getBlock()); p_i45694_2_ = p_i45694_2_.offsetDown()) {
+            for (BlockPos blockpos1 = p_i45694_2_; p_i45694_2_.getY() > blockpos1.getY() - 21 && p_i45694_2_.getY() > 0 && this.func_150857_a(worldIn.getBlockState(p_i45694_2_.offset(EnumFacing.DOWN)).getBlock()); p_i45694_2_ = p_i45694_2_.offset(EnumFacing.DOWN)) {
                 ;
             }
 
@@ -283,7 +283,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             for (i = 0; i < 22; ++i) {
                 BlockPos blockpos1 = p_180120_1_.offset(p_180120_2_, i);
 
-                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offsetDown()).getBlock() != CookiecraftBlocks.cookieBlock) {
+                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offset(EnumFacing.DOWN)).getBlock() != CookiecraftBlocks.cookieBlock) {
                     break;
                 }
             }
@@ -298,7 +298,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
 
             for (this.field_150862_g = 0; this.field_150862_g < 21; ++this.field_150862_g) {
                 for (i = 0; i < this.field_150868_h; ++i) {
-                    BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g);
+                    BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i).offset(EnumFacing.UP, this.field_150862_g);
                     Block block = this.field_150867_a.getBlockState(blockpos).getBlock();
 
                     if (!this.func_150857_a(block)) {
@@ -326,7 +326,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             }
 
             for (i = 0; i < this.field_150868_h; ++i) {
-                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offsetUp(this.field_150862_g)).getBlock() != CookiecraftBlocks.cookieBlock) {
+                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offset(EnumFacing.UP, this.field_150862_g)).getBlock() != CookiecraftBlocks.cookieBlock) {
                     this.field_150862_g = 0;
                     break;
                 }
@@ -356,7 +356,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
                 BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
                 for (int j = 0; j < this.field_150862_g; ++j) {
-                    this.field_150867_a.setBlockState(blockpos.offsetUp(j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offset(EnumFacing.UP, j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, this.field_150865_b), 2);
                 }
             }
         }
