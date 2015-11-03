@@ -1,9 +1,10 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityCookieAccelerator extends TileEntity {
+public class TileEntityCookieAccelerator extends TileEntity implements IUpdatePlayerListBox {
     public static final String KEY_IS_ACTIVE = "isActive";
 
     private boolean isActive;
@@ -26,5 +27,10 @@ public class TileEntityCookieAccelerator extends TileEntity {
     public void writeToNBT(NBTTagCompound compound) {
         compound.setBoolean(KEY_IS_ACTIVE, isActive);
         super.writeToNBT(compound);
+    }
+
+    @Override
+    public void update() {
+
     }
 }
