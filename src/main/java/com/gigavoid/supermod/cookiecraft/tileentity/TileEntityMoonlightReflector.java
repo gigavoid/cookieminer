@@ -42,7 +42,7 @@ public class  TileEntityMoonlightReflector extends TileEntity implements IUpdate
 
             if (isActive != isActive()) {
                 setIsActive(isActive);
-                CookieNetwork.getNetwork(worldObj, pos).updateNetwork(worldObj, pos);
+                CookieNetwork.getNetwork(worldObj, pos).updateNetwork();
             }
         }
     }

@@ -1,77 +1,41 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieAcceleratorBase;
 import com.gigavoid.supermod.cookiecraft.block.ICookieBlock;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import net.minecraft.block.Block;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
-public class CookieNetwork {
-    private List<CookieBlock> cookieBlocks = new ArrayList<CookieBlock>();
+public class CookieNetwork extends BlockNetwork {
+    private static CookieBlockTester cookieBlockTester = new CookieBlockTester();
+
+    private CookieNetwork(World world, BlockPos startPos) {
+        super(world, startPos);
+    }
+
+    @Override
+    public boolean isCore(CookieBlock block) {
+        return block.isCrafter();
+    }
 
     public static CookieNetwork getNetwork(World world, BlockPos pos) {
-        CookieNetwork network = new CookieNetwork();
+        CookieNetwork network = new CookieNetwork(world, pos);
 
-        List<BlockPos> searched = new ArrayList<BlockPos>();
-        Stack<BlockPos> toSearch = new Stack<BlockPos>();
-        toSearch.push(pos);
-        searched.add(pos);
+        ArrayList<BlockPos> blocks = ConnectedBlockSearcher.findConnected(world, pos, cookieBlockTester);
 
-
-        while (!toSearch.empty()) {
-            BlockPos blockPos = toSearch.pop();
-            if (world.getBlockState(blockPos).getBlock() instanceof ICookieBlock) {
-                network.addBlock(world, blockPos);
-
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.NORTH));
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.EAST));
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.SOUTH));
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.WEST));
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.UP));
-                searchNext(searched, toSearch, blockPos.offset(EnumFacing.DOWN));
-            }
+        for (BlockPos block : blocks) {
+            network.addBlock(world, block);
         }
 
 
         return network;
     }
 
-    private static void searchNext(List<BlockPos> searched, Stack<BlockPos> toSearch, BlockPos blockPos) {
-        if (!hasSearched(searched, blockPos)) {
-            toSearch.add(blockPos);
-            searched.add(blockPos);
-        }
-    }
-
-    private static boolean hasSearched(List<BlockPos> searched, BlockPos blockPos) {
-        for(BlockPos pos : searched) {
-            if (pos.equals(blockPos))
-                return true;
-        }
-        return false;
-    }
-
-    private void addBlock(World world, BlockPos pos) {
-        cookieBlocks.add(new CookieBlock(world, pos, world.getBlockState(pos).getBlock()));
-    }
-
-    public void updateNetwork(World worldIn, BlockPos pos) {
-        if (hasMultipleCrafters()) {
-            // Destroy the newly placed block, preventing multiple crafters
-            worldIn.destroyBlock(pos, true);
-        }
-        else {
-            // There was no duplicate crafter, continue storing it
-            CookieBlock crafter = findCrafter();
-            if (crafter != null) {
-                ((TileEntityCookieCrafter)worldIn.getTileEntity(crafter.getPos())).setCPS(calculateCps());
-            }
-        }
+    @Override
+    protected void postUpdateNetwork(CookieBlock core) {
+        ((TileEntityCookieCrafter) world.getTileEntity(core.getPos())).setCPS(calculateCps());
     }
 
     /**
@@ -91,7 +55,7 @@ public class CookieNetwork {
     }
 
     private CookieBlock findNextStorageBlock() {
-        for (CookieBlock block : cookieBlocks) {
+        for (CookieBlock block : connectedBlocks) {
             if (block.isStorage() && !block.isFullStorage()) {
                 return block;
             }
@@ -101,47 +65,18 @@ public class CookieNetwork {
 
     private double calculateCps() {
         double cps = 0;
-        for (CookieBlock block : cookieBlocks) {
+        for (CookieBlock block : connectedBlocks) {
             if (block.isCpsUpgrade())
                 cps += block.getCPS();
         }
 
         return cps;
     }
+}
 
-    public CookieBlock findCrafter() {
-        for (CookieBlock block : cookieBlocks) {
-            if (block.isCrafter())
-                return block;
-        }
-        return null;
-    }
-
-    public CookieBlock findAcceleratorControl() {
-        for (CookieBlock block : cookieBlocks) {
-            if (block.isAcceleratorControl())
-                return block;
-        }
-        return null;
-    }
-
-    public void updateAcceleratorBlocks(boolean active) {
-        for (CookieBlock block : cookieBlocks) {
-            if (block.isAcceleratorBlock())
-                ((BlockCookieAcceleratorBase)block.getWorld().getBlockState(block.getPos()).getBlock()).setActive(block.getWorld(),block.getPos(), active);
-        }
-    }
-
-    private boolean hasMultipleCrafters() {
-        Boolean foundOneCrafter = false;
-        for (CookieBlock cookieBlock : cookieBlocks) {
-            if (cookieBlock.isCrafter()) {
-                if (foundOneCrafter) {
-                    return true;
-                }
-                foundOneCrafter = true;
-            }
-        }
-        return false;
+class CookieBlockTester implements ConnectedBlockTester {
+    @Override
+    public boolean isConnected(Block block) {
+        return block instanceof ICookieBlock;
     }
 }
