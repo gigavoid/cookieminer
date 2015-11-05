@@ -12,7 +12,9 @@ import net.minecraft.world.IBlockAccess;
 import java.util.Random;
 
 public class BlockCookieAcceleratorPart extends BlockCookieAcceleratorBase {
-    public BlockCookieAcceleratorPart() {
+    public static final BlockCookieAcceleratorPart instance = new BlockCookieAcceleratorPart();
+
+    private BlockCookieAcceleratorPart() {
         super();
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

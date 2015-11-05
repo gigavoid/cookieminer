@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
+import com.gigavoid.supermod.cookiecraft.block.*;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
@@ -42,27 +42,27 @@ public class CookiecraftRecipes {
         ItemStack obsidian = new ItemStack(Blocks.obsidian);
 
         // Cookie network blocks
-        ItemStack cookieCrafter = new ItemStack(CookiecraftBlocks.cookieCrafter);
-        ItemStack doughCollector = new ItemStack(CookiecraftBlocks.cookieDoughCollector);
-        ItemStack trashBaker = new ItemStack(CookiecraftBlocks.trashBaker);
-        ItemStack cookieFarm = new ItemStack(CookiecraftBlocks.cookieFarm);
-        ItemStack cactusMasher = new ItemStack(CookiecraftBlocks.cactusMasher);
-        ItemStack cookieSteamer = new ItemStack(CookiecraftBlocks.cookieSteamer);
-        ItemStack cookieCircuit = new ItemStack(CookiecraftBlocks.cocoaCircuit);
-        ItemStack moonlightReflector = new ItemStack(CookiecraftBlocks.monlightReflector);
-        ItemStack lavaConverter = new ItemStack(CookiecraftBlocks.lavaConverter);
-        ItemStack portalConnector = new ItemStack(CookiecraftBlocks.portalConnector);
-        ItemStack vacuumOven = new ItemStack(CookiecraftBlocks.vacuumOven);
-        ItemStack ionChanneler = new ItemStack(CookiecraftBlocks.ionChanneler);
-        ItemStack pipe = new ItemStack(CookiecraftBlocks.pipe, 8);
-        ItemStack cookieBlock = new ItemStack(CookiecraftBlocks.cookieBlock);
-        ItemStack cookieAcceleratorPart = new ItemStack(CookiecraftBlocks.cookieAcceleratorWall);
+        ItemStack cookieCrafter = new ItemStack(BlockCookieCrafter.instance);
+        ItemStack doughCollector = new ItemStack(BlockCookieDoughCollector.instance);
+        ItemStack trashBaker = new ItemStack(BlockCookieTrashBaker.instance);
+        ItemStack cookieFarm = new ItemStack(BlockCookieFarm.instance);
+        ItemStack cactusMasher = new ItemStack(BlockCookieCactusMasher.instance);
+        ItemStack cookieSteamer = new ItemStack(BlockCookieSteamer.instance);
+        ItemStack cookieCircuit = new ItemStack(BlockCookieCocoaCircuit.instance);
+        ItemStack moonlightReflector = new ItemStack(BlockCookieMoonlightReflector.instance);
+        ItemStack lavaConverter = new ItemStack(BlockCookieLavaConverter.instance);
+        ItemStack portalConnector = new ItemStack(BlockCookiePortalConnector.instance);
+        ItemStack vacuumOven = new ItemStack(BlockCookieVacuumOven.instance);
+        ItemStack ionChanneler = new ItemStack(BlockCookieIonChanneler.instance);
+        ItemStack pipe = new ItemStack(BlockCookiePipe.instance, 8);
+        ItemStack cookieBlock = new ItemStack(BlockCookieBlock.instance);
+        ItemStack cookieAcceleratorPart = new ItemStack(BlockCookieAcceleratorPart.instance);
 
-        ItemStack cookieStorageWood = new ItemStack(CookiecraftBlocks.cookieStorageWood);
-        ItemStack cookieStorageIron = new ItemStack(CookiecraftBlocks.cookieStorageIron);
-        ItemStack cookieStorageGold = new ItemStack(CookiecraftBlocks.cookieStorageGold);
-        ItemStack cookieStorageDiamond = new ItemStack(CookiecraftBlocks.cookieStorageDiamond);
-        ItemStack cookieStorageEnder = new ItemStack(CookiecraftBlocks.cookieStorageEnder);
+        ItemStack cookieStorageWood = new ItemStack(BlockCookieStorage.instances.get("wood"));
+        ItemStack cookieStorageIron = new ItemStack(BlockCookieStorage.instances.get("iron"));
+        ItemStack cookieStorageGold = new ItemStack(BlockCookieStorage.instances.get("gold"));
+        ItemStack cookieStorageDiamond = new ItemStack(BlockCookieStorage.instances.get("diamond"));
+        ItemStack cookieStorageEnder = new ItemStack(BlockCookieStorage.instances.get("ender"));
 
 
         // Cookiepouches

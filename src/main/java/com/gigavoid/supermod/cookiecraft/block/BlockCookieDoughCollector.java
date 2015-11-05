@@ -11,7 +11,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieDoughCollector extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    protected BlockCookieDoughCollector() {
+    public static final BlockCookieDoughCollector instance = new BlockCookieDoughCollector();
+
+    private BlockCookieDoughCollector() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

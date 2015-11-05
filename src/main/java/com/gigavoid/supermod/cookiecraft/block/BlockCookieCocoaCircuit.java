@@ -1,16 +1,13 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.common.util.Reflection;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -18,14 +15,15 @@ import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import java.util.Random;
 
 public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    public static final BlockCookieCocoaCircuit instance = new BlockCookieCocoaCircuit();
+
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    protected BlockCookieCocoaCircuit() {
+    private BlockCookieCocoaCircuit() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));

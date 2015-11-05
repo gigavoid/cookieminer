@@ -14,10 +14,12 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    public static final BlockCookieVacuumOven instance = new BlockCookieVacuumOven();
+
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
     private final int heightLimit = 250;
 
-    protected BlockCookieVacuumOven() {
+    private BlockCookieVacuumOven() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));

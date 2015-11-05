@@ -3,7 +3,7 @@ package com.gigavoid.supermod.cookiecraft;
 import com.gigavoid.supermod.common.Register;
 import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
-import com.gigavoid.supermod.cookiecraft.block.BlockFluidChoco;
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieChocoFluid;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.fluids.FluidChoco;
 import com.gigavoid.supermod.cookiecraft.gui.CookiecraftGuis;
@@ -40,7 +40,7 @@ public class ModuleCookiecraft extends Module{
         public void preInit(FMLPreInitializationEvent event, Register register)
         {
             FluidRegistry.registerFluid(FluidChoco.instance);
-            GameRegistry.registerBlock(BlockFluidChoco.instance, BlockFluidChoco.name);
+            GameRegistry.registerBlock(BlockCookieChocoFluid.instance, BlockCookieChocoFluid.name);
 
 
             cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
@@ -51,12 +51,12 @@ public class ModuleCookiecraft extends Module{
     }
 
     public static class ClientProxy extends CommonProxy {
-        private static ModelResourceLocation fluidLocation = new ModelResourceLocation("supermod:" + BlockFluidChoco.name, "fluid");
+        private static ModelResourceLocation fluidLocation = new ModelResourceLocation("supermod:" + BlockCookieChocoFluid.name, "fluid");
 
         @Override
         public void preInit(FMLPreInitializationEvent event, Register register) {
             super.preInit(event, register);
-            Item fluid = Item.getItemFromBlock(BlockFluidChoco.instance);
+            Item fluid = Item.getItemFromBlock(BlockCookieChocoFluid.instance);
             ModelBakery.addVariantName(fluid);
 
             ModelLoader.setCustomMeshDefinition(fluid, new ItemMeshDefinition() {
@@ -64,7 +64,7 @@ public class ModuleCookiecraft extends Module{
                     return fluidLocation;
                 }
             });
-            ModelLoader.setCustomStateMapper(BlockFluidChoco.instance, new StateMapperBase() {
+            ModelLoader.setCustomStateMapper(BlockCookieChocoFluid.instance, new StateMapperBase() {
                 protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
                     return fluidLocation;
                 }

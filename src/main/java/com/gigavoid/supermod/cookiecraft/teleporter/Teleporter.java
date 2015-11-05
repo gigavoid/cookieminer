@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.teleporter;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -60,7 +61,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlockState(new BlockPos(k1, l1, i2), flag ? CookiecraftBlocks.cookieBlock.getDefaultState() : Blocks.air.getDefaultState());
+                        this.worldServerInstance.setBlockState(new BlockPos(k1, l1, i2), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.air.getDefaultState());
                     }
                 }
             }
@@ -102,9 +103,9 @@ public class Teleporter extends net.minecraft.world.Teleporter
                     {
                         blockpos1 = blockpos.offset(EnumFacing.DOWN);
 
-                        if (this.worldServerInstance.getBlockState(blockpos).getBlock() == CookiecraftBlocks.portalCookiecraft)
+                        if (this.worldServerInstance.getBlockState(blockpos).getBlock() == BlockCookiePortalCookiecraft.instance)
                         {
-                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offset(EnumFacing.DOWN)).getBlock() == CookiecraftBlocks.portalCookiecraft)
+                            while (this.worldServerInstance.getBlockState(blockpos1 = blockpos.offset(EnumFacing.DOWN)).getBlock() == BlockCookiePortalCookiecraft.instance)
                             {
                                 blockpos = blockpos1;
                             }
@@ -135,22 +136,22 @@ public class Teleporter extends net.minecraft.world.Teleporter
             double d6 = (double)((BlockPos)object).getZ() + 0.5D;
             EnumFacing enumfacing = null;
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.WEST)).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.WEST)).getBlock() == BlockCookiePortalCookiecraft.instance)
             {
                 enumfacing = EnumFacing.NORTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.EAST)).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.EAST)).getBlock() == BlockCookiePortalCookiecraft.instance)
             {
                 enumfacing = EnumFacing.SOUTH;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.NORTH)).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.NORTH)).getBlock() == BlockCookiePortalCookiecraft.instance)
             {
                 enumfacing = EnumFacing.EAST;
             }
 
-            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.SOUTH)).getBlock() == CookiecraftBlocks.portalCookiecraft)
+            if (this.worldServerInstance.getBlockState(((BlockPos)object).offset(EnumFacing.SOUTH)).getBlock() == BlockCookiePortalCookiecraft.instance)
             {
                 enumfacing = EnumFacing.WEST;
             }
@@ -446,13 +447,13 @@ public class Teleporter extends net.minecraft.world.Teleporter
                         i4 = j2 + k3;
                         j4 = k2 + (j3 - 1) * l2 - i3 * l5;
                         boolean flag = k3 < 0;
-                        this.worldServerInstance.setBlockState(new BlockPos(l3, i4, j4), flag ? CookiecraftBlocks.cookieBlock.getDefaultState() : Blocks.air.getDefaultState());
+                        this.worldServerInstance.setBlockState(new BlockPos(l3, i4, j4), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.air.getDefaultState());
                     }
                 }
             }
         }
 
-        IBlockState iblockstate = CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
+        IBlockState iblockstate = BlockCookiePortalCookiecraft.instance.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, l5 != 0 ? EnumFacing.Axis.X : EnumFacing.Axis.Z);
 
         for (j3 = 0; j3 < 4; ++j3)
         {
@@ -464,7 +465,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                     j4 = j2 + l3;
                     k4 = k2 + (k3 - 1) * l2;
                     boolean flag1 = k3 == 0 || k3 == 3 || l3 == -1 || l3 == 3;
-                    this.worldServerInstance.setBlockState(new BlockPos(i4, j4, k4), flag1 ? CookiecraftBlocks.cookieBlock.getDefaultState() : iblockstate, 2);
+                    this.worldServerInstance.setBlockState(new BlockPos(i4, j4, k4), flag1 ? BlockCookieBlock.instance.getDefaultState() : iblockstate, 2);
                 }
             }
 

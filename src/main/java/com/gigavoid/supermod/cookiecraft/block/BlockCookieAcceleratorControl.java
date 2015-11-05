@@ -14,9 +14,11 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
+    public static final BlockCookieAcceleratorControl instance = new BlockCookieAcceleratorControl();
+
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-    public BlockCookieAcceleratorControl() {
+    private BlockCookieAcceleratorControl() {
         super();
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(FACING, EnumFacing.NORTH));

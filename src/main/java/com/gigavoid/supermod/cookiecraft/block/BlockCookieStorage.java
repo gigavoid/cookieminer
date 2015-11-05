@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieStorage;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -11,14 +12,18 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.concurrent.Immutable;
+import java.util.Hashtable;
 import java.util.Random;
 
 public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieStorageBlock {
+    public static final ImmutableMap<String, BlockCookieStorage> instances = ImmutableMap.of("wood", new BlockCookieStorage(256, 1), "iron", new BlockCookieStorage(16384, 64),
+            "gold", new BlockCookieStorage(262144, 4096), "diamond", new BlockCookieStorage(268435456, 262144), "ender", new BlockCookieStorage(274877906944L, 268435456));
 
 	private final int transferSpeed;
 	private long storageCap;
 
-    public BlockCookieStorage(long storageCap, int transferSpeed) {
+    private BlockCookieStorage(long storageCap, int transferSpeed) {
 		super(Material.rock);
 		this.storageCap = storageCap;
 		this.transferSpeed = transferSpeed;

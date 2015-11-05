@@ -9,7 +9,9 @@ import net.minecraft.item.Item;
 import java.util.Random;
 
 public class BlockCookieBurntCookieBlock extends Block {
-    public BlockCookieBurntCookieBlock() {
+    public static final BlockCookieBurntCookieBlock instance = new BlockCookieBurntCookieBlock();
+
+    private BlockCookieBurntCookieBlock() {
         super(Material.ground);
         this.setHardness(-1.0f);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);

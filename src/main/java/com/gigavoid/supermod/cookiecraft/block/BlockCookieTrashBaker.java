@@ -19,8 +19,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieTrashBaker extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
+    public static final BlockCookieTrashBaker instance = new BlockCookieTrashBaker();
 
-    protected BlockCookieTrashBaker() {
+    private BlockCookieTrashBaker() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

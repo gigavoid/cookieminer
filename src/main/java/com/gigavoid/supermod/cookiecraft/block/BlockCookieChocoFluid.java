@@ -8,11 +8,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 
-public class BlockFluidChoco extends BlockFluidClassic {
-    public static final BlockFluidChoco instance = new BlockFluidChoco();
+public class BlockCookieChocoFluid extends BlockFluidClassic {
+    public static final BlockCookieChocoFluid instance = new BlockCookieChocoFluid();
     public static final String name = "block_fluid_choco";
 
-    private BlockFluidChoco(){
+    private BlockCookieChocoFluid(){
         super(FluidChoco.instance, Material.water);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

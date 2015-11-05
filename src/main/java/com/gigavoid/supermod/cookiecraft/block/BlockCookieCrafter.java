@@ -1,6 +1,5 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
@@ -16,7 +15,6 @@ import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,10 +26,11 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieUpgrade {
+    public static final BlockCookieCrafter instance = new BlockCookieCrafter();
+
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-
-    public BlockCookieCrafter() {
+    private BlockCookieCrafter() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
