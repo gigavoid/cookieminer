@@ -50,6 +50,9 @@ public abstract class BlockNetwork  {
 
     protected abstract void postUpdateNetwork(CookieBlock core);
 
+    public int getSizeOfNetwork(){
+        return this.connectedBlocks.size();
+    }
 
     public CookieBlock findCore() {
         for (CookieBlock block : connectedBlocks) {

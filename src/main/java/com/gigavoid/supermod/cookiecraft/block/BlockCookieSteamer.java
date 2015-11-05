@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    public static final BlockCookieSteamer instance = new BlockCookieSteamer();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
+    public static final BlockCookieSteamer instance = new BlockCookieSteamer();
 
     private BlockCookieSteamer() {
         super(Material.rock);

@@ -19,9 +19,9 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import java.util.Random;
 
 public class BlockCookieCocoaCircuit extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    public static final BlockCookieCocoaCircuit instance = new BlockCookieCocoaCircuit();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
+    public static final BlockCookieCocoaCircuit instance = new BlockCookieCocoaCircuit();
 
     private BlockCookieCocoaCircuit() {
         super(Material.rock);

@@ -31,7 +31,7 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
-        return tileEntity.isActive() ? 1 : 0;
+        return tileEntity.isActive() ? 262144 : 0;
     }
 
 	@Override

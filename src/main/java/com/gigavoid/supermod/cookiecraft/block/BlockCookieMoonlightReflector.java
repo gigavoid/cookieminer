@@ -26,9 +26,9 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
-    public static final BlockCookieMoonlightReflector instance = new BlockCookieMoonlightReflector();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
+    public static final BlockCookieMoonlightReflector instance = new BlockCookieMoonlightReflector();
 
     private BlockCookieMoonlightReflector() {
         super(Material.rock);

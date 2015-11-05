@@ -15,11 +15,11 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    public static final BlockCookieIonChanneler instance = new BlockCookieIonChanneler();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
     public static final PropertyBool TOP = PropertyBool.create("top");
     public static final PropertyBool BOTTOM = PropertyBool.create("bottom");
+
+    public static final BlockCookieIonChanneler instance = new BlockCookieIonChanneler();
 
     private BlockCookieIonChanneler() {
         super(Material.rock);

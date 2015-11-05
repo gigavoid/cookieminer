@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    public static final BlockCookieLavaConverter instance = new BlockCookieLavaConverter();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
+    public static final BlockCookieLavaConverter instance = new BlockCookieLavaConverter();
 
     private BlockCookieLavaConverter() {
         super(Material.rock);

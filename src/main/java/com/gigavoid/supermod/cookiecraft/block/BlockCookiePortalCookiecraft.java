@@ -25,9 +25,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 public class BlockCookiePortalCookiecraft extends BlockBreakable {
-    public static final BlockCookiePortalCookiecraft instance = new BlockCookiePortalCookiecraft();
-
     public static final PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
+
+    public static final BlockCookiePortalCookiecraft instance = new BlockCookiePortalCookiecraft();
 
     private BlockCookiePortalCookiecraft() {
         super(Material.portal, false);
