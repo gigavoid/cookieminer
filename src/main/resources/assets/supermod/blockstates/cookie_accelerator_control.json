@@ -4,9 +4,13 @@
         "active=true,facing=south": { "model": "supermod:cookie_accelerator_control_active", "y": 180 },
         "active=true,facing=west":  { "model": "supermod:cookie_accelerator_control_active", "y": 270 },
         "active=true,facing=east":  { "model": "supermod:cookie_accelerator_control_active", "y": 90 },
+        "active=true,facing=up":    { "model": "supermod:cookie_accelerator_control_active" },
+        "active=true,facing=down":  { "model": "supermod:cookie_accelerator_control_active" },
         "active=false,facing=north": { "model": "supermod:cookie_accelerator_control" },
         "active=false,facing=south": { "model": "supermod:cookie_accelerator_control", "y": 180 },
         "active=false,facing=west":  { "model": "supermod:cookie_accelerator_control", "y": 270 },
-        "active=false,facing=east":  { "model": "supermod:cookie_accelerator_control", "y": 90 }
+        "active=false,facing=east":  { "model": "supermod:cookie_accelerator_control", "y": 90 },
+        "active=false,facing=up":    { "model": "supermod:cookie_accelerator_control" },
+        "active=false,facing=down":  { "model": "supermod:cookie_accelerator_control" }
     }
 }

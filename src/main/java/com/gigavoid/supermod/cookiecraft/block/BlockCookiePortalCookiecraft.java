@@ -344,7 +344,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
 
         protected boolean func_150857_a(Block p_150857_1_) {
             Material material = p_150857_1_.getMaterial();
-            return material == Material.air || p_150857_1_ == CookiecraftBlocks.activator || p_150857_1_ == CookiecraftBlocks.portalCookiecraft;
+            return material == Material.air || p_150857_1_ == CookiecraftBlocks.portalCookiecraft;
         }
 
         public boolean func_150860_b() {
