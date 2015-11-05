@@ -19,6 +19,7 @@ public class TileEntityCookieAccelerator extends TileEntity implements IUpdatePl
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
         worldObj.markBlockForUpdate(pos);
+        worldObj.markChunkDirty(pos, null);
     }
 
     @Override
