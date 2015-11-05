@@ -7,7 +7,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityCookieAccelerator extends TileEntity implements IUpdatePlayerListBox {
+public class TileEntityCookieAccelerator extends TileEntity {
     public static final String KEY_IS_ACTIVE = "isActive";
 
     private boolean isActive;
@@ -19,7 +19,7 @@ public class TileEntityCookieAccelerator extends TileEntity implements IUpdatePl
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
         worldObj.markBlockForUpdate(pos);
-        worldObj.markChunkDirty(pos, null);
+        markDirty();
     }
 
     @Override
@@ -32,11 +32,6 @@ public class TileEntityCookieAccelerator extends TileEntity implements IUpdatePl
     public void writeToNBT(NBTTagCompound compound) {
         compound.setBoolean(KEY_IS_ACTIVE, isActive);
         super.writeToNBT(compound);
-    }
-
-    @Override
-    public void update() {
-
     }
 
 
