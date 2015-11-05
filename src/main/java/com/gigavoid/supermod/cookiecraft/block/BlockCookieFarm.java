@@ -11,7 +11,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieFarm extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    protected BlockCookieFarm() {
+    public static final BlockCookieFarm instance = new BlockCookieFarm();
+
+    private BlockCookieFarm() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

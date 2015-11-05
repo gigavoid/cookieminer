@@ -15,9 +15,11 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    public static final BlockCookieLavaConverter instance = new BlockCookieLavaConverter();
+
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    protected BlockCookieLavaConverter() {
+    private BlockCookieLavaConverter() {
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));

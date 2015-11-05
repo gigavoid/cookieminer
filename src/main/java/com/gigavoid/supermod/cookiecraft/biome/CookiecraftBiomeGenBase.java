@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.biome;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieBurntCookieBlock;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -50,7 +52,7 @@ public class CookiecraftBiomeGenBase extends BiomeGenBase {
         {
             if (k1 <= p_180628_2_.nextInt(5))
             {
-                p_180628_3_.setBlockState(j1, k1, i1, CookiecraftBlocks.burntCookieBlock.getDefaultState());
+                p_180628_3_.setBlockState(j1, k1, i1, BlockCookieBurntCookieBlock.instance.getDefaultState());
             }
             else
             {
@@ -60,14 +62,14 @@ public class CookiecraftBiomeGenBase extends BiomeGenBase {
                 {
                     k = -1;
                 }
-                else if (iblockstate2.getBlock() == CookiecraftBlocks.cookieBlock)
+                else if (iblockstate2.getBlock() == BlockCookieBlock.instance)
                 {
                     if (k == -1)
                     {
                         if (l <= 0)
                         {
                             iblockstate = null;
-                            iblockstate1 = CookiecraftBlocks.cookieBlock.getDefaultState();
+                            iblockstate1 = BlockCookieBlock.instance.getDefaultState();
                         }
                         else if (k1 >= 59 && k1 <= 64)
                         {
@@ -89,7 +91,7 @@ public class CookiecraftBiomeGenBase extends BiomeGenBase {
                         else if (k1 < 56 - l)
                         {
                             iblockstate = null;
-                            iblockstate1 = CookiecraftBlocks.cookieBlock.getDefaultState();
+                            iblockstate1 = BlockCookieBlock.instance.getDefaultState();
                         }
                         else
                         {

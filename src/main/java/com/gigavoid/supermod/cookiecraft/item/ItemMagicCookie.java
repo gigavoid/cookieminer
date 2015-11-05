@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.item;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
+import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.Block;
@@ -30,15 +32,15 @@ public class ItemMagicCookie extends Item {
         }
         else
         {
-            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.sand || worldIn.getBlockState(pos).getBlock() == Blocks.gravel
+            if (BlockCookieBlock.instance != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.sand || worldIn.getBlockState(pos).getBlock() == Blocks.gravel
                 || worldIn.getBlockState(pos).getBlock() == Blocks.cobblestone || worldIn.getBlockState(pos).getBlock() == Blocks.netherrack || worldIn.getBlockState(pos).getBlock() == Blocks.grass
                 || worldIn.getBlockState(pos).getBlock() == Blocks.sandstone || worldIn.getBlockState(pos).getBlock() == Blocks.dirt || worldIn.getBlockState(pos).getBlock() == Blocks.stone))
             {
-                worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
+                worldIn.setBlockState(pos, BlockCookieBlock.instance.getDefaultState());
                 stack.damageItem(1, playerIn);
             }
-            else if (CookiecraftBlocks.cookieBlock == worldIn.getBlockState(pos).getBlock() && Blocks.air != worldIn.getBlockState(pos).getBlock()){
-                if (CookiecraftBlocks.portalCookiecraft.func_176548_d(worldIn, pos.offset(side))) {
+            else if (BlockCookieBlock.instance == worldIn.getBlockState(pos).getBlock() && Blocks.air != worldIn.getBlockState(pos).getBlock()){
+                if (BlockCookiePortalCookiecraft.instance.func_176548_d(worldIn, pos.offset(side))) {
                     stack.damageItem(1, playerIn);
                 }
             }

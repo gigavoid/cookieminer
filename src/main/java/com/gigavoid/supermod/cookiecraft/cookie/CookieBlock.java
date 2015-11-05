@@ -1,9 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.cookie;
 
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieAcceleratorBase;
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
-import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
-import com.gigavoid.supermod.cookiecraft.block.ICookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
@@ -28,11 +25,11 @@ public class CookieBlock {
         return world; }
 
     public boolean isCrafter() {
-        return block == CookiecraftBlocks.cookieCrafter;
+        return block == BlockCookieCrafter.instance;
     }
 
     public boolean isAcceleratorControl() {
-        return block == CookiecraftBlocks.cookieAcceleratorControl;
+        return block == BlockCookieAcceleratorControl.instance;
     }
 
     public boolean isAcceleratorBlock() {return block instanceof BlockCookieAcceleratorBase; }

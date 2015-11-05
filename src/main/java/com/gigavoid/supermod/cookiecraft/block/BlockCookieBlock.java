@@ -9,7 +9,9 @@ import net.minecraft.item.Item;
 import java.util.Random;
 
 public class BlockCookieBlock extends Block {
-    public BlockCookieBlock() {
+    public static final BlockCookieBlock instance = new BlockCookieBlock();
+
+    private BlockCookieBlock() {
         super(Material.ground);
         this.setHardness(2.0f);
         this.setHarvestLevel("pickaxe", 0);

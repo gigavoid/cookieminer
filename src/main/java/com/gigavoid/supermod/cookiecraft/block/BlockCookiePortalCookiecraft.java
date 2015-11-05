@@ -25,9 +25,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 public class BlockCookiePortalCookiecraft extends BlockBreakable {
+    public static final BlockCookiePortalCookiecraft instance = new BlockCookiePortalCookiecraft();
+
     public static final PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
 
-    public BlockCookiePortalCookiecraft() {
+    private BlockCookiePortalCookiecraft() {
         super(Material.portal, false);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setLightLevel(.75f);
@@ -283,13 +285,13 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             for (i = 0; i < 22; ++i) {
                 BlockPos blockpos1 = p_180120_1_.offset(p_180120_2_, i);
 
-                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offset(EnumFacing.DOWN)).getBlock() != CookiecraftBlocks.cookieBlock) {
+                if (!this.func_150857_a(this.field_150867_a.getBlockState(blockpos1).getBlock()) || this.field_150867_a.getBlockState(blockpos1.offset(EnumFacing.DOWN)).getBlock() != BlockCookieBlock.instance) {
                     break;
                 }
             }
 
             Block block = this.field_150867_a.getBlockState(p_180120_1_.offset(p_180120_2_, i)).getBlock();
-            return block == CookiecraftBlocks.cookieBlock ? i : 0;
+            return block == BlockCookieBlock.instance ? i : 0;
         }
 
         protected int func_150858_a() {
@@ -305,20 +307,20 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
                         break label56;
                     }
 
-                    if (block == CookiecraftBlocks.portalCookiecraft) {
+                    if (block == instance) {
                         ++this.field_150864_e;
                     }
 
                     if (i == 0) {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150863_d)).getBlock();
 
-                        if (block != CookiecraftBlocks.cookieBlock) {
+                        if (block != BlockCookieBlock.instance) {
                             break label56;
                         }
                     } else if (i == this.field_150868_h - 1) {
                         block = this.field_150867_a.getBlockState(blockpos.offset(this.field_150866_c)).getBlock();
 
-                        if (block != CookiecraftBlocks.cookieBlock) {
+                        if (block != BlockCookieBlock.instance) {
                             break label56;
                         }
                     }
@@ -326,7 +328,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             }
 
             for (i = 0; i < this.field_150868_h; ++i) {
-                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offset(EnumFacing.UP, this.field_150862_g)).getBlock() != CookiecraftBlocks.cookieBlock) {
+                if (this.field_150867_a.getBlockState(this.field_150861_f.offset(this.field_150866_c, i).offset(EnumFacing.UP, this.field_150862_g)).getBlock() != BlockCookieBlock.instance) {
                     this.field_150862_g = 0;
                     break;
                 }
@@ -344,7 +346,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
 
         protected boolean func_150857_a(Block p_150857_1_) {
             Material material = p_150857_1_.getMaterial();
-            return material == Material.air || p_150857_1_ == CookiecraftBlocks.portalCookiecraft;
+            return material == Material.air || p_150857_1_ == instance;
         }
 
         public boolean func_150860_b() {
@@ -356,7 +358,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
                 BlockPos blockpos = this.field_150861_f.offset(this.field_150866_c, i);
 
                 for (int j = 0; j < this.field_150862_g; ++j) {
-                    this.field_150867_a.setBlockState(blockpos.offset(EnumFacing.UP, j), CookiecraftBlocks.portalCookiecraft.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, this.field_150865_b), 2);
+                    this.field_150867_a.setBlockState(blockpos.offset(EnumFacing.UP, j), instance.getDefaultState().withProperty(BlockCookiePortalCookiecraft.AXIS, this.field_150865_b), 2);
                 }
             }
         }

@@ -15,11 +15,11 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
+    public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
 
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-
-    public BlockCookiePortalConnector(){
+    private BlockCookiePortalConnector(){
         super(Material.rock);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
@@ -64,7 +64,7 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
     }
 
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {
-        return world.getBlockState(blockPos).getBlock() == CookiecraftBlocks.portalCookiecraft;
+        return world.getBlockState(blockPos).getBlock() == BlockCookiePortalCookiecraft.instance;
     }
 
 	@Override
