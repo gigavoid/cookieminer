@@ -180,7 +180,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(magicCookie, "bbb", "bcb", "bbb",
                 'b', enchantedBook, 'c', cookie);
 
-        GameRegistry.addShapelessRecipe(gemMixture, diamond, emerald, cstone);
+        GameRegistry.addShapelessRecipe(gemMixture, diamond, emerald);
 
         GameRegistry.addSmelting(gemMixture, gemMixtureIngot, 6.0F);
     }
