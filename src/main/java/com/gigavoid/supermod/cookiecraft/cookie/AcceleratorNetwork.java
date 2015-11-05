@@ -98,7 +98,7 @@ public class AcceleratorNetwork extends BlockNetwork {
             ((BlockCookieAcceleratorBase) world.getBlockState(p).getBlock()).setActive(world, p, outerConnected);
         }
 
-        return outerConnected;
+        return outerConnected && connectedBlocks.size() == (length - 1) * 4;
     }
 
     private boolean checkBlocksAtLength(IBlockAccess world, CookieAcceleratorBlockPos pos, int interval, int length, boolean north, boolean east, ArrayList<BlockPos> acceleratorBlocks) {
@@ -129,6 +129,6 @@ public class AcceleratorNetwork extends BlockNetwork {
 class AcceleratorBlockTester implements ConnectedBlockTester {
     @Override
     public boolean isConnected(Block block) {
-        return block instanceof ICookieBlock;
+        return block instanceof BlockCookieAcceleratorBase;
     }
 }
