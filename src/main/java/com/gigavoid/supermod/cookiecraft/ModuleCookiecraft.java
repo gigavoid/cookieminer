@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft;
 
+import com.gigavoid.supermod.common.Register;
 import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
 import com.gigavoid.supermod.cookiecraft.block.BlockFluidChoco;
@@ -20,39 +21,57 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModuleCookiecraft extends Module{
-    private static ModelResourceLocation fluidLocation = new ModelResourceLocation("supermod:" + BlockFluidChoco.name, "fluid");
+    @SidedProxy(serverSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$CommonProxy", clientSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$ClientProxy")
+    public static CommonProxy proxy;
+
     public static int dimensionId;
     public static CookieBiome cookieBiome;
 
-    @Override
-    public void preInit(FMLPreInitializationEvent e) {
-        FluidRegistry.registerFluid(FluidChoco.instance);
-        GameRegistry.registerBlock(BlockFluidChoco.instance, BlockFluidChoco.name);
-        Item fluid = Item.getItemFromBlock(BlockFluidChoco.instance);
-        ModelBakery.addVariantName(fluid);
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event) { proxy.preInit(event, getRegister(event.getSide())); }
 
-        ModelLoader.setCustomMeshDefinition(fluid, new ItemMeshDefinition() {
-            public ModelResourceLocation getModelLocation(ItemStack stack) {
-                return fluidLocation;
-            }
-        });
-        ModelLoader.setCustomStateMapper(BlockFluidChoco.instance, new StateMapperBase()
+    public static class CommonProxy
+    {
+        public void preInit(FMLPreInitializationEvent event, Register register)
         {
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
-            {
-                return fluidLocation;
-            }
-        });
+            FluidRegistry.registerFluid(FluidChoco.instance);
+            GameRegistry.registerBlock(BlockFluidChoco.instance, BlockFluidChoco.name);
 
-        cookieBiome = new CookieBiome(getRegister(e.getSide()).getNextBiomeID(), 10);
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
 
-        dimensionId = getRegister(e.getSide()).registerDimension(CookiecraftWorldProvider.class, false);
+            cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
+            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
+
+            dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
+        }
+    }
+
+    public static class ClientProxy extends CommonProxy {
+        private static ModelResourceLocation fluidLocation = new ModelResourceLocation("supermod:" + BlockFluidChoco.name, "fluid");
+
+        @Override
+        public void preInit(FMLPreInitializationEvent event, Register register) {
+            super.preInit(event, register);
+            Item fluid = Item.getItemFromBlock(BlockFluidChoco.instance);
+            ModelBakery.addVariantName(fluid);
+
+            ModelLoader.setCustomMeshDefinition(fluid, new ItemMeshDefinition() {
+                public ModelResourceLocation getModelLocation(ItemStack stack) {
+                    return fluidLocation;
+                }
+            });
+            ModelLoader.setCustomStateMapper(BlockFluidChoco.instance, new StateMapperBase() {
+                protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                    return fluidLocation;
+                }
+            });
+        }
     }
 
     @Override
