@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.worldgen;
 
+import com.gigavoid.supermod.cookiecraft.block.BlockFluidChoco;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -89,7 +90,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         if (p_i45636_5_ != null)
         {
             this.chunkProviderSettings = ChunkProviderSettings.Factory.func_177865_a(p_i45636_5_).func_177864_b();
-            this.oceanFiller = Blocks.air;
+            this.oceanFiller = BlockFluidChoco.instance;
         }
 
         NoiseGenerator[] noiseGens = {field_147431_j, field_147432_k, field_147429_l, field_147430_m, noiseGen5, noiseGen6, mobSpawnerNoise};

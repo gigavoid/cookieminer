@@ -1,14 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.common.Register;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class CookiecraftBlocks {
-    public static final Fluid fluid = new Fluid("fluid", new ResourceLocation("supermod:choco_fluid_flow"), new ResourceLocation("supermod:choco_fluid_still"));
-
     public static final BlockCookieCrafter cookieCrafter = new BlockCookieCrafter();
     public static final BlockCookiePortalCookiecraft portalCookiecraft = new BlockCookiePortalCookiecraft();
     public static final BlockCookieBlock cookieBlock = new BlockCookieBlock();
@@ -17,7 +11,6 @@ public class CookiecraftBlocks {
     public static final BlockCookiePortalConnector portalConnector = new BlockCookiePortalConnector();
     public static final BlockCookieLavaConverter lavaConverter = new BlockCookieLavaConverter();
     public static final BlockCookieMoonlightReflector monlightReflector = new BlockCookieMoonlightReflector();
-    public static final BlockCookiePortalActivator activator = new BlockCookiePortalActivator();
     public static final BlockCookiePipe pipe = new BlockCookiePipe();
     public static final BlockCookieCactusMasher cactusMasher = new BlockCookieCactusMasher();
     public static final BlockCookieCocoaCircuit cocoaCircuit = new BlockCookieCocoaCircuit();
@@ -27,21 +20,17 @@ public class CookiecraftBlocks {
     public static final BlockCookieIonChanneler ionChanneler = new BlockCookieIonChanneler();
     public static final BlockCookieTrashBaker trashBaker = new BlockCookieTrashBaker();
 
-    public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(256, 1);
-    public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(16384, 64);
-    public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(262144, 4096);
-    public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(200000000, 1000000);
-    public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(68719476736L * 2, 100000000);
+    public static final BlockCookieStorage cookieStorageWood = new BlockCookieStorage(256, 1); // 2^8, 2^0
+    public static final BlockCookieStorage cookieStorageIron = new BlockCookieStorage(16384, 64); // 2^14, 2^6
+    public static final BlockCookieStorage cookieStorageGold = new BlockCookieStorage(262144, 4096); // 2^18, 2^12
+    public static final BlockCookieStorage cookieStorageDiamond = new BlockCookieStorage(268435456, 262144); // 2^28, 2^18
+    public static final BlockCookieStorage cookieStorageEnder = new BlockCookieStorage(274877906944L, 268435456); // 2^38, 2^28
 
     // AcceleratorBlocks
     public static final BlockCookieAcceleratorControl cookieAcceleratorControl = new BlockCookieAcceleratorControl();
     public static final BlockCookieAcceleratorPart cookieAcceleratorWall = new BlockCookieAcceleratorPart();
 
     public static void initializeBlocks(Register register) {
-        FluidRegistry.registerFluid(fluid);
-        BlockMeltChocolateFluid chocoFluid = new BlockMeltChocolateFluid(fluid, Material.water);
-
-        register.registerBlockWithoutResource(chocoFluid, "choco_fluid");
         register.registerBlock(cookieCrafter, "cookie_crafter");
         register.registerBlock(portalCookiecraft, "cookie_portal");
         register.registerBlock(cookieBlock, "cookie_block");
@@ -50,7 +39,6 @@ public class CookiecraftBlocks {
         register.registerBlock(portalConnector, "cookie_portal_connector");
         register.registerBlock(lavaConverter, "cookie_lava_converter");
         register.registerBlock(monlightReflector, "cookie_moonlight_reflector");
-        register.registerBlock(activator, "cookie_portal_activator");
         register.registerBlock(pipe, "cookie_pipe");
         register.registerBlock(cactusMasher, "cookie_cactus_masher");
         register.registerBlock(cocoaCircuit, "cookie_cocoa_circuit");

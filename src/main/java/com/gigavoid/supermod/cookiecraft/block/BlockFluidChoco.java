@@ -1,21 +1,21 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
+import com.gigavoid.supermod.cookiecraft.fluids.FluidChoco;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
 
-public class BlockMeltChocolateFluid extends BlockFluidClassic {
-    public BlockMeltChocolateFluid(Fluid fluid, Material material){
-        super(fluid, material);
+public class BlockFluidChoco extends BlockFluidClassic {
+    public static final BlockFluidChoco instance = new BlockFluidChoco();
+    public static final String name = "block_fluid_choco";
+
+    private BlockFluidChoco(){
+        super(FluidChoco.instance, Material.water);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
-
-
 
     @Override
     public boolean canDisplace(IBlockAccess world, BlockPos pos) {
@@ -29,7 +29,7 @@ public class BlockMeltChocolateFluid extends BlockFluidClassic {
 
     @Override
     public int getRenderType() {
-        return 1;
+        return 3;
     }
 
     @Override

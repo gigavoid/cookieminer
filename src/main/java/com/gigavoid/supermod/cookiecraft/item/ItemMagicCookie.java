@@ -38,8 +38,9 @@ public class ItemMagicCookie extends Item {
                 stack.damageItem(1, playerIn);
             }
             else if (CookiecraftBlocks.cookieBlock == worldIn.getBlockState(pos).getBlock() && Blocks.air != worldIn.getBlockState(pos).getBlock()){
-                worldIn.setBlockState(pos.offset(side), CookiecraftBlocks.activator.getDefaultState());
-                stack.damageItem(1, playerIn);
+                if (CookiecraftBlocks.portalCookiecraft.func_176548_d(worldIn, pos.offset(side))) {
+                    stack.damageItem(1, playerIn);
+                }
             }
 
             return true;
