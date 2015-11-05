@@ -71,28 +71,6 @@ public class Register {
         GameRegistry.registerWorldGenerator(generator, id);
     }
 
-    public void registerFluidModel(IFluidBlock fluidBlock) {
-        Item item = Item.getItemFromBlock((Block) fluidBlock);
-
-        ModelBakery.addVariantName(item);
-
-        final ModelResourceLocation modelResourceLocation = new ModelResourceLocation("supermod:choco_fluid", fluidBlock.getFluid().getName());
-
-        ModelLoader.setCustomMeshDefinition(item, new ItemMeshDefinition() {
-            @Override
-            public ModelResourceLocation getModelLocation(ItemStack stack) {
-                return modelResourceLocation;
-            }
-        });
-
-        ModelLoader.setCustomStateMapper((Block) fluidBlock, new StateMapperBase() {
-            @Override
-            protected ModelResourceLocation getModelResourceLocation(IBlockState p_178132_1_) {
-                return modelResourceLocation;
-            }
-        });
-    }
-
 	public void setSide(Side side) {
 		this.side = side;
 	}
