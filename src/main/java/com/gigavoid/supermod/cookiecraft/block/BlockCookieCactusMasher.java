@@ -19,9 +19,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieCactusMasher extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
-    public static final BlockCookieCactusMasher instance = new BlockCookieCactusMasher();
-
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+
+    public static final BlockCookieCactusMasher instance = new BlockCookieCactusMasher();
 
     private BlockCookieCactusMasher() {
         super(Material.rock);

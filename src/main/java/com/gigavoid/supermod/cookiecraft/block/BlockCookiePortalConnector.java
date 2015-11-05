@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
-    public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
-
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
+
+    public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
 
     private BlockCookiePortalConnector(){
         super(Material.rock);

@@ -26,9 +26,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieUpgrade {
-    public static final BlockCookieCrafter instance = new BlockCookieCrafter();
-
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+
+    public static final BlockCookieCrafter instance = new BlockCookieCrafter();
 
     private BlockCookieCrafter() {
         super(Material.rock);

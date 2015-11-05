@@ -17,11 +17,11 @@ import java.util.Hashtable;
 import java.util.Random;
 
 public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieStorageBlock {
-    public static final ImmutableMap<String, BlockCookieStorage> instances = ImmutableMap.of("wood", new BlockCookieStorage(256, 1), "iron", new BlockCookieStorage(16384, 64),
-            "gold", new BlockCookieStorage(262144, 4096), "diamond", new BlockCookieStorage(268435456, 262144), "ender", new BlockCookieStorage(274877906944L, 268435456));
-
 	private final int transferSpeed;
 	private long storageCap;
+
+    public static final ImmutableMap<String, BlockCookieStorage> instances = ImmutableMap.of("wood", new BlockCookieStorage(256, 1), "iron", new BlockCookieStorage(16384, 64),
+            "gold", new BlockCookieStorage(262144, 4096), "diamond", new BlockCookieStorage(268435456, 262144), "ender", new BlockCookieStorage(274877906944L, 268435456));
 
     private BlockCookieStorage(long storageCap, int transferSpeed) {
 		super(Material.rock);

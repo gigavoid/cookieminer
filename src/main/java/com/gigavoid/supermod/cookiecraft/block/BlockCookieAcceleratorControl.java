@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
@@ -14,9 +15,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
-    public static final BlockCookieAcceleratorControl instance = new BlockCookieAcceleratorControl();
-
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
+
+    public static final BlockCookieAcceleratorControl instance = new BlockCookieAcceleratorControl();
 
     private BlockCookieAcceleratorControl() {
         super();
