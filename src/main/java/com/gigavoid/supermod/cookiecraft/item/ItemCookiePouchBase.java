@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.item;
 
+import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,6 +12,10 @@ import java.util.List;
 public abstract class ItemCookiePouchBase extends Item implements ICookieStorageItem {
 	private static final String PROP_COOKIES = "cookies";
 
+	public ItemCookiePouchBase() {
+		this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
+		this.setMaxStackSize(1);
+	}
 
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {

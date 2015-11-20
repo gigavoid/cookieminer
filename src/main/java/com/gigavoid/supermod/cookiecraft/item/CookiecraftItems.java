@@ -22,6 +22,7 @@ public class CookiecraftItems {
     public static final ItemCookiePouch goldenCookiePouch = new ItemCookiePouch(33554432);
     public static final ItemCookiePouch diamondCookiePouch = new ItemCookiePouch(536870912);
     public static final ItemCookiePouch emeraldCookiePouch = new ItemCookiePouch(68719476736L);
+    public static final ItemInfiniteCookiePouch infiniteCookiePouch = new ItemInfiniteCookiePouch();
 
 
 
@@ -44,5 +45,6 @@ public class CookiecraftItems {
         register.registerItem(goldenCookiePouch, "cookie_pouch_gold", event);
         register.registerItem(diamondCookiePouch, "cookie_pouch_diamond", event);
         register.registerItem(emeraldCookiePouch, "cookie_pouch_emerald", event);
+        register.registerItem(infiniteCookiePouch, "cookie_pouch_infinite", event);
     }
 }
