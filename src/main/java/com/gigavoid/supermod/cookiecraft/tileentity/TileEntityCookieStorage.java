@@ -222,11 +222,11 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 		}
 
 		long wantToTake = getTransferSpeed();
-		long availiableInBlock = getCookies();
-		long placeAvailiable = cookiePouch.getStorageCap(stackInSlot) - cookiePouch.getCookies(stackInSlot);
+		long availableInBlock = getCookies();
+		long placeAvailable = cookiePouch.getMaxStorage(stackInSlot) - cookiePouch.getCookies(stackInSlot);
 
-		long toTake = Math.min(wantToTake, Math.min(availiableInBlock, placeAvailiable));
-		if (toTake == 0) {
+		long toTake = Math.min(wantToTake, Math.min(availableInBlock, placeAvailable));
+		if (toTake == 0 || !cookiePouch.canAddCookies(stackInSlot)) {
 			return false;
 		}
 

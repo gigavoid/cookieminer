@@ -7,13 +7,13 @@ import java.util.List;
 
 public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
     @Override
-    public long getMaxStorage() {
+    public long getMaxStorage(ItemStack stack) {
         return Long.MAX_VALUE;
     }
 
     @Override
-    public long getStorageCap(ItemStack stack) {
-        return super.getStorageCap(stack);
+    public boolean canAddCookies(ItemStack stack) {
+        return true;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
 
     @Override
     public long getCookies(ItemStack stack) {
-        return getMaxStorage() / 2;
+        return getMaxStorage(stack) / 2;
     }
 
     @Override

@@ -24,12 +24,12 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
-		return 1 - getCookies(stack) / (double)getMaxStorage();
+		return 1 - getCookies(stack) / (double)getMaxStorage(stack);
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
-		tooltip.add(String.format("Stored Cookies: %s/%s", CookieNumber.doubleToString(getCookies(stack)), CookieNumber.doubleToString(getMaxStorage())));
+		tooltip.add(String.format("Stored Cookies: %s/%s", CookieNumber.doubleToString(getCookies(stack)), CookieNumber.doubleToString(getMaxStorage(stack))));
 	}
 
 
@@ -42,7 +42,7 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 	}
 
 
-	private void setLong(ItemStack stack, String key, long val) {
+	protected void setLong(ItemStack stack, String key, long val) {
 		if (!stack.hasTagCompound())
 		{
 			stack.setTagCompound(new NBTTagCompound());
@@ -50,12 +50,8 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 		stack.getTagCompound().setLong(key, val);
 	}
 
-	private long getLong(ItemStack stack, String key, long def) {
+	protected long getLong(ItemStack stack, String key, long def) {
 		return stack.getTagCompound() != null && stack.getTagCompound().hasKey(key) ? stack.getTagCompound().getLong(key) : def;
-	}
-
-	public long getStorageCap(ItemStack stack) {
-		return ((ICookieStorageItem)stack.getItem()).getMaxStorage();
 	}
 
 	public long takeCookies(ItemStack stack, long transferSpeed) {
@@ -65,7 +61,7 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 	}
 
 	public boolean isFull(ItemStack stack) {
-		return getStorageCap(stack) <= getCookies(stack);
+		return getMaxStorage(stack) <= getCookies(stack);
 	}
 
 	public void addCookies(ItemStack stack, long toTake) {

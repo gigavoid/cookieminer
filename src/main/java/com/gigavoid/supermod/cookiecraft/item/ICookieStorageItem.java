@@ -1,5 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.item;
 
+import net.minecraft.item.ItemStack;
+
 public interface ICookieStorageItem {
-	public long getMaxStorage();
+	long getMaxStorage(ItemStack stack);
+	boolean canAddCookies(ItemStack stack);
 }
