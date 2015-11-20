@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
+import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -207,9 +207,8 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			return false;
 		}
 
-		CookieStorageItem storageItem = new CookieStorageItem(stackInSlot);
-
-		if (storageItem.isFull()) {
+		ItemCookiePouchBase cookiePouch = (ItemCookiePouchBase) stackInSlot.getItem();
+		if (cookiePouch.isFull(stackInSlot)) {
 			// The item is already filled with cookies
 			return false;
 		}
@@ -224,7 +223,7 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 
 		long wantToTake = getTransferSpeed();
 		long availiableInBlock = getCookies();
-		long placeAvailiable = storageItem.getStorageCap() - storageItem.getCookies();
+		long placeAvailiable = cookiePouch.getStorageCap(stackInSlot) - cookiePouch.getCookies(stackInSlot);
 
 		long toTake = Math.min(wantToTake, Math.min(availiableInBlock, placeAvailiable));
 		if (toTake == 0) {
@@ -232,7 +231,7 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 		}
 
 		removeCookies(toTake);
-		storageItem.addCookies(toTake);
+		cookiePouch.addCookies(stackInSlot, toTake);
 
 		return true;
 
@@ -251,9 +250,9 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			// No item to draw cookies out of
 			return false;
 
-		CookieStorageItem storageItem = new CookieStorageItem(stackInSlot);
+		ItemCookiePouchBase cookiePouch = (ItemCookiePouchBase) stackInSlot.getItem();
 
-		if (storageItem.getCookies() <= 0)
+		if (cookiePouch.getCookies(stackInSlot) <= 0)
 			// No more cookies to empty from the item
 			return false;
 
@@ -264,7 +263,7 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			// No more space to add the new cookies to
 			return false;
 
-		addCookies(storageItem.takeCookies(getTransferSpeed()));
+		addCookies(cookiePouch.takeCookies(stackInSlot, getTransferSpeed()));
 		return true;
 	}
 

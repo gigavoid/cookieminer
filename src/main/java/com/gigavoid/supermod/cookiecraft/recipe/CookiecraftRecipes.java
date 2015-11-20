@@ -1,11 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
 import com.gigavoid.supermod.cookiecraft.block.*;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
-import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;

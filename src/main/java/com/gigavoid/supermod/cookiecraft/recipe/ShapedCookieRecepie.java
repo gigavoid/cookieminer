@@ -1,8 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieStorageItem;
 import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
+import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouch;
 import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -109,8 +108,7 @@ public class ShapedCookieRecepie implements IRecipe{
     @Override
     public ItemStack[] getRemainingItems(InventoryCrafting inv) {
         ItemStack stackInSlot = inv.getStackInSlot(4);
-        CookieStorageItem storage = new CookieStorageItem(stackInSlot);
-        storage.takeCookies(cookiesRequired);
+        ((ItemCookiePouchBase)stackInSlot.getItem()).takeCookies(stackInSlot, cookiesRequired);
         ItemStack[] ret = new ItemStack[inv.getSizeInventory()];
         for (int i = 0; i < ret.length; i++)
         {
@@ -127,8 +125,7 @@ public class ShapedCookieRecepie implements IRecipe{
 
     private boolean isCookieStorage(long numCookies, ItemStack stackInSlot) {
         if (stackInSlot != null && stackInSlot.getItem() instanceof ICookieStorageItem) {
-            CookieStorageItem storage = new CookieStorageItem(stackInSlot);
-            return storage.getCookies() >= numCookies;
+            return ((ItemCookiePouchBase)stackInSlot.getItem()).getCookies(stackInSlot) >= numCookies;
         }
         return false;
     }
