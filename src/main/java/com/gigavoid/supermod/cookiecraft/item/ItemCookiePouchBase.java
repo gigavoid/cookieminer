@@ -17,6 +17,10 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 		this.setMaxStackSize(1);
 	}
 
+	public boolean shouldDestroy(ItemStack stack) {
+		return false;
+	}
+
 	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
 		return true;

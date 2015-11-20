@@ -264,6 +264,10 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 			return false;
 
 		addCookies(cookiePouch.takeCookies(stackInSlot, getTransferSpeed()));
+
+		if (cookiePouch.shouldDestroy(stackInSlot)) {
+			inv[1] = null;
+		}
 		return true;
 	}
 

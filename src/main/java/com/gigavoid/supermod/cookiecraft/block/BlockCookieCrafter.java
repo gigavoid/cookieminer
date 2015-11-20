@@ -2,6 +2,8 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
+import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchOverflow;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.BlockDispenser;
@@ -120,22 +122,28 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
         long wholeCookies = (long) cookiesToCreate;
         tileEntity.setLeftover(cookiesToCreate - wholeCookies);
 
-        if (wholeCookies != 0) {
+        if (wholeCookies == 0) {
+            // No more cookies to take care of
+            return;
+        }
 
-            // Store as many cookies as possible in storage units
-            wholeCookies = CookieNetwork.getNetwork(worldIn, blockPos).storeCookies(wholeCookies);
+        // Store as many cookies as possible in storage units
+        wholeCookies = CookieNetwork.getNetwork(worldIn, blockPos).storeCookies(wholeCookies);
 
-            // Dispense the cookies that did not fit into the storage
-            BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
+        if (wholeCookies == 0) {
+            // All cookies did fit in the storage units, so there are no more cookies to take care of
+            return;
+        }
 
-            while (wholeCookies > 0) {
-                int cookiesToThrow = (int) Math.min(wholeCookies, 64);
-                ItemStack cookieStack = new ItemStack(Items.cookie, cookiesToThrow);
+        // Dispense the cookies that did not fit into the storage
+        BlockSourceImpl blockSource = new BlockSourceImpl(worldIn, blockPos);
 
-                wholeCookies -= cookiesToThrow;
-                dispenseStack(blockSource, cookieStack);
-            }
-
+        if (wholeCookies > 64) {
+            ItemStack overflowStack = new ItemStack(CookiecraftItems.overflowCookiePouch);
+            ((ItemCookiePouchOverflow) overflowStack.getItem()).initialize(overflowStack, wholeCookies);
+            dispenseStack(blockSource, overflowStack);
+        } else {
+            dispenseStack(blockSource, new ItemStack(Items.cookie, (int) wholeCookies));
         }
     }
 
