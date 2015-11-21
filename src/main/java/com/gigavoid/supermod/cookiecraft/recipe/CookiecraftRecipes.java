@@ -150,22 +150,22 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(leatherCookiePouch, " s ", "lcl", " l ",
                 's', string, 'c', cookie, 'l', leather);
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(woodenCookiePouch, 64, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(woodenCookiePouch, CookiecraftItems.leatherCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', wood, 'p', leatherCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(stoneCookiePouch, 256, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(stoneCookiePouch, CookiecraftItems.woodenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', stone, 'p', woodenCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(ironCookiePouch, 2048, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(ironCookiePouch, CookiecraftItems.stoneCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', ironIngot, 'p', stoneCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(goldenCookiePouch, 131072, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(goldenCookiePouch, CookiecraftItems.ironCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', goldIngot, 'p', ironCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(diamondCookiePouch, 33554432, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(diamondCookiePouch, CookiecraftItems.goldenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', diamond, 'p', goldenCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(emeraldCookiePouch, 536870912, true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(emeraldCookiePouch, CookiecraftItems.diamondCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', emerald, 'p', diamondCookiePouch));
 
 

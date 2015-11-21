@@ -21,4 +21,7 @@ public class ItemCookiePouch extends ItemCookiePouchBase {
 		return true;
 	}
 
+	public long getStorage() {
+		return storage;
+	}
 }
