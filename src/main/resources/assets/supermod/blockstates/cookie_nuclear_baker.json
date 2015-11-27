@@ -1,0 +1,6 @@
+{
+    "variants": {
+      "active=true": { "model": "supermod:cookie_nuclear_baker_active" },
+      "active=false": { "model": "supermod:cookie_nuclear_baker" }
+    }
+}
