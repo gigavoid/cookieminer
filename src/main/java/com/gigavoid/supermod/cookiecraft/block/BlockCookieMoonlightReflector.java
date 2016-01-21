@@ -103,7 +103,6 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     @Override
     public boolean isOpaqueCube() { return false; }
 
-
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityMoonlightReflector();

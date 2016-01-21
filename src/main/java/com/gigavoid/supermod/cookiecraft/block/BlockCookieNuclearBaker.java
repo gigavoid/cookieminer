@@ -94,22 +94,23 @@ public class BlockCookieNuclearBaker extends BlockCookieUpgradeBase implements I
     private boolean isActive(IBlockAccess world, BlockPos pos){
         boolean result = true;
         BlockPos faceDirs = isBuilt(world, pos);
-        int startY = faceDirs.getY() == -1 ? 0 : 1, endY = faceDirs.getY() == -1 ? -3 : -2, xDir = faceDirs.getX(), zDir = faceDirs.getZ();
-        if (faceDirs == BlockPos.ORIGIN){
-            for (int x = 2 * xDir; x != 2 * xDir; x += xDir){
-                for (int z = 2 * zDir; z != 2 * zDir; z += zDir){
-                    for (int y = startY; y != endY; y--){
+        int startY = faceDirs.getY() == -1 ? 0 : 1, endY = faceDirs.getY() == -1 ? -3 : -2,
+                xDir = faceDirs.getX(), zDir = faceDirs.getZ();
+        if (faceDirs != BlockPos.ORIGIN){
+            for (int x = 2 * xDir; x != -2 * xDir; x += (xDir * -1)){
+                for (int z = 2 * zDir; z != -2 * zDir; z += (zDir * -1)){
+                    for (int y = startY; y > endY; y--){
+                        if (y == endY + 1){
+                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
+                                result = false;
+                            }
+                        }
                         if (x != 0 && x != xDir){
                             if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
                                 result = false;
                             }
                         }
                         if (z != 0 && z != zDir){
-                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
-                                result = false;
-                            }
-                        }
-                        if (y == endY + 1){
                             if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
                                 result = false;
                             }

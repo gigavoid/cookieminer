@@ -34,7 +34,6 @@ public class TileEntityCookieAccelerator extends TileEntity {
         super.writeToNBT(compound);
     }
 
-
     @Override
     public Packet getDescriptionPacket() {
         NBTTagCompound compound = new NBTTagCompound();

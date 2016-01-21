@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "supermod:blocks/test_1"
+        "all": "supermod:blocks/cookie_nuclear_baker_active"
     }
 }
