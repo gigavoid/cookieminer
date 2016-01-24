@@ -8,6 +8,7 @@ public class CookiecraftItems {
     public static final ItemCookieDough cookieDough = new ItemCookieDough();
     public static final ItemCookieGemMixture cookieGemMixture = new ItemCookieGemMixture();
     public static final ItemCookieGemMixtureIngot cookieGemMixtureIngot = new ItemCookieGemMixtureIngot();
+    public static final ItemCookieUraniumRod cookieUraniumRod = new ItemCookieUraniumRod();
 
     public static final ItemCookieGear cookieGear0 = new ItemCookieGear(0);
     public static final ItemCookieGear cookieGear1 = new ItemCookieGear(1);
@@ -32,6 +33,7 @@ public class CookiecraftItems {
         register.registerItem(cookieDough, "cookie_dough", event);
         register.registerItem(cookieGemMixture, "cookie_gem_mixture", event);
         register.registerItem(cookieGemMixtureIngot, "cookie_gem_mixture_ingot", event);
+        register.registerItem(cookieUraniumRod, "cookie_uranium_rod", event);
 
         /*register.registerItem(cookieGear0, "cookie_gear_0", event);
         register.registerItem(cookieGear1, "cookie_gear_1", event);

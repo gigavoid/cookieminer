@@ -10,6 +10,7 @@ import com.gigavoid.supermod.cookiecraft.gui.CookiecraftGuis;
 import com.gigavoid.supermod.cookiecraft.recipe.CookiecraftRecipes;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
+import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGens;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -79,5 +80,6 @@ public class ModuleCookiecraft extends Module{
         CookiecraftTileEntities.registerTileEntities();
         CookiecraftGuis.initializeGuis();
         CookiecraftRecipes.initializeRecipes();
+        CookiecraftWorldGens.initializeWorldGens(getRegister(e.getSide()));
     }
 }

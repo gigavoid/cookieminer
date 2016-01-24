@@ -59,6 +59,9 @@ public class BlockCookieNuclearBaker extends BlockCookieUpgradeBase implements I
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
+        if (isActive(world, pos)) {
+            return 1024;
+        }
         return 0;
     }
 

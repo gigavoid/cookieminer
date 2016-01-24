@@ -48,7 +48,7 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return pos.getY() >= heightLimit ? 32768 : 0;
+        return pos.getY() >= heightLimit ? 131072 : 0;
     }
 
 	@Override
