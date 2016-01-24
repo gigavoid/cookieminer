@@ -1,5 +1,6 @@
-< en_US.lang - English localization file for the mod Tutorial >
+< en_US.lang - English localization file for the mod Supermod >
 
+itemGroup.cookiecraftTab=Cookieminer
 tile.cookie_crafter.name=Cookie Crafter
 tile.cookie_portal.name=Cookie Portal
 tile.cookie_block.name=Cookie Block
@@ -21,6 +22,13 @@ tile.cookie_storage_iron.name=Iron Cookie Storage
 tile.cookie_storage_gold.name=Gold Cookie Storage
 tile.cookie_storage_diamond.name=Diamond Cookie Storage
 tile.cookie_storage_ender.name=End Cookie Storage
+tile.cookie_accelerator_control.name=Cookie Accelerator Control
+tile.cookie_accelerator_part.name=Cookie Accelerator Part
+tile.cookie_nuclear_baker.name=Nuclear Baker
+tile.cookie_ore_uranium.name=Uranium Ore
+item.cookie_gem_mixture.name=Gem Mixture
+item.cookie_gem_mixture_ingot.name=Gem Mixture Ingot
+item.cookie_uranium_rod.name=Uranium Rod
 item.cookie_magic.name=Magic Cookie
 item.cookie_dough.name=Cookie Dough
 item.cookie_pouch_leather.name=Leather Cookie Pouch
@@ -30,3 +38,5 @@ item.cookie_pouch_iron.name=Iron Cookie Pouch
 item.cookie_pouch_gold.name=Golden Cookie Pouch
 item.cookie_pouch_diamond.name=Diamond Cookie Pouch
 item.cookie_pouch_emerald.name=Emerald Cookie Pouch
+item.cookie_pouch_infinite.name=Infinite Cookie Pouch
+item.cookie_pouch_overflow.name=Overflowing Cookie Pouch
