@@ -43,7 +43,7 @@ public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICooki
     }
 
     private boolean isAboveWater(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() == Blocks.water;
+        return world.getBlockState(pos.down()).getBlock() == Blocks.water;
     }
 
     @Override

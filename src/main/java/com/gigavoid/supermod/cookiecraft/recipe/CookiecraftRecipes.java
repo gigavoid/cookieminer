@@ -64,7 +64,7 @@ public class CookiecraftRecipes {
         ItemStack cookieStorageEnder = new ItemStack(BlockCookieStorage.instances.get("ender"));
 
 
-        // Cookiepouches
+        // Cookiepouchese
         ItemStack leatherCookiePouch = new ItemStack(CookiecraftItems.leatherCookiePouch);
         ItemStack woodenCookiePouch = new ItemStack(CookiecraftItems.woodenCookiePouch);
         ItemStack stoneCookiePouch = new ItemStack(CookiecraftItems.stoneCookiePouch);
@@ -130,7 +130,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(cookieCircuit, 2048, false, "gcg", "rpr", "gcg",
                 'c', cocoaBean, 'r', redstone, 'g', goldIngot, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(moonlightReflector, 16384, false, "ege", "ipi", "eie",
+        GameRegistry.addRecipe(new ShapedCookieRecepie(moonlightReflector, 16384, false, "ege", "ipi", "iii",
                 'e', enderPearl, 'i', ironIngot, 'g', glass, 'p', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecepie(lavaConverter, 131072, false, "ili", "gpg", "ili",
