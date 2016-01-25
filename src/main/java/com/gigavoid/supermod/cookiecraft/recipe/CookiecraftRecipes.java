@@ -22,6 +22,7 @@ public class CookiecraftRecipes {
         ItemStack diamond = new ItemStack(Items.diamond);
         ItemStack emerald = new ItemStack(Items.emerald);
         ItemStack cookie = new ItemStack(Items.cookie);
+        ItemStack cookies = new ItemStack(Items.cookie, 9);
         ItemStack wheat = new ItemStack(Items.wheat);
         ItemStack cocoaBean = new ItemStack(Items.dye, 1, 0x3);
         ItemStack milk = new ItemStack(Items.milk_bucket);
@@ -88,7 +89,11 @@ public class CookiecraftRecipes {
 
         // Network blocks
 
+        GameRegistry.addRecipe(pipe, "i  ", "c  ", "i  ",
+                'i', ironIngot, 'c', cookie);
         GameRegistry.addRecipe(pipe, " i ", " c ", " i ",
+                'i', ironIngot, 'c', cookie);
+        GameRegistry.addRecipe(pipe, "  i", "  c", "  i",
                 'i', ironIngot, 'c', cookie);
 
         GameRegistry.addRecipe(cookieBlock, "ccc", "ccc", "ccc",
@@ -181,8 +186,9 @@ public class CookiecraftRecipes {
 
         // General Cookiecraft blocks
 
-        GameRegistry.addRecipe(cookieDough, "w w", "wcw", "wmw",
-                'w', wheat, 'c', cocoaBean, 'm', milk);
+        GameRegistry.addShapelessRecipe(cookieDough, wheat, cocoaBean, milk);
+
+        GameRegistry.addShapelessRecipe(cookieBlock, cookies);
 
         GameRegistry.addRecipe(magicCookie, "bbb", "bcb", "bbb",
                 'b', enchantedBook, 'c', cookie);
