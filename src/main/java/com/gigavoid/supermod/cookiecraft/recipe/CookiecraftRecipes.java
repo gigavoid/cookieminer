@@ -144,6 +144,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(nuclearBaker, 2097152, false, "iui", "upu", "iui",
                 'i', ironIngot, 'u', uraniumRod, 'p', emeraldCookiePouch));
 
+
         GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 33554432, false, "idi", "mpm", "ioi",
                 'i', ironIngot, 'd', diamond, 'm', magicCookie, 'o', obsidian, 'p', emeraldCookiePouch));
 
@@ -188,7 +189,7 @@ public class CookiecraftRecipes {
 
         GameRegistry.addShapelessRecipe(cookieDough, wheat, cocoaBean, milk);
 
-        GameRegistry.addShapelessRecipe(cookieBlock, cookies);
+        GameRegistry.addShapelessRecipe(cookies, cookieBlock);
 
         GameRegistry.addRecipe(magicCookie, "bbb", "bcb", "bbb",
                 'b', enchantedBook, 'c', cookie);
