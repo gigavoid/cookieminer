@@ -5,11 +5,13 @@ import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieChocoFluid;
 import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
+import com.gigavoid.supermod.cookiecraft.entity.CookieEntities;
 import com.gigavoid.supermod.cookiecraft.fluids.FluidChoco;
 import com.gigavoid.supermod.cookiecraft.gui.CookiecraftGuis;
 import com.gigavoid.supermod.cookiecraft.handler.BucketHandler;
 import com.gigavoid.supermod.cookiecraft.recipe.CookiecraftRecipes;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
+import com.gigavoid.supermod.cookiecraft.renderer.CookieRenderers;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGens;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
@@ -27,10 +29,12 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ModuleCookiecraft extends Module{
     @SidedProxy(serverSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$CommonProxy", clientSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$ClientProxy")
@@ -49,7 +53,7 @@ public class ModuleCookiecraft extends Module{
 
             FluidRegistry.registerFluid(FluidChoco.instance);
             GameRegistry.registerBlock(BlockCookieChocoFluid.instance, BlockCookieChocoFluid.name);
-
+            CookieEntities.registerEntities(register);
 
             cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
@@ -88,6 +92,10 @@ public class ModuleCookiecraft extends Module{
         CookiecraftGuis.initializeGuis();
         CookiecraftRecipes.initializeRecipes();
         CookiecraftWorldGens.initializeWorldGens(getRegister(e.getSide()));
+
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+            CookieRenderers.registerRenderers();
+        }
 
         BucketHandler.instance.buckets.put(BlockCookieChocoFluid.instance, CookiecraftItems.cookieChocoBucket);
         FluidContainerRegistry.registerFluidContainer(FluidChoco.instance, new ItemStack(CookiecraftItems.cookieChocoBucket), new ItemStack(Items.bucket));
