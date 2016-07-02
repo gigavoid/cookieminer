@@ -4,6 +4,9 @@ import com.gigavoid.supermod.common.Register;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieChocoFluid;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CookiecraftItems {
     public static final ItemMagicCookie magicCookie = new ItemMagicCookie();
     public static final ItemCookieDough cookieDough = new ItemCookieDough();
@@ -20,6 +23,8 @@ public class CookiecraftItems {
     public static final ItemCookiePouch emeraldCookiePouch = new ItemCookiePouch(68719476736L);
     public static final ItemInfiniteCookiePouch infiniteCookiePouch = new ItemInfiniteCookiePouch();
     public static final ItemCookiePouchOverflow overflowCookiePouch = new ItemCookiePouchOverflow();
+
+    public static final List<ItemCookiePouch> cookiePouches = Arrays.asList(leatherCookiePouch, woodenCookiePouch, stoneCookiePouch, ironCookiePouch, goldenCookiePouch, diamondCookiePouch, emeraldCookiePouch);
 
 
 
