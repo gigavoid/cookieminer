@@ -4,6 +4,7 @@ import com.gigavoid.supermod.cookiecraft.recipe.ShapedCookieRecipe;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
+import mezz.jei.plugins.vanilla.crafting.ShapedOreRecipeWrapper;
 
 import javax.annotation.Nonnull;
 
@@ -23,7 +24,7 @@ public class ShapedCookiecraftRecipeHandler implements IRecipeHandler<ShapedCook
     @Nonnull
     @Override
     public IRecipeWrapper getRecipeWrapper(@Nonnull ShapedCookieRecipe recipe) {
-        return recipe;
+        return new ShapedCookiecraftRecipeWrapper(recipe);
     }
 
     @Override

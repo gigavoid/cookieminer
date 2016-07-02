@@ -1,25 +1,37 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
-import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
-import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouch;
 import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
-import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidStack;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class ShapedCookieRecipe implements IRecipe, IShapedCraftingRecipeWrapper {
+public class ShapedCookieRecipe implements IRecipe {
     private final long cookiesRequired;
+
+    public ItemStack getResult() {
+        return result;
+    }
+
+    public List<ItemStack> getRecipe() {
+        return recipe;
+    }
+
+    public long getCookiesRequired() {
+        return cookiesRequired;
+    }
+
+    public boolean isConsumeCookieItem() {
+        return consumeCookieItem;
+    }
+
     private List<ItemStack> recipe;
     private ItemStack result;
     private boolean consumeCookieItem;
@@ -132,80 +144,5 @@ public class ShapedCookieRecipe implements IRecipe, IShapedCraftingRecipeWrapper
             return ((ItemCookiePouchBase)stackInSlot.getItem()).getCookies(stackInSlot) >= numCookies;
         }
         return false;
-    }
-
-    @Override
-    public int getWidth() {
-        return 3;
-    }
-
-    @Override
-    public int getHeight() {
-        return 3;
-    }
-
-    @Override
-    public List getInputs() {
-        List inputs = new ArrayList();
-
-        for (ItemStack input : recipe) {
-            if (input == null) {
-                inputs.add(null);
-                continue;
-            }
-            ItemStack clonedStack = input.copy();
-            if (input.getItem() instanceof ItemCookiePouchBase) {
-                ItemCookiePouch pouch = (ItemCookiePouch) input.getItem();
-                if (consumeCookieItem) {
-                    pouch.setCookies(clonedStack, cookiesRequired);
-                    inputs.add(clonedStack);
-                } else {
-                    List inputArr = new ArrayList();
-                    for(ItemCookiePouch possiblePouch : CookiecraftItems.cookiePouches) {
-                        if (possiblePouch.getStorage() >= cookiesRequired) {
-                            ItemStack is = new ItemStack(possiblePouch);
-                            possiblePouch.setCookies(is, cookiesRequired);
-                            inputArr.add(is);
-                        }
-                    }
-                    inputs.add(inputArr);
-                }
-            } else {
-                inputs.add(input);
-            }
-        }
-
-        return inputs;
-    }
-
-    @Override
-    public List<ItemStack> getOutputs() {
-        return Collections.singletonList(result);
-    }
-
-    @Override
-    public List<FluidStack> getFluidInputs() {
-        return null;
-    }
-
-    @Override
-    public List<FluidStack> getFluidOutputs() {
-        return null;
-    }
-
-    @Override
-    public void drawInfo(@Nonnull Minecraft minecraft, int recipeWidth, int recipeHeight) {
-
-    }
-
-    @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft, int recipeWidth, int recipeHeight) {
-
-    }
-
-    @Nullable
-    @Override
-    public List<String> getTooltipStrings(int mouseX, int mouseY) {
-        return null;
     }
 }

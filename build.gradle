@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_1.8:2.14.0.139"
+    deobfCompile "mezz.jei:jei_1.8:2.15.0.155"
     //runtime "mezz.jei:jei_1.8:2.14.0.139"
 }
 
