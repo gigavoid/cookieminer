@@ -18,12 +18,12 @@ public class CookiecraftItems {
     public static final ItemCookiePouch goldenCookiePouch = new ItemCookiePouch(33554432);
     public static final ItemCookiePouch diamondCookiePouch = new ItemCookiePouch(536870912);
     public static final ItemCookiePouch emeraldCookiePouch = new ItemCookiePouch(68719476736L);
-    public static final ItemInfiniteCookiePouch infiniteCookiePouch = new ItemInfiniteCookiePouch();
-    public static final ItemCookiePouchOverflow overflowCookiePouch = new ItemCookiePouchOverflow();
+public static final ItemInfiniteCookiePouch infiniteCookiePouch = new ItemInfiniteCookiePouch();
+public static final ItemCookiePouchOverflow overflowCookiePouch = new ItemCookiePouchOverflow();
 
 
 
-    public static void registerItems(Register register, FMLInitializationEvent event){
+public static void registerItems(Register register, FMLInitializationEvent event){
         register.registerItem(magicCookie, "cookie_magic", event);
         register.registerItem(cookieDough, "cookie_dough", event);
         register.registerItem(cookieGemMixture, "cookie_gem_mixture", event);
@@ -39,5 +39,5 @@ public class CookiecraftItems {
         register.registerItem(emeraldCookiePouch, "cookie_pouch_emerald", event);
         register.registerItem(infiniteCookiePouch, "cookie_pouch_infinite", event);
         register.registerItem(overflowCookiePouch, "cookie_pouch_overflow", event);
-    }
-}
+        }
+        }

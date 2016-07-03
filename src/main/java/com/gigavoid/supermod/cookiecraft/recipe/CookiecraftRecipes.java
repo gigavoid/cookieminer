@@ -144,7 +144,6 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(new ShapedCookieRecepie(nuclearBaker, 2097152, false, "iui", "upu", "iui",
                 'i', ironIngot, 'u', uraniumRod, 'p', emeraldCookiePouch));
 
-
         GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 33554432, false, "idi", "mpm", "ioi",
                 'i', ironIngot, 'd', diamond, 'm', magicCookie, 'o', obsidian, 'p', emeraldCookiePouch));
 
@@ -161,7 +160,7 @@ public class CookiecraftRecipes {
                 'm', gemMixtureIngot, 'p', emeraldCookiePouch, 'g', glass, 'i', ironIngot));
 
 
-        // Cookiepouches
+        // Cookiepouchese
 
         GameRegistry.addRecipe(leatherCookiePouch, " s ", "lcl", " l ",
                 's', string, 'c', cookie, 'l', leather);
