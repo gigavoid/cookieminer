@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieUpgrade {
+public class BlockCookieCrafter extends BlockCookieNetworkBlockBase implements ITileEntityProvider, ICookieGenerator {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     public static final BlockCookieCrafter instance = new BlockCookieCrafter();
@@ -210,9 +210,4 @@ public class BlockCookieCrafter extends BlockCookieUpgradeBase implements ITileE
     public static TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
-
-	@Override
-	public boolean hasImportantUI() {
-		return true;
-	}
 }

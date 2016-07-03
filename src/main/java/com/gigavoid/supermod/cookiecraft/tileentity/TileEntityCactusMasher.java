@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IChatComponent;
 
-public class TileEntityCactusMasher extends TileEntity implements IInventory {
+public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     private ItemStack inv;
 
     @Override

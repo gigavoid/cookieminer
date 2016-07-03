@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
 public class GuiCookieStorage extends GuiContainer {
     public static final int GUI_ID = 21;
     private final TileEntityCookieStorage tileEntity;
-	private static final ResourceLocation craftingTableGuiTextures = new ResourceLocation("supermod", "textures/gui/cookie_storage.png");
+	private static final ResourceLocation cookieStorageGuiTexture = new ResourceLocation("supermod", "textures/gui/cookie_storage.png");
 
 	@Override
     public boolean doesGuiPauseGame() {
@@ -28,7 +28,7 @@ public class GuiCookieStorage extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(craftingTableGuiTextures);
+		this.mc.getTextureManager().bindTexture(cookieStorageGuiTexture);
 
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
@@ -39,7 +39,4 @@ public class GuiCookieStorage extends GuiContainer {
 		super(new ContainerCookieStorage(playerInventory, tileEntity));
 		this.tileEntity = tileEntity;
     }
-
-
-
 }

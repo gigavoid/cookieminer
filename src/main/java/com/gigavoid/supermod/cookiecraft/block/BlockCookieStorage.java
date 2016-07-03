@@ -12,11 +12,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-import javax.annotation.concurrent.Immutable;
-import java.util.Hashtable;
 import java.util.Random;
 
-public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileEntityProvider, ICookieStorageBlock {
+public class BlockCookieStorage extends BlockCookieNetworkBlockBase implements ITileEntityProvider, ICookieStorageBlock {
 	private final int transferSpeed;
 	private long storageCap;
 
@@ -90,10 +88,5 @@ public class BlockCookieStorage extends BlockCookieUpgradeBase implements ITileE
 		if (!worldIn.isRemote) {
 			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 		}
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return true;
 	}
 }

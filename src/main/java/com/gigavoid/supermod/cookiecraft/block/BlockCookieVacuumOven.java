@@ -1,9 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.cookiecraft.CookieConfiguration;
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -15,7 +14,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookieVacuumOven extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
     private final int heightLimit = 250;
 
@@ -55,11 +54,6 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 }

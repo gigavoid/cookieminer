@@ -1,9 +1,8 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCactusMasher;
-import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -18,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieCactusMasher extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
+public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements ICookieGenerator, ITileEntityProvider {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     public static final BlockCookieCactusMasher instance = new BlockCookieCactusMasher();
@@ -98,12 +97,7 @@ public class BlockCookieCactusMasher extends BlockCookieUpgradeBase implements I
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 
     @Override

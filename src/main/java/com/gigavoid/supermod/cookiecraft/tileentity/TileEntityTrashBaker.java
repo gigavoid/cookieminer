@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TileEntityTrashBaker extends TileEntity implements IInventory, IUpdatePlayerListBox {
+public class TileEntityTrashBaker extends TileEntityCookieGenerator implements IInventory, IUpdatePlayerListBox {
     private ItemStack inv;
 
     private static Map<Item, Double> trashToCookies;

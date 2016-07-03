@@ -2,7 +2,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -10,13 +10,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public static final BlockCookieSteamer instance = new BlockCookieSteamer();
@@ -59,11 +58,6 @@ public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICooki
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 }

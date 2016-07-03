@@ -7,7 +7,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityCookieAccelerator extends TileEntity {
+public class TileEntityCookieAccelerator extends TileEntityCookieGenerator {
     public static final String KEY_IS_ACTIVE = "isActive";
 
     private boolean isActive;

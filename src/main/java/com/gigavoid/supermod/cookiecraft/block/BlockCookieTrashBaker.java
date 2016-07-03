@@ -1,24 +1,19 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
-import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCactusMasher;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityTrashBaker;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieTrashBaker extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
+public class BlockCookieTrashBaker extends BlockCookieGeneratorBase implements ICookieGenerator, ITileEntityProvider {
     public static final BlockCookieTrashBaker instance = new BlockCookieTrashBaker();
 
     private BlockCookieTrashBaker() {
@@ -40,12 +35,7 @@ public class BlockCookieTrashBaker extends BlockCookieUpgradeBase implements ICo
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 
     @Override

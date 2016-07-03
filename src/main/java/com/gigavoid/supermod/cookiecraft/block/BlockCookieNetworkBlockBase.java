@@ -3,7 +3,10 @@ package com.gigavoid.supermod.cookiecraft.block;
 import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCactusMasher;
+import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,8 +17,8 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public abstract class BlockCookieUpgradeBase extends Block {
-    public BlockCookieUpgradeBase(Material material) {
+public abstract class BlockCookieNetworkBlockBase extends Block implements ITileEntityProvider {
+    public BlockCookieNetworkBlockBase(Material material) {
         super(material);
         this.setHardness(10.0F);
     }
@@ -32,23 +35,9 @@ public abstract class BlockCookieUpgradeBase extends Block {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (hasImportantUI()) {
-			if (playerIn.isSneaking()) {
-				return false;
-			}
-		} else {
-			if (!playerIn.isSneaking()) {
-				return false;
-			}
-		}
-
-
 		playerIn.openGui(SuperMod.instance, getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 
 	public abstract int getGuiId();
-	public abstract boolean hasImportantUI();
-
-
 }

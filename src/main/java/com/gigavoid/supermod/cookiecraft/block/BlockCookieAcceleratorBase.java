@@ -2,9 +2,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieAccelerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -21,7 +19,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implements ICookieUpgrade,ITileEntityProvider {
+public class BlockCookieAcceleratorBase extends BlockCookieGeneratorBase implements ICookieGenerator,ITileEntityProvider {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     protected BlockCookieAcceleratorBase() {
@@ -31,17 +29,17 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
+        TileEntityCookieAccelerator tileEntity = (TileEntityCookieAccelerator) getTileEntity(world, pos);
         return tileEntity.isActive() ? ModuleCookiecraft.config.outputCookieAccelerator : 0;
     }
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
+		return GuiCookieGenerator.GUI_ID;
 	}
 
     public void setActive(World world, BlockPos pos, boolean active){
-        getTileEntity(world, pos).setIsActive(active);
+        ((TileEntityCookieAccelerator)getTileEntity(world, pos)).setIsActive(active);
     }
 
 
@@ -65,11 +63,6 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         AcceleratorNetwork.getNetwork(worldIn, pos).updateNetwork();
     }
-
-    @Override
-	public boolean hasImportantUI() {
-		return false;
-	}
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {

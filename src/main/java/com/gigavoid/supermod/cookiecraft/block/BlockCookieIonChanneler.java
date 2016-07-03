@@ -2,7 +2,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
     public static final PropertyBool TOP = PropertyBool.create("top");
     public static final PropertyBool BOTTOM = PropertyBool.create("bottom");
@@ -58,13 +58,8 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
+		return GuiCookieGenerator.GUI_ID;
 	}
-
-	@Override
-    public boolean hasImportantUI() {
-        return false;
-    }
 
     private boolean isTowerBuilt(IBlockAccess world, BlockPos pos){
         int nrOfParts = 1;

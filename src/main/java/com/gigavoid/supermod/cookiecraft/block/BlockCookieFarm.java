@@ -2,7 +2,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieFarm extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookieFarm extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final BlockCookieFarm instance = new BlockCookieFarm();
 
     private BlockCookieFarm() {
@@ -32,11 +32,6 @@ public class BlockCookieFarm extends BlockCookieUpgradeBase implements ICookieUp
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 }

@@ -19,7 +19,6 @@ public class TileEntityCookieStorage extends TileEntity implements IInventory{
 	public static final String NBT_COOKIES = "Cookies";
     private long cookies;
 	private ItemStack[] inv;
-	private ItemStack outputCookieStack;
 
 	public TileEntityCookieStorage() {
 		inv = new ItemStack[3];

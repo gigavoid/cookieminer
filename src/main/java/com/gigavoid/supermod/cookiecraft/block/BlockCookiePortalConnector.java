@@ -2,7 +2,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implements ICookieUpgrade {
+public class BlockCookiePortalConnector extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
@@ -70,11 +70,6 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-	@Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 }

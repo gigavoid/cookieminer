@@ -36,10 +36,10 @@ public class CookieBlock {
 
     public double getCPS() {
         IBlockState blockState = world.getBlockState(pos);
-        if (!(blockState.getBlock() instanceof ICookieUpgrade))
+        if (!(blockState.getBlock() instanceof ICookieGenerator))
             return 0;
 
-        return ((ICookieUpgrade) blockState.getBlock()).getCPS(world, pos, blockState);
+        return ((ICookieGenerator) blockState.getBlock()).getCPS(world, pos, blockState);
     }
 
     public boolean isStorage() {
@@ -47,7 +47,7 @@ public class CookieBlock {
     }
 
     public boolean isCpsUpgrade() {
-        return world.getBlockState(pos).getBlock() instanceof ICookieUpgrade;
+        return world.getBlockState(pos).getBlock() instanceof ICookieGenerator;
     }
 
     public long getCurrentStorage() {

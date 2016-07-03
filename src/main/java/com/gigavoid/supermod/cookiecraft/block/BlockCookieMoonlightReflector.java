@@ -1,32 +1,27 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
-import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityMoonlightReflector;
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.Random;
 
-public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implements ICookieUpgrade, ITileEntityProvider {
+public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase implements ICookieGenerator, ITileEntityProvider {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public static final BlockCookieMoonlightReflector instance = new BlockCookieMoonlightReflector();
@@ -85,12 +80,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
 
 	@Override
 	public int getGuiId() {
-		return GuiCookieUpgrade.GUI_ID;
-	}
-
-    @Override
-	public boolean hasImportantUI() {
-		return false;
+		return GuiCookieGenerator.GUI_ID;
 	}
 
     @Override
