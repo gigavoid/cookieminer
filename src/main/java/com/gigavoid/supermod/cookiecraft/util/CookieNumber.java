@@ -1,6 +1,10 @@
 package com.gigavoid.supermod.cookiecraft.util;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class CookieNumber {
@@ -22,6 +26,6 @@ public class CookieNumber {
 
     public static String doubleToString(double number) {
         int factor = Math.max(0, ((int) Math.log10(number) / 3) * 3);
-        return String.format("%.3f%s", (number / Math.pow(10, factor)), notations.get(factor));
+        return String.format(Locale.US, "%.3f%s", (number / Math.pow(10, factor)), notations.get(factor));
     }
 }
