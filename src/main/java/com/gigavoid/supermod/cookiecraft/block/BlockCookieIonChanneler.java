@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -52,7 +53,7 @@ public class BlockCookieIonChanneler extends BlockCookieUpgradeBase implements I
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return isTowerBuilt(world, pos) ? 262144 : 0;
+        return isTowerBuilt(world, pos) ? ModuleCookiecraft.config.outputIonChanneler : 0;
     }
 
 	@Override

@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.block.*;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import net.minecraft.init.Blocks;
@@ -111,52 +112,53 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(cookieStorageWood, "www", "wcw", "www",
                 'w', wood, 'c', cookie);
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageIron, 1024, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageIron, 1024, false, "iii", "ici", "iii",
                 'i', ironIngot, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageGold, 32768, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageGold, 32768, false, "iii", "ici", "iii",
                 'i', goldIngot, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageDiamond, 1048576, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageDiamond, 1048576, false, "iii", "ici", "iii",
                 'i', diamond, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieStorageEnder, 1073741824, false, "iii", "ici", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageEnder, 1073741824, false, "iii", "ici", "iii",
                 'i', enderPearl, 'c', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieFarm, 8, false, "isi", "sps", "idi",
+
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieFarm, ModuleCookiecraft.config.costCookieFarm, false, "isi", "sps", "idi",
                 'i', ironIngot, 's', seed, 'd', dirt, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cactusMasher, 32, false, "isi", "cpc", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cactusMasher, ModuleCookiecraft.config.costCactusMasher, false, "isi", "cpc", "iii",
                 'i', ironIngot, 's', piston, 'c', cactus, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieSteamer, 256, false, "iri", "gpg", "i i",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieSteamer, ModuleCookiecraft.config.costCookieStreamer, false, "iri", "gpg", "i i",
                 'i', ironIngot, 'r', redstone, 'g', goldIngot, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieCircuit, 2048, false, "gcg", "rpr", "gcg",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieCircuit, ModuleCookiecraft.config.costCookieCircuit, false, "gcg", "rpr", "gcg",
                 'c', cocoaBean, 'r', redstone, 'g', goldIngot, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(moonlightReflector, 16384, false, "ege", "ipi", "iii",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(moonlightReflector, ModuleCookiecraft.config.costMoonlightReflector, false, "ege", "ipi", "iii",
                 'e', enderPearl, 'i', ironIngot, 'g', glass, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(lavaConverter, 131072, false, "ili", "gpg", "ili",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(lavaConverter, ModuleCookiecraft.config.costLavaConverter, false, "ili", "gpg", "ili",
                 'l', lava, 'i', ironIngot, 'g', glass, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(nuclearBaker, 2097152, false, "iui", "upu", "iui",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(nuclearBaker, ModuleCookiecraft.config.costNuclearBaker, false, "iui", "upu", "iui",
                 'i', ironIngot, 'u', uraniumRod, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(portalConnector, 33554432, false, "idi", "mpm", "ioi",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(portalConnector, ModuleCookiecraft.config.costPortalConnector, false, "idi", "mpm", "ioi",
                 'i', ironIngot, 'd', diamond, 'm', magicCookie, 'o', obsidian, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(vacuumOven, 536870912, false, "eoe", "opo", "eoe",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(vacuumOven, ModuleCookiecraft.config.costVacuumOven, false, "eoe", "opo", "eoe",
                 'e', emerald, 'o', obsidian, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(ionChanneler, 1073741824, false, "ded", "dpd", "ded",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(ionChanneler, ModuleCookiecraft.config.costIonChanneler, false, "ded", "dpd", "ded",
                 'e', enderPearl, 'd', diamond, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieAcceleratorPart, 1073741824, false, "mmm", " p ", "mmm",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieAcceleratorPart, ModuleCookiecraft.config.costCookieAccelerator, false, "mmm", " p ", "mmm",
                 'm', gemMixtureIngot, 'p', emeraldCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(cookieAcceleratorControl, 1073741824, false, "mgm", " p ", "mim",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieAcceleratorControl, ModuleCookiecraft.config.costCookieAccelerator, false, "mgm", " p ", "mim",
                 'm', gemMixtureIngot, 'p', emeraldCookiePouch, 'g', glass, 'i', ironIngot));
 
 
@@ -165,22 +167,22 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(leatherCookiePouch, " s ", "lcl", " l ",
                 's', string, 'c', cookie, 'l', leather);
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(woodenCookiePouch, CookiecraftItems.leatherCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(woodenCookiePouch, CookiecraftItems.leatherCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', wood, 'p', leatherCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(stoneCookiePouch, CookiecraftItems.woodenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(stoneCookiePouch, CookiecraftItems.woodenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', stone, 'p', woodenCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(ironCookiePouch, CookiecraftItems.stoneCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(ironCookiePouch, CookiecraftItems.stoneCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', ironIngot, 'p', stoneCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(goldenCookiePouch, CookiecraftItems.ironCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(goldenCookiePouch, CookiecraftItems.ironCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', goldIngot, 'p', ironCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(diamondCookiePouch, CookiecraftItems.goldenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(diamondCookiePouch, CookiecraftItems.goldenCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', diamond, 'p', goldenCookiePouch));
 
-        GameRegistry.addRecipe(new ShapedCookieRecepie(emeraldCookiePouch, CookiecraftItems.diamondCookiePouch.getStorage(), true, " s ", "wpw", " w ",
+        GameRegistry.addRecipe(new ShapedCookieRecipe(emeraldCookiePouch, CookiecraftItems.diamondCookiePouch.getStorage(), true, " s ", "wpw", " w ",
                 's', string, 'w', emerald, 'p', diamondCookiePouch));
 
 

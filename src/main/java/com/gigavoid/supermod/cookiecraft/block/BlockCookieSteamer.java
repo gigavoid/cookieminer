@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -53,7 +54,7 @@ public class BlockCookieSteamer extends BlockCookieUpgradeBase implements ICooki
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return isAboveWater(world, pos) ? 1/2d : 0;
+        return isAboveWater(world, pos) ? ModuleCookiecraft.config.outputCookieStreamer : 0;
     }
 
 	@Override

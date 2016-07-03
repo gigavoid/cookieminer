@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
@@ -31,7 +32,7 @@ public class BlockCookieAcceleratorBase extends BlockCookieUpgradeBase implement
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         TileEntityCookieAccelerator tileEntity = getTileEntity(world, pos);
-        return tileEntity.isActive() ? 262144 : 0;
+        return tileEntity.isActive() ? ModuleCookiecraft.config.outputCookieAccelerator : 0;
     }
 
 	@Override

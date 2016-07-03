@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -51,7 +52,7 @@ public class BlockCookieLavaConverter extends BlockCookieUpgradeBase implements 
         int cps = nrOfLavaBlocks(world, pos);
         if (cps != 0) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 8 * cps;
+            return ModuleCookiecraft.config.outputLavaConverter * cps / 25;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false), 2);
         return 0;

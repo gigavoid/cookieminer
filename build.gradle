@@ -32,23 +32,21 @@ minecraft {
     version = "1.8-11.14.3.1543"
     runDir = "eclipse"
     mappings = "snapshot_20141130"
+    useDepAts = true
+}
+
+repositories {
+    maven {
+        // JEI
+        url "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    deobfCompile "mezz.jei:jei_1.8:2.15.0.155"
+    //runtime "mezz.jei:jei_1.8:2.14.0.139"
 }
+
 
 processResources
 {

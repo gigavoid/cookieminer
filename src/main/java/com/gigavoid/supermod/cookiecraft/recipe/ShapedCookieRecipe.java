@@ -1,7 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.recipe;
 
 import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
-import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouch;
 import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -14,13 +13,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ShapedCookieRecepie implements IRecipe{
+public class ShapedCookieRecipe implements IRecipe {
     private final long cookiesRequired;
+
+    public ItemStack getResult() {
+        return result;
+    }
+
+    public List<ItemStack> getRecipe() {
+        return recipe;
+    }
+
+    public long getCookiesRequired() {
+        return cookiesRequired;
+    }
+
+    public boolean isConsumeCookieItem() {
+        return consumeCookieItem;
+    }
+
     private List<ItemStack> recipe;
     private ItemStack result;
     private boolean consumeCookieItem;
 
-    public ShapedCookieRecepie(ItemStack result, long cookiesRequired, boolean consumeCookieItem, String shape1, String shape2, String shape3, Object ... args) {
+    public ShapedCookieRecipe(ItemStack result, long cookiesRequired, boolean consumeCookieItem, String shape1, String shape2, String shape3, Object ... args) {
         this.cookiesRequired = cookiesRequired;
         this.result = result;
         this.consumeCookieItem = consumeCookieItem;
@@ -129,5 +145,4 @@ public class ShapedCookieRecepie implements IRecipe{
         }
         return false;
     }
-
 }

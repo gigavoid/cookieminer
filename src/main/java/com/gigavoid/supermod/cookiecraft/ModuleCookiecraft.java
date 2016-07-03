@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -42,6 +43,7 @@ public class ModuleCookiecraft extends Module{
 
     public static int dimensionId;
     public static CookieBiome cookieBiome;
+    public static CookieConfiguration config;
 
     public void preInit(FMLPreInitializationEvent event) { proxy.preInit(event, getRegister(event.getSide())); }
 
@@ -59,6 +61,9 @@ public class ModuleCookiecraft extends Module{
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
 
             dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
+
+            config = new CookieConfiguration(event.getSuggestedConfigurationFile());
+            config.load();
         }
     }
 
