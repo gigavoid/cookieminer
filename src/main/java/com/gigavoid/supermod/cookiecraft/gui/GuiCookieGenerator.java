@@ -13,17 +13,20 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class GuiCookieGenerator extends GuiContainer {
 	public static final int GUI_ID = 22;
 	private InventoryPlayer playerInventory;
 	private TileEntityCookieGenerator tileEntity;
-	private static final ResourceLocation cookieGeneratorGuiTexture = new ResourceLocation("supermod", "textures/gui/cookie_storage.png");
+	private static final ResourceLocation cookieGeneratorGuiTexture = new ResourceLocation("supermod", "textures/gui/cookie_block_general.png");
 
 
 	public GuiCookieGenerator(InventoryPlayer playerInventory, TileEntityCookieGenerator tileEntity) {
@@ -38,22 +41,53 @@ public class GuiCookieGenerator extends GuiContainer {
 	}
 
 	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		super.drawScreen(mouseX, mouseY, partialTicks);
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		this.mc.getTextureManager().bindTexture(cookieGeneratorGuiTexture);
+
+		int x = (width - xSize) / 2;
+		int y = (height - ySize) / 2;
+
 		ICookieGenerator generator = (ICookieGenerator) tileEntity.getBlockType();
-		double cps;
-		int color;
-		String connected;
-		if (CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos()).findCore() != null) {
-			cps = generator.getCPS(tileEntity.getWorld(), tileEntity.getPos(), tileEntity.getWorld().getBlockState(tileEntity.getPos()));
-			color = Color.GREEN.getRGB();
-			connected = " (Connected)";
+		double cps = generator.getCPS(tileEntity.getWorld(), tileEntity.getPos(), tileEntity.getWorld().getBlockState(tileEntity.getPos()));
+
+		Boolean online = CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos()).findCore() != null;
+
+		// Network lights
+		if (online) {
+			// Draw green network light
+			this.drawTexturedModalRect(6, 73, 8, 166, 8, 8);
 		} else {
-			cps = 0;
-			color = Color.RED.getRGB();
-			connected = " (Not Connected)";
+			// Draw red network light
+			this.drawTexturedModalRect(6, 73, 0, 166, 8, 8);
 		}
-		fontRendererObj.drawString("Generating CPS: " + CookieNumber.doubleToString(cps) + connected, width / 2, height / 2, color);
+
+
+		// Generating lights
+		if (cps != 0) {
+			// Draw green generating light
+			this.drawTexturedModalRect(6, 65, 8, 166, 8, 8);
+		} else {
+			// Draw red generating light
+			this.drawTexturedModalRect(6, 65, 0, 166, 8, 8);
+		}
+
+		fontRendererObj.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);
+
+		// Network tooltip
+		java.util.List<String> statusTooltip = Collections.singletonList("Connected to cookie network: " +
+				(online ? EnumChatFormatting.GREEN + "Online" : EnumChatFormatting.RED + "Offline"));
+
+		if (this.isPointInRegion(6, 73, 6, 6, mouseX, mouseY)) {
+			this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
+		}
+
+		// Generating tooltip
+		List<String> generatingTooltip = Collections.singletonList("Is block generating cookies: " +
+				(cps != 0 ? EnumChatFormatting.GREEN + "Active" : EnumChatFormatting.RED + "Inactive"));
+
+		if (this.isPointInRegion(6, 65, 6, 6, mouseX, mouseY)) {
+			this.drawHoveringText(generatingTooltip, mouseX - x, mouseY - y);
+		}
 	}
 
 	@Override
