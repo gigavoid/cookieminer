@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
@@ -77,7 +78,7 @@ public class BlockCookieMoonlightReflector extends BlockCookieUpgradeBase implem
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         if (getTileEntity(world, pos).isActive()) {
-            return 32d;
+            return ModuleCookiecraft.config.outputMoonlightReflector;
         }
         return 0;
     }

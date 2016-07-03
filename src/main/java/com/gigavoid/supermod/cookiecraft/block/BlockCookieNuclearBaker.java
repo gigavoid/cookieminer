@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -60,7 +61,7 @@ public class BlockCookieNuclearBaker extends BlockCookieUpgradeBase implements I
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         if (isActive(world, pos)) {
-            return 1024;
+            return ModuleCookiecraft.config.outputNuclearBaker;
         }
         return 0;
     }

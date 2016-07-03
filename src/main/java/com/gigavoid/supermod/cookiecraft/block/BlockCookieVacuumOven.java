@@ -1,5 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.CookieConfiguration;
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -48,7 +50,7 @@ public class BlockCookieVacuumOven extends BlockCookieUpgradeBase implements ICo
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return pos.getY() >= heightLimit ? 131072 : 0;
+        return pos.getY() >= heightLimit ? ModuleCookiecraft.config.outputVacuumOven : 0;
     }
 
 	@Override

@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -50,7 +51,7 @@ public class BlockCookiePortalConnector extends BlockCookieUpgradeBase implement
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         if (isNextToPortal(world, pos)) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 32768;
+            return ModuleCookiecraft.config.outputPortalConnector;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false),2);
         return 0;

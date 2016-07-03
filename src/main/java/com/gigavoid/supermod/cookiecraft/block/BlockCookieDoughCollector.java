@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieUpgrade;
 import net.minecraft.block.material.Material;
@@ -26,7 +27,7 @@ public class BlockCookieDoughCollector extends BlockCookieUpgradeBase implements
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return 1/64d;
+        return ModuleCookiecraft.config.outputDoughCollector;
     }
 
 	@Override

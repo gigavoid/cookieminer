@@ -43,6 +43,7 @@ public class ModuleCookiecraft extends Module{
 
     public static int dimensionId;
     public static CookieBiome cookieBiome;
+    public static CookieConfiguration config;
 
     public void preInit(FMLPreInitializationEvent event) { proxy.preInit(event, getRegister(event.getSide())); }
 
@@ -61,7 +62,8 @@ public class ModuleCookiecraft extends Module{
 
             dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
 
-            new CookieConfiguration(event.getSuggestedConfigurationFile()).load();
+            config = new CookieConfiguration(event.getSuggestedConfigurationFile());
+            config.load();
         }
     }
 

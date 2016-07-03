@@ -19,7 +19,7 @@ public class CookieConfiguration {
             outputLavaConverter, outputBakingTable, outputNuclearBaker, outputPortalConnector, outputVacuumOven,
             outputIonChanneler, outputCookieAccelerator;
 
-    public double pouchSizeLeather, pouchSizeWood, pouchSizeStone, pouchSizeIron, pouchSizeGold, pouchSizeDiamond, pouchSizeEmerald;
+    public long pouchSizeLeather, pouchSizeWood, pouchSizeStone, pouchSizeIron, pouchSizeGold, pouchSizeDiamond, pouchSizeEmerald;
 
 
     public CookieConfiguration(File file) {
@@ -32,7 +32,6 @@ public class CookieConfiguration {
         ConfigCategory cat = config.getCategory("production cookie costs");
         cat.setComment("Sets the cost in cookies for cookie production");
 
-        costDoughCollector = getLong(cat, "T01_DoughCollector", 1);
         costCookieFarm = getLong(cat, "T02_CookieFarm", 8);
         costCactusMasher = getLong(cat, "T03_CactusMasher", 64);
         costCookieStreamer = getLong(cat, "T04_CookieStreamer", 512);
