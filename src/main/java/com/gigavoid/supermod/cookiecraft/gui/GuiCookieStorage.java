@@ -2,6 +2,7 @@ package com.gigavoid.supermod.cookiecraft.gui;
 
 import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
 import com.gigavoid.supermod.cookiecraft.container.ContainerCookieStorage;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,6 +15,8 @@ public class GuiCookieStorage extends GuiContainer {
     private final TileEntityCookieStorage tileEntity;
 	private static final ResourceLocation cookieStorageGuiTexture = new ResourceLocation("supermod", "textures/gui/cookie_storage.png");
 
+	public static int PROGRESSBAR_X = 148, PROGRESSBAR_Y = 15, PROGRESSBAR_HEIGHT = 54, PROGRESSBAR_WIDTH = 13;
+
 	@Override
     public boolean doesGuiPauseGame() {
         return false;
@@ -22,17 +25,36 @@ public class GuiCookieStorage extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		ICookieStorageBlock storage = (ICookieStorageBlock) tileEntity.getBlockType();
-		fontRendererObj.drawString("Cookies: " + CookieNumber.doubleToString(tileEntity.getCookies()) + " out of " + CookieNumber.doubleToString(storage.getStorageCap()), 5, 5, 0x222222);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(cookieStorageGuiTexture);
+		ICookieStorageBlock storage = (ICookieStorageBlock) tileEntity.getBlockType();
 
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
+		CookieNetwork network = CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos());
+
+		if (network.findCore() != null) {
+			// Draw green light
+			this.drawTexturedModalRect(x + 6, y + 73, 8, 166, 8, 8);
+		} else {
+			// Draw red light
+			this.drawTexturedModalRect(x + 6, y + 73, 0, 166, 8, 8);
+		}
+
+		double fractionFull = (double)tileEntity.getCookies() / storage.getStorageCap();
+
+		int progressVisible = (int)(fractionFull * 54);
+
+		// Draw progress bar
+		this.drawTexturedModalRect(x + PROGRESSBAR_X, y + PROGRESSBAR_Y + (PROGRESSBAR_HEIGHT - progressVisible),
+				176, PROGRESSBAR_HEIGHT - progressVisible,
+				PROGRESSBAR_WIDTH, progressVisible);
 	}
 
 	public GuiCookieStorage(InventoryPlayer playerInventory, TileEntityCookieStorage tileEntity) {

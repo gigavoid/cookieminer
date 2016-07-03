@@ -18,9 +18,9 @@ private TileEntityCookieStorage tileEntity;
 
 		this.tileEntity = tileEntity;
 
-		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 0, 56, 17, SlotCookieStorage.SlotType.OUTPUT));
-		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 1, 56, 53, SlotCookieStorage.SlotType.INPUT));
-		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 2, 130, 53, SlotCookieStorage.SlotType.SINGLE_OUTPUT));
+		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 0, 32, 16, SlotCookieStorage.SlotType.OUTPUT));
+		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 1, 32, 52, SlotCookieStorage.SlotType.INPUT));
+		this.addSlotToContainer(new SlotCookieStorage(tileEntity, 2, 11, 16, SlotCookieStorage.SlotType.SINGLE_OUTPUT));
 
 		bindPlayerInventory(playerInventory);
 	}
