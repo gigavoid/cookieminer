@@ -29,9 +29,4 @@ public class BlockCookieIceMelter extends BlockCookieGeneratorBase implements IC
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         return ModuleCookiecraft.config.outputIceMelter;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

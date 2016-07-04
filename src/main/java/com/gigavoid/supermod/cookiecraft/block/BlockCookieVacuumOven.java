@@ -51,9 +51,4 @@ public class BlockCookieVacuumOven extends BlockCookieGeneratorBase implements I
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         return pos.getY() >= heightLimit ? ModuleCookiecraft.config.outputVacuumOven : 0;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

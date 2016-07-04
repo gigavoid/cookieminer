@@ -33,11 +33,6 @@ public class BlockCookieAcceleratorBase extends BlockCookieGeneratorBase impleme
         return tileEntity.isActive() ? ModuleCookiecraft.config.outputCookieAccelerator : 0;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     public void setActive(World world, BlockPos pos, boolean active){
         ((TileEntityCookieAccelerator)getTileEntity(world, pos)).setIsActive(active);
     }

@@ -55,9 +55,4 @@ public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICoo
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         return isAboveWater(world, pos) ? ModuleCookiecraft.config.outputCookieStreamer : 0;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

@@ -56,11 +56,6 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
         return isTowerBuilt(world, pos) ? ModuleCookiecraft.config.outputIonChanneler : 0;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     private boolean isTowerBuilt(IBlockAccess world, BlockPos pos){
         int nrOfParts = 1;
         for (int i = 1; i < 5; i++){

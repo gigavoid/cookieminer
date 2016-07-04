@@ -32,11 +32,6 @@ public class BlockCookieDoughCollector extends BlockCookieGeneratorBase implemen
         return ModuleCookiecraft.config.outputDoughCollector;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     @Override
     public boolean canAcceptUpgrade(ItemStack itemStack) {
         return super.canAcceptUpgrade(itemStack) || itemStack.getItem() == Items.stone_axe;

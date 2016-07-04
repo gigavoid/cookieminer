@@ -78,11 +78,6 @@ public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase impl
         return 0;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     @Override
     public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
         return true;

@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.block;
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
+import com.gigavoid.supermod.cookiecraft.gui.GuiLavaConverter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
@@ -49,16 +50,21 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
-        int cps = nrOfLavaBlocks(world, pos);
-        if (cps != 0) {
+        int nLavaBlocks = nrOfLavaBlocks(world, pos);
+        if (nLavaBlocks != 0) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return ModuleCookiecraft.config.outputLavaConverter * cps / 25;
+            return ModuleCookiecraft.config.outputLavaConverter * nLavaBlocks / 25;
         }
         world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false), 2);
         return 0;
     }
 
-    private int nrOfLavaBlocks(IBlockAccess world, BlockPos pos) {
+    @Override
+    public int getGuiId() {
+        return GuiLavaConverter.GUI_ID;
+    }
+
+    public int nrOfLavaBlocks(IBlockAccess world, BlockPos pos) {
         int lavaBlocks = 0;
 
         for (int i = -1; i < 2; i++){
@@ -75,9 +81,4 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
     private boolean isLava(IBlockAccess world, BlockPos blockPos) {
         return world.getBlockState(blockPos).getBlock() == Blocks.lava || world.getBlockState(blockPos).getBlock() == Blocks.flowing_lava;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

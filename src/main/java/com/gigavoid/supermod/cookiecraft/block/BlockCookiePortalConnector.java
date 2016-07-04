@@ -67,9 +67,4 @@ public class BlockCookiePortalConnector extends BlockCookieGeneratorBase impleme
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {
         return world.getBlockState(blockPos).getBlock() == BlockCookiePortalCookiecraft.instance;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

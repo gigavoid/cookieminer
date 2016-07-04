@@ -68,11 +68,6 @@ public class BlockCookieCocoaCircuit extends BlockCookieGeneratorBase implements
     }
 
     @Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
-    @Override
     public boolean canConnectRedstone(IBlockAccess world, BlockPos pos, EnumFacing side) {
         return true;
     }

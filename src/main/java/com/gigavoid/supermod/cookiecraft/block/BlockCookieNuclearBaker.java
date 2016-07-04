@@ -49,11 +49,6 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
     }
 
     @Override
-    public int getGuiId() {
-        return GuiCookieGenerator.GUI_ID;
-    }
-
-    @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         if (isActive(world, pos)) {
             return ModuleCookiecraft.config.outputNuclearBaker;

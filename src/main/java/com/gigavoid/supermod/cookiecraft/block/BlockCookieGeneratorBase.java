@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.item.IItemCookieUpgrade;
 import com.gigavoid.supermod.cookiecraft.item.ItemFlatCPSUpgrade;
 import com.gigavoid.supermod.cookiecraft.item.ItemMultiplicativeCPSUpgrade;
@@ -33,6 +34,11 @@ public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase im
 
     public boolean canAcceptUpgrade(ItemStack itemStack) {
         return itemStack.getItem() instanceof ItemFlatCPSUpgrade || itemStack.getItem() instanceof ItemMultiplicativeCPSUpgrade;
+    }
+
+    @Override
+    public int getGuiId() {
+        return GuiCookieGenerator.GUI_ID;
     }
 
     @Override

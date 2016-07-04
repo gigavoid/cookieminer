@@ -29,9 +29,4 @@ public class BlockCookieFarm extends BlockCookieGeneratorBase implements ICookie
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         return ModuleCookiecraft.config.outputCookieFarm;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

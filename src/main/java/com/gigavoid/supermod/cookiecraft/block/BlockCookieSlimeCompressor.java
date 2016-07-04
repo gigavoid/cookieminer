@@ -40,11 +40,6 @@ public class BlockCookieSlimeCompressor extends BlockCookieGeneratorBase impleme
         return ModuleCookiecraft.config.outputSlimeCompressor;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     @Override
     public boolean isOpaqueCube() {
         return false;

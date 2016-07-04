@@ -78,9 +78,4 @@ public class BlockCookieSapGatherer extends BlockCookieGeneratorBase implements 
         }
         return false;
     }
-
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
 }

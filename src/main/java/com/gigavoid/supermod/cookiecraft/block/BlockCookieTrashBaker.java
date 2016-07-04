@@ -33,11 +33,6 @@ public class BlockCookieTrashBaker extends BlockCookieGeneratorBase implements I
         return 0;
     }
 
-	@Override
-	public int getGuiId() {
-		return GuiCookieGenerator.GUI_ID;
-	}
-
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityTrashBaker();
