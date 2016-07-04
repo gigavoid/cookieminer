@@ -24,6 +24,8 @@ public class CookiecraftBlocks {
         register.registerBlock(BlockCookieAcceleratorPart.instance, "cookie_accelerator_part");
         register.registerBlock(BlockCookieNuclearBaker.instance, "cookie_nuclear_baker");
         register.registerBlock(BlockCookieOreUranium.instance, "cookie_ore_uranium");
+        register.registerBlock(BlockCookieSlimeCompressor.instance, "cookie_slime_compressor");
+        register.registerBlock(BlockCookieSapGatherer.instance, "cookie_sap_gatherer");
 
         for (String key : BlockCookieStorage.instances.keySet()){
             register.registerBlock(BlockCookieStorage.instances.get(key), "cookie_storage_" + key);

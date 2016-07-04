@@ -17,8 +17,8 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public abstract class BlockCookieNetworkBlockBase extends Block implements ITileEntityProvider {
-    public BlockCookieNetworkBlockBase(Material material) {
+public abstract class BlockCookieNetworkBase extends Block implements ITileEntityProvider {
+    public BlockCookieNetworkBase(Material material) {
         super(material);
         this.setHardness(10.0F);
     }

@@ -12,7 +12,9 @@ import com.gigavoid.supermod.cookiecraft.handler.BucketHandler;
 import com.gigavoid.supermod.cookiecraft.recipe.CookiecraftRecipes;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.renderer.CookieRenderers;
+import com.gigavoid.supermod.cookiecraft.renderer.RenderSlimeCompressor;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
+import com.gigavoid.supermod.cookiecraft.tileentity.TileEntitySlimeCompressor;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGens;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
 import net.minecraft.block.Block;
@@ -30,12 +32,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModuleCookiecraft extends Module{
     @SidedProxy(serverSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$CommonProxy", clientSide = "com.gigavoid.supermod.cookiecraft.ModuleCookiecraft$ClientProxy")
@@ -104,5 +108,14 @@ public class ModuleCookiecraft extends Module{
 
         BucketHandler.instance.buckets.put(BlockCookieChocoFluid.instance, CookiecraftItems.cookieChocoBucket);
         FluidContainerRegistry.registerFluidContainer(FluidChoco.instance, new ItemStack(CookiecraftItems.cookieChocoBucket), new ItemStack(Items.bucket));
+
+        if (e.getSide() == Side.CLIENT){
+            registerTileEntity();
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    private void registerTileEntity() {
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySlimeCompressor.class, new RenderSlimeCompressor());
     }
 }

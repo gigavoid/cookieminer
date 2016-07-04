@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieStorage extends BlockCookieNetworkBlockBase implements ITileEntityProvider, ICookieStorageBlock {
+public class BlockCookieStorage extends BlockCookieNetworkBase implements ITileEntityProvider, ICookieStorageBlock {
 	private final int transferSpeed;
 	private long storageCap;
 

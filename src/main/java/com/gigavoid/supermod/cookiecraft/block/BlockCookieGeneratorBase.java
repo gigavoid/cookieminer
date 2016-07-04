@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBlockBase {
+public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase {
 
     public BlockCookieGeneratorBase(Material material) {
         super(material);
