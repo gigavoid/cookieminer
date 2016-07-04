@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.gui;
 
 import com.gigavoid.supermod.SuperMod;
+import com.gigavoid.supermod.cookiecraft.container.ContainerCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.container.ContainerCookieStorage;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
@@ -18,6 +19,8 @@ public class CookiecraftGuis implements IGuiHandler {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
         if(ID == GuiCookieStorage.GUI_ID && tileEntity instanceof TileEntityCookieStorage)
             return new ContainerCookieStorage(player.inventory, (TileEntityCookieStorage) tileEntity);
+        if(ID == GuiCookieGenerator.GUI_ID && tileEntity instanceof TileEntityCookieGenerator)
+            return new ContainerCookieGenerator(player.inventory, (TileEntityCookieGenerator) tileEntity);
         return null;
     }
 

@@ -45,8 +45,19 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
     }
 
     @Override
+
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    public double getCPS(World world, BlockPos pos, IBlockState state) {
+        return 0;
+    }
+
+    @Override
+    public double getModifiedCPS(World world, BlockPos pos, IBlockState state) {
+        return 0;
     }
 
     /**
@@ -202,12 +213,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
         return new BlockState(this, FACING);
     }
 
-    @Override
-    public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return 1/60;
-    }
-
     public static TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
+
 }

@@ -11,5 +11,6 @@ public class CookiecraftTileEntities {
         GameRegistry.registerTileEntity(TileEntityTrashBaker.class, "trash_baker");
         GameRegistry.registerTileEntity(TileEntityCookieAccelerator.class, "cookie_accelerator");
         GameRegistry.registerTileEntity(TileEntitySlimeCompressor.class, "slime_compressor");
+        GameRegistry.registerTileEntity(TileEntityCookieGenerator.class, "cookie_generic_generator");
     }
 }

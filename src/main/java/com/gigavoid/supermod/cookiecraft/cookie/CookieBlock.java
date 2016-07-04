@@ -39,7 +39,7 @@ public class CookieBlock {
         if (!(blockState.getBlock() instanceof ICookieGenerator))
             return 0;
 
-        return ((ICookieGenerator) blockState.getBlock()).getCPS(world, pos, blockState);
+        return ((ICookieGenerator) blockState.getBlock()).getModifiedCPS(world, pos, blockState);
     }
 
     public boolean isStorage() {

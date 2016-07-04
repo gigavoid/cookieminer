@@ -20,7 +20,7 @@ public class GuiCookieStorage extends GuiContainer {
     private final TileEntityCookieStorage tileEntity;
 	private static final ResourceLocation cookieStorageGuiTexture = new ResourceLocation("supermod", "textures/gui/cookie_storage.png");
 
-	public static int PROGRESSBAR_X = 148, PROGRESSBAR_Y = 15, PROGRESSBAR_HEIGHT = 54, PROGRESSBAR_WIDTH = 13;
+	private static final int PROGRESSBAR_X = 148, PROGRESSBAR_Y = 15, PROGRESSBAR_HEIGHT = 54, PROGRESSBAR_WIDTH = 13;
 
 	@Override
     public boolean doesGuiPauseGame() {
