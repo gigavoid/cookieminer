@@ -10,6 +10,9 @@ public class ModelCookieSlimeCompressor extends ModelBase {
     private ModelRenderer bottom;
     private ModelRenderer slime;
 
+    private boolean up = true;
+    private long lastTime = System.nanoTime();
+
     public ModelCookieSlimeCompressor() {
         textureWidth = 128;
         textureHeight = 64;
@@ -26,19 +29,23 @@ public class ModelCookieSlimeCompressor extends ModelBase {
     public void render(TileEntitySlimeCompressor tileEntity) {
         float scale = 1 / 16f;
 
+        long timeNow = System.nanoTime();
+        double deltaTime = timeNow - lastTime;
+
         //Retarded jump code
-        boolean up = true;
-        if (slime.offsetY > (11 / 16)) {
+        if (slime.offsetY >= (4 / 16f)) {
             up = false;
         }
-        else if (slime.offsetY < 0) {
+        else if (slime.offsetY <= (0)) {
             up = true;
         }
-        slime.offsetY = up ? slime.offsetY + System.nanoTime() / (float) Math.pow(10, 9) * 10 : slime.offsetY - System.nanoTime() / (float) Math.pow(10, 9) * 10;
+        slime.offsetY = up ? slime.offsetY + (float)(0.00000001d * deltaTime) : slime.offsetY - (float)(0.00000001d * deltaTime);
 
         slime.render(scale);
         top.render(scale);
         bottom.render(scale);
         glass.render(scale);
+
+        lastTime = timeNow;
     }
 }
