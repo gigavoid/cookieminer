@@ -30,7 +30,7 @@ public class ModelCookieSlimeCompressor extends ModelBase {
         float scale = 1 / 16f;
 
         long timeNow = System.nanoTime();
-        double deltaTime = timeNow - lastTime;
+        double deltaTime = (timeNow - lastTime) / Math.pow(10, 9);
 
         //Retarded jump code
         if (slime.offsetY >= (4 / 16f)) {
@@ -39,7 +39,7 @@ public class ModelCookieSlimeCompressor extends ModelBase {
         else if (slime.offsetY <= (0)) {
             up = true;
         }
-        slime.offsetY = up ? slime.offsetY + (float)(0.00000001d * deltaTime) : slime.offsetY - (float)(0.00000001d * deltaTime);
+        slime.offsetY = up ? slime.offsetY + (float)(1 * deltaTime) : slime.offsetY - (float)(1 * deltaTime);
 
         slime.render(scale);
         top.render(scale);
