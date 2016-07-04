@@ -1,7 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.container;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieGeneratorBase;
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieNetworkBlockBase;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

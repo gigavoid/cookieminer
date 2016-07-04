@@ -12,9 +12,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase {
+public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase implements ICookieGenerator{
     public BlockCookieGeneratorBase(Material material) {
         super(material);
     }
