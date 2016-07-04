@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockCookieCrafter extends BlockCookieNetworkBlockBase implements ITileEntityProvider, ICookieGenerator {
+public class BlockCookieCrafter extends BlockCookieNetworkBlockBase implements ITileEntityProvider, ICookieBlock {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     public static final BlockCookieCrafter instance = new BlockCookieCrafter();
@@ -45,6 +45,7 @@ public class BlockCookieCrafter extends BlockCookieNetworkBlockBase implements I
     }
 
     @Override
+
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
@@ -202,12 +203,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBlockBase implements I
         return new BlockState(this, FACING);
     }
 
-    @Override
-    public double getCPS(World world, BlockPos pos, IBlockState state) {
-        return 1/60;
-    }
-
     public static TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
+
 }

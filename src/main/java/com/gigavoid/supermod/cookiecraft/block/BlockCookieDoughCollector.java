@@ -5,7 +5,9 @@ import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
@@ -34,4 +36,9 @@ public class BlockCookieDoughCollector extends BlockCookieGeneratorBase implemen
 	public int getGuiId() {
 		return GuiCookieGenerator.GUI_ID;
 	}
+
+    @Override
+    public boolean canAcceptUpgrade(ItemStack itemStack) {
+        return super.canAcceptUpgrade(itemStack) || itemStack.getItem() == Items.stone_axe;
+    }
 }

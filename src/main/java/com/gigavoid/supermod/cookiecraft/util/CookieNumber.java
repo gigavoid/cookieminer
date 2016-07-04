@@ -26,7 +26,7 @@ public class CookieNumber {
 
     public static String doubleToString(double number) {
         int factor = Math.max(0, ((int) Math.log10(number) / 3) * 3);
-        int nDecimals = 3;
+        int nDecimals = 2;
 
         if (number < 1000 && Math.floor(number) == number) {
             nDecimals = 0;

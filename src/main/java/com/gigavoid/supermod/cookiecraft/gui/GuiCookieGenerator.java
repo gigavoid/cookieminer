@@ -4,6 +4,7 @@ import com.gigavoid.supermod.cookiecraft.block.ICookieGenerator;
 import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
 import com.gigavoid.supermod.cookiecraft.container.ContainerCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.container.ContainerCookieStorage;
+import com.gigavoid.supermod.cookiecraft.container.SlotCookieUpgrade;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
@@ -48,7 +49,7 @@ public class GuiCookieGenerator extends GuiContainer {
 		int y = (height - ySize) / 2;
 
 		ICookieGenerator generator = (ICookieGenerator) tileEntity.getBlockType();
-		double cps = generator.getCPS(tileEntity.getWorld(), tileEntity.getPos(), tileEntity.getWorld().getBlockState(tileEntity.getPos()));
+		double cps = generator.getModifiedCPS(tileEntity.getWorld(), tileEntity.getPos(), tileEntity.getWorld().getBlockState(tileEntity.getPos()));
 
 		Boolean online = CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos()).findCore() != null;
 
@@ -69,6 +70,21 @@ public class GuiCookieGenerator extends GuiContainer {
 		} else {
 			// Draw red generating light
 			this.drawTexturedModalRect(6, 65, 0, 166, 8, 8);
+		}
+
+		for (int i = 0; i < 4; i++) {
+			String str = (100 - i * 20) + "%";
+			int width = fontRendererObj.getStringWidth(str);
+			int height = fontRendererObj.FONT_HEIGHT;
+			int strX = 26 + i * 36 + 8 - width / 2;
+			int strY = 45;
+			fontRendererObj.drawString(str, strX, strY, 0x666666);
+
+			List<String> percentTooltip = Collections.singletonList(String.format("Upgrades in this slot are %s effective", EnumChatFormatting.AQUA + str + EnumChatFormatting.WHITE));
+
+			if (this.isPointInRegion(strX, strY, width, height, mouseX, mouseY)) {
+				this.drawHoveringText(percentTooltip, mouseX - x, mouseY - y);
+			}
 		}
 
 		fontRendererObj.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);

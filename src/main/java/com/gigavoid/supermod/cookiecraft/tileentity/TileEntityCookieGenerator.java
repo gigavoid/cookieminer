@@ -1,79 +1,32 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
-import com.gigavoid.supermod.cookiecraft.block.ICookieStorageBlock;
-import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.common.util.Constants;
 
 public class TileEntityCookieGenerator extends TileEntity implements IInventory {
-    public static final String NBT_COOKIES = "Cookies";
-    private long cookies;
     private ItemStack[] inv;
 
     public TileEntityCookieGenerator() {
-        inv = new ItemStack[3];
+        inv = new ItemStack[4];
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        setCookies(compound.getLong(NBT_COOKIES));
         readInventoryCompound(compound);
     }
 
     @Override
     public void writeToNBT(NBTTagCompound compound) {
-        compound.setLong(NBT_COOKIES, cookies);
         saveInventoryCompound(compound);
         super.writeToNBT(compound);
-    }
-
-    public void addCookies(long cookies) {
-        setCookies(this.cookies + cookies);
-
-        if (worldObj != null) {
-            worldObj.markBlockForUpdate(pos);
-        }
-    }
-
-    public void setCookies(long cookies) {
-        long oldCookies = this.cookies;
-        this.cookies = cookies;
-
-        if (oldCookies != cookies) {
-            updateOutputCookieStack();
-
-            if (worldObj != null) {
-                worldObj.markBlockForUpdate(pos);
-            }
-        }
-    }
-
-    public long getCookies() {
-        return cookies;
-    }
-
-    @Override
-    public Packet getDescriptionPacket() {
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setLong(NBT_COOKIES, cookies);
-        return new S35PacketUpdateTileEntity(pos, 1, compound);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-        NBTTagCompound compound = pkt.getNbtCompound();
-        setCookies(compound.getLong(NBT_COOKIES));
     }
 
     @Override
@@ -83,8 +36,7 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        ItemStack stack = inv[index];
-        return stack;
+        return inv[index];
     }
 
     @Override
@@ -101,12 +53,6 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
             }
         }
 
-
-        if (index == 2) {
-            removeCookies(amt);
-        }
-
-
         return stack;
     }
 
@@ -120,14 +66,11 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
-        if (worldObj != null) {
-            worldObj.scheduleUpdate(pos, getBlockType(), 2);
-        }
-
         inv[slot] = stack;
         if (stack != null && stack.stackSize > getInventoryStackLimit()) {
             stack.stackSize = getInventoryStackLimit();
         }
+        CookieNetwork.getNetwork(worldObj, pos).updateNetwork();
     }
 
     @Override
@@ -215,116 +158,7 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
         tagCompound.setTag("Inventory", itemList);
     }
 
-    public boolean tick() {
-        return updateUpperSlot() || updateLowerSlot();
-    }
-
-    /**
-     * Place cookies into the item in the slot
-     */
-    private boolean updateUpperSlot() {
-        ItemStack stackInSlot = getStackInSlot(0);
-        if (stackInSlot == null) {
-            // No item to put cookies in
-            return false;
-        }
-
-        ItemCookiePouchBase cookiePouch = (ItemCookiePouchBase) stackInSlot.getItem();
-        if (cookiePouch.isFull(stackInSlot)) {
-            // The item is already filled with cookies
-            return false;
-        }
-
-        ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
-        long blocksInStorage = storageBlock.getCurrentStorage(worldObj, pos);
-
-        if (blocksInStorage <= 0) {
-            // There are no cookies left in the block
-            return false;
-        }
-
-        long wantToTake = getTransferSpeed();
-        long availableInBlock = getCookies();
-        long placeAvailable = cookiePouch.getMaxStorage(stackInSlot) - cookiePouch.getCookies(stackInSlot);
-
-        long toTake = Math.min(wantToTake, Math.min(availableInBlock, placeAvailable));
-        if (toTake == 0 || !cookiePouch.canAddCookies(stackInSlot)) {
-            return false;
-        }
-
-        removeCookies(toTake);
-        cookiePouch.addCookies(stackInSlot, toTake);
-
-        return true;
-
-    }
-
-    private void removeCookies(long toTake) {
-        setCookies(getCookies() - toTake);
-    }
-
-    /**
-     * Suck items out of the item in the slot
-     */
-    private boolean updateLowerSlot() {
-        ItemStack stackInSlot = getStackInSlot(1);
-
-        ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
-        long spaceLeft = storageBlock.getStorageCap() - getCookies();
-
-        if (stackInSlot == null)
-            // No item to draw cookies out of
-            return false;
-
-        if (stackInSlot.getItem() instanceof ItemCookiePouchBase) {
-            ItemCookiePouchBase cookiePouch = (ItemCookiePouchBase) stackInSlot.getItem();
-
-            if (cookiePouch.getCookies(stackInSlot) <= 0)
-                // No more cookies to empty from the item
-                return false;
-
-
-            if (spaceLeft <= 0)
-                // No more space to add the new cookies to
-                return false;
-
-            addCookies(cookiePouch.takeCookies(stackInSlot, getTransferSpeed()));
-
-            if (cookiePouch.shouldDestroy(stackInSlot)) {
-                inv[1] = null;
-            }
-        } else if (stackInSlot.getItem() == Items.cookie) {
-            if (stackInSlot.stackSize < 1) {
-                return false;
-            }
-
-            if (spaceLeft <= 0) {
-                // Full
-                return false;
-            }
-
-            addCookies(1);
-            stackInSlot.stackSize--;
-
-            if (stackInSlot.stackSize == 0) {
-                inv[1] = null;
-            }
-        }
-
-        return true;
-    }
-
-    private long getTransferSpeed() {
-        ICookieStorageBlock storageBlock = (ICookieStorageBlock) getBlockType();
-        return storageBlock.getTransferSpeed();
-    }
-
-    private void updateOutputCookieStack() {
-        if (cookies == 0) {
-            setInventorySlotContents(2, null);
-        } else {
-            int stackSize = (int) Math.min(cookies, 64);
-            setInventorySlotContents(2, new ItemStack(Items.cookie, stackSize));
-        }
+    public ItemStack[] getUpgrades() {
+        return inv;
     }
 }

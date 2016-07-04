@@ -17,6 +17,10 @@ public class ContainerCookieGenerator extends Container {
 
         this.tileEntity = tileEntity;
 
+
+        for (int i = 0; i < 4; i++) {
+            this.addSlotToContainer(new SlotCookieUpgrade(tileEntity, i, 26 + i * 36, 56));
+        }
         bindPlayerInventory(playerInventory);
     }
 

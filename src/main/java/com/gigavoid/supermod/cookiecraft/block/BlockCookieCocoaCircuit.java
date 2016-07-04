@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
@@ -52,15 +53,21 @@ public class BlockCookieCocoaCircuit extends BlockCookieGeneratorBase implements
 
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
+        return ModuleCookiecraft.config.outputCookieCircuit;
+
+    }
+
+    @Override
+    public double getModifiedCPS(World world, BlockPos pos, IBlockState state) {
         if (world.isBlockPowered(pos)) {
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
-            return 1;
+            return super.getModifiedCPS(world, pos, state);
         }
         world.setBlockState(pos, state.withProperty(ACTIVE, false), 2);
         return 0;
     }
 
-	@Override
+    @Override
 	public int getGuiId() {
 		return GuiCookieGenerator.GUI_ID;
 	}
