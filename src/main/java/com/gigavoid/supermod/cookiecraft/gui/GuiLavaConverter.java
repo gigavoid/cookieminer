@@ -5,8 +5,12 @@ import com.gigavoid.supermod.cookiecraft.block.ICookieGenerator;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
+import java.util.Collections;
+import java.util.List;
 
 public class GuiLavaConverter extends GuiCookieGenerator {
     public static final int GUI_ID = 23;
@@ -31,12 +35,30 @@ public class GuiLavaConverter extends GuiCookieGenerator {
         double cps = generator.getModifiedCPS(tileEntity.getWorld(), tileEntity.getPos(), tileEntity.getWorld().getBlockState(tileEntity.getPos()));
 
         Boolean online = CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos()).findCore() != null;
+        BlockCookieLavaConverter lavaConverter = (BlockCookieLavaConverter) tileEntity.getBlockType();
+        int numberOfLavaBlocks = lavaConverter.nrOfLavaBlocks(tileEntity.getWorld(), tileEntity.getPos());
 
-        drawNetworkLight(mouseX, mouseY, x, y, online, lavaConverterTexture);
-        drawGeneratingLight(mouseX, mouseY, x, y, cps, lavaConverterTexture);
-        drawProgressBar();
+        drawNetworkLight(online, lavaConverterTexture);
+        drawGeneratingLight(cps, lavaConverterTexture);
+        drawProgressBar(numberOfLavaBlocks);
+        drawCps(cps);
+        drawEffectivenessStrings();
 
-        drawEffectivenessStrings(mouseX, mouseY, x, y, cps);
+
+        drawNetworkTooltip(mouseX, mouseY, x, y, online);
+        drawGeneratingTooltip(mouseX, mouseY, x, y, cps);
+        drawEffectivenessTooltips(mouseX, mouseY, x, y);
+        drawProgressBarTooltip(x, y, mouseX, mouseY, numberOfLavaBlocks);
+    }
+
+    private void drawProgressBarTooltip(int x, int y, int mouseX, int mouseY, int numberOfLavaBlocks) {
+        // Network tooltip
+        List<String> statusTooltip = Collections.singletonList("Nearby lava blocks: " +
+                EnumChatFormatting.AQUA + numberOfLavaBlocks + EnumChatFormatting.WHITE);
+
+        if (this.isPointInRegion(PROGRESSBAR_X, PROGRESSBAR_Y, PROGRESSBAR_WIDTH, PROGRESSBAR_HEIGHT, mouseX, mouseY)) {
+            this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
+        }
     }
 
 
@@ -50,11 +72,9 @@ public class GuiLavaConverter extends GuiCookieGenerator {
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
     }
 
-    private void drawProgressBar() {
+    private void drawProgressBar(int numberOfLavaBlocks) {
         this.mc.getTextureManager().bindTexture(lavaConverterTexture);
 
-        BlockCookieLavaConverter lavaConverter = (BlockCookieLavaConverter) tileEntity.getBlockType();
-        int numberOfLavaBlocks = lavaConverter.nrOfLavaBlocks(tileEntity.getWorld(), tileEntity.getPos());
 
         int progressVisible = (int) (numberOfLavaBlocks / (double)25 * PROGRESSBAR_WIDTH);
 
