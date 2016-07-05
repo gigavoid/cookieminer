@@ -3,6 +3,7 @@ package com.gigavoid.supermod.cookiecraft.renderer;
 import com.gigavoid.supermod.cookiecraft.model.ModelCookieSlimeCompressor;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntitySlimeCompressor;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;

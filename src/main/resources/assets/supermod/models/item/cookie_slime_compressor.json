@@ -1,0 +1,8 @@
+{
+  "parent": "supermod:item/cookie_slime_compressor_inventory_model",
+  "textures": {
+    "texture": "supermod:blocks/cookie_crafter_side",
+    "glass": "supermod:blocks/cookie_sc_glass",
+    "slime": "supermod:blocks/cookie_sc_slime"
+  }
+}

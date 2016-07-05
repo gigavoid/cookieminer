@@ -34,9 +34,11 @@ public class ModelCookieSlimeCompressor extends ModelBase {
 
         //Retarded jump code
         if (slime.offsetY >= (4 / 16f)) {
+            slime.offsetY = 4 / 16f;
             up = false;
         }
         else if (slime.offsetY <= (0)) {
+            slime.offsetY = 0;
             up = true;
         }
         slime.offsetY = up ? slime.offsetY + (float)(1 * deltaTime) : slime.offsetY - (float)(1 * deltaTime);
