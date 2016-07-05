@@ -55,7 +55,7 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
             return ModuleCookiecraft.config.outputLavaConverter * nLavaBlocks / 25;
         }
-        world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false), 2);
+        world.setBlockState(pos, state.withProperty(ACTIVE, false), 2);
         return 0;
     }
 
