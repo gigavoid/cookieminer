@@ -42,9 +42,35 @@ public class GuiCookieGenerator extends GuiContainer {
 
 		Boolean online = CookieNetwork.getNetwork(tileEntity.getWorld(), tileEntity.getPos()).findCore() != null;
 
-		drawNetworkLight(mouseX, mouseY, x, y, online, cookieGeneratorGuiTexture);
-		drawGeneratingLight(mouseX, mouseY, x, y, cps, cookieGeneratorGuiTexture);
-		drawEffectivenessStrings(mouseX, mouseY, x, y, cps);
+		drawNetworkLight(online, cookieGeneratorGuiTexture);
+		drawGeneratingLight(cps, cookieGeneratorGuiTexture);
+		drawEffectivenessStrings();
+		drawCps(cps);
+
+		drawNetworkTooltip(mouseX, mouseY, x, y, online);
+		drawGeneratingTooltip(mouseX, mouseY, x, y, cps);
+		drawEffectivenessTooltips(mouseX, mouseY, x, y);
+	}
+
+	public void drawCps(double cps) {
+		fontRendererObj.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);
+	}
+
+	public void drawEffectivenessTooltips(int mouseX, int mouseY, int x, int y) {
+		for (int i = 0; i < 4; i++) {
+			String str = (100 - i * 20) + "%";
+			int width = fontRendererObj.getStringWidth(str);
+			int height = fontRendererObj.FONT_HEIGHT;
+			int strX = 26 + i * 36 + 8 - width / 2;
+			int strY = 45;
+
+			List<String> percentTooltip = Collections.singletonList(String.format("Upgrades in this slot are %s effective", EnumChatFormatting.AQUA + str + EnumChatFormatting.WHITE));
+
+
+			if (this.isPointInRegion(strX, strY, width, height, mouseX, mouseY)) {
+				this.drawHoveringText(percentTooltip, mouseX - x, mouseY - y);
+			}
+		}
 	}
 
 
@@ -58,26 +84,17 @@ public class GuiCookieGenerator extends GuiContainer {
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
 
-	public void drawEffectivenessStrings(int mouseX, int mouseY, int x, int y, double cps) {
+	public void drawEffectivenessStrings() {
 		for (int i = 0; i < 4; i++) {
 			String str = (100 - i * 20) + "%";
 			int width = fontRendererObj.getStringWidth(str);
-			int height = fontRendererObj.FONT_HEIGHT;
 			int strX = 26 + i * 36 + 8 - width / 2;
 			int strY = 45;
 			fontRendererObj.drawString(str, strX, strY, 0x666666);
-
-			List<String> percentTooltip = Collections.singletonList(String.format("Upgrades in this slot are %s effective", EnumChatFormatting.AQUA + str + EnumChatFormatting.WHITE));
-
-			if (this.isPointInRegion(strX, strY, width, height, mouseX, mouseY)) {
-				this.drawHoveringText(percentTooltip, mouseX - x, mouseY - y);
-			}
 		}
-
-		fontRendererObj.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);
 	}
 
-	public void drawGeneratingLight(int mouseX, int mouseY, int x, int y, double cps, ResourceLocation texture) {
+	public void drawGeneratingLight(double cps, ResourceLocation texture) {
 		this.mc.getTextureManager().bindTexture(texture);
 
 		// Generating lights
@@ -90,15 +107,9 @@ public class GuiCookieGenerator extends GuiContainer {
 		}
 
 		// Generating tooltip
-		List<String> generatingTooltip = Collections.singletonList("Is block generating cookies: " +
-				(cps != 0 ? EnumChatFormatting.GREEN + "Active" : EnumChatFormatting.RED + "Inactive"));
-
-		if (this.isPointInRegion(6, 65, 6, 6, mouseX, mouseY)) {
-			this.drawHoveringText(generatingTooltip, mouseX - x, mouseY - y);
-		}
 	}
 
-	public void drawNetworkLight(int mouseX, int mouseY, int x, int y, Boolean online, ResourceLocation texture) {
+	public void drawNetworkLight(Boolean online, ResourceLocation texture) {
 		this.mc.getTextureManager().bindTexture(texture);
 
 		// Network lights
@@ -110,13 +121,24 @@ public class GuiCookieGenerator extends GuiContainer {
 			this.drawTexturedModalRect(6, 73, 0, 166, 8, 8);
 		}
 
+	}
 
+	public void drawNetworkTooltip(int mouseX, int mouseY, int x, int y, Boolean online) {
 		// Network tooltip
 		List<String> statusTooltip = Collections.singletonList("Connected to cookie network: " +
-				(online ? EnumChatFormatting.GREEN + "Online" : EnumChatFormatting.RED + "Offline"));
+				(online ? EnumChatFormatting.GREEN + "True" : EnumChatFormatting.RED + "False"));
 
 		if (this.isPointInRegion(6, 73, 6, 6, mouseX, mouseY)) {
 			this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
+		}
+	}
+
+	public void drawGeneratingTooltip(int mouseX, int mouseY, int x, int y, double cps) {
+		List<String> generatingTooltip = Collections.singletonList("Is block generating cookies: " +
+				(cps != 0 ? EnumChatFormatting.GREEN + "Active" : EnumChatFormatting.RED + "Inactive"));
+
+		if (this.isPointInRegion(6, 65, 6, 6, mouseX, mouseY)) {
+			this.drawHoveringText(generatingTooltip, mouseX - x, mouseY - y);
 		}
 	}
 
