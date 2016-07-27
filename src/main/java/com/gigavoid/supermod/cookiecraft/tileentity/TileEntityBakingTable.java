@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
 
+import com.gigavoid.supermod.cookiecraft.block.BlockCookieBakingTable;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.entity.passive.EntityVillager;
@@ -29,8 +30,9 @@ public class TileEntityBakingTable extends TileEntityCookieGenerator{
 		boolean result = !entities.isEmpty();
         boolean update = active != result;
 		setActive(result);
-        if (update)
+        if (update) {
             updateCookieNetwork();
+        }
 		return result;
 	}
 
