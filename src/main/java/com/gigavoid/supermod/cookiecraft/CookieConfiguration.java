@@ -16,8 +16,8 @@ public class CookieConfiguration {
 
     public double outputDoughCollector, outputCookieFarm, outputCactusMasher, outputCookieStreamer,
             outputSapGatherer, outputCookieCircuit, outputIceMelter, outputMoonlightReflector, outputSlimeCompressor,
-            outputLavaConverter, outputBakingTable, outputNuclearBaker, outputPortalConnector, outputVacuumOven,
-            outputIonChanneler, outputCookieAccelerator;
+            outputLavaConverter, outputBakingTable, outputNuclearBaker, outputPortalConnector, outputCookieBlazer,
+            outputVacuumOven, outputIonChanneler, outputCookieAccelerator;
 
     public long pouchSizeLeather, pouchSizeWood, pouchSizeStone, pouchSizeIron, pouchSizeGold, pouchSizeDiamond,
             pouchSizeObsidian, pouchSizeEmerald, pouchSizeEnder, pouchSizeMagical;
@@ -70,10 +70,11 @@ public class CookieConfiguration {
         outputLavaConverter = getDouble(cat, "T10_LavaConverter", 1/16D * Math.pow(4, 9));
         outputBakingTable = getDouble(cat, "T11_BakingTable", 1/16D * Math.pow(4, 10));
         outputNuclearBaker = getDouble(cat, "T12_NuclearBaker", 1/16D * Math.pow(4, 11));
-        outputPortalConnector = getDouble(cat, "T13_PortalConnector", 1/16D * Math.pow(4, 12));
-        outputVacuumOven = getDouble(cat, "T14_VacuumOven", 1/16D * Math.pow(4, 13));
-        outputIonChanneler = getDouble(cat, "T15_IonChanneler", 1/16D * Math.pow(4, 14));
-        outputCookieAccelerator = getDouble(cat, "T16_CookieAccelerator", 1/16D * Math.pow(4, 15));
+        outputCookieBlazer = getDouble(cat, "T13_CookieBlazer", 1/16D * Math.pow(4, 12));
+        outputPortalConnector = getDouble(cat, "T14_PortalConnector", 1/16D * Math.pow(4, 13));
+        outputVacuumOven = getDouble(cat, "T15_VacuumOven", 1/16D * Math.pow(4, 14));
+        outputIonChanneler = getDouble(cat, "T16_IonChanneler", 1/16D * Math.pow(4, 15));
+        outputCookieAccelerator = getDouble(cat, "T17_CookieAccelerator", 1/16D * Math.pow(4, 16));
 
 
 
