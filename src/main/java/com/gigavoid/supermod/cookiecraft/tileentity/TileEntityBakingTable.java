@@ -1,8 +1,5 @@
 package com.gigavoid.supermod.cookiecraft.tileentity;
 
-
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieBakingTable;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityVillager;
@@ -21,7 +18,7 @@ public class TileEntityBakingTable extends TileEntityCookieGenerator{
     private boolean active = false;
 
     @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
         return false;
     }
 
