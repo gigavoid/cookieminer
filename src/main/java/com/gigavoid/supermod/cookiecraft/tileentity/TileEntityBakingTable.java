@@ -27,8 +27,9 @@ public class TileEntityBakingTable extends TileEntityCookieGenerator{
 	public boolean isAVillagerInRange(){
 		List entities = this.worldObj.getEntities(EntityVillager.class, checkRange(this.pos));
 		boolean result = !entities.isEmpty();
+        boolean update = active != result;
 		setActive(result);
-        if (result != active)
+        if (update)
             updateCookieNetwork();
 		return result;
 	}
