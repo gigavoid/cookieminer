@@ -6,7 +6,7 @@ import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -15,7 +15,7 @@ public class BlockCookieIceMelter extends BlockCookieGeneratorBase implements IC
     public static final BlockCookieIceMelter instance = new BlockCookieIceMelter();
 
     private BlockCookieIceMelter() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 

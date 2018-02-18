@@ -2,15 +2,14 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.gui.GuiLavaConverter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -22,7 +21,7 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
     public static final BlockCookieLavaConverter instance = new BlockCookieLavaConverter();
 
     private BlockCookieLavaConverter() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -34,8 +33,8 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, ACTIVE);
     }
 
     @Override
@@ -79,6 +78,6 @@ public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implement
     }
 
     private boolean isLava(IBlockAccess world, BlockPos blockPos) {
-        return world.getBlockState(blockPos).getBlock() == Blocks.lava || world.getBlockState(blockPos).getBlock() == Blocks.flowing_lava;
+        return world.getBlockState(blockPos).getBlock() == Blocks.LAVA || world.getBlockState(blockPos).getBlock() == Blocks.FLOWING_LAVA;
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
@@ -207,8 +208,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, FACING);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, FACING);
     }
 
     public static TileEntityCookieCrafter getTileEntity(World world, BlockPos pos) {

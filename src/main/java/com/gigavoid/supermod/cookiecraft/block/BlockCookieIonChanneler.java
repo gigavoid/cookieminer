@@ -2,14 +2,13 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -23,7 +22,7 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     public static final BlockCookieIonChanneler instance = new BlockCookieIonChanneler();
 
     private BlockCookieIonChanneler() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(TOP, true).withProperty(BOTTOM, true));
     }
@@ -35,8 +34,8 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE, TOP, BOTTOM);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, ACTIVE, TOP, BOTTOM);
     }
 
     @Override
