@@ -23,10 +23,7 @@ public class CookiecraftItems {
     public static final ItemCookiePouch ironCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeIron);
     public static final ItemCookiePouch goldenCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeGold);
     public static final ItemCookiePouch diamondCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeDiamond);
-    public static final ItemCookiePouch obsidianCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeObsidian);
     public static final ItemCookiePouch emeraldCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeEmerald);
-    public static final ItemCookiePouch enderCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeEnder);
-    public static final ItemCookiePouch magicalCookiePouch = new ItemCookiePouch(ModuleCookiecraft.config.pouchSizeMagical);
 
     public static final ItemInfiniteCookiePouch infiniteCookiePouch = new ItemInfiniteCookiePouch();
     public static final ItemCookiePouchOverflow overflowCookiePouch = new ItemCookiePouchOverflow();
