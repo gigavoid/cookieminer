@@ -2,9 +2,7 @@ package com.gigavoid.supermod.cookiecraft.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCookieAccelerator extends TileEntityCookieGenerator {
     public static final String KEY_IS_ACTIVE = "isActive";
@@ -17,7 +15,6 @@ public class TileEntityCookieAccelerator extends TileEntityCookieGenerator {
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
-        world.markBlockForUpdate(pos);
         markDirty();
     }
 
@@ -28,16 +25,17 @@ public class TileEntityCookieAccelerator extends TileEntityCookieGenerator {
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setBoolean(KEY_IS_ACTIVE, isActive);
         super.writeToNBT(compound);
+        return compound;
     }
 
     @Override
-    public Packet getDescriptionPacket() {
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setBoolean(KEY_IS_ACTIVE, isActive);
-        return new SPacketUpdateTileEntity(pos, 1, compound);
+    public NBTTagCompound getUpdateTag() {
+        NBTTagCompound tag = super.getUpdateTag();
+        tag.setBoolean(KEY_IS_ACTIVE, isActive);
+        return tag;
     }
 
     @Override

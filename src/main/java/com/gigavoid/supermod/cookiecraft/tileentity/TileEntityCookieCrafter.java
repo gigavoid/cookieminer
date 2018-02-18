@@ -3,7 +3,7 @@ package com.gigavoid.supermod.cookiecraft.tileentity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCookieCrafter extends TileEntity {
@@ -23,15 +23,16 @@ public class TileEntityCookieCrafter extends TileEntity {
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setDouble("CPS", cps);
         compound.setDouble("leftover", leftover);
         super.writeToNBT(compound);
+        return compound;
     }
 
     public void setCPS(double cps) {
         this.cps = cps;
-        worldObj.markBlockForUpdate(pos);
+        //TODO: Update?
     }
 
     public double getCPS() {
@@ -47,14 +48,14 @@ public class TileEntityCookieCrafter extends TileEntity {
     }
 
     @Override
-    public Packet getDescriptionPacket() {
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setDouble("CPS", cps);
-        return new S35PacketUpdateTileEntity(pos, 1, compound);
+    public NBTTagCompound getUpdateTag() {
+        NBTTagCompound tag = super.getUpdateTag();
+        tag.setDouble("CPS", cps);
+        return tag;
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         NBTTagCompound compound = pkt.getNbtCompound();
         cps = compound.getDouble("CPS");
     }

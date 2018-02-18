@@ -23,14 +23,19 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         saveInventoryCompound(compound);
-        super.writeToNBT(compound);
+        return super.writeToNBT(compound);
     }
 
     @Override
     public int getSizeInventory() {
         return inv.length;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return inv.length == 0;
     }
 
     @Override
@@ -56,7 +61,7 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index) {
+    public ItemStack removeStackFromSlot(int index) {
         ItemStack stack = getStackInSlot(index);
         if (stack != null)
             setInventorySlotContents(index, null);
@@ -78,7 +83,7 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
     }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer playerIn) {
+    public boolean isUsableByPlayer(EntityPlayer playerIn) {
         return playerIn.getDistanceSq(pos) < 64;
     }
 

@@ -6,11 +6,8 @@ import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IChatComponent;
 
 public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     private ItemStack inv;
@@ -22,16 +19,17 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         saveInventoryCompound(compound);
         super.writeToNBT(compound);
+        return compound;
     }
 
     /**
      * Convert 1 cactus into 1 cookie
      */
     public boolean tick() {
-        if (inv != null && inv.stackSize >= 1) {
+        if (inv != null && inv.getCount() >= 1) {
             CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCore();
             if (crafter == null) {
                 return false;
@@ -52,7 +50,7 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        worldObj.scheduleUpdate(pos, getBlockType(), 2);
+        world.scheduleUpdate(pos, getBlockType(), 2);
         return index == 0 ? inv : null;
     }
 
@@ -60,11 +58,11 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     public ItemStack decrStackSize(int index, int amt) {
         ItemStack stack = getStackInSlot(index);
         if(stack != null) {
-            if (stack.stackSize <= amt)
+            if (stack.getCount() <= amt)
                 setInventorySlotContents(index, null);
             else {
                 stack = stack.splitStack(amt);
-                if(stack.stackSize == 0)
+                if(stack.getCount() == 0)
                     setInventorySlotContents(index, null);
             }
         }
@@ -72,7 +70,7 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index) {
+    public ItemStack removeStackFromSlot(int index) {
         ItemStack  stack = getStackInSlot(index);
         if(stack != null)
             setInventorySlotContents(index, null);
@@ -83,8 +81,8 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     public void setInventorySlotContents(int slot, ItemStack stack) {
 
         inv = stack;
-        if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-            stack.stackSize = getInventoryStackLimit();
+        if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+            stack.setCount(getInventoryStackLimit());
         }
     }
 
@@ -94,7 +92,7 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
     }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer playerIn) {
+    public boolean isUsableByPlayer(EntityPlayer playerIn) {
         return playerIn.getDistanceSq(pos) < 64;
     }
 
@@ -110,7 +108,7 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        return Block.getBlockFromItem(stack.getItem()) == Blocks.cactus;
+        return Block.getBlockFromItem(stack.getItem()) == Blocks.CACTUS;
     }
 
     @Override
@@ -143,13 +141,9 @@ public class TileEntityCactusMasher extends TileEntityCookieGenerator {
         return false;
     }
 
-    @Override
-    public IChatComponent getDisplayName() {
-        return null;
-    }
 
     private void readInventoryCompound(NBTTagCompound tagCompound) {
-        inv = ItemStack.loadItemStackFromNBT(tagCompound.getCompoundTag("inv"));
+        inv = new ItemStack(tagCompound.getCompoundTag("inv"));
     }
 
     private void saveInventoryCompound(NBTTagCompound tagCompound) {

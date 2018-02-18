@@ -3,11 +3,10 @@ package com.gigavoid.supermod.cookiecraft.tileentity;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 
-public class  TileEntityMoonlightReflector extends TileEntityCookieGenerator implements IUpdatePlayerListBox{
+public class  TileEntityMoonlightReflector extends TileEntityCookieGenerator implements ITickable{
     public static final String KEY_IS_ACTIVE = "isActive";
 
     private boolean isActive;
@@ -28,9 +27,10 @@ public class  TileEntityMoonlightReflector extends TileEntityCookieGenerator imp
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setBoolean(KEY_IS_ACTIVE, isActive);
         super.writeToNBT(compound);
+        return compound;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class  TileEntityMoonlightReflector extends TileEntityCookieGenerator imp
 
             if (isActive != isActive()) {
                 setIsActive(isActive);
-                CookieNetwork.getNetwork(worldObj, pos).updateNetwork();
+                CookieNetwork.getNetwork(world, pos).updateNetwork();
             }
         }
     }
@@ -51,12 +51,12 @@ public class  TileEntityMoonlightReflector extends TileEntityCookieGenerator imp
      * Custom isDay method since the one provided by Minecraft only works on the server side
      */
     private boolean isDay() {
-        return worldObj.getWorldTime() % 24000 > 0 && worldObj.getWorldTime() % 24000 < 12000;
+        return world.getWorldTime() % 24000 > 0 && world.getWorldTime() % 24000 < 12000;
     }
 
     private boolean isTopBlock() {
         for (int i = pos.getY() + 1; i < 256; i++){
-            if (worldObj.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).getBlock() != Blocks.air){
+            if (world.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).getBlock() != Blocks.AIR){
                 return false;
             }
         }

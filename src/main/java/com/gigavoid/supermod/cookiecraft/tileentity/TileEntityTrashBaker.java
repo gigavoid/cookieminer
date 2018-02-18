@@ -3,31 +3,24 @@ package com.gigavoid.supermod.cookiecraft.tileentity;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieBlock;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
-import net.minecraft.block.Block;
-import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityHopper;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TileEntityTrashBaker extends TileEntityCookieGenerator implements IInventory, IUpdatePlayerListBox {
+public class TileEntityTrashBaker extends TileEntityCookieGenerator implements IInventory, ITickable {
     private ItemStack inv;
 
     private static Map<Item, Double> trashToCookies;
@@ -55,9 +48,10 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound compound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         saveInventoryCompound(compound);
         super.writeToNBT(compound);
+        return compound;
     }
 
     public boolean tick() {
@@ -83,7 +77,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        worldObj.scheduleUpdate(pos, getBlockType(), 2);
+        world.scheduleUpdate(pos, getBlockType(), 2);
         return index == 0 ? inv : null;
     }
 
@@ -91,11 +85,11 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     public ItemStack decrStackSize(int index, int amt) {
         ItemStack stack = getStackInSlot(index);
         if(stack != null) {
-            if (stack.stackSize <= amt)
+            if (stack.getCount() <= amt)
                 setInventorySlotContents(index, null);
             else {
                 stack = stack.splitStack(amt);
-                if(stack.stackSize == 0)
+                if(stack.getCount() == 0)
                     setInventorySlotContents(index, null);
             }
         }
@@ -103,7 +97,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index) {
+    public ItemStack removeStackFromSlot(int index) {
         ItemStack  stack = getStackInSlot(index);
         if(stack != null)
             setInventorySlotContents(index, null);
@@ -114,8 +108,8 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     public void setInventorySlotContents(int slot, ItemStack stack) {
 
         inv = stack;
-        if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-            stack.stackSize = getInventoryStackLimit();
+        if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+            stack.setCount(getInventoryStackLimit());
         }
     }
 
@@ -125,7 +119,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer playerIn) {
+    public boolean isUsableByPlayer(EntityPlayer playerIn) {
         return playerIn.getDistanceSq(pos) < 64;
     }
 
@@ -174,13 +168,8 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
         return false;
     }
 
-    @Override
-    public IChatComponent getDisplayName() {
-        return null;
-    }
-
     private void readInventoryCompound(NBTTagCompound tagCompound) {
-        inv = ItemStack.loadItemStackFromNBT(tagCompound.getCompoundTag("inv"));
+        inv = new ItemStack(tagCompound.getCompoundTag("inv"));
     }
 
     private void saveInventoryCompound(NBTTagCompound tagCompound) {
@@ -196,7 +185,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
 
     public void update()
     {
-        if (this.worldObj != null && !this.worldObj.isRemote)
+        if (this.world != null && !this.world.isRemote)
         {
             grabFloatingItems();
 
@@ -215,7 +204,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
 
     private EntityItem func_145897_a(World worldIn, BlockPos pos)
     {
-        List list = worldIn.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0D, pos.getY() + 1.1D, pos.getZ() + 1.0D), IEntitySelector.selectAnything);
+        List list = worldIn.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0D, pos.getY() + 1.1D, pos.getZ() + 1.0D), null);
         return list.size() > 0 ? (EntityItem)list.get(0) : null;
     }
 
@@ -229,12 +218,12 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
         }
         else
         {
-            ItemStack itemstack = p_145898_1_.getEntityItem().copy();
+            ItemStack itemstack = p_145898_1_.getItem().copy();
             ItemStack itemstack1 = transferToInventory(itemstack);
 
-            if (itemstack1 != null && itemstack1.stackSize != 0)
+            if (itemstack1 != null && itemstack1.getCount() != 0)
             {
-                p_145898_1_.setEntityItemStack(itemstack1);
+                p_145898_1_.setItem(itemstack1);
             }
             else
             {
@@ -254,18 +243,18 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
         int toTake = 0;
 
         if (inv == null) {
-            toTake = Math.min(itemstack.stackSize, itemstack.getMaxStackSize());
-        } else if (inv.getItem() == itemstack.getItem() && inv.stackSize < inv.getMaxStackSize()) {
-           toTake =  Math.min(itemstack.stackSize, inv.getMaxStackSize() - inv.stackSize);
+            toTake = Math.min(itemstack.getCount(), itemstack.getMaxStackSize());
+        } else if (inv.getItem() == itemstack.getItem() && inv.getCount() < inv.getMaxStackSize()) {
+           toTake =  Math.min(itemstack.getCount(), inv.getMaxStackSize() - inv.getCount());
         }
 
 
         if (inv == null) {
             inv = new ItemStack(itemstack.getItem(), toTake);
         } else {
-            inv.stackSize += toTake;
+            inv.setCount(inv.getCount() + toTake);
         }
-        itemstack.stackSize -= toTake;
+        itemstack.setCount(itemstack.getCount() - toTake);
 
         return itemstack;
     }
