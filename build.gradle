@@ -1,21 +1,12 @@
-
 buildscript {
     repositories {
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
+        maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
-
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 /*
@@ -24,15 +15,14 @@ plugins {
 }
 */
 
-version = "1.8-1.0"
+version = "1.12-1.0"
 group= "com.gigavoid.supermod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Cookieminer"
 
 minecraft {
-    version = "1.8-11.14.3.1543"
+    version = "1.12.2-14.23.2.2618"
     runDir = "eclipse"
-    mappings = "snapshot_20141130"
-    useDepAts = true
+    mappings = "snapshot_20171003"
 }
 
 repositories {
