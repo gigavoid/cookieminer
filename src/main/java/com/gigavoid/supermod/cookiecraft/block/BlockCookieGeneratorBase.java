@@ -64,8 +64,8 @@ public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase im
                 MultiplicativeBoost multiplicativeBoost = upgrade.getMultiplicativeBoost();
 
                 if (multiplicativeBoost != null) {
-                    multiplicativeBoosts.computeIfPresent(multiplicativeBoost.getKey(), (k, v) -> v + multiplicativeBoost.getBoost() * finalEfficiency * stack.stackSize);
-                    multiplicativeBoosts.putIfAbsent(multiplicativeBoost.getKey(), multiplicativeBoost.getBoost() * efficiency * stack.stackSize);
+                    multiplicativeBoosts.computeIfPresent(multiplicativeBoost.getKey(), (k, v) -> v + multiplicativeBoost.getBoost() * finalEfficiency * stack.getCount());
+                    multiplicativeBoosts.putIfAbsent(multiplicativeBoost.getKey(), multiplicativeBoost.getBoost() * efficiency * stack.getCount());
                 }
             }
         }

@@ -1,7 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.util;
 
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 
 public class CookieAcceleratorBlockPos extends BlockPos {
     public CookieAcceleratorBlockPos(BlockPos pos) {

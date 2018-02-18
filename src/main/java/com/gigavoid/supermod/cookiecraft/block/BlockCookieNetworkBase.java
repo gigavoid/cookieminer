@@ -25,12 +25,10 @@ public abstract class BlockCookieNetworkBase extends Block implements ITileEntit
 		CookieNetwork.getNetwork(worldIn, pos).updateNetwork();
     }
 
-    @Override
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
 		CookieNetwork.getNetwork(worldIn, pos).updateNetwork();
     }
 
-	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		playerIn.openGui(SuperMod.instance, getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;

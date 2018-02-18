@@ -1,17 +1,16 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.gui.GuiCookieCrafter;
 import com.gigavoid.supermod.cookiecraft.item.CookiecraftItems;
 import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchOverflow;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieCrafter;
-import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockSourceImpl;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
@@ -21,8 +20,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -33,7 +32,7 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
     public static final BlockCookieCrafter instance = new BlockCookieCrafter();
 
     private BlockCookieCrafter() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
@@ -45,9 +44,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
     }
 
     @Override
-
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
     }
 
     @Override
@@ -68,8 +66,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
         if (!worldIn.isRemote)
         {
             EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock();
-            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock();
+            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock(state);
+            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock(state);
 
             if (enumfacing == EnumFacing.NORTH && flag && !flag1)
             {
@@ -81,8 +79,8 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
             }
             else
             {
-                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock();
-                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock();
+                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock(state);
+                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock(state);
 
                 if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
                 {
@@ -154,13 +152,13 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
             ((ItemCookiePouchOverflow) overflowStack.getItem()).initialize(overflowStack, wholeCookies);
             dispenseStack(blockSource, overflowStack);
         } else {
-            dispenseStack(blockSource, new ItemStack(Items.cookie, (int) wholeCookies));
+            dispenseStack(blockSource, new ItemStack(Items.COOKIE, (int) wholeCookies));
         }
     }
 
     private void dispenseStack(IBlockSource source, ItemStack stack)
     {
-        EnumFacing enumfacing = BlockDispenser.getFacing(source.getBlockMetadata());
+        EnumFacing enumfacing = (EnumFacing)source.getBlockState().getValue(FACING);
         IPosition iposition = BlockDispenser.getDispensePosition(source);
         doDispense(source.getWorld(), stack, 6, enumfacing, iposition);
 
@@ -194,7 +192,7 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
         entityitem.motionX += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
         entityitem.motionY += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
         entityitem.motionZ += worldIn.rand.nextGaussian() * 0.007499999832361937D * (double)speed;
-        worldIn.spawnEntityInWorld(entityitem);
+        worldIn.spawnEntity(entityitem);
     }
 
     @Override

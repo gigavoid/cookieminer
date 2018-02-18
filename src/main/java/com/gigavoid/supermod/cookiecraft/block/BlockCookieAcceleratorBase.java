@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -68,8 +69,8 @@ public class BlockCookieAcceleratorBase extends BlockCookieGeneratorBase impleme
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, ACTIVE);
     }
 
     @Override

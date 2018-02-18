@@ -4,11 +4,11 @@ import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityBakingTable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -20,7 +20,7 @@ public class BlockCookieBakingTable extends BlockCookieGeneratorBase implements 
     public static final BlockCookieBakingTable instance = new BlockCookieBakingTable();
 
     private BlockCookieBakingTable(){
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -58,8 +58,8 @@ public class BlockCookieBakingTable extends BlockCookieGeneratorBase implements 
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, ACTIVE);
     }
 
     @Override

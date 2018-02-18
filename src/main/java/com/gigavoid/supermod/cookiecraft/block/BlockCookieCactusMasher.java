@@ -1,18 +1,18 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCactusMasher;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -23,7 +23,7 @@ public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements
     public static final BlockCookieCactusMasher instance = new BlockCookieCactusMasher();
 
     private BlockCookieCactusMasher() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
@@ -41,15 +41,14 @@ public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, FACING);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING);
     }
 
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
     }
-
 
     /**
      * Copied from BlockDispenser
@@ -59,8 +58,8 @@ public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements
         if (!worldIn.isRemote)
         {
             EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock();
-            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock();
+            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock(state);
+            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock(state);
 
             if (enumfacing == EnumFacing.NORTH && flag && !flag1)
             {
@@ -72,8 +71,8 @@ public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements
             }
             else
             {
-                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock();
-                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock();
+                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock(state);
+                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock(state);
 
                 if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
                 {

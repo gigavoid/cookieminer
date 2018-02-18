@@ -1,17 +1,13 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import net.minecraft.block.BlockLeavesBase;
-import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -23,7 +19,7 @@ public class BlockCookieBlazer extends BlockCookieGeneratorBase implements ICook
     public static final BlockCookieBlazer instance = new BlockCookieBlazer();
 
     private BlockCookieBlazer(){
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -35,8 +31,8 @@ public class BlockCookieBlazer extends BlockCookieGeneratorBase implements ICook
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, ACTIVE);
     }
 
     @Override
@@ -60,6 +56,6 @@ public class BlockCookieBlazer extends BlockCookieGeneratorBase implements ICook
     }
 
     private boolean isActive(IBlockAccess world, BlockPos pos) {
-        return world.getBlockState(pos.down()).getBlock() == Blocks.fire;
+        return world.getBlockState(pos.down()).getBlock() == Blocks.FIRE;
     }
 }

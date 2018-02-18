@@ -1,14 +1,14 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.cookiecraft.cookie.AcceleratorNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -26,8 +26,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     }
 
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        worldIn.setBlockState(pos,this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()));
     }
 
     @Override
@@ -42,8 +42,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE, FACING);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, ACTIVE, FACING);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
         if (!worldIn.isRemote)
         {
             EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock();
-            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock();
+            boolean flag = worldIn.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock().isFullBlock(state);
+            boolean flag1 = worldIn.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock().isFullBlock(state);
 
             if (enumfacing == EnumFacing.NORTH && flag && !flag1)
             {
@@ -75,8 +75,8 @@ public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
             }
             else
             {
-                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock();
-                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock();
+                boolean flag2 = worldIn.getBlockState(pos.offset(EnumFacing.WEST)).getBlock().isFullBlock(state);
+                boolean flag3 = worldIn.getBlockState(pos.offset(EnumFacing.EAST)).getBlock().isFullBlock(state);
 
                 if (enumfacing == EnumFacing.WEST && flag2 && !flag3)
                 {
