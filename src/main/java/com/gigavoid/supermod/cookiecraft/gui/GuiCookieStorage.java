@@ -5,9 +5,9 @@ import com.gigavoid.supermod.cookiecraft.container.ContainerCookieStorage;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -59,7 +59,7 @@ public class GuiCookieStorage extends GuiContainer {
 
 		// Network tooltip
 		List<String> statusTooltip = Collections.singletonList("Connected to cookie network: " +
-				(online ? EnumChatFormatting.GREEN + "Online" : EnumChatFormatting.RED + "Offline"));
+				(online ? ChatFormatting.GREEN + "Online" : ChatFormatting.RED + "Offline"));
 
 		if (this.isPointInRegion(6, 73, 8, 8, mouseX, mouseY)) {
 			this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
