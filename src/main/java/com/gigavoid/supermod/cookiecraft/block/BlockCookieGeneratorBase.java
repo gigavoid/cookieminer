@@ -10,7 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
@@ -59,7 +59,7 @@ public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase im
             if (stack.getItem() instanceof IItemCookieUpgrade) {
                 IItemCookieUpgrade upgrade = (IItemCookieUpgrade) stack.getItem();
 
-                flatBoosts += upgrade.getFlatBoost() * stack.stackSize * efficiency;
+                flatBoosts += upgrade.getFlatBoost() * stack.getCount() * efficiency;
 
                 MultiplicativeBoost multiplicativeBoost = upgrade.getMultiplicativeBoost();
 

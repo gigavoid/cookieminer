@@ -34,17 +34,17 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
 
     static {
         trashToCookies = new HashMap<Item, Double>();
-        trashToCookies.put(Item.getItemFromBlock(Blocks.cobblestone), 1/64d);
-        trashToCookies.put(Item.getItemFromBlock(Blocks.netherrack), 1/64d);
-        trashToCookies.put(Item.getItemFromBlock(Blocks.dirt), 1/64d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.COBBLESTONE), 1/64d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.NETHERRACK), 1/64d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.DIRT), 1/64d);
 
-        trashToCookies.put(Item.getItemFromBlock(Blocks.stone), 1/32d);
-        trashToCookies.put(Item.getItemFromBlock(Blocks.sand), 1/32d);
-        trashToCookies.put(Item.getItemFromBlock(Blocks.sandstone), 1/32d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.STONE), 1/32d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.SAND), 1/32d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.SANDSTONE), 1/32d);
 
-        trashToCookies.put(Item.getItemFromBlock(Blocks.gravel), 1/16d);
+        trashToCookies.put(Item.getItemFromBlock(Blocks.GRAVEL), 1/16d);
 
-        trashToCookies.put(Items.rotten_flesh, 1/2d);
+        trashToCookies.put(Items.ROTTEN_FLESH, 1/2d);
     }
 
 
@@ -61,7 +61,7 @@ public class TileEntityTrashBaker extends TileEntityCookieGenerator implements I
     }
 
     public boolean tick() {
-        if (inv != null && inv.stackSize >= 1) {
+        if (inv != null && inv.getCount() >= 1) {
             double reward = trashToCookies.get(inv.getItem());
             CookieBlock crafter = CookieNetwork.getNetwork(getWorld(), getPos()).findCore();
             if (crafter == null) {

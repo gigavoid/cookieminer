@@ -1,6 +1,7 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public interface ICookieStorageBlock extends ICookieBlock {

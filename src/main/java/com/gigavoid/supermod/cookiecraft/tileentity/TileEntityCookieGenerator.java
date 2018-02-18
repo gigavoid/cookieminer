@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IChatComponent;
 import net.minecraftforge.common.util.Constants;
 
 public class TileEntityCookieGenerator extends TileEntity implements IInventory {
@@ -44,11 +43,11 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
         ItemStack stack = getStackInSlot(index);
 
         if (stack != null) {
-            if (stack.stackSize <= amt)
+            if (stack.getCount() <= amt)
                 setInventorySlotContents(index, null);
             else {
                 stack = stack.splitStack(amt);
-                if (stack.stackSize == 0)
+                if (stack.getCount() == 0)
                     setInventorySlotContents(index, null);
             }
         }
@@ -67,10 +66,10 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
         inv[slot] = stack;
-        if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-            stack.stackSize = getInventoryStackLimit();
+        if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+            stack.setCount(getInventoryStackLimit());
         }
-        CookieNetwork.getNetwork(worldObj, pos).updateNetwork();
+        CookieNetwork.getNetwork(world, pos).updateNetwork();
     }
 
     @Override
@@ -128,18 +127,13 @@ public class TileEntityCookieGenerator extends TileEntity implements IInventory 
         return false;
     }
 
-    @Override
-    public IChatComponent getDisplayName() {
-        return null;
-    }
-
     private void readInventoryCompound(NBTTagCompound tagCompound) {
         NBTTagList tagList = tagCompound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound tag = tagList.getCompoundTagAt(i);
             byte slot = tag.getByte("Slot");
             if (slot >= 0 && slot < inv.length) {
-                inv[slot] = ItemStack.loadItemStackFromNBT(tag);
+                inv[slot] = new ItemStack(tag);
             }
         }
     }
