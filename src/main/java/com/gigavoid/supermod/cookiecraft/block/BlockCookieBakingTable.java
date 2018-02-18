@@ -78,7 +78,7 @@ public class BlockCookieBakingTable extends BlockCookieGeneratorBase implements 
             world.setBlockState(pos, state.withProperty(ACTIVE, true), 2);
             return 9000;
         }
-        world.setBlockState(pos, blockState.getBaseState().withProperty(ACTIVE, false),2);
+        world.setBlockState(pos, state.withProperty(ACTIVE, false),2);
         return 0;
     }
 

@@ -73,7 +73,10 @@ public class CookiecraftRecipes {
         ItemStack ironCookiePouch = new ItemStack(CookiecraftItems.ironCookiePouch);
         ItemStack goldenCookiePouch = new ItemStack(CookiecraftItems.goldenCookiePouch);
         ItemStack diamondCookiePouch = new ItemStack(CookiecraftItems.diamondCookiePouch);
+        ItemStack obsidianCookiePouch = new ItemStack(CookiecraftItems.obsidianCookiePouch);
         ItemStack emeraldCookiePouch = new ItemStack(CookiecraftItems.emeraldCookiePouch);
+        ItemStack enderCookiePouch = new ItemStack(CookiecraftItems.enderCookiePouch);
+        ItemStack magicalCookiePouch = new ItemStack(CookiecraftItems.magicalCookiePouch);
 
         // General Cookiecraft items
         ItemStack cookieDough = new ItemStack(CookiecraftItems.cookieDough);

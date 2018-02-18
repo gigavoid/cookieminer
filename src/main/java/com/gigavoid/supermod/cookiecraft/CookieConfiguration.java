@@ -10,16 +10,20 @@ public class CookieConfiguration {
 
 
     public long costDoughCollector, costCookieFarm, costCactusMasher, costCookieStreamer,
-        costSapGatherer, costCookieCircuit, costIceMelter, costMoonlightReflector, costSlimeCompressor,
-        costLavaConverter, costBakingTable, costNuclearBaker, costPortalConnector, costVacuumOven,
-        costIonChanneler, costCookieAccelerator;
+            costSapGatherer, costCookieCircuit, costIceMelter, costMoonlightReflector, costSlimeCompressor,
+            costLavaConverter, costBakingTable, costNuclearBaker, costPortalConnector, costCookieBlazer,
+            costVacuumOven, costIonChanneler, costCookieAccelerator;
 
     public double outputDoughCollector, outputCookieFarm, outputCactusMasher, outputCookieStreamer,
             outputSapGatherer, outputCookieCircuit, outputIceMelter, outputMoonlightReflector, outputSlimeCompressor,
-            outputLavaConverter, outputBakingTable, outputNuclearBaker, outputPortalConnector, outputVacuumOven,
-            outputIonChanneler, outputCookieAccelerator;
+            outputLavaConverter, outputBakingTable, outputNuclearBaker, outputPortalConnector, outputCookieBlazer,
+            outputVacuumOven, outputIonChanneler, outputCookieAccelerator;
 
-    public long pouchSizeLeather, pouchSizeWood, pouchSizeStone, pouchSizeIron, pouchSizeGold, pouchSizeDiamond, pouchSizeEmerald;
+    public long pouchSizeLeather, pouchSizeWood, pouchSizeStone, pouchSizeIron, pouchSizeGold, pouchSizeDiamond,
+            pouchSizeObsidian, pouchSizeEmerald, pouchSizeEnder, pouchSizeMagical;
+
+    public long puuchCostLeather, pouchCostWood, pouchCostStone, pouchCostIron, pouchCostGold, pouchCostDiamond,
+            pouchCostObsidian, pouchCostEmerald, pouchCostEnder, pouchCostMagical;
 
 
     public CookieConfiguration(File file) {
@@ -43,10 +47,11 @@ public class CookieConfiguration {
         costLavaConverter = getLong(cat, "T10_LavaConverter", 134217728);
         costBakingTable = getLong(cat, "T11_BakingTable", 1073741824);
         costNuclearBaker = getLong(cat, "T12_NuclearBaker", 8589934592L);
-        costPortalConnector = getLong(cat, "T13_PortalConnector", 68719476736L);
-        costVacuumOven = getLong(cat, "T14_VacuumOven", 549755813888L);
-        costIonChanneler = getLong(cat, "T15_IonChanneler", 4398046511104L);
-        costCookieAccelerator = getLong(cat, "T16_CookieAccelerator", 35184372088832L);
+        costCookieBlazer = getLong(cat, "T13_CookieBlazer", 68719476736L);
+        costPortalConnector = getLong(cat, "T13_PortalConnector", 549755813888L);
+        costVacuumOven = getLong(cat, "T14_VacuumOven", 4398046511104L);
+        costIonChanneler = getLong(cat, "T15_IonChanneler", 35184372088832L);
+        costCookieAccelerator = getLong(cat, "T16_CookieAccelerator", 281474976710656L);
 
 
 
@@ -65,10 +70,11 @@ public class CookieConfiguration {
         outputLavaConverter = getDouble(cat, "T10_LavaConverter", 1/16D * Math.pow(4, 9));
         outputBakingTable = getDouble(cat, "T11_BakingTable", 1/16D * Math.pow(4, 10));
         outputNuclearBaker = getDouble(cat, "T12_NuclearBaker", 1/16D * Math.pow(4, 11));
-        outputPortalConnector = getDouble(cat, "T13_PortalConnector", 1/16D * Math.pow(4, 12));
-        outputVacuumOven = getDouble(cat, "T14_VacuumOven", 1/16D * Math.pow(4, 13));
-        outputIonChanneler = getDouble(cat, "T15_IonChanneler", 1/16D * Math.pow(4, 14));
-        outputCookieAccelerator = getDouble(cat, "T16_CookieAccelerator", 1/16D * Math.pow(4, 15));
+        outputCookieBlazer = getDouble(cat, "T13_CookieBlazer", 1/16D * Math.pow(4, 12));
+        outputPortalConnector = getDouble(cat, "T14_PortalConnector", 1/16D * Math.pow(4, 13));
+        outputVacuumOven = getDouble(cat, "T15_VacuumOven", 1/16D * Math.pow(4, 14));
+        outputIonChanneler = getDouble(cat, "T16_IonChanneler", 1/16D * Math.pow(4, 15));
+        outputCookieAccelerator = getDouble(cat, "T17_CookieAccelerator", 1/16D * Math.pow(4, 16));
 
 
 
@@ -81,7 +87,25 @@ public class CookieConfiguration {
         pouchSizeIron = getLong(cat, "T04_IronPouch", 1048576);
         pouchSizeGold = getLong(cat, "T05_GoldenPouch", 33554432);
         pouchSizeDiamond = getLong(cat, "T06_DiamondPouch", 1073741824);
-        pouchSizeEmerald = getLong(cat, "T07_EmeraldPouch", 34359738368L);
+        pouchSizeObsidian = getLong(cat, "T07_ObsidianPouch", 34359738368L);
+        pouchSizeEmerald = getLong(cat, "T08_EmeraldPouch", 1099511627776L);
+        pouchSizeEnder = getLong(cat, "T09_EnderPouch", 35184372088832L);
+        pouchSizeMagical = getLong(cat, "T10_MagicalPouch", 1125899906842620L);
+
+
+        cat = config.getCategory("pouch cost");
+        cat.setComment("Sets the cost of cookie pouches");
+
+        pouchSizeLeather = getLong(cat, "T01_LeatherPouch", 1);
+        pouchSizeWood = getLong(cat, "T02_WoodenPouch", 32);
+        pouchSizeStone = getLong(cat, "T03_StonePouch", 1024);
+        pouchSizeIron = getLong(cat, "T04_IronPouch", 32768);
+        pouchSizeGold = getLong(cat, "T05_GoldenPouch", 1048576);
+        pouchSizeDiamond = getLong(cat, "T06_DiamondPouch", 33554432);
+        pouchSizeObsidian = getLong(cat, "T07_ObsidianPouch", 1073741824);
+        pouchSizeEmerald = getLong(cat, "T08_EmeraldPouch", 34359738368L);
+        pouchSizeEnder = getLong(cat, "T09_EnderPouch", 1099511627776L);
+        pouchSizeMagical = getLong(cat, "T10_MagicalPouch", 35184372088832L);
 
         config.save();
     }
