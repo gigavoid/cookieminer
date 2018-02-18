@@ -64,6 +64,4 @@ public class BlockCookieSlimeCompressor extends BlockCookieGeneratorBase impleme
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntitySlimeCompressor();
     }
-
-
 }
