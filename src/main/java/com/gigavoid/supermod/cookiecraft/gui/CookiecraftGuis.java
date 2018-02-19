@@ -50,3 +50,4 @@ public class CookiecraftGuis implements IGuiHandler {
         NetworkRegistry.INSTANCE.registerGuiHandler(SuperMod.instance, new CookiecraftGuis());
     }
 }
+

@@ -19,7 +19,7 @@ public class GuiCookieCrafter extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
-        fontRendererObj.drawString(String.format(Locale.US, "CPS: %s", CookieNumber.doubleToString(tileEntity.getCPS())), width / 2, height / 2, Color.GREEN.getRGB());
+        fontRenderer.drawString(String.format(Locale.US, "CPS: %s", CookieNumber.doubleToString(tileEntity.getCPS())), width / 2, height / 2, Color.GREEN.getRGB());
 
     }
 

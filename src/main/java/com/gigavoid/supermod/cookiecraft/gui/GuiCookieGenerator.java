@@ -5,9 +5,9 @@ import com.gigavoid.supermod.cookiecraft.container.ContainerCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -53,18 +53,18 @@ public class GuiCookieGenerator extends GuiContainer {
 	}
 
 	public void drawCps(double cps) {
-		fontRendererObj.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);
+		fontRenderer.drawString(CookieNumber.doubleToString(cps), 39, 11, 0x222222);
 	}
 
 	public void drawEffectivenessTooltips(int mouseX, int mouseY, int x, int y) {
 		for (int i = 0; i < 4; i++) {
 			String str = (100 - i * 20) + "%";
-			int width = fontRendererObj.getStringWidth(str);
-			int height = fontRendererObj.FONT_HEIGHT;
+			int width = fontRenderer.getStringWidth(str);
+			int height = fontRenderer.FONT_HEIGHT;
 			int strX = 26 + i * 36 + 8 - width / 2;
 			int strY = 45;
 
-			List<String> percentTooltip = Collections.singletonList(String.format("Upgrades in this slot are %s effective", EnumChatFormatting.AQUA + str + EnumChatFormatting.WHITE));
+			List<String> percentTooltip = Collections.singletonList(String.format("Upgrades in this slot are %s effective", ChatFormatting.AQUA + str + ChatFormatting.WHITE));
 
 
 			if (this.isPointInRegion(strX, strY, width, height, mouseX, mouseY)) {
@@ -87,10 +87,10 @@ public class GuiCookieGenerator extends GuiContainer {
 	public void drawEffectivenessStrings() {
 		for (int i = 0; i < 4; i++) {
 			String str = (100 - i * 20) + "%";
-			int width = fontRendererObj.getStringWidth(str);
+			int width = fontRenderer.getStringWidth(str);
 			int strX = 26 + i * 36 + 8 - width / 2;
 			int strY = 45;
-			fontRendererObj.drawString(str, strX, strY, 0x666666);
+			fontRenderer.drawString(str, strX, strY, 0x666666);
 		}
 	}
 
@@ -126,7 +126,7 @@ public class GuiCookieGenerator extends GuiContainer {
 	public void drawNetworkTooltip(int mouseX, int mouseY, int x, int y, Boolean online) {
 		// Network tooltip
 		List<String> statusTooltip = Collections.singletonList("Connected to cookie network: " +
-				(online ? EnumChatFormatting.GREEN + "True" : EnumChatFormatting.RED + "False"));
+				(online ? ChatFormatting.GREEN + "True" : ChatFormatting.RED + "False"));
 
 		if (this.isPointInRegion(6, 73, 6, 6, mouseX, mouseY)) {
 			this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
@@ -135,7 +135,7 @@ public class GuiCookieGenerator extends GuiContainer {
 
 	public void drawGeneratingTooltip(int mouseX, int mouseY, int x, int y, double cps) {
 		List<String> generatingTooltip = Collections.singletonList("Is block generating cookies: " +
-				(cps != 0 ? EnumChatFormatting.GREEN + "Active" : EnumChatFormatting.RED + "Inactive"));
+				(cps != 0 ? ChatFormatting.GREEN + "Active" : ChatFormatting.RED + "Inactive"));
 
 		if (this.isPointInRegion(6, 65, 6, 6, mouseX, mouseY)) {
 			this.drawHoveringText(generatingTooltip, mouseX - x, mouseY - y);

@@ -4,8 +4,8 @@ import com.gigavoid.supermod.cookiecraft.block.BlockCookieLavaConverter;
 import com.gigavoid.supermod.cookiecraft.block.ICookieGenerator;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -54,7 +54,7 @@ public class GuiLavaConverter extends GuiCookieGenerator {
     private void drawProgressBarTooltip(int x, int y, int mouseX, int mouseY, int numberOfLavaBlocks) {
         // Network tooltip
         List<String> statusTooltip = Collections.singletonList("Nearby lava blocks: " +
-                EnumChatFormatting.AQUA + numberOfLavaBlocks + EnumChatFormatting.WHITE);
+                ChatFormatting.AQUA + numberOfLavaBlocks + ChatFormatting.WHITE);
 
         if (this.isPointInRegion(PROGRESSBAR_X, PROGRESSBAR_Y, PROGRESSBAR_WIDTH, PROGRESSBAR_HEIGHT, mouseX, mouseY)) {
             this.drawHoveringText(statusTooltip, mouseX - x, mouseY - y);
