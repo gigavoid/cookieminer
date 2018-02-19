@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.lang.reflect.GenericArrayType;
+
 public class CookiecraftRecipes {
     public static void initializeRecipes() {
         /**
@@ -15,30 +17,30 @@ public class CookiecraftRecipes {
          */
 
         // Vanilla items
-        ItemStack ironIngot = new ItemStack(Items.iron_ingot);
-        ItemStack goldIngot = new ItemStack(Items.gold_ingot);
-        ItemStack wood = new ItemStack(Blocks.planks);
-        ItemStack stone = new ItemStack(Blocks.stone);
-        ItemStack cstone = new ItemStack(Blocks.cobblestone);
-        ItemStack diamond = new ItemStack(Items.diamond);
-        ItemStack emerald = new ItemStack(Items.emerald);
-        ItemStack cookie = new ItemStack(Items.cookie);
-        ItemStack cookies = new ItemStack(Items.cookie, 9);
-        ItemStack wheat = new ItemStack(Items.wheat);
-        ItemStack cocoaBean = new ItemStack(Items.dye, 1, 0x3);
-        ItemStack milk = new ItemStack(Items.milk_bucket);
-        ItemStack lava = new ItemStack(Items.lava_bucket);
-        ItemStack string = new ItemStack(Items.string);
-        ItemStack leather = new ItemStack(Items.leather);
-        ItemStack seed = new ItemStack(Items.wheat_seeds);
-        ItemStack dirt = new ItemStack(Blocks.dirt);
-        ItemStack piston = new ItemStack(Blocks.piston);
-        ItemStack cactus = new ItemStack(Blocks.cactus);
-        ItemStack redstone = new ItemStack(Items.redstone);
-        ItemStack enderPearl = new ItemStack(Items.ender_pearl);
-        ItemStack glass = new ItemStack(Blocks.glass);
-        ItemStack enchantedBook = new ItemStack(Items.enchanted_book);
-        ItemStack obsidian = new ItemStack(Blocks.obsidian);
+        ItemStack ironIngot = new ItemStack(Items.IRON_INGOT);
+        ItemStack goldIngot = new ItemStack(Items.GOLD_INGOT);
+        ItemStack wood = new ItemStack(Blocks.PLANKS);
+        ItemStack stone = new ItemStack(Blocks.STONE);
+        ItemStack cstone = new ItemStack(Blocks.COBBLESTONE);
+        ItemStack diamond = new ItemStack(Items.DIAMOND);
+        ItemStack emerald = new ItemStack(Items.EMERALD);
+        ItemStack cookie = new ItemStack(Items.COOKIE);
+        ItemStack cookies = new ItemStack(Items.COOKIE, 9);
+        ItemStack wheat = new ItemStack(Items.WHEAT);
+        ItemStack cocoaBean = new ItemStack(Items.DYE, 1, 0x3);
+        ItemStack milk = new ItemStack(Items.MILK_BUCKET);
+        ItemStack lava = new ItemStack(Items.LAVA_BUCKET);
+        ItemStack string = new ItemStack(Items.STRING);
+        ItemStack leather = new ItemStack(Items.LEATHER);
+        ItemStack seed = new ItemStack(Items.WHEAT_SEEDS);
+        ItemStack dirt = new ItemStack(Blocks.DIRT);
+        ItemStack piston = new ItemStack(Blocks.PISTON);
+        ItemStack cactus = new ItemStack(Blocks.CACTUS);
+        ItemStack redstone = new ItemStack(Items.REDSTONE);
+        ItemStack enderPearl = new ItemStack(Items.ENDER_PEARL);
+        ItemStack glass = new ItemStack(Blocks.GLASS);
+        ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+        ItemStack obsidian = new ItemStack(Blocks.OBSIDIAN);
 
         // Cookie network blocks
         ItemStack cookieCrafter = new ItemStack(BlockCookieCrafter.instance);

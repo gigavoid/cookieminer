@@ -2,6 +2,7 @@ package com.gigavoid.supermod.cookiecraft.biome;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
 import com.gigavoid.supermod.cookiecraft.entity.EntityCookiecreeper;
+import net.minecraft.world.biome.Biome;
 
 public class CookieBiome extends CookiecraftBiomeGenBase {
     public CookieBiome(int id, int weight){
@@ -14,6 +15,6 @@ public class CookieBiome extends CookiecraftBiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.clear();
         this.spawnableWaterCreatureList.clear();
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityCookiecreeper.class, 2, 1, 1));
+        this.spawnableMonsterList.add(new Biome.SpawnListEntry(EntityCookiecreeper.class, 2, 1, 1));
     }
 }

@@ -17,20 +17,16 @@ import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntitySlimeCompressor;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGens;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -62,7 +58,7 @@ public class ModuleCookiecraft extends Module{
             CookieEntities.registerEntities(register);
 
             cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
-            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0));
+            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0)); // Probabli inheritence of cookiebiome
 
             dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
 
@@ -78,7 +74,7 @@ public class ModuleCookiecraft extends Module{
         public void preInit(FMLPreInitializationEvent event, Register register) {
             super.preInit(event, register);
             Item fluid = Item.getItemFromBlock(BlockCookieChocoFluid.instance);
-            ModelBakery.addVariantName(fluid);
+            ModelBakery.registerItemVariants(fluid);
 
             ModelLoader.setCustomMeshDefinition(fluid, new ItemMeshDefinition() {
                 public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -107,7 +103,8 @@ public class ModuleCookiecraft extends Module{
         }
 
         BucketHandler.instance.buckets.put(BlockCookieChocoFluid.instance, CookiecraftItems.cookieChocoBucket);
-        FluidContainerRegistry.registerFluidContainer(FluidChoco.instance, new ItemStack(CookiecraftItems.cookieChocoBucket), new ItemStack(Items.bucket));
+        // FluidContainerRegistry.registerFluidContainer(FluidChoco.instance, new ItemStack(CookiecraftItems.cookieChocoBucket), new ItemStack(Items.bucket));
+        FluidRegistry.addBucketForFluid(FluidChoco.instance);
 
         if (e.getSide() == Side.CLIENT){
             registerTileEntity();

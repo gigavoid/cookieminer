@@ -17,8 +17,8 @@ public class RenderSlimeCompressor extends TileEntitySpecialRenderer {
     }
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float p_180535_8_, int p_180535_9_) {
-        TileEntitySlimeCompressor tileEntitySlimeCompressor = (TileEntitySlimeCompressor) tileEntity;
+    public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+        TileEntitySlimeCompressor tileEntitySlimeCompressor = (TileEntitySlimeCompressor) te;
 
         GL11.glPushMatrix();
         GL11.glTranslated(x + .5, y + .5, z + .5);

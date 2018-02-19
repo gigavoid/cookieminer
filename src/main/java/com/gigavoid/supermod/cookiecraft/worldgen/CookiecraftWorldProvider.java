@@ -1,25 +1,19 @@
 package com.gigavoid.supermod.cookiecraft.worldgen;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 
 public class CookiecraftWorldProvider extends WorldProvider {
-    public void registerWorldChunkManager() {
-        this.worldChunkMgr = new CookiecraftWorldChunkManager(getSeed(), net.minecraft.world.WorldType.DEFAULT, "cookieverse");
-        this.dimensionId = ModuleCookiecraft.dimensionId;
-    }
-
-    public IChunkProvider createChunkGenerator() {
-        return new CookiecraftChunkProvider(worldObj, worldObj.getSeed(), true, "cookieverse");
-    }
-
-    public String getDimensionName() {
-        return "Cookieverse";
+    @Override
+    public DimensionType getDimensionType() {
+        return ModDimensions.cookieverseDimensionType;
     }
 
     @Override
-    public String getInternalNameSuffix() {
-        return "Cookieverse";
+    public IChunkGenerator createChunkGenerator() {
+        return new CookieverseChunkGenerator(world);
     }
 }

@@ -32,7 +32,7 @@ public class CookiecraftGenLayerBiome extends GenLayer {
             for (int j1 = 0; j1 < areaWidth; ++j1)
             {
                 this.initChunkSeed((long)(j1 + areaX), (long)(i1 + areaY));
-                aint1[j1 + i1 * areaWidth] = CookiecraftWorldChunkManager.allowedBiomes.get(0).biomeID;
+                aint1[j1 + i1 * areaWidth] = CookiecraftWorldChunkManager.allowedBiomes.get(0);
             }
         }
         return aint1;

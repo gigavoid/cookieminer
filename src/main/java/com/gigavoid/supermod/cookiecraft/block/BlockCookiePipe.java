@@ -16,6 +16,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
@@ -34,6 +36,11 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         super(Material.IRON);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setHardness(3.5F);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+
     }
 
     @Override

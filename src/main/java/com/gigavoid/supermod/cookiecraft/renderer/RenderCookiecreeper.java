@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 
 public class RenderCookiecreeper extends RenderLiving {
     private static final ResourceLocation creeperTextures = new ResourceLocation("supermod:textures/entities/cookiecreeper.png");
@@ -25,7 +25,7 @@ public class RenderCookiecreeper extends RenderLiving {
     {
         float f1 = p_180570_1_.getCreeperFlashIntensity(p_180570_2_);
         float f2 = 1.0F + MathHelper.sin(f1 * 100.0F) * f1 * 0.01F;
-        f1 = MathHelper.clamp_float(f1, 0.0F, 1.0F);
+        f1 = MathHelper.clamp(f1, 0.0F, 1.0F);
         f1 *= f1;
         f1 *= f1;
         float f3 = (1.0F + f1 * 0.4F) * f2;
@@ -44,7 +44,7 @@ public class RenderCookiecreeper extends RenderLiving {
         else
         {
             int i = (int)(f2 * 0.2F * 255.0F);
-            i = MathHelper.clamp_int(i, 0, 255);
+            i = MathHelper.clamp(i, 0, 255);
             return i << 24 | 16777215;
         }
     }

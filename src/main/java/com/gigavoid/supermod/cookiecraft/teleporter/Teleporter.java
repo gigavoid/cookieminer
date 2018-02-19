@@ -2,15 +2,12 @@ package com.gigavoid.supermod.cookiecraft.teleporter;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.LongHashMap;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
 
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
 
     @Override
     public void placeInPortal(Entity p_180266_1_, float p_180266_2_) {
-        if (this.worldServerInstance.provider.getDimensionId() != 1)
+        if (this.worldServerInstance.provider.getDimension() != 1)
         {
             if (!this.func_180620_b(p_180266_1_, p_180266_2_))
             {
@@ -45,9 +42,9 @@ public class Teleporter extends net.minecraft.world.Teleporter
         }
         else
         {
-            int i = MathHelper.floor_double(p_180266_1_.posX);
-            int j = MathHelper.floor_double(p_180266_1_.posY) - 1;
-            int k = MathHelper.floor_double(p_180266_1_.posZ);
+            int i = MathHelper.floor(p_180266_1_.posX);
+            int j = MathHelper.floor(p_180266_1_.posY) - 1;
+            int k = MathHelper.floor(p_180266_1_.posZ);
             byte b0 = 1;
             byte b1 = 0;
 
@@ -61,7 +58,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlockState(new BlockPos(k1, l1, i2), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.air.getDefaultState());
+                        this.worldServerInstance.setBlockState(new BlockPos(k1, l1, i2), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.AIR.getDefaultState());
                     }
                 }
             }
@@ -75,8 +72,8 @@ public class Teleporter extends net.minecraft.world.Teleporter
     {
         boolean flag = true;
         double d0 = -1.0D;
-        int i = MathHelper.floor_double(p_180620_1_.posX);
-        int j = MathHelper.floor_double(p_180620_1_.posZ);
+        int i = MathHelper.floor(p_180620_1_.posX);
+        int j = MathHelper.floor(p_180620_1_.posZ);
         boolean flag1 = true;
         Object object = BlockPos.ORIGIN;
         long k = ChunkCoordIntPair.chunkXZ2Int(i, j);
@@ -156,7 +153,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                 enumfacing = EnumFacing.WEST;
             }
 
-            EnumFacing enumfacing1 = EnumFacing.getHorizontal(p_180620_1_.getTeleportDirection());
+            EnumFacing enumfacing1 = EnumFacing.getHorizontal(p_180620_1_.getTeleportDirection().getHorizontalIndex());
 
             if (enumfacing != null)
             {
@@ -274,9 +271,9 @@ public class Teleporter extends net.minecraft.world.Teleporter
     {
         byte b0 = 16;
         double d0 = -1.0D;
-        int i = MathHelper.floor_double(p_85188_1_.posX);
-        int j = MathHelper.floor_double(p_85188_1_.posY);
-        int k = MathHelper.floor_double(p_85188_1_.posZ);
+        int i = MathHelper.floor(p_85188_1_.posX);
+        int j = MathHelper.floor(p_85188_1_.posY);
+        int k = MathHelper.floor(p_85188_1_.posZ);
         int l = i;
         int i1 = j;
         int j1 = k;
@@ -337,7 +334,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                                         i5 = i3 + k4;
                                         int j5 = k2 + (j4 - 1) * l3 - i4 * k3;
 
-                                        if (k4 < 0 && !this.worldServerInstance.getBlockState(new BlockPos(l4, i5, j5)).getBlock().getMaterial().isSolid() || k4 >= 0 && !this.worldServerInstance.isAirBlock(new BlockPos(l4, i5, j5)))
+                                        if (k4 < 0 && !this.worldServerInstance.getBlockState(new BlockPos(l4, i5, j5)).getMaterial().isSolid() || k4 >= 0 && !this.worldServerInstance.isAirBlock(new BlockPos(l4, i5, j5)))
                                         {
                                             continue label271;
                                         }
@@ -395,7 +392,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                                         l4 = i3 + j4;
                                         i5 = k2 + (i4 - 1) * l3;
 
-                                        if (j4 < 0 && !this.worldServerInstance.getBlockState(new BlockPos(k4, l4, i5)).getBlock().getMaterial().isSolid() || j4 >= 0 && !this.worldServerInstance.isAirBlock(new BlockPos(k4, l4, i5)))
+                                        if (j4 < 0 && !this.worldServerInstance.getBlockState(new BlockPos(k4, l4, i5)).getMaterial().isSolid() || j4 >= 0 && !this.worldServerInstance.isAirBlock(new BlockPos(k4, l4, i5)))
                                         {
                                             continue label219;
                                         }
@@ -434,7 +431,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
 
         if (d0 < 0.0D)
         {
-            i1 = MathHelper.clamp_int(i1, 70, this.worldServerInstance.getActualHeight() - 10);
+            i1 = MathHelper.clamp(i1, 70, this.worldServerInstance.getActualHeight() - 10);
             j2 = i1;
 
             for (i3 = -1; i3 <= 1; ++i3)
@@ -447,7 +444,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                         i4 = j2 + k3;
                         j4 = k2 + (j3 - 1) * l2 - i3 * l5;
                         boolean flag = k3 < 0;
-                        this.worldServerInstance.setBlockState(new BlockPos(l3, i4, j4), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.air.getDefaultState());
+                        this.worldServerInstance.setBlockState(new BlockPos(l3, i4, j4), flag ? BlockCookieBlock.instance.getDefaultState() : Blocks.AIR.getDefaultState());
                     }
                 }
             }
@@ -476,7 +473,7 @@ public class Teleporter extends net.minecraft.world.Teleporter
                     i4 = k5 + (k3 - 1) * l5;
                     j4 = j2 + l3;
                     k4 = k2 + (k3 - 1) * l2;
-                    this.worldServerInstance.notifyNeighborsOfStateChange(new BlockPos(i4, j4, k4), this.worldServerInstance.getBlockState(new BlockPos(i4, j4, k4)).getBlock());
+                    this.worldServerInstance.notifyNeighborsOfStateChange(new BlockPos(i4, j4, k4), this.worldServerInstance.getBlockState(new BlockPos(i4, j4, k4)).getBlock(), true);
                 }
             }
         }
