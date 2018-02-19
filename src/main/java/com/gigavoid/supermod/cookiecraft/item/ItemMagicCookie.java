@@ -10,7 +10,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemMagicCookie extends Item {
@@ -25,27 +28,27 @@ public class ItemMagicCookie extends Item {
     }
 
     @Override
-    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (!playerIn.canPlayerEdit(pos, side, stack))
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!player.canPlayerEdit(pos, facing, stack))
         {
-            return false;
+            return EnumActionResult.FAIL;
         }
         else
         {
-            if (BlockCookieBlock.instance != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.sand || worldIn.getBlockState(pos).getBlock() == Blocks.gravel
-                || worldIn.getBlockState(pos).getBlock() == Blocks.cobblestone || worldIn.getBlockState(pos).getBlock() == Blocks.netherrack || worldIn.getBlockState(pos).getBlock() == Blocks.grass
-                || worldIn.getBlockState(pos).getBlock() == Blocks.sandstone || worldIn.getBlockState(pos).getBlock() == Blocks.dirt || worldIn.getBlockState(pos).getBlock() == Blocks.stone))
+            if (BlockCookieBlock.instance != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.SAND || worldIn.getBlockState(pos).getBlock() == Blocks.GRASS
+                    || worldIn.getBlockState(pos).getBlock() == Blocks.COBBLESTONE || worldIn.getBlockState(pos).getBlock() == Blocks.NETHERRACK || worldIn.getBlockState(pos).getBlock() == Blocks.GRAVEL
+                    || worldIn.getBlockState(pos).getBlock() == Blocks.SANDSTONE || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT || worldIn.getBlockState(pos).getBlock() == Blocks.STONE))
             {
                 worldIn.setBlockState(pos, BlockCookieBlock.instance.getDefaultState());
-                stack.damageItem(1, playerIn);
+                stack.damageItem(1, player);
             }
-            else if (BlockCookieBlock.instance == worldIn.getBlockState(pos).getBlock() && Blocks.air != worldIn.getBlockState(pos).getBlock()){
-                if (BlockCookiePortalCookiecraft.instance.func_176548_d(worldIn, pos.offset(side))) {
-                    stack.damageItem(1, playerIn);
+            else if (BlockCookieBlock.instance == worldIn.getBlockState(pos).getBlock() && Blocks.AIR != worldIn.getBlockState(pos).getBlock()){
+                if (BlockCookiePortalCookiecraft.instance.func_176548_d(worldIn, pos.offset(facing))) {
+                    stack.damageItem(1, player);
                 }
             }
 
-            return true;
+            return EnumActionResult.SUCCESS;
         }
     }
 }

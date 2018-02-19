@@ -1,8 +1,11 @@
 package com.gigavoid.supermod.cookiecraft.item;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
@@ -42,7 +45,7 @@ public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         tooltip.add("Stored Cookies: Infinite");
     }
 

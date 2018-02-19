@@ -9,7 +9,7 @@ public class CookiecraftCreativeTabs {
     {
         @Override
         public Item getTabIconItem() {
-            return Items.cookie;
+            return Items.COOKIE;
         }
     };
 }

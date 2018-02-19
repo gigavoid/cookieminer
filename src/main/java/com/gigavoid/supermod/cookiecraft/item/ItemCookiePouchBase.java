@@ -2,11 +2,14 @@ package com.gigavoid.supermod.cookiecraft.item;
 
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.util.CookieNumber;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class ItemCookiePouchBase extends Item implements ICookieStorageItem {
@@ -32,10 +35,9 @@ public abstract class ItemCookiePouchBase extends Item implements ICookieStorage
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(String.format("Stored Cookies: %s/%s", CookieNumber.doubleToString(getCookies(stack)), CookieNumber.doubleToString(getMaxStorage(stack))));
 	}
-
 
 	public void setCookies(ItemStack stack, long cookies) {
 		setLong(stack, PROP_COOKIES, cookies);

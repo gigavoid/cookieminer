@@ -23,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -164,10 +165,10 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
         doDispense(source.getWorld(), stack, 6, enumfacing, iposition);
 
         // Smoke
-        source.getWorld().playAuxSFX(2000, source.getBlockPos(), enumfacing.getFrontOffsetX() + 1 + (enumfacing.getFrontOffsetZ() + 1) * 3);
+        source.getWorld().playEvent(2000, source.getBlockPos(), enumfacing.getFrontOffsetX() + 1 + (enumfacing.getFrontOffsetZ() + 1) * 3);
 
         // Sound
-        source.getWorld().playAuxSFX(1000, source.getBlockPos(), 0);
+        source.getWorld().playEvent(1000, source.getBlockPos(), 0);
     }
 
     private static void doDispense(World worldIn, ItemStack stack, int speed, EnumFacing p_82486_3_, IPosition position)
@@ -216,4 +217,13 @@ public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileE
         return (TileEntityCookieCrafter) world.getTileEntity(pos);
     }
 
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 }

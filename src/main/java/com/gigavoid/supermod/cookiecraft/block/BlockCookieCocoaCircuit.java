@@ -73,6 +73,16 @@ public class BlockCookieCocoaCircuit extends BlockCookieGeneratorBase implements
     }
 
     @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
+    @Override
     public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
         if (worldIn.isBlockPowered(pos) && worldIn.isRemote){
             CookieNetwork.getNetwork(worldIn, pos).updateNetwork();

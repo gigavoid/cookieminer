@@ -2,15 +2,14 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -22,7 +21,7 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
     public static final BlockCookieNuclearBaker instance = new BlockCookieNuclearBaker();
 
     private BlockCookieNuclearBaker(){
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -34,8 +33,8 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, ACTIVE);
     }
 
     @Override
@@ -95,17 +94,17 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
                 for (int z = 2 * zDir; z != -2 * zDir; z += (zDir * -1)){
                     for (int y = startY; y > endY; y--){
                         if (y == endY + 1){
-                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
+                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.WATER){
                                 result = false;
                             }
                         }
                         if (x != 0 && x != xDir){
-                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
+                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.WATER){
                                 result = false;
                             }
                         }
                         if (z != 0 && z != zDir){
-                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.water){
+                            if (world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.WATER){
                                 result = false;
                             }
                         }
@@ -117,5 +116,15 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
             result = false;
         }
         return result;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
     }
 }

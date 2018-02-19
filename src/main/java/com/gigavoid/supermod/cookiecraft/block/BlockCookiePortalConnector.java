@@ -2,14 +2,13 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -21,7 +20,7 @@ public class BlockCookiePortalConnector extends BlockCookieGeneratorBase impleme
     public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
 
     private BlockCookiePortalConnector(){
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -33,8 +32,8 @@ public class BlockCookiePortalConnector extends BlockCookieGeneratorBase impleme
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, ACTIVE);
     }
 
     @Override
@@ -66,5 +65,15 @@ public class BlockCookiePortalConnector extends BlockCookieGeneratorBase impleme
 
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {
         return world.getBlockState(blockPos).getBlock() == BlockCookiePortalCookiecraft.instance;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
     }
 }

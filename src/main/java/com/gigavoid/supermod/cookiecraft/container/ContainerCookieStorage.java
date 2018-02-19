@@ -27,7 +27,7 @@ private TileEntityCookieStorage tileEntity;
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return tileEntity.isUseableByPlayer(playerIn);
+		return tileEntity.isUsableByPlayer(playerIn);
 	}
 
 	private void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -57,7 +57,7 @@ private TileEntityCookieStorage tileEntity;
 				return null;
 			}
 
-			if (stack.stackSize == 0)
+			if (stack.getCount() == 0)
 			{
 				slot.putStack(null);
 			}
@@ -66,12 +66,12 @@ private TileEntityCookieStorage tileEntity;
 				slot.onSlotChanged();
 			}
 
-			if (stack.stackSize == itemstack.stackSize)
+			if (stack.getCount() == itemstack.getCount())
 			{
 				return null;
 			}
 
-			slot.onPickupFromSlot(playerIn, stack);
+			slot.onTake(playerIn, stack);
 		}
 
 		return itemstack;

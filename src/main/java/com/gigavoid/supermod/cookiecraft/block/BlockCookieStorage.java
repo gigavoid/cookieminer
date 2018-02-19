@@ -9,7 +9,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -22,7 +24,7 @@ public class BlockCookieStorage extends BlockCookieNetworkBase implements ITileE
             "gold", new BlockCookieStorage(262144, 4096), "diamond", new BlockCookieStorage(268435456, 262144), "ender", new BlockCookieStorage(274877906944L, 268435456));
 
     private BlockCookieStorage(long storageCap, int transferSpeed) {
-		super(Material.rock);
+		super(Material.ROCK);
 		this.storageCap = storageCap;
 		this.transferSpeed = transferSpeed;
 		setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
@@ -48,7 +50,7 @@ public class BlockCookieStorage extends BlockCookieNetworkBase implements ITileE
         return storageCap;
     }
 
-    @Override
+	@Override
     public long getCurrentStorage(World world, BlockPos pos) {
         return getTileEntity(world, pos).getCookies();
     }
@@ -88,5 +90,15 @@ public class BlockCookieStorage extends BlockCookieNetworkBase implements ITileE
 		if (!worldIn.isRemote) {
 			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 		}
+	}
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
 	}
 }

@@ -1,13 +1,11 @@
 package com.gigavoid.supermod.cookiecraft.container;
 
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieGenerator;
-import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityCookieStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 
 public class ContainerCookieGenerator extends Container {
 
@@ -26,7 +24,7 @@ public class ContainerCookieGenerator extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return tileEntity.isUseableByPlayer(playerIn);
+        return tileEntity.isUsableByPlayer(playerIn);
     }
 
     private void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -56,7 +54,7 @@ public class ContainerCookieGenerator extends Container {
                 return null;
             }
 
-            if (stack.stackSize == 0)
+            if (stack.getCount() == 0)
             {
                 slot.putStack(null);
             }
@@ -65,12 +63,12 @@ public class ContainerCookieGenerator extends Container {
                 slot.onSlotChanged();
             }
 
-            if (stack.stackSize == itemstack.stackSize)
+            if (stack.getCount() == itemstack.getCount())
             {
                 return null;
             }
 
-            slot.onPickupFromSlot(playerIn, stack);
+            slot.onTake(playerIn, stack);
         }
 
         return itemstack;

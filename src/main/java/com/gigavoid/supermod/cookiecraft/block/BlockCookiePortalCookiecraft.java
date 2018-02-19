@@ -1,14 +1,13 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
-import com.gigavoid.supermod.common.util.Reflection;
-import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
+import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import com.gigavoid.supermod.cookiecraft.teleporter.Teleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,7 +15,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,7 +31,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
     public static final BlockCookiePortalCookiecraft instance = new BlockCookiePortalCookiecraft();
 
     private BlockCookiePortalCookiecraft() {
-        super(Material.portal, false);
+        super(Material.PORTAL, false);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setLightLevel(.75f);
         this.setHardness(-1);
@@ -46,15 +47,16 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
 
-        if (worldIn.provider.isSurfaceWorld() && worldIn.getGameRules().getGameRuleBooleanValue("doMobSpawning") && rand.nextInt(2000) < worldIn.getDifficulty().getDifficultyId()) {
+        if (worldIn.provider.isSurfaceWorld() && worldIn.getGameRules().getBoolean("doMobSpawning") && rand.nextInt(2000) < worldIn.getDifficulty().getDifficultyId()) {
             int i = pos.getY();
             BlockPos blockpos1;
+
 
             for (blockpos1 = pos; !World.doesBlockHaveSolidTopSurface(worldIn, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.offset(EnumFacing.DOWN)) {
                 ;
             }
 
-            if (i > 0 && !worldIn.getBlockState(blockpos1.offset(EnumFacing.UP)).getBlock().isNormalCube()) {
+            if (i > 0 && !worldIn.getBlockState(blockpos1.offset(EnumFacing.UP)).getBlock().isNormalCube(worldIn.getBlockState(pos))) {
                 Entity entity = ItemMonsterPlacer.spawnCreature(worldIn, 57, (double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.1D, (double) blockpos1.getZ() + 0.5D);
 
                 if (entity != null) {
@@ -89,7 +91,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
         return p_176549_0_ == EnumFacing.Axis.X ? 1 : (p_176549_0_ == EnumFacing.Axis.Z ? 2 : 0);
     }
 
-    public boolean isFullCube() {
+    public boolean isFullCube(IBlockState state) {
         return false;
     }
 
@@ -119,13 +121,13 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
             size = new Size(worldIn, pos, EnumFacing.Axis.X);
 
             if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g) {
-                worldIn.setBlockState(pos, Blocks.air.getDefaultState());
+                worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         } else if (axis == EnumFacing.Axis.Z) {
             size = new Size(worldIn, pos, EnumFacing.Axis.Z);
 
             if (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g) {
-                worldIn.setBlockState(pos, Blocks.air.getDefaultState());
+                worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
     }
@@ -168,7 +170,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
        // public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-            if ((entityIn.ridingEntity == null) && (entityIn.riddenByEntity == null) && ((entityIn instanceof EntityPlayerMP))) {
+            if ((entityIn.isRiding()) && (entityIn.isBeingRidden()) && ((entityIn instanceof EntityPlayerMP))) {
                 EntityPlayerMP player = (EntityPlayerMP) entityIn;
 
                 MinecraftServer mServer = MinecraftServer.getServer();
@@ -231,8 +233,8 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
         return null;
     }
 
-    protected BlockState createBlockState() {
-        return new BlockState(this, AXIS);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, AXIS);
     }
 
     public static class Size {
@@ -345,8 +347,8 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
         }
 
         protected boolean func_150857_a(Block p_150857_1_) {
-            Material material = p_150857_1_.getMaterial();
-            return material == Material.air || p_150857_1_ == instance;
+            Material material = p_150857_1_.getMaterial(p_150857_1_.getDefaultState());
+            return material == Material.AIR || p_150857_1_ == instance;
         }
 
         public boolean func_150860_b() {

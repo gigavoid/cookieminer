@@ -83,4 +83,14 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     private boolean isBottom(IBlockAccess world, BlockPos pos){
         return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() != instance;
     }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 }

@@ -2,14 +2,14 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -21,7 +21,7 @@ public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICoo
     public static final BlockCookieSteamer instance = new BlockCookieSteamer();
 
     private BlockCookieSteamer() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -33,8 +33,8 @@ public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICoo
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, ACTIVE);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICoo
     }
 
     private boolean isAboveWater(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.down()).getBlock() == Blocks.water;
+        return world.getBlockState(pos.down()).getBlock() == Blocks.WATER;
     }
 
     @Override
@@ -54,5 +54,15 @@ public class BlockCookieSteamer extends BlockCookieGeneratorBase implements ICoo
     @Override
     public double getCPS(World world, BlockPos pos, IBlockState state) {
         return isAboveWater(world, pos) ? ModuleCookiecraft.config.outputCookieStreamer : 0;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
     }
 }

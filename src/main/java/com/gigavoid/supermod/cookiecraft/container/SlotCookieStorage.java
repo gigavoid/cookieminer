@@ -23,7 +23,7 @@ public class SlotCookieStorage extends Slot {
 	@Override
 	public boolean isItemValid(ItemStack stack) {
 		if ( this.slotType == SlotType.INPUT) {
-			return stack.getItem() instanceof ICookieStorageItem || stack.getItem() == Items.cookie;
+			return stack.getItem() instanceof ICookieStorageItem || stack.getItem() == Items.COOKIE;
 		} else if (this.slotType == SlotType.OUTPUT) {
 			return stack.getItem() instanceof ICookieStorageItem;
 		} else if (this.slotType == SlotType.SINGLE_OUTPUT) {

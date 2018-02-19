@@ -5,15 +5,15 @@ import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -31,18 +31,18 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     public static final BlockCookiePipe instance = new BlockCookiePipe();
 
     private BlockCookiePipe(){
-        super(Material.iron);
+        super(Material.IRON);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setHardness(3.5F);
     }
 
     @Override
-    public boolean isFullCube() {
+    public boolean isFullCube(IBlockState state) {
         return false;
     }
 
     @Override
-    public boolean isPassable(IBlockAccess blockAccess, BlockPos pos) {
+    public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
         return false;
     }
 
@@ -187,8 +187,8 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, NORTH, SOUTH, EAST, WEST, UP, DOWN);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, NORTH, SOUTH, EAST, WEST, UP, DOWN);
     }
 
     @Override
@@ -211,7 +211,6 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         return true;
     }
 
-    @Override
     public boolean isVisuallyOpaque() { return false; }
 
     @Override

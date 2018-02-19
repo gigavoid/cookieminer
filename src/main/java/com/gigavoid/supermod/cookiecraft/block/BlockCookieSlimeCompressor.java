@@ -2,15 +2,14 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntitySlimeCompressor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -20,7 +19,7 @@ public class BlockCookieSlimeCompressor extends BlockCookieGeneratorBase impleme
     public static final BlockCookieSlimeCompressor instance = new BlockCookieSlimeCompressor();
 
     private BlockCookieSlimeCompressor() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 
@@ -41,23 +40,27 @@ public class BlockCookieSlimeCompressor extends BlockCookieGeneratorBase impleme
     }
 
     @Override
-    public boolean isOpaqueCube() {
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
         return false;
     }
 
     @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
     public boolean isVisuallyOpaque() {
         return false;
     }
 
     @Override
-    public boolean isTranslucent() {
-        return super.isTranslucent();
+    public boolean isTranslucent(IBlockState state) {
+        return super.isTranslucent(state);
     }
 
     @Override
-    public int getRenderType() {
-        return -1;
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
     @Override

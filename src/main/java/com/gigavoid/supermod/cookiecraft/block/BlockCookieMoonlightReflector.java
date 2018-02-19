@@ -2,19 +2,18 @@ package com.gigavoid.supermod.cookiecraft.block;
 
 import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import com.gigavoid.supermod.cookiecraft.gui.GuiCookieGenerator;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntityMoonlightReflector;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -27,13 +26,13 @@ public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase impl
     public static final BlockCookieMoonlightReflector instance = new BlockCookieMoonlightReflector();
 
     private BlockCookieMoonlightReflector() {
-        super(Material.rock);
+        super(Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
 
     @Override
-    public boolean isFullCube() {
+    public boolean isFullCube(IBlockState state) {
         return false;
     }
 
@@ -49,8 +48,8 @@ public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase impl
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, ACTIVE);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer (this, ACTIVE);
     }
 
     @Override
@@ -79,15 +78,16 @@ public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase impl
     }
 
     @Override
-    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
         return true;
     }
 
     @Override
-    public boolean isVisuallyOpaque() { return false; }
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 
-    @Override
-    public boolean isOpaqueCube() { return false; }
+    public boolean isVisuallyOpaque() { return false; }
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
@@ -96,5 +96,15 @@ public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase impl
 
     public TileEntityMoonlightReflector getTileEntity(World world, BlockPos pos) {
         return (TileEntityMoonlightReflector) world.getTileEntity(pos);
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
     }
 }
