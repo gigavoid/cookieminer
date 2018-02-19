@@ -1,5 +1,6 @@
 package com.gigavoid.supermod.cookiecraft.block;
 
+import com.gigavoid.supermod.SuperMod;
 import com.gigavoid.supermod.cookiecraft.cookie.CookieNetwork;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.block.Block;
@@ -7,18 +8,23 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
@@ -38,11 +44,6 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
         this.setHardness(3.5F);
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-
-    }
-
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
@@ -54,13 +55,18 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     }
 
     @Override
+    public Block setBlockUnbreakable() {
+        return super.setBlockUnbreakable();
+    }
+
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
     }
 
-    public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List list, Entity collidingEntity)
-    {
+    @Override
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
         boolean north = this.isNeighborACookieBlock(worldIn, pos, EnumFacing.NORTH);
         boolean south = this.isNeighborACookieBlock(worldIn, pos, EnumFacing.SOUTH);
         boolean west = this.isNeighborACookieBlock(worldIn, pos, EnumFacing.WEST);
@@ -86,8 +92,9 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
 
         if (down || up)
         {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+            AxisAlignedBB aabb = new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
+            addCollisionBoxToList(pos, entityBox, collidingBoxes, aabb);
+            super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, entityIn, isActualState);
         }
 
         yMin = 0.3125F;
@@ -104,8 +111,9 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
 
         if (west || east || !down && !up)
         {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+            AxisAlignedBB aabb = new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
+            addCollisionBoxToList(pos, entityBox, collidingBoxes, aabb);
+            super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, entityIn, isActualState);
         }
 
         zMin = 0.3125F;
@@ -122,8 +130,9 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
 
         if (west || east || !down && !up || !north && !south)
         {
-            this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+            AxisAlignedBB aabb = new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
+            addCollisionBoxToList(pos, entityBox, collidingBoxes, aabb);
+            super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, entityIn, isActualState);
         }
 
         if (north)
@@ -144,7 +153,9 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
             yMax = 1.0F;
         }
 
-        this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
+        AxisAlignedBB aabb = new AxisAlignedBB(xMin, yMin, zMin, xMax, yMax, zMax);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, aabb);
+        super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, entityIn, isActualState);
     }
 
     public void setBlockBoundsBasedOnState(IBlockAccess access, BlockPos pos)
@@ -190,7 +201,7 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
             yMax = 1.0F;
         }
 
-        this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
+        //this.setBlockBounds(xMin, yMin, zMin, xMax, yMax, zMax);
     }
 
     @Override

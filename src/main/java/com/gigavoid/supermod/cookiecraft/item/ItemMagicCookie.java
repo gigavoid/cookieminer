@@ -2,14 +2,11 @@ package com.gigavoid.supermod.cookiecraft.item;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -29,6 +26,7 @@ public class ItemMagicCookie extends Item {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack stack = player.getHeldItem(hand);
         if (!player.canPlayerEdit(pos, facing, stack))
         {
             return EnumActionResult.FAIL;
