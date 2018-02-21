@@ -17,10 +17,8 @@ import java.util.Random;
 public class BlockCookieBlazer extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieBlazer instance = new BlockCookieBlazer();
-
-    private BlockCookieBlazer(){
-        super(Material.ROCK);
+    private BlockCookieBlazer(String name){
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

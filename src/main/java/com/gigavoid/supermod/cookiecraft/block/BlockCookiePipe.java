@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class BlockCookiePipe extends Block implements ICookieBlock {
+public class BlockCookiePipe extends CookieBlockBase implements ICookieBlock {
     public static final PropertyBool NORTH = PropertyBool.create("north");
     public static final PropertyBool SOUTH = PropertyBool.create("south");
     public static final PropertyBool EAST = PropertyBool.create("east");
@@ -36,10 +36,8 @@ public class BlockCookiePipe extends Block implements ICookieBlock {
     public static final PropertyBool UP = PropertyBool.create("up");
     public static final PropertyBool DOWN = PropertyBool.create("down");
 
-    public static final BlockCookiePipe instance = new BlockCookiePipe();
-
-    private BlockCookiePipe(){
-        super(Material.IRON);
+    public BlockCookiePipe(String name){
+        super(name, Material.IRON);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setHardness(3.5F);
     }

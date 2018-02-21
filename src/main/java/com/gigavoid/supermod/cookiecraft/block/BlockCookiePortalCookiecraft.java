@@ -28,9 +28,7 @@ import java.util.Random;
 public class BlockCookiePortalCookiecraft extends BlockBreakable {
     public static final PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
 
-    public static final BlockCookiePortalCookiecraft instance = new BlockCookiePortalCookiecraft();
-
-    private BlockCookiePortalCookiecraft() {
+    public BlockCookiePortalCookiecraft() {
         super(Material.PORTAL, false);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setLightLevel(.75f);
@@ -38,7 +36,7 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
         this.setTickRandomly(true);
     }
 
-    @Override
+    /*@Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(this);
@@ -364,5 +362,5 @@ public class BlockCookiePortalCookiecraft extends BlockBreakable {
                 }
             }
         }
-    }
+    }*/
 }

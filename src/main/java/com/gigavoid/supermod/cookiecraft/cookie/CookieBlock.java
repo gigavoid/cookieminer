@@ -25,11 +25,11 @@ public class CookieBlock {
         return world; }
 
     public boolean isCrafter() {
-        return block == BlockCookieCrafter.instance;
+        return block == CookiecraftBlocks.cookieCrafter;
     }
 
     public boolean isAcceleratorControl() {
-        return block == BlockCookieAcceleratorControl.instance;
+        return block == CookiecraftBlocks.acceleratorControl;
     }
 
     public boolean isAcceleratorBlock() {return block instanceof BlockCookieAcceleratorBase; }

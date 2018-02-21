@@ -16,12 +16,10 @@ import java.util.Random;
 
 public class BlockCookieVacuumOven extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
-    private final int heightLimit = 250;
+    private final int heightLimit = 150;
 
-    public static final BlockCookieVacuumOven instance = new BlockCookieVacuumOven();
-
-    private BlockCookieVacuumOven() {
-        super(Material.ROCK);
+    public BlockCookieVacuumOven(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

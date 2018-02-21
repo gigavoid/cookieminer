@@ -18,10 +18,8 @@ import java.util.Random;
 public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieNuclearBaker instance = new BlockCookieNuclearBaker();
-
-    private BlockCookieNuclearBaker(){
-        super(Material.ROCK);
+    public BlockCookieNuclearBaker(String name){
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -59,7 +57,7 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
     private BlockPos getFaceDirections(IBlockAccess world, BlockPos pos){
         BlockPos result = BlockPos.ORIGIN;
         for (EnumFacing facing : EnumFacing.values()){
-            if (world.getBlockState(pos.offset(facing)).getBlock() == instance){
+            if (world.getBlockState(pos.offset(facing)).getBlock() == CookiecraftBlocks.nuclearBaker){
                 result = result.offset(facing);
             }
         }
@@ -75,10 +73,10 @@ public class BlockCookieNuclearBaker extends BlockCookieGeneratorBase implements
         if (faceDirs == BlockPos.ORIGIN){
             return BlockPos.ORIGIN;
         }
-        if (world.getBlockState(pos).getBlock() != instance || world.getBlockState(pos.add(faceDirs.getX(), 0, 0)).getBlock() != instance ||
-                world.getBlockState(pos.add(0, 0, faceDirs.getZ())).getBlock() != instance || world.getBlockState(pos.add(faceDirs.getX(), 0, faceDirs.getZ())).getBlock() != instance ||
-                world.getBlockState(pos.add(0, faceDirs.getY(), 0)).getBlock() != instance || world.getBlockState(pos.add(faceDirs.getX(), faceDirs.getY(), 0)).getBlock() != instance ||
-                world.getBlockState(pos.add(0, faceDirs.getY(), faceDirs.getZ())).getBlock() != instance || world.getBlockState(pos.add(faceDirs.getX(), faceDirs.getY(), faceDirs.getZ())).getBlock() != instance) {
+        if (world.getBlockState(pos).getBlock() != CookiecraftBlocks.nuclearBaker || world.getBlockState(pos.add(faceDirs.getX(), 0, 0)).getBlock() != CookiecraftBlocks.nuclearBaker ||
+                world.getBlockState(pos.add(0, 0, faceDirs.getZ())).getBlock() != CookiecraftBlocks.nuclearBaker || world.getBlockState(pos.add(faceDirs.getX(), 0, faceDirs.getZ())).getBlock() != CookiecraftBlocks.nuclearBaker ||
+                world.getBlockState(pos.add(0, faceDirs.getY(), 0)).getBlock() != CookiecraftBlocks.nuclearBaker || world.getBlockState(pos.add(faceDirs.getX(), faceDirs.getY(), 0)).getBlock() != CookiecraftBlocks.nuclearBaker ||
+                world.getBlockState(pos.add(0, faceDirs.getY(), faceDirs.getZ())).getBlock() != CookiecraftBlocks.nuclearBaker || world.getBlockState(pos.add(faceDirs.getX(), faceDirs.getY(), faceDirs.getZ())).getBlock() != CookiecraftBlocks.nuclearBaker) {
             return BlockPos.ORIGIN;
         }
         return faceDirs;

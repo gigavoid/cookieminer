@@ -19,10 +19,8 @@ import java.util.Random;
 public class BlockCookieLavaConverter extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieLavaConverter instance = new BlockCookieLavaConverter();
-
-    private BlockCookieLavaConverter() {
-        super(Material.ROCK);
+    public BlockCookieLavaConverter(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

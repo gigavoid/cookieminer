@@ -1,30 +1,22 @@
 package com.gigavoid.supermod.cookiecraft.worldgen;
 
-import com.gigavoid.supermod.cookiecraft.ModuleCookiecraft;
 import com.google.common.collect.Lists;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeCache;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class CookiecraftWorldChunkManager extends WorldChunkManager
+public class CookiecraftWorldChunkManager //extends WorldChunkManager
 {
-    public static ArrayList<BiomeGenBase> allowedBiomes = Lists.newArrayList((BiomeGenBase)ModuleCookiecraft.cookieBiome);
+    //public static ArrayList<BiomeGenBase> allowedBiomes = Lists.newArrayList((BiomeGenBase)ModuleCookiecraft.cookieBiome);
     private GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
     private GenLayer biomeIndexLayer;
@@ -37,10 +29,10 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
 
     protected CookiecraftWorldChunkManager()
     {
-        this.biomeCache = new BiomeCache(this);
+        //this.biomeCache = new BiomeCache(this);
         this.field_180301_f = "";
         this.biomesToSpawnIn = Lists.newArrayList();
-        this.biomesToSpawnIn.addAll(allowedBiomes);
+        //this.biomesToSpawnIn.addAll(allowedBiomes);
     }
 
     public CookiecraftWorldChunkManager(long p_i45744_1_, WorldType p_i45744_3_, String p_i45744_4_)
@@ -65,7 +57,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
         return this.biomesToSpawnIn;
     }
 
-    public BiomeGenBase func_180631_a(BlockPos p_180631_1_)
+    /*public BiomeGenBase func_180631_a(BlockPos p_180631_1_)
     {
         return this.func_180300_a(p_180631_1_, (BiomeGenBase)null);
     }
@@ -78,7 +70,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
     /**
      * Returns a list of rainfall values for the specified blocks. Args: listToReuse, x, z, width, length.
      */
-    public float[] getRainfall(float[] p_76936_1_, int p_76936_2_, int p_76936_3_, int p_76936_4_, int p_76936_5_)
+    /*public float[] getRainfall(float[] p_76936_1_, int p_76936_2_, int p_76936_3_, int p_76936_4_, int p_76936_5_)
     {
         IntCache.resetIntCache();
 
@@ -131,7 +123,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
     /**
      * Returns an array of biomes for the location input.
      */
-    public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] p_76937_1_, int p_76937_2_, int p_76937_3_, int p_76937_4_, int p_76937_5_)
+    /*public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] p_76937_1_, int p_76937_2_, int p_76937_3_, int p_76937_4_, int p_76937_5_)
     {
         IntCache.resetIntCache();
 
@@ -168,7 +160,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
      * Returns biomes to use for the blocks and loads the other data like temperature and humidity onto the
      * WorldChunkManager Args: oldBiomeList, x, z, width, depth
      */
-    public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] p_76933_1_, int p_76933_2_, int p_76933_3_, int p_76933_4_, int p_76933_5_)
+    /*public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] p_76933_1_, int p_76933_2_, int p_76933_3_, int p_76933_4_, int p_76933_5_)
     {
         return this.getBiomeGenAt(p_76933_1_, p_76933_2_, p_76933_3_, p_76933_4_, p_76933_5_, true);
     }
@@ -177,7 +169,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
      * Return a list of biomes for the specified blocks. Args: listToReuse, x, y, width, length, cacheFlag (if false,
      * don't check biomeCache to avoid infinite loop in BiomeCacheBlock)
      */
-    public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] p_76931_1_, int p_76931_2_, int p_76931_3_, int p_76931_4_, int p_76931_5_, boolean p_76931_6_)
+    /*public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] p_76931_1_, int p_76931_2_, int p_76931_3_, int p_76931_4_, int p_76931_5_, boolean p_76931_6_)
     {
         IntCache.resetIntCache();
 
@@ -223,12 +215,12 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
         {
             for (int j2 = 0; j2 < l1 * i2; ++j2)
             {
-                BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
+                //BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
 
-                if (!p_76940_4_.contains(biomegenbase))
+                /*if (!p_76940_4_.contains(biomegenbase))
                 {
                     return false;
-                }
+                }*/
             }
 
             return true;
@@ -246,7 +238,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
         }
     }
 
-    public BlockPos findBiomePosition(int x, int z, int range, List biomes, Random random)
+    /*public BlockPos findBiomePosition(int x, int z, int range, List biomes, Random random)
     {
         IntCache.resetIntCache();
         int l = x - range >> 2;
@@ -278,7 +270,7 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
     /**
      * Calls the WorldChunkManager's biomeCache.cleanupCache()
      */
-    public void cleanupCache()
+    /*public void cleanupCache()
     {
         this.biomeCache.cleanupCache();
     }
@@ -288,5 +280,5 @@ public class CookiecraftWorldChunkManager extends WorldChunkManager
         WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
         MinecraftForge.TERRAIN_GEN_BUS.post(event);
         return event.newBiomeGens;
-    }
+    }*/
 }

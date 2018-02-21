@@ -15,9 +15,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockCookieNetworkBase extends Block implements ITileEntityProvider {
-    public BlockCookieNetworkBase(Material material) {
-        super(material);
+public abstract class BlockCookieNetworkBase extends CookieBlockBase implements ITileEntityProvider {
+    public BlockCookieNetworkBase(String name, Material material) {
+        super(name, material);
         this.setHardness(10.0F);
     }
 

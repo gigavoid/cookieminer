@@ -6,8 +6,8 @@ import net.minecraft.world.biome.Biome;
 
 public class CookieBiome extends CookiecraftBiomeGenBase {
     public CookieBiome(int id, int weight){
-        super(id, weight);
-        setBiomeName("Cookieverse");
+        //super(id, weight);
+        /*setBiomeName("Cookieverse");
         setHeight(new Height(.0f, .2f));
         topBlock = BlockCookieBlock.instance.getDefaultState();
         fillerBlock = BlockCookieBlock.instance.getDefaultState();
@@ -15,6 +15,6 @@ public class CookieBiome extends CookiecraftBiomeGenBase {
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.clear();
         this.spawnableWaterCreatureList.clear();
-        this.spawnableMonsterList.add(new Biome.SpawnListEntry(EntityCookiecreeper.class, 2, 1, 1));
+        this.spawnableMonsterList.add(new Biome.SpawnListEntry(EntityCookiecreeper.class, 2, 1, 1));*/
     }
 }

@@ -12,10 +12,11 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class ItemCookiePouchBase extends Item implements ICookieStorageItem {
+public abstract class ItemCookiePouchBase extends CookieItemBase implements ICookieStorageItem {
 	private static final String PROP_COOKIES = "cookies";
 
-	public ItemCookiePouchBase() {
+	public ItemCookiePouchBase(String name) {
+		super(name);
 		this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
 		this.setMaxStackSize(1);
 	}

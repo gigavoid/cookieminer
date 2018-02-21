@@ -6,9 +6,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 
-public class ItemCookieBucket extends ItemBucket {
-    public ItemCookieBucket(Block containedBlock) {
-        super(containedBlock);
+public class ItemCookieBucket extends CookieBucketItemBase {
+    public ItemCookieBucket(String name, Block containedBlock) {
+        super(name, containedBlock);
         this.setContainerItem(Items.BUCKET);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }

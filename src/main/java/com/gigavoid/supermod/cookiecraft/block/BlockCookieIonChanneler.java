@@ -19,10 +19,8 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     public static final PropertyBool TOP = PropertyBool.create("top");
     public static final PropertyBool BOTTOM = PropertyBool.create("bottom");
 
-    public static final BlockCookieIonChanneler instance = new BlockCookieIonChanneler();
-
-    private BlockCookieIonChanneler() {
-        super(Material.ROCK);
+    public BlockCookieIonChanneler(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(TOP, true).withProperty(BOTTOM, true));
     }
@@ -58,7 +56,7 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     private boolean isTowerBuilt(IBlockAccess world, BlockPos pos){
         int nrOfParts = 1;
         for (int i = 1; i < 5; i++){
-            if (world.getBlockState(pos.offset(EnumFacing.UP, i)).getBlock() == instance){
+            if (world.getBlockState(pos.offset(EnumFacing.UP, i)).getBlock() == CookiecraftBlocks.ionChanneler){
                 nrOfParts++;
             }
             else
@@ -66,7 +64,7 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
         }
         if (nrOfParts < 5){
             for (int i = 1; i < 5; i++){
-                if (world.getBlockState(pos.offset(EnumFacing.DOWN, i)).getBlock() == instance){
+                if (world.getBlockState(pos.offset(EnumFacing.DOWN, i)).getBlock() == CookiecraftBlocks.ionChanneler){
                     nrOfParts++;
                 }
                 else
@@ -77,11 +75,11 @@ public class BlockCookieIonChanneler extends BlockCookieGeneratorBase implements
     }
 
     private boolean isTop(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offset(EnumFacing.UP)).getBlock() != instance;
+        return world.getBlockState(pos.offset(EnumFacing.UP)).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 
     private boolean isBottom(IBlockAccess world, BlockPos pos){
-        return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() != instance;
+        return world.getBlockState(pos.offset(EnumFacing.DOWN)).getBlock() != CookiecraftBlocks.ionChanneler;
     }
 
     @Override

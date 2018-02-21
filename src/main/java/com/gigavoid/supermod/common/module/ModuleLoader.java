@@ -1,6 +1,5 @@
 package com.gigavoid.supermod.common.module;
 
-import com.gigavoid.supermod.common.Register;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -14,10 +13,8 @@ import java.util.List;
 public class ModuleLoader {
 
     private List<Module> moduleList = new ArrayList<Module>();
-    private Register register = new Register();
     
     public void registerModule(Module module) {
-        module.setRegister(register);
         moduleList.add(module);
     }
 

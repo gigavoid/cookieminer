@@ -22,10 +22,8 @@ import java.util.Random;
 public class BlockCookieCocoaCircuit extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieCocoaCircuit instance = new BlockCookieCocoaCircuit();
-
-    private BlockCookieCocoaCircuit() {
-        super(Material.ROCK);
+    public BlockCookieCocoaCircuit(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

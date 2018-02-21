@@ -16,10 +16,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieSlimeCompressor extends BlockCookieGeneratorBase implements ICookieGenerator {
-    public static final BlockCookieSlimeCompressor instance = new BlockCookieSlimeCompressor();
-
-    private BlockCookieSlimeCompressor() {
-        super(Material.ROCK);
+    public BlockCookieSlimeCompressor(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 

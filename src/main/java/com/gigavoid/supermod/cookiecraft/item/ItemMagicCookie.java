@@ -2,6 +2,7 @@ package com.gigavoid.supermod.cookiecraft.item;
 
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookiePortalCookiecraft;
+import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import com.gigavoid.supermod.cookiecraft.creativetab.CookiecraftCreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -13,8 +14,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemMagicCookie extends Item {
-    public ItemMagicCookie(){
+public class ItemMagicCookie extends CookieItemBase {
+    public ItemMagicCookie(String name){
+        super(name);
         this.setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setMaxDamage(16);
     }
@@ -33,17 +35,17 @@ public class ItemMagicCookie extends Item {
         }
         else
         {
-            if (BlockCookieBlock.instance != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.SAND || worldIn.getBlockState(pos).getBlock() == Blocks.GRASS
+            if (CookiecraftBlocks.cookieBlock != worldIn.getBlockState(pos).getBlock() && (worldIn.getBlockState(pos).getBlock() == Blocks.SAND || worldIn.getBlockState(pos).getBlock() == Blocks.GRASS
                     || worldIn.getBlockState(pos).getBlock() == Blocks.COBBLESTONE || worldIn.getBlockState(pos).getBlock() == Blocks.NETHERRACK || worldIn.getBlockState(pos).getBlock() == Blocks.GRAVEL
                     || worldIn.getBlockState(pos).getBlock() == Blocks.SANDSTONE || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT || worldIn.getBlockState(pos).getBlock() == Blocks.STONE))
             {
-                worldIn.setBlockState(pos, BlockCookieBlock.instance.getDefaultState());
+                worldIn.setBlockState(pos, CookiecraftBlocks.cookieBlock.getDefaultState());
                 stack.damageItem(1, player);
             }
-            else if (BlockCookieBlock.instance == worldIn.getBlockState(pos).getBlock() && Blocks.AIR != worldIn.getBlockState(pos).getBlock()){
-                if (BlockCookiePortalCookiecraft.instance.func_176548_d(worldIn, pos.offset(facing))) {
+            else if (CookiecraftBlocks.cookieBlock == worldIn.getBlockState(pos).getBlock() && Blocks.AIR != worldIn.getBlockState(pos).getBlock()){
+                /*if (CookiecraftBlocks.burntCookieBlock.func_176548_d(worldIn, pos.offset(facing))) {
                     stack.damageItem(1, player);
-                }
+                }*/
             }
 
             return EnumActionResult.SUCCESS;

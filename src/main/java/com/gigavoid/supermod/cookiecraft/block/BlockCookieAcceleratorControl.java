@@ -17,10 +17,8 @@ import java.util.Random;
 public class BlockCookieAcceleratorControl extends BlockCookieAcceleratorBase {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-    public static final BlockCookieAcceleratorControl instance = new BlockCookieAcceleratorControl();
-
-    private BlockCookieAcceleratorControl() {
-        super();
+    public BlockCookieAcceleratorControl(String name) {
+        super(name);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false).withProperty(FACING, EnumFacing.NORTH));
     }

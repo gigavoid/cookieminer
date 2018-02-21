@@ -4,8 +4,10 @@ import com.gigavoid.supermod.cookiecraft.item.ICookieStorageItem;
 import com.gigavoid.supermod.cookiecraft.item.ItemCookiePouchBase;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -121,20 +123,6 @@ public class ShapedCookieRecipe implements IRecipe {
     @Override
     public ItemStack getRecipeOutput() {
         return null;
-    }
-
-    @Override
-    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-        ItemStack stackInSlot = inv.getStackInSlot(4);
-        ((ItemCookiePouchBase)stackInSlot.getItem()).takeCookies(stackInSlot, cookiesRequired);
-        ItemStack[] ret = new ItemStack[inv.getSizeInventory()];
-        for (int i = 0; i < ret.length; i++)
-        {
-            ret[i] = null;
-        }
-        if (!consumeCookieItem)
-            ret[4] = stackInSlot;
-        return ret;
     }
 
     private boolean isItem(int slot, InventoryCrafting ic, Item item) {

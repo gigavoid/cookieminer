@@ -1,32 +1,16 @@
 package com.gigavoid.supermod.cookiecraft.worldgen;
 
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieChocoFluid;
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFalling;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IProgressUpdate;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.*;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.PopulateChunkEvent;
-import net.minecraftforge.event.terraingen.TerrainGen;
-import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraft.world.gen.NoiseGeneratorOctaves;
+import net.minecraft.world.gen.NoiseGeneratorPerlin;
 
-import java.util.List;
 import java.util.Random;
 
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
-
-public class CookiecraftChunkProvider implements IChunkProvider {
+public class CookiecraftChunkProvider { //implements IChunkProvider {
 
     /** RNG. */
     private Random rand;
@@ -42,21 +26,21 @@ public class CookiecraftChunkProvider implements IChunkProvider {
     /** Reference to the World object. */
     private World worldObj;
     /** are map structures going to be generated (e.g. strongholds) */
-    private final boolean mapFeaturesEnabled;
+    //private final boolean mapFeaturesEnabled;
     private WorldType worldType;
-    private final double[] field_147434_q;
-    private final float[] parabolicField;
-    private ChunkProviderSettings chunkProviderSettings;
+    //private final double[] field_147434_q;
+    //private final float[] parabolicField;
+    //private ChunkProviderSettings chunkProviderSettings;
     private Block oceanFiller;
     private double[] stoneNoise;
     /** The biomes that are used to generate the chunk */
-    private BiomeGenBase[] biomesForGeneration;
+    //private BiomeGenBase[] biomesForGeneration;
     double[] field_147427_d;
     double[] field_147428_e;
     double[] field_147425_f;
     double[] field_147426_g;
 
-    public CookiecraftChunkProvider(World worldIn, long p_i45636_2_, boolean p_i45636_4_, String p_i45636_5_)
+    /*public CookiecraftChunkProvider(World worldIn, long p_i45636_2_, boolean p_i45636_4_, String p_i45636_5_)
     {
         this.oceanFiller = Blocks.ICE;
         this.stoneNoise = new double[256];
@@ -192,7 +176,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
      * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
      * specified chunk from the map seed and chunk seed
      */
-    public Chunk provideChunk(int p_73154_1_, int p_73154_2_)
+    /*public Chunk provideChunk(int p_73154_1_, int p_73154_2_)
     {
         this.rand.setSeed((long)p_73154_1_ * 341873128712L + (long)p_73154_2_ * 132897987541L);
         ChunkPrimer chunkprimer = new ChunkPrimer();
@@ -340,7 +324,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
     /**
      * Populates chunk with ores etc etc
      */
-    public void populate(IChunkProvider p_73153_1_, int p_73153_2_, int p_73153_3_)
+    /*public void populate(IChunkProvider p_73153_1_, int p_73153_2_, int p_73153_3_)
     {
         BlockFalling.fallInstantly = true;
         int k = p_73153_2_ * 16;
@@ -436,7 +420,7 @@ public class CookiecraftChunkProvider implements IChunkProvider {
         return "RandomLevelSource";
     }
 
-    public List func_177458_a(EnumCreatureType p_177458_1_, BlockPos p_177458_2_)
+    /*public List func_177458_a(EnumCreatureType p_177458_1_, BlockPos p_177458_2_)
     {
         BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(p_177458_2_);
         return biomegenbase.getSpawnableList(p_177458_1_);
@@ -457,5 +441,5 @@ public class CookiecraftChunkProvider implements IChunkProvider {
     public Chunk provideChunk(BlockPos p_177459_1_)
     {
         return this.provideChunk(p_177459_1_.getX() >> 4, p_177459_1_.getZ() >> 4);
-    }
+    }*/
 }

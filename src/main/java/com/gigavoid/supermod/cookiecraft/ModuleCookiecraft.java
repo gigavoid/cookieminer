@@ -1,6 +1,6 @@
 package com.gigavoid.supermod.cookiecraft;
 
-import com.gigavoid.supermod.common.Register;
+import com.gigavoid.supermod.common.RegistrationHandler;
 import com.gigavoid.supermod.common.module.Module;
 import com.gigavoid.supermod.cookiecraft.biome.CookieBiome;
 import com.gigavoid.supermod.cookiecraft.block.BlockCookieChocoFluid;
@@ -15,6 +15,7 @@ import com.gigavoid.supermod.cookiecraft.renderer.CookieRenderers;
 import com.gigavoid.supermod.cookiecraft.renderer.RenderSlimeCompressor;
 import com.gigavoid.supermod.cookiecraft.tileentity.CookiecraftTileEntities;
 import com.gigavoid.supermod.cookiecraft.tileentity.TileEntitySlimeCompressor;
+import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGenOre;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldGens;
 import com.gigavoid.supermod.cookiecraft.worldgen.CookiecraftWorldProvider;
 import net.minecraft.block.state.IBlockState;
@@ -45,22 +46,26 @@ public class ModuleCookiecraft extends Module{
     public static CookieBiome cookieBiome;
     public static CookieConfiguration config;
 
-    public void preInit(FMLPreInitializationEvent event) { proxy.preInit(event, getRegister(event.getSide())); }
+    public void preInit(FMLPreInitializationEvent event) {
+        //proxy.preInit(event, getRegister(event.getSide()));
+    }
 
     public static class CommonProxy
     {
-        public void preInit(FMLPreInitializationEvent event, Register register)
+        public void registerItemRenderer(Item item, int meta, String id) { }
+
+        public void preInit(FMLPreInitializationEvent event, RegistrationHandler register)
         {
             MinecraftForge.EVENT_BUS.register(BucketHandler.instance);
 
             FluidRegistry.registerFluid(FluidChoco.instance);
-            GameRegistry.registerBlock(BlockCookieChocoFluid.instance, BlockCookieChocoFluid.name);
+            //GameRegistry.registerBlock(BlockCookieChocoFluid.instance, BlockCookieChocoFluid.name);
             CookieEntities.registerEntities(register);
 
-            cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
-            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0)); // Probabli inheritence of cookiebiome
+            //cookieBiome = new CookieBiome(register.getNextBiomeID(), 10);
+            //BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(cookieBiome, 0)); // Probabli inheritence of cookiebiome
 
-            dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
+            //dimensionId = register.registerDimension(CookiecraftWorldProvider.class, false);
 
             config = new CookieConfiguration(event.getSuggestedConfigurationFile());
             config.load();
@@ -71,8 +76,15 @@ public class ModuleCookiecraft extends Module{
         private static ModelResourceLocation fluidLocation = new ModelResourceLocation("supermod:" + BlockCookieChocoFluid.name, "fluid");
 
         @Override
-        public void preInit(FMLPreInitializationEvent event, Register register) {
+        public void registerItemRenderer(Item item, int meta, String id) {
+            ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(id));
+        }
+
+        @Override
+        public void preInit(FMLPreInitializationEvent event, RegistrationHandler register) {
             super.preInit(event, register);
+            GameRegistry.registerWorldGenerator(new CookiecraftWorldGenOre(), 3);
+
             Item fluid = Item.getItemFromBlock(BlockCookieChocoFluid.instance);
             ModelBakery.registerItemVariants(fluid);
 
@@ -91,18 +103,16 @@ public class ModuleCookiecraft extends Module{
 
     @Override
     public void init(FMLInitializationEvent e) {
-        CookiecraftBlocks.initializeBlocks(getRegister(e.getSide()));
-        CookiecraftItems.registerItems(getRegister(e.getSide()), e);
         CookiecraftTileEntities.registerTileEntities();
         CookiecraftGuis.initializeGuis();
         CookiecraftRecipes.initializeRecipes();
-        CookiecraftWorldGens.initializeWorldGens(getRegister(e.getSide()));
+        //CookiecraftWorldGens.initializeWorldGens(getRegister(e.getSide()));
 
         if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
             CookieRenderers.registerRenderers();
         }
 
-        BucketHandler.instance.buckets.put(BlockCookieChocoFluid.instance, CookiecraftItems.cookieChocoBucket);
+        // BucketHandler.instance.buckets.put(BlockCookieChocoFluid.instance, CookiecraftItems.cookieChocoBucket);
         // FluidContainerRegistry.registerFluidContainer(FluidChoco.instance, new ItemStack(CookiecraftItems.cookieChocoBucket), new ItemStack(Items.bucket));
         FluidRegistry.addBucketForFluid(FluidChoco.instance);
 

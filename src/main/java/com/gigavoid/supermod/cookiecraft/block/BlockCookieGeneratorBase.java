@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BlockCookieGeneratorBase extends BlockCookieNetworkBase implements ICookieGenerator{
-    public BlockCookieGeneratorBase(Material material) {
-        super(material);
+    public BlockCookieGeneratorBase(String name, Material material) {
+        super(name, material);
     }
 
     @Override

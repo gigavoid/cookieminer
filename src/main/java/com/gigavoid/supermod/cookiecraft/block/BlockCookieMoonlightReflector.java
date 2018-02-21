@@ -24,10 +24,8 @@ import java.util.Random;
 public class BlockCookieMoonlightReflector extends BlockCookieGeneratorBase implements ICookieGenerator, ITileEntityProvider {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieMoonlightReflector instance = new BlockCookieMoonlightReflector();
-
-    private BlockCookieMoonlightReflector() {
-        super(Material.ROCK);
+    public BlockCookieMoonlightReflector(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

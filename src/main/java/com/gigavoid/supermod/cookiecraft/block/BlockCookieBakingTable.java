@@ -18,10 +18,8 @@ import java.util.Random;
 public class BlockCookieBakingTable extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieBakingTable instance = new BlockCookieBakingTable();
-
-    private BlockCookieBakingTable(){
-        super(Material.ROCK);
+    public BlockCookieBakingTable(String name){
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

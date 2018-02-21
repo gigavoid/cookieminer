@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 public class ItemCookiePouch extends ItemCookiePouchBase {
 	private long storage;
 
-	public ItemCookiePouch(long storage) {
-		super();
+	public ItemCookiePouch(String name, long storage) {
+		super(name);
 		this.storage = storage;
 	}
 

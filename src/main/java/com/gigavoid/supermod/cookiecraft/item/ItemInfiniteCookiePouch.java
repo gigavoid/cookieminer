@@ -9,6 +9,10 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
+    public ItemInfiniteCookiePouch(String name) {
+        super(name);
+    }
+
     @Override
     public long getMaxStorage(ItemStack stack) {
         return Long.MAX_VALUE;
@@ -30,9 +34,7 @@ public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
     }
 
     @Override
-    public void setCookies(ItemStack stack, long cookies) {
-
-    }
+    public void setCookies(ItemStack stack, long cookies) { }
 
     @Override
     public long takeCookies(ItemStack stack, long transferSpeed) {
@@ -40,9 +42,7 @@ public class ItemInfiniteCookiePouch extends ItemCookiePouchBase {
     }
 
     @Override
-    public void addCookies(ItemStack stack, long toTake) {
-
-    }
+    public void addCookies(ItemStack stack, long toTake) { }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {

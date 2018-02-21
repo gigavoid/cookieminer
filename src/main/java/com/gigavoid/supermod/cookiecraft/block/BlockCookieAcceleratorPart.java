@@ -8,10 +8,8 @@ import net.minecraft.item.Item;
 import java.util.Random;
 
 public class BlockCookieAcceleratorPart extends BlockCookieAcceleratorBase {
-    public static final BlockCookieAcceleratorPart instance = new BlockCookieAcceleratorPart();
-
-    private BlockCookieAcceleratorPart() {
-        super();
+    public BlockCookieAcceleratorPart(String name) {
+        super(name);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 

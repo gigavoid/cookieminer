@@ -21,10 +21,8 @@ import java.util.Random;
 public class BlockCookieCactusMasher extends BlockCookieGeneratorBase implements ICookieGenerator, ITileEntityProvider {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-    public static final BlockCookieCactusMasher instance = new BlockCookieCactusMasher();
-
-    private BlockCookieCactusMasher() {
-        super(Material.ROCK);
+    public BlockCookieCactusMasher(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

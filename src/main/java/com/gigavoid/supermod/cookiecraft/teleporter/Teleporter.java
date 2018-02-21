@@ -15,10 +15,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class Teleporter extends net.minecraft.world.Teleporter
+public class Teleporter // extends net.minecraft.world.Teleporter
 {
 
-    private final LongHashMap destinationCoordinateCache = new LongHashMap();
+    /*private final LongHashMap destinationCoordinateCache = new LongHashMap();
     private final List destinationCoordinateKeys = new ArrayList();
     private final Random random;
 
@@ -479,5 +479,5 @@ public class Teleporter extends net.minecraft.world.Teleporter
         }
 
         return true;
-    }
+    }*/
 }

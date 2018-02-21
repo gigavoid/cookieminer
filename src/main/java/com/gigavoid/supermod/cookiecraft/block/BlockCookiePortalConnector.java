@@ -17,10 +17,8 @@ import java.util.Random;
 public class BlockCookiePortalConnector extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookiePortalConnector instance = new BlockCookiePortalConnector();
-
-    private BlockCookiePortalConnector(){
-        super(Material.ROCK);
+    public BlockCookiePortalConnector(String name){
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
@@ -64,7 +62,7 @@ public class BlockCookiePortalConnector extends BlockCookieGeneratorBase impleme
     }
 
     private boolean isNextToOnePortal(IBlockAccess world, BlockPos blockPos) {
-        return world.getBlockState(blockPos).getBlock() == BlockCookiePortalCookiecraft.instance;
+        return true; //world.getBlockState(blockPos).getBlock() == CookiecraftBlocks.portal;
     }
 
     @Override

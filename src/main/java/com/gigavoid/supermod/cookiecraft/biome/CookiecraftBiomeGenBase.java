@@ -1,8 +1,5 @@
 package com.gigavoid.supermod.cookiecraft.biome;
 
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieBlock;
-import com.gigavoid.supermod.cookiecraft.block.BlockCookieBurntCookieBlock;
-import com.gigavoid.supermod.cookiecraft.block.CookiecraftBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -11,10 +8,11 @@ import net.minecraft.world.chunk.ChunkPrimer;
 
 import java.util.Random;
 
-public class CookiecraftBiomeGenBase extends BiomeGenBase {
+public class CookiecraftBiomeGenBase //extends BiomeGenBase
+{
     int weight = 0;
 
-    public CookiecraftBiomeGenBase(int p_i1971_1_, int weight)
+    /*public CookiecraftBiomeGenBase(int p_i1971_1_, int weight)
     {
         super(p_i1971_1_, true);
         this.weight = weight;
@@ -104,5 +102,5 @@ public class CookiecraftBiomeGenBase extends BiomeGenBase {
                 }
             }
         }
-    }
+    }*/
 }

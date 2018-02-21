@@ -1,5 +1,16 @@
 {
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "supermod:blocks/cookie_ore_uranium"
+        }
+    },
     "variants": {
-        "normal": { "model": "supermod:cookie_ore_uranium" }
+        "normal": {
+            "model": "supermod:block/cookie_ore_uranium"
+        },
+        "inventory": {
+            "model": "supermod:block/cookie_ore_uranium"
+        }
     }
 }

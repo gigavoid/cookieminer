@@ -31,10 +31,8 @@ import java.util.Random;
 public class BlockCookieCrafter extends BlockCookieNetworkBase implements ITileEntityProvider, ICookieGenerator {
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
-    public static final BlockCookieCrafter instance = new BlockCookieCrafter();
-
-    private BlockCookieCrafter() {
-        super(Material.ROCK);
+    public BlockCookieCrafter(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }

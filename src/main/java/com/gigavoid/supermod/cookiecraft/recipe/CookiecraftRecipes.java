@@ -43,7 +43,7 @@ public class CookiecraftRecipes {
         ItemStack obsidian = new ItemStack(Blocks.OBSIDIAN);
 
         // Cookie network blocks
-        ItemStack cookieCrafter = new ItemStack(BlockCookieCrafter.instance);
+        /*ItemStack cookieCrafter = new ItemStack(BlockCookieCrafter.instance);
         ItemStack doughCollector = new ItemStack(BlockCookieDoughCollector.instance);
         ItemStack trashBaker = new ItemStack(BlockCookieTrashBaker.instance);
         ItemStack cookieFarm = new ItemStack(BlockCookieFarm.instance);
@@ -84,7 +84,7 @@ public class CookiecraftRecipes {
         ItemStack gemMixtureIngot = new ItemStack(CookiecraftItems.cookieGemMixtureIngot);
         ItemStack uraniumRod = new ItemStack(CookiecraftItems.cookieUraniumRod);
         ItemStack uraniumOre = new ItemStack(BlockCookieOreUranium.instance);
-
+        */
 
         /**
          * Recipes
@@ -92,6 +92,7 @@ public class CookiecraftRecipes {
 
         // Network blocks
 
+        /*
         GameRegistry.addRecipe(pipe, "i  ", "c  ", "i  ",
                 'i', ironIngot, 'c', cookie);
         GameRegistry.addRecipe(pipe, " i ", " c ", " i ",
@@ -114,7 +115,7 @@ public class CookiecraftRecipes {
         GameRegistry.addRecipe(cookieStorageWood, "www", "wcw", "www",
                 'w', wood, 'c', cookie);
 
-        GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageIron, 1024, false, "iii", "ici", "iii",
+        GameRegistry.a(new ShapedCookieRecipe(cookieStorageIron, 1024, false, "iii", "ici", "iii",
                 'i', ironIngot, 'c', emeraldCookiePouch));
 
         GameRegistry.addRecipe(new ShapedCookieRecipe(cookieStorageGold, 32768, false, "iii", "ici", "iii",
@@ -202,5 +203,6 @@ public class CookiecraftRecipes {
         GameRegistry.addSmelting(gemMixture, gemMixtureIngot, 6.0F);
 
         GameRegistry.addSmelting(uraniumOre, uraniumRod, 6.0F);
+        */
     }
 }

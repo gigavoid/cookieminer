@@ -19,10 +19,8 @@ import java.util.Random;
 public class BlockCookieSapGatherer extends BlockCookieGeneratorBase implements ICookieGenerator {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    public static final BlockCookieSapGatherer instance = new BlockCookieSapGatherer();
-
-    private BlockCookieSapGatherer(){
-        super(Material.ROCK);
+    public BlockCookieSapGatherer(String name){
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }

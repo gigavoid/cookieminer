@@ -8,6 +8,9 @@ import net.minecraft.item.ItemStack;
 public class ItemCookiePouchOverflow extends ItemCookiePouchBase{
     private static final String PROP_START_COOKIES = "startcookies";
 
+    public ItemCookiePouchOverflow(String name) {
+        super(name);
+    }
 
     @Override
     public long getMaxStorage(ItemStack stack) {

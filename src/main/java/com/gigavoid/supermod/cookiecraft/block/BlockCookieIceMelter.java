@@ -14,10 +14,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieIceMelter extends BlockCookieGeneratorBase implements ICookieGenerator {
-    public static final BlockCookieIceMelter instance = new BlockCookieIceMelter();
-
-    private BlockCookieIceMelter() {
-        super(Material.ROCK);
+    public BlockCookieIceMelter(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 

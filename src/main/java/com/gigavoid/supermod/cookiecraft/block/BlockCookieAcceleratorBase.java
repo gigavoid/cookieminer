@@ -23,8 +23,8 @@ import java.util.List;
 public class BlockCookieAcceleratorBase extends BlockCookieGeneratorBase implements ICookieGenerator,ITileEntityProvider {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-    protected BlockCookieAcceleratorBase() {
-        super(Material.ROCK);
+    protected BlockCookieAcceleratorBase(String name) {
+        super(name, Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
 

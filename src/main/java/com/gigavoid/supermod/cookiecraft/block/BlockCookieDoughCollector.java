@@ -16,10 +16,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockCookieDoughCollector extends BlockCookieGeneratorBase implements ICookieGenerator {
-    public static final BlockCookieDoughCollector instance = new BlockCookieDoughCollector();
-
-    private BlockCookieDoughCollector() {
-        super(Material.ROCK);
+    public BlockCookieDoughCollector(String name) {
+        super(name, Material.ROCK);
         setCreativeTab(CookiecraftCreativeTabs.tabCookiecraft);
     }
 
